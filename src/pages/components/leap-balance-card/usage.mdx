@@ -1,0 +1,92 @@
+---
+title: Leap Balance Card
+description:
+  Leap Balance Card shows remaining leave balance with a progress bar. It gives
+  employees a quick visual summary of how much leave they have used and how much
+  remains.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+import StorybookDemo from 'components/StorybookDemo';
+
+<PageDescription>
+
+Leap Balance Card shows remaining leave balance with a progress bar. It gives
+employees a quick visual summary of how much leave they have used and how much
+remains.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>Overview</AnchorLink>
+<AnchorLink>Live demo</AnchorLink>
+<AnchorLink>Variants</AnchorLink>
+<AnchorLink>Formatting</AnchorLink>
+<AnchorLink>Feedback</AnchorLink>
+
+</AnchorLinks>
+
+## Overview
+
+The Leap Balance Card component displays a single leave-type balance as a
+compact card with a progress bar. It communicates at a glance how many days or
+hours have been used out of a total allocation.
+
+### When to use
+
+- On a dashboard to show each leave type's remaining balance
+- In a sidebar or widget area alongside a leave request form
+- To summarise balances on an employee profile page
+
+### When not to use
+
+- To display a detailed breakdown of individual leave transactions — use Leap
+  Timeline instead
+- As a status indicator for a specific leave request — use Leap Status Badge
+- When you need to show balances for many employees at once — use Leap Data
+  Table
+
+## Live demo
+
+<StorybookDemo
+  themeSelector
+  url="http://localhost:6006"
+  variants={[
+    { label: 'Vacation', variant: 'components-leapbalancecard--vacation' },
+    { label: 'Sick Leave', variant: 'components-leapbalancecard--sick-leave' },
+    { label: 'Personal', variant: 'components-leapbalancecard--personal' },
+    { label: 'Low Balance', variant: 'components-leapbalancecard--low-balance' },
+  ]}
+/>
+
+## Variants
+
+| Variant | Description |
+| ------- | ----------- |
+| **Vacation** | Standard vacation balance display |
+| **Sick Leave** | Sick leave balance with its own colour accent |
+| **Personal** | Personal day balance |
+| **Low Balance** | Highlights when remaining balance is critically low |
+
+## Formatting
+
+### Anatomy
+
+The Leap Balance Card consists of:
+
+1. **Leave type label** — the name of the leave category
+2. **Progress bar** — visual representation of used vs. total
+3. **Balance text** — numeric display of used and total values
+4. **Unit indicator** — whether the balance is measured in days or hours
+
+### Placement
+
+Balance cards are typically arranged in a horizontal row or grid on a dashboard.
+They work well inside summary panels, profile sidebars, or at the top of a leave
+management page.
+
+## Feedback
+
+Help us improve this component by providing
+[feedback or contributing](https://github.com/carbon-design-system/carbon-website/issues/new/choose).

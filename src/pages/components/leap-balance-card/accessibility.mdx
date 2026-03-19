@@ -1,0 +1,47 @@
+---
+title: Leap Balance Card
+description:
+  Leap Balance Card shows remaining leave balance with a progress bar. It gives
+  employees a quick visual summary of how much leave they have used and how much
+  remains.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+No accessibility annotations are needed for Leap Balance Card, but keep these
+considerations in mind if you are modifying the component or creating a custom
+component.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>What the component does</AnchorLink>
+<AnchorLink>Design recommendations</AnchorLink>
+<AnchorLink>Development considerations</AnchorLink>
+
+</AnchorLinks>
+
+## What the component does
+
+The Leap Balance Card communicates a leave balance using both a progress bar and
+numeric text. This dual representation ensures the information is accessible to
+users who cannot perceive the visual bar.
+
+## Design recommendations
+
+- Do not rely solely on colour to indicate a low balance state; the numeric text
+  must also be present
+- Ensure the progress bar fill colour meets a minimum 3:1 contrast ratio against
+  the track background
+- Keep the leave type label concise and descriptive
+
+## Development considerations
+
+- Use `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, and
+  `aria-valuemax` on the progress element
+- Provide an `aria-label` such as "Vacation: 8 of 20 days used" so screen
+  readers can convey the full context
+- Ensure the component is included in the natural tab order when part of an
+  interactive dashboard

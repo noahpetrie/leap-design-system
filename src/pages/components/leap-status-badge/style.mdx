@@ -1,0 +1,64 @@
+---
+title: Leap Status Badge
+description:
+  Leap Status Badge is a standalone status indicator for leave requests.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+The following page documents visual specifications such as colour, typography,
+structure, and size.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>Colour</AnchorLink>
+<AnchorLink>Typography</AnchorLink>
+<AnchorLink>Structure</AnchorLink>
+
+</AnchorLinks>
+
+## Colour
+
+### Status colours
+
+| Status    | Background colour    | Text colour          |
+| --------- | -------------------- | -------------------- |
+| Approved  | `$support-success`   | `$text-on-color`     |
+| Denied    | `$support-error`     | `$text-on-color`     |
+| Pending   | `$support-warning`   | `$text-primary`      |
+| Cancelled | `$text-secondary`    | `$text-on-color`     |
+| Active    | `$support-info`      | `$text-on-color`     |
+
+### Common elements
+
+| Element     | Property         | Colour token        |
+| ----------- | ---------------- | ------------------- |
+| Label text  | text-color       | See status table    |
+| Container   | background-color | See status table    |
+
+## Typography
+
+| Element    | Font-size (md) | Font-size (sm) | Font-weight | Type token            |
+| ---------- | -------------- | -------------- | ----------- | --------------------- |
+| Label text | 12px           | 11px           | Semi-Bold   | `$label-01`           |
+
+## Structure
+
+### Default (md)
+
+| Element   | Property      | px / rem  | Spacing token |
+| --------- | ------------- | --------- | ------------- |
+| Container | padding-x     | 8 / 0.5   | `$spacing-03` |
+| Container | padding-y     | 4 / 0.25  | `$spacing-02` |
+| Container | border-radius | 4px       | —             |
+
+### Small (sm)
+
+| Element   | Property      | px / rem  | Spacing token |
+| --------- | ------------- | --------- | ------------- |
+| Container | padding-x     | 6 / 0.375 | —             |
+| Container | padding-y     | 2 / 0.125 | —             |
+| Container | border-radius | 4px       | —             |

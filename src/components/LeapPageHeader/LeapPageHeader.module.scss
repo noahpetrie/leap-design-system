@@ -1,0 +1,41 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+
+.page-header {
+  --cds-link-primary: #{$leap-green-500};
+  padding-bottom: $spacing-06;
+  border-bottom: 1px solid $border-subtle-01;
+  margin-bottom: $spacing-06;
+}
+
+.page-header-breadcrumb {
+  margin-bottom: $spacing-04;
+}
+
+.page-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-05;
+}
+
+.page-header-title {
+  @include type-style('heading-04');
+  color: $text-primary;
+  margin: 0;
+}
+
+.page-header-subtitle {
+  @include type-style('body-compact-01');
+  color: $text-secondary;
+  margin: $spacing-02 0 0;
+}
+
+.page-header-actions {
+  display: flex;
+  gap: $spacing-03;
+  flex-shrink: 0;
+}

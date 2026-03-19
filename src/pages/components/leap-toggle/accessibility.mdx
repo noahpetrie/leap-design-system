@@ -1,0 +1,44 @@
+---
+title: Leap Toggle
+description:
+  Leap Toggle is a branded wrapper around Carbon's Toggle component, styled
+  with the Leap green colour scheme for consistent visual identity.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+Leap Toggle inherits all accessibility features from Carbon's Toggle component.
+No additional annotations are needed, but keep these considerations in mind.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>What the component does</AnchorLink>
+<AnchorLink>Design recommendations</AnchorLink>
+<AnchorLink>Development considerations</AnchorLink>
+
+</AnchorLinks>
+
+## What the component does
+
+Leap Toggle uses Carbon's Toggle internally, which provides:
+
+- Native `role="switch"` semantics
+- `aria-checked` state management
+- Keyboard support (Space to toggle, Tab to focus)
+- Visible focus indicator
+
+## Design recommendations
+
+- Always provide a clear, descriptive `labelText` that explains what the toggle controls
+- The Leap green checked state (#0C8C5E) meets WCAG 3:1 contrast ratio for graphical elements against white and light backgrounds
+- Do not rely solely on colour to communicate state — the position of the handle also indicates on/off
+
+## Development considerations
+
+- Use the `id` prop to ensure proper label association
+- The `onToggle` callback receives the new checked state as a boolean
+- For forms that require submission, consider using a checkbox instead
+- The `hideLabel` prop visually hides the label but keeps it accessible to screen readers

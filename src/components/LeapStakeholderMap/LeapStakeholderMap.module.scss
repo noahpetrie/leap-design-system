@@ -1,0 +1,209 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+$sentiment-positive: #0c8c5e;
+$sentiment-neutral: #8d8d8d;
+$sentiment-negative: #da1e28;
+
+.stakeholder-map {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-04;
+  font-family: inherit;
+}
+
+.stakeholder-map__y-label {
+  display: none;
+}
+
+.stakeholder-map__container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto auto;
+  gap: 0;
+}
+
+.stakeholder-map__y-axis {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: $spacing-03;
+
+  span {
+    @include type-style('label-01');
+    color: $text-secondary;
+  }
+
+  &::before {
+    content: 'Influence';
+    @include type-style('heading-compact-01');
+    color: $leap-near-black;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    position: absolute;
+    left: -$spacing-05;
+  }
+}
+
+.stakeholder-map__grid {
+  grid-row: 1;
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  border: 1px solid $border-subtle-01;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 20rem;
+}
+
+.stakeholder-map__quadrant {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-04;
+  min-height: 10rem;
+  position: relative;
+}
+
+.stakeholder-map__quadrant--high-low {
+  background-color: rgba(#f1c21b, 0.08);
+}
+
+.stakeholder-map__quadrant--high-high {
+  background-color: rgba($leap-green, 0.08);
+}
+
+.stakeholder-map__quadrant--low-low {
+  background-color: rgba($sentiment-neutral, 0.06);
+}
+
+.stakeholder-map__quadrant--low-high {
+  background-color: rgba(#0043ce, 0.06);
+}
+
+.stakeholder-map__quadrant-label {
+  @include type-style('heading-compact-01');
+  color: $text-primary;
+  margin-bottom: $spacing-03;
+}
+
+.stakeholder-map__dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-03;
+  align-items: flex-start;
+}
+
+.stakeholder-map__dot-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.stakeholder-map__dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: default;
+  transition: transform 0.15s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.25);
+    outline: none;
+  }
+}
+
+.stakeholder-map__dot--positive {
+  background-color: $sentiment-positive;
+}
+
+.stakeholder-map__dot--neutral {
+  background-color: $sentiment-neutral;
+}
+
+.stakeholder-map__dot--negative {
+  background-color: $sentiment-negative;
+}
+
+.stakeholder-map__tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $leap-near-black;
+  color: #fff;
+  @include type-style('label-01');
+  padding: $spacing-02 $spacing-03;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: $leap-near-black;
+  }
+}
+
+.stakeholder-map__x-axis {
+  grid-row: 2;
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  padding-top: $spacing-02;
+
+  span {
+    @include type-style('label-01');
+    color: $text-secondary;
+  }
+}
+
+.stakeholder-map__x-label {
+  grid-row: 3;
+  grid-column: 2;
+  text-align: center;
+  padding-top: $spacing-02;
+
+  span {
+    @include type-style('heading-compact-01');
+    color: $leap-near-black;
+  }
+}
+
+.stakeholder-map__legend {
+  display: flex;
+  gap: $spacing-05;
+  justify-content: center;
+}
+
+.stakeholder-map__legend-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-02;
+
+  span:last-child {
+    @include type-style('label-01');
+    color: $text-secondary;
+  }
+}
+
+.stakeholder-map__legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}

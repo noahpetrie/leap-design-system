@@ -1,0 +1,144 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+$overdue-red: #da1e28;
+$upcoming-gray: #a8a8a0;
+
+.leap-milestone-tracker {
+  background: $white;
+  border: 1px solid $border-subtle-01;
+  border-radius: 8px;
+  padding: $spacing-05;
+  max-width: 600px;
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Single milestone row */
+  &__item {
+    position: relative;
+    display: flex;
+    gap: $spacing-04;
+    padding-bottom: $spacing-06;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  /* Vertical connector between dots */
+  &__connector {
+    position: absolute;
+    left: 9px;
+    top: 22px;
+    width: 2px;
+    bottom: 0;
+    background: $border-subtle-01;
+  }
+
+  /* Dot */
+  &__dot {
+    position: relative;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-top: 2px;
+    border: 2px solid transparent;
+    z-index: 1;
+
+    &--completed {
+      background: $leap-green;
+      border-color: $leap-green;
+    }
+
+    &--current {
+      background: $white;
+      border-color: $leap-green;
+      box-shadow: 0 0 0 3px rgba($leap-green, 0.25);
+    }
+
+    &--upcoming {
+      background: $white;
+      border-color: $upcoming-gray;
+    }
+
+    &--overdue {
+      background: $overdue-red;
+      border-color: $overdue-red;
+    }
+  }
+
+  /* Content block */
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-03;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    @include type-style('heading-compact-01');
+    color: $leap-near-black;
+    margin: 0;
+  }
+
+  &__badge {
+    @include type-style('label-01');
+    display: inline-block;
+    padding: 1px $spacing-03;
+    border-radius: 12px;
+    font-weight: 600;
+
+    &--completed {
+      background: rgba($leap-green, 0.12);
+      color: $leap-green;
+    }
+
+    &--current {
+      background: rgba($leap-green, 0.12);
+      color: $leap-green;
+    }
+
+    &--upcoming {
+      background: $layer-01;
+      color: $text-secondary;
+    }
+
+    &--overdue {
+      background: rgba($overdue-red, 0.12);
+      color: $overdue-red;
+    }
+  }
+
+  &__date {
+    @include type-style('label-01');
+    display: block;
+    color: $text-secondary;
+    margin-top: $spacing-02;
+  }
+
+  &__description {
+    @include type-style('body-compact-01');
+    color: $text-secondary;
+    margin: $spacing-02 0 0;
+  }
+
+  /* Overdue row highlight */
+  &__item--overdue &__content {
+    border-left: 3px solid $overdue-red;
+    padding-left: $spacing-03;
+    border-radius: 2px;
+  }
+}

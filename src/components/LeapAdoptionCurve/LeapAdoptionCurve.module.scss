@@ -1,0 +1,93 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+
+.leap-adoption-curve {
+  background: $white;
+  border: 1px solid $border-subtle-01;
+  border-radius: 8px;
+  padding: $spacing-05;
+  max-width: 720px;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing-03;
+    margin-bottom: $spacing-05;
+  }
+
+  &__percentage {
+    @include type-style('heading-04');
+    color: $leap-green;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__stage-label {
+    @include type-style('body-compact-01');
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__svg {
+    width: 100%;
+    height: auto;
+  }
+
+  &__grid {
+    stroke: $border-subtle-01;
+    stroke-width: 1;
+  }
+
+  &__y-label {
+    @include type-style('label-01');
+    fill: $text-secondary;
+    text-anchor: end;
+    dominant-baseline: middle;
+  }
+
+  &__area {
+    fill: rgba($leap-green, 0.12);
+  }
+
+  &__line {
+    fill: none;
+    stroke: $leap-green;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+  }
+
+  &__marker {
+    stroke: $leap-near-black;
+    stroke-width: 1.5;
+    stroke-dasharray: 6 4;
+  }
+
+  &__dot {
+    fill: $leap-green;
+    stroke: $white;
+    stroke-width: 2;
+  }
+
+  &__tick {
+    stroke: $text-secondary;
+    stroke-width: 1;
+  }
+
+  &__x-label {
+    @include type-style('label-01');
+    fill: $leap-near-black;
+    text-anchor: middle;
+    font-weight: 600;
+  }
+
+  &__x-sub {
+    @include type-style('label-01');
+    fill: $text-secondary;
+    text-anchor: middle;
+  }
+}

@@ -1,0 +1,132 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+
+$heatmap-dark-green: #0c8c5e;
+$heatmap-light-green: #58b890;
+$heatmap-yellow: #f1c21b;
+$heatmap-orange: #eb6200;
+$heatmap-red: #da1e28;
+
+.leap-change-heatmap {
+  background: $white;
+  border: 1px solid $border-subtle-01;
+  border-radius: 8px;
+  padding: $spacing-05;
+  max-width: 800px;
+
+  &__scroll {
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 3px;
+  }
+
+  &__corner {
+    background: transparent;
+  }
+
+  &__col-header {
+    @include type-style('label-01');
+    color: $leap-near-black;
+    font-weight: 600;
+    text-align: center;
+    padding: $spacing-03 $spacing-04;
+    white-space: nowrap;
+  }
+
+  &__row-header {
+    @include type-style('label-01');
+    color: $leap-near-black;
+    font-weight: 600;
+    text-align: left;
+    padding: $spacing-03 $spacing-04;
+    white-space: nowrap;
+  }
+
+  &__cell {
+    @include type-style('body-compact-01');
+    text-align: center;
+    padding: $spacing-03;
+    border-radius: 4px;
+    font-weight: 600;
+    min-width: 48px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Color variants */
+  &__cell--dark-green {
+    background: $heatmap-dark-green;
+    color: $white;
+  }
+
+  &__cell--light-green {
+    background: $heatmap-light-green;
+    color: $leap-near-black;
+  }
+
+  &__cell--yellow {
+    background: $heatmap-yellow;
+    color: $leap-near-black;
+  }
+
+  &__cell--orange {
+    background: $heatmap-orange;
+    color: $white;
+  }
+
+  &__cell--red {
+    background: $heatmap-red;
+    color: $white;
+  }
+
+  /* Legend */
+  &__legend {
+    display: flex;
+    gap: $spacing-05;
+    margin-top: $spacing-05;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__legend-item {
+    @include type-style('label-01');
+    display: flex;
+    align-items: center;
+    gap: $spacing-02;
+    color: $text-secondary;
+  }
+
+  &__swatch {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+
+    &--dark-green {
+      background: $heatmap-dark-green;
+    }
+
+    &--light-green {
+      background: $heatmap-light-green;
+    }
+
+    &--yellow {
+      background: $heatmap-yellow;
+    }
+
+    &--orange {
+      background: $heatmap-orange;
+    }
+
+    &--red {
+      background: $heatmap-red;
+    }
+  }
+}

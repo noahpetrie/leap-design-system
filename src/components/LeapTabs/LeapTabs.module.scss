@@ -1,0 +1,4 @@
+@use '@carbon/styles/scss/theme' as *;
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+.leap-tabs { --cds-interactive: #{$leap-green-500}; --cds-focus: #{$leap-green-500}; }

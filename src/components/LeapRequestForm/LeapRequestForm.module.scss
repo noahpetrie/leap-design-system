@@ -1,0 +1,43 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+
+.request-form {
+  --cds-button-primary: #{$leap-green-500};
+  --cds-button-primary-hover: #{$leap-green-700};
+  --cds-button-primary-active: #{$leap-green-700};
+  --cds-focus: #{$leap-green-500};
+
+  border: 1px solid $border-subtle-01;
+  border-radius: 4px;
+  background: $layer-01;
+  padding: $spacing-06;
+  max-width: 600px;
+}
+
+.request-form-title {
+  @include type-style('heading-compact-02');
+  color: $text-primary;
+  margin-bottom: $spacing-05;
+}
+
+.request-form-field {
+  margin-bottom: $spacing-05;
+}
+
+.request-form-dates {
+  display: flex;
+  gap: $spacing-05;
+  margin-bottom: $spacing-05;
+  flex-wrap: wrap;
+}
+
+.request-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-03;
+  margin-top: $spacing-06;
+}

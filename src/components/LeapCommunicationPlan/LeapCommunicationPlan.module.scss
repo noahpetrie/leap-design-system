@@ -1,0 +1,118 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+
+.communication-plan {
+  background-color: $background;
+  border: 1px solid $border-subtle;
+  border-radius: 4px;
+  padding: $spacing-05;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: $leap-near-black;
+
+  &__title {
+    @include type-style('heading-compact-02');
+    margin-bottom: $spacing-05;
+    color: $leap-near-black;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 120px 1fr 100px 2fr 100px;
+    gap: $spacing-03;
+    padding: $spacing-03 $spacing-04;
+    border-bottom: 2px solid $leap-green;
+    @include type-style('label-01');
+    font-weight: 600;
+    color: $leap-near-black;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 120px 1fr 100px 2fr 100px;
+    gap: $spacing-03;
+    align-items: center;
+    padding: $spacing-03 $spacing-04;
+    border-bottom: 1px solid $border-subtle;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: $layer-hover;
+    }
+  }
+
+  &__date {
+    @include type-style('body-compact-01');
+    color: $text-secondary;
+    white-space: nowrap;
+  }
+
+  &__audience-tag {
+    display: inline-block;
+    padding: 2px $spacing-03;
+    border-radius: 12px;
+    background-color: rgba($leap-green, 0.12);
+    color: $leap-green;
+    @include type-style('label-01');
+    font-weight: 500;
+  }
+
+  &__channel {
+    @include type-style('body-compact-01');
+    color: $leap-near-black;
+    font-weight: 500;
+  }
+
+  &__message {
+    @include type-style('body-compact-01');
+    color: $text-secondary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__status-badge {
+    display: inline-block;
+    padding: 2px $spacing-03;
+    border-radius: 12px;
+    @include type-style('label-01');
+    font-weight: 600;
+    text-align: center;
+
+    &--draft {
+      background-color: #e0e0e0;
+      color: #525252;
+    }
+
+    &--scheduled {
+      background-color: #d0e2ff;
+      color: #0043ce;
+    }
+
+    &--sent {
+      background-color: rgba($leap-green, 0.15);
+      color: $leap-green;
+    }
+
+    &--cancelled {
+      background-color: #fff1f1;
+      color: #da1e28;
+    }
+  }
+
+  &__empty {
+    @include type-style('body-compact-01');
+    color: $text-secondary;
+    text-align: center;
+    padding: $spacing-06;
+  }
+}

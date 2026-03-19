@@ -1,0 +1,85 @@
+---
+title: Leap Balance Card
+description:
+  Leap Balance Card shows remaining leave balance with a progress bar.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+Preview the Leap Balance Card component with the React live demo. For detailed
+code usage documentation, see the Storybook for each framework below.
+
+</PageDescription>
+
+## Getting started
+
+To install `@carbon/react`, see the
+[getting started guide](/developing/frameworks/react/).
+
+```bash
+npm install @carbon/react
+```
+
+## Basic usage
+
+```jsx
+import { LeapBalanceCard } from '@carbon/react';
+
+function Dashboard() {
+  return (
+    <LeapBalanceCard
+      leaveType="Vacation"
+      used={8}
+      total={20}
+      unit="days"
+    />
+  );
+}
+```
+
+## Hours-based balance
+
+```jsx
+<LeapBalanceCard
+  leaveType="Sick Leave"
+  used={30}
+  total={40}
+  unit="hours"
+/>
+```
+
+## Low balance warning
+
+```jsx
+<LeapBalanceCard
+  leaveType="Personal"
+  used={4}
+  total={5}
+  unit="days"
+/>
+```
+
+## Props
+
+| Prop | Type | Required | Default | Description |
+| ---- | ---- | -------- | ------- | ----------- |
+| `leaveType` | `string` | Yes | — | The name of the leave category |
+| `used` | `number` | Yes | — | Number of units already used |
+| `total` | `number` | Yes | — | Total allocated units |
+| `unit` | `"days" \| "hours"` | No | `"days"` | Unit of measurement |
+
+## Resources
+
+<Row className="resource-card-group">
+  <Column colMd={4} colLg={4} noGutterSm>
+    <ResourceCard
+      subTitle="Leap Balance Card Storybook"
+      href="https://react.carbondesignsystem.com"
+    >
+
+<MdxIcon name="react" />
+
+  </ResourceCard>
+  </Column>
+</Row>

@@ -1,0 +1,90 @@
+---
+title: Leap Employee Card
+description:
+  Leap Employee Card is a compact employee info card with avatar and leave
+  balance. It provides a quick snapshot of an employee's identity and remaining
+  leave.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+import StorybookDemo from 'components/StorybookDemo';
+
+<PageDescription>
+
+Leap Employee Card is a compact employee info card with avatar and leave balance.
+It provides a quick snapshot of an employee's identity and remaining leave.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>Overview</AnchorLink>
+<AnchorLink>Live demo</AnchorLink>
+<AnchorLink>Variants</AnchorLink>
+<AnchorLink>Formatting</AnchorLink>
+<AnchorLink>Feedback</AnchorLink>
+
+</AnchorLinks>
+
+## Overview
+
+The Leap Employee Card displays an employee's avatar, name, role, department,
+and leave balance in a compact card layout. It is designed for manager
+dashboards and team views where a quick summary of each team member is needed.
+
+### When to use
+
+- In a manager dashboard to show a grid of direct reports
+- On a team calendar page to identify employees alongside their balances
+- In a search results list when looking up employees
+
+### When not to use
+
+- For detailed employee profiles with editable fields — use a dedicated profile
+  page
+- As a navigation element — use a standard link or button
+- When displaying a single employee's full leave history — use Leap Timeline
+
+## Live demo
+
+<StorybookDemo
+  themeSelector
+  url="http://localhost:6006"
+  variants={[
+    { label: 'Default', variant: 'components-leapemployeecard--default' },
+    { label: 'No Balance', variant: 'components-leapemployeecard--no-balance' },
+    { label: 'No Department', variant: 'components-leapemployeecard--no-department' },
+    { label: 'Long Name', variant: 'components-leapemployeecard--long-name' },
+  ]}
+/>
+
+## Variants
+
+| Variant | Description |
+| ------- | ----------- |
+| **Default** | Full card with avatar, name, role, department, and balance |
+| **No Balance** | Card without the leave balance indicator |
+| **No Department** | Card without the department field |
+| **Long Name** | Demonstrates text truncation for long employee names |
+
+## Formatting
+
+### Anatomy
+
+The Leap Employee Card consists of:
+
+1. **Avatar** — circular image or initials fallback
+2. **Employee name** — primary identifying text
+3. **Role** — the employee's job title
+4. **Department** (optional) — the employee's department
+5. **Leave balance** (optional) — remaining leave days shown as a small badge
+
+### Placement
+
+Employee cards are typically arranged in a responsive grid. They work well in
+dashboard panels, team overview pages, or as popover content on hover.
+
+## Feedback
+
+Help us improve this component by providing
+[feedback or contributing](https://github.com/carbon-design-system/carbon-website/issues/new/choose).

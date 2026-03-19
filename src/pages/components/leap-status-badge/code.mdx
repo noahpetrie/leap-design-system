@@ -1,0 +1,72 @@
+---
+title: Leap Status Badge
+description:
+  Leap Status Badge is a standalone status indicator for leave requests.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+Preview the Leap Status Badge component with the React live demo. For detailed
+code usage documentation, see the Storybook for each framework below.
+
+</PageDescription>
+
+## Getting started
+
+To install `@carbon/react`, see the
+[getting started guide](/developing/frameworks/react/).
+
+```bash
+npm install @carbon/react
+```
+
+## Basic usage
+
+```jsx
+import { LeapStatusBadge } from '@carbon/react';
+
+function RequestHeader() {
+  return <LeapStatusBadge status="approved" />;
+}
+```
+
+## Small size
+
+```jsx
+<LeapStatusBadge status="pending" size="sm" />
+```
+
+## All statuses
+
+```jsx
+<div style={{ display: 'flex', gap: '0.5rem' }}>
+  <LeapStatusBadge status="approved" />
+  <LeapStatusBadge status="denied" />
+  <LeapStatusBadge status="pending" />
+  <LeapStatusBadge status="cancelled" />
+  <LeapStatusBadge status="active" />
+</div>
+```
+
+## Props
+
+| Prop | Type | Required | Default | Description |
+| ---- | ---- | -------- | ------- | ----------- |
+| `status` | `"approved" \| "denied" \| "pending" \| "cancelled" \| "active"` | Yes | — | The status to display |
+| `size` | `"sm" \| "md"` | No | `"md"` | Badge size |
+
+## Resources
+
+<Row className="resource-card-group">
+  <Column colMd={4} colLg={4} noGutterSm>
+    <ResourceCard
+      subTitle="Leap Status Badge Storybook"
+      href="https://react.carbondesignsystem.com"
+    >
+
+<MdxIcon name="react" />
+
+  </ResourceCard>
+  </Column>
+</Row>

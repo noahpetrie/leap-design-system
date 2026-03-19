@@ -1,0 +1,105 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+$score-high: #0c8c5e;
+$score-medium: #f1c21b;
+$score-low: #da1e28;
+
+.impact-score {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-03;
+}
+
+.impact-score__ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.impact-score__track {
+  stroke: $border-subtle-01;
+}
+
+.impact-score__progress {
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.impact-score__progress--high {
+  stroke: $score-high;
+}
+
+.impact-score__progress--medium {
+  stroke: $score-medium;
+}
+
+.impact-score__progress--low {
+  stroke: $score-low;
+}
+
+.impact-score__value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include type-style('heading-compact-02');
+  color: $leap-near-black;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.impact-score__ai-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background-color: $leap-green;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+
+  svg {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.impact-score__label {
+  @include type-style('label-01');
+  color: $text-secondary;
+  text-align: center;
+}
+
+.impact-score--sm {
+  .impact-score__ai-badge {
+    width: 1rem;
+    height: 1rem;
+
+    svg {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
+.impact-score--lg {
+  .impact-score__ai-badge {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}

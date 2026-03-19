@@ -1,0 +1,52 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-50: #f0faf5;
+$leap-green-100: #c6e8d9;
+
+.holiday-banner {
+  display: flex;
+  align-items: center;
+  gap: $spacing-04;
+  background: $leap-green-50;
+  border: 1px solid $leap-green-100;
+  border-radius: 4px;
+  padding: $spacing-04 $spacing-05;
+}
+
+.holiday-banner-icon {
+  color: $leap-green-500;
+  flex-shrink: 0;
+}
+
+.holiday-banner-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.holiday-banner-name {
+  @include type-style('heading-compact-01');
+  color: $text-primary;
+}
+
+.holiday-banner-date {
+  @include type-style('label-01');
+  color: $text-secondary;
+}
+
+.holiday-banner-dismiss {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: $text-secondary;
+  cursor: pointer;
+  padding: $spacing-02;
+  line-height: 1;
+
+  &:hover {
+    color: $text-primary;
+  }
+}

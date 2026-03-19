@@ -1,0 +1,71 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-50: #f0faf5;
+
+.team-overview {
+  border: 1px solid $border-subtle-01;
+  border-radius: 4px;
+  background: $layer-01;
+  padding: $spacing-05;
+}
+
+.team-overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: $spacing-05;
+}
+
+.team-overview-title {
+  @include type-style('heading-compact-02');
+  color: $text-primary;
+}
+
+.team-overview-count {
+  @include type-style('label-01');
+  color: $text-secondary;
+}
+
+.team-overview-section {
+  margin-bottom: $spacing-04;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.team-overview-section-label {
+  @include type-style('label-01');
+  color: $text-secondary;
+  display: block;
+  margin-bottom: $spacing-03;
+}
+
+.team-overview-avatars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-03;
+}
+
+.team-overview-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: $leap-green-50;
+  color: $leap-green-500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.team-overview-avatar--leave {
+  background: #fff1f1;
+  color: #da1e28;
+  opacity: 0.8;
+}

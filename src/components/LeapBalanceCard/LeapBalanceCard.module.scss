@@ -1,0 +1,56 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-red: #da1e28;
+
+.balance-card {
+  border: 1px solid $border-subtle-01;
+  border-radius: 4px;
+  background: $layer-01;
+  padding: $spacing-05;
+}
+
+.balance-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: $spacing-04;
+}
+
+.balance-card-type {
+  @include type-style('heading-compact-01');
+  color: $text-primary;
+}
+
+.balance-card-remaining {
+  @include type-style('label-01');
+  color: $text-secondary;
+}
+
+.balance-card-bar-track {
+  height: 8px;
+  background: $border-subtle-01;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: $spacing-03;
+}
+
+.balance-card-bar-fill {
+  height: 100%;
+  background: $leap-green-500;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.balance-card-bar-fill--low {
+  background: $leap-red;
+}
+
+.balance-card-footer {
+  @include type-style('label-01');
+  display: flex;
+  justify-content: space-between;
+  color: $text-secondary;
+}

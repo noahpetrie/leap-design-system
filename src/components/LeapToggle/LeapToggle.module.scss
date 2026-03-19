@@ -1,0 +1,18 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+// Leap brand green palette
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+
+.leap-toggle {
+  // Override Carbon's support-success token to use Leap green
+  --cds-support-success: #{$leap-green-500};
+
+  :global {
+    .cds--toggle__switch--checked:hover {
+      background-color: $leap-green-700;
+    }
+  }
+}

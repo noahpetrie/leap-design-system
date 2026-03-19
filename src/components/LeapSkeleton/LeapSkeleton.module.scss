@@ -1,0 +1,52 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-03;
+}
+
+.skeleton {
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    $border-subtle-01 25%,
+    rgba(255, 255, 255, 0.4) 50%,
+    $border-subtle-01 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton--text {
+  border-radius: 4px;
+
+  &:last-child {
+    width: 60% !important;
+  }
+}
+
+.skeleton--heading {
+  border-radius: 4px;
+  width: 40%;
+}
+
+.skeleton--card {
+  border-radius: 8px;
+  width: 100%;
+}
+
+.skeleton--circle {
+  border-radius: 50%;
+}
+
+.skeleton--button {
+  border-radius: 8px;
+  width: 120px;
+}

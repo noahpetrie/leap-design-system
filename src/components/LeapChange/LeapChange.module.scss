@@ -1,0 +1,105 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+.leap-change {
+  border: 1px solid $border-subtle-01;
+  border-radius: 4px;
+  background: $layer-01;
+  padding: $spacing-05;
+  margin-bottom: $spacing-05;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.leap-change-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-04;
+}
+
+.leap-change-employee {
+  @include type-style('heading-compact-01');
+
+  color: $text-primary;
+  margin-right: $spacing-03;
+}
+
+.leap-change-leave-type {
+  @include type-style('label-01');
+
+  color: $text-secondary;
+}
+
+.leap-change-badge {
+  :global(.cds--tag) {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-02;
+  }
+}
+
+.leap-change-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $spacing-03;
+}
+
+.leap-change-values {
+  display: flex;
+  align-items: center;
+  gap: $spacing-04;
+}
+
+.leap-change-previous,
+.leap-change-new {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-02;
+
+  span:last-child {
+    @include type-style('body-compact-01');
+
+    color: $text-primary;
+  }
+}
+
+.leap-change-previous span:last-child {
+  text-decoration: line-through;
+  color: $text-secondary;
+}
+
+.leap-change-arrow {
+  fill: $text-secondary;
+  flex-shrink: 0;
+  margin-top: $spacing-04;
+}
+
+.leap-change-timestamp {
+  @include type-style('label-01');
+
+  color: $text-secondary;
+}
+
+.leap-change-reason {
+  @include type-style('body-compact-01');
+
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-02;
+  margin-top: $spacing-04;
+  padding-top: $spacing-04;
+  border-top: 1px solid $border-subtle-01;
+  color: $text-primary;
+}
+
+.leap-change-label {
+  @include type-style('label-01');
+
+  color: $text-secondary;
+}

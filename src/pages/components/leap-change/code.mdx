@@ -1,0 +1,96 @@
+---
+title: Leap Change
+description:
+  Leap Change displays leave request modifications with before/after values,
+  change type indicators, and timestamps.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+Preview the Leap Change component with the React live demo. For detailed code
+usage documentation, see the Storybook for each framework below.
+
+</PageDescription>
+
+## Getting started
+
+To install `@carbon/react`, see the
+[getting started guide](/developing/frameworks/react/).
+
+```bash
+npm install @carbon/react
+```
+
+## Basic usage
+
+```jsx
+import { LeapChange } from '@carbon/react';
+
+function App() {
+  return (
+    <LeapChange
+      employeeName="Sarah Chen"
+      leaveType="Vacation"
+      changeType="approved"
+      previousValue="Pending review"
+      newValue="Approved"
+      timestamp="Mar 15, 2026 at 2:30 PM"
+      reason="Manager approved — sufficient team coverage"
+    />
+  );
+}
+```
+
+## Date modification
+
+```jsx
+<LeapChange
+  employeeName="James Wilson"
+  leaveType="Sick Leave"
+  changeType="modified"
+  previousValue="Mar 20–22 (3 days)"
+  newValue="Mar 20–25 (5 days)"
+  timestamp="Mar 14, 2026 at 9:15 AM"
+  reason="Extended due to medical note"
+/>
+```
+
+## New request (no previous value)
+
+```jsx
+<LeapChange
+  employeeName="Alex Moreau"
+  leaveType="Vacation"
+  changeType="pending"
+  newValue="Apr 7–11 (5 days)"
+  timestamp="Mar 12, 2026 at 11:00 AM"
+/>
+```
+
+## Props
+
+| Prop | Type | Required | Default | Description |
+| ---- | ---- | -------- | ------- | ----------- |
+| `employeeName` | `string` | Yes | — | The employee's name |
+| `leaveType` | `string` | Yes | — | Type of leave (e.g. "Vacation", "Sick Leave") |
+| `changeType` | `string` | Yes | — | One of: `"approved"`, `"denied"`, `"modified"`, `"pending"` |
+| `previousValue` | `string` | No | — | The previous state or dates |
+| `newValue` | `string` | Yes | — | The new state or dates |
+| `timestamp` | `string` | Yes | — | When the change occurred |
+| `reason` | `string` | No | — | Optional reason for the change |
+
+## Resources
+
+<Row className="resource-card-group">
+  <Column colMd={4} colLg={4} noGutterSm>
+    <ResourceCard
+      subTitle="Leap Change Storybook"
+      href="https://react.carbondesignsystem.com"
+    >
+
+<MdxIcon name="react" />
+
+  </ResourceCard>
+  </Column>
+</Row>

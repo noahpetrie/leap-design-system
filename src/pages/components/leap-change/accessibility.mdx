@@ -1,0 +1,44 @@
+---
+title: Leap Change
+description:
+  Leap Change is used to indicate a modification or transition in state within
+  the interface. It communicates updates clearly to the user.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+No accessibility annotations are needed for Leap Change, but keep these
+considerations in mind if you are modifying the component or creating a custom
+component.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>What the component does</AnchorLink>
+<AnchorLink>Design recommendations</AnchorLink>
+<AnchorLink>Development considerations</AnchorLink>
+
+</AnchorLinks>
+
+## What the component does
+
+The Leap Change component communicates state transitions to the user. It uses
+both visual and semantic cues to ensure changes are perceivable by all users,
+including those using assistive technologies.
+
+## Design recommendations
+
+- Ensure the change indicator has sufficient colour contrast against its
+  background (minimum 3:1 ratio for graphical elements)
+- Do not rely solely on colour to communicate the type of change; include a text
+  label or icon as well
+- Keep change descriptions concise and meaningful
+
+## Development considerations
+
+- Use appropriate ARIA live regions (`aria-live="polite"`) to announce changes
+  to screen readers when content updates dynamically
+- Ensure the component is keyboard accessible
+- Provide meaningful labels that describe the nature of the change

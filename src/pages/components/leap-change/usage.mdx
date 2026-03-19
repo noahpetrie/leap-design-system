@@ -1,0 +1,89 @@
+---
+title: Leap Change
+description:
+  Leap Change displays leave request modifications with before/after values,
+  change type indicators, and timestamps. It helps managers and employees
+  track changes to leave requests at a glance.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+import StorybookDemo from 'components/StorybookDemo';
+
+<PageDescription>
+
+Leap Change displays leave request modifications with before/after values,
+change type indicators, and timestamps. It helps managers and employees track
+changes to leave requests at a glance.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>Overview</AnchorLink>
+<AnchorLink>Live demo</AnchorLink>
+<AnchorLink>Change types</AnchorLink>
+<AnchorLink>Formatting</AnchorLink>
+<AnchorLink>Feedback</AnchorLink>
+
+</AnchorLinks>
+
+## Overview
+
+The Leap Change component provides a structured way to display modifications to
+leave requests. Each change card shows the employee, leave type, what changed,
+and when — with a colour-coded badge indicating the change type.
+
+### When to use
+
+- To display a history of changes on a leave request detail page
+- In a manager dashboard showing recent leave request activity
+- To show an audit trail of modifications to leave balances or dates
+
+### When not to use
+
+- For static leave information that has not changed
+- As a replacement for toast notifications or alerts
+- When displaying a simple list of leave requests without change context
+
+## Live demo
+
+<StorybookDemo
+  themeSelector
+  url="http://localhost:6006"
+  variants={[
+    { label: 'Approved', variant: 'components-leapchange--approved' },
+    { label: 'Denied', variant: 'components-leapchange--denied' },
+    { label: 'Modified', variant: 'components-leapchange--modified' },
+    { label: 'Pending', variant: 'components-leapchange--pending' },
+  ]}
+/>
+
+## Change types
+
+| Type | Usage |
+| ---- | ----- |
+| **Approved** | A leave request has been approved by a manager |
+| **Denied** | A leave request has been denied, typically with a reason |
+| **Modified** | Dates, duration, or leave type has been changed |
+| **Pending** | A new request that is awaiting review |
+
+## Formatting
+
+### Anatomy
+
+The Leap Change component consists of:
+
+1. **Header** — employee name, leave type, and change type badge
+2. **Before/after values** — shows the previous and new state with an arrow
+3. **Timestamp** — when the change occurred
+4. **Reason** (optional) — context for why the change was made
+
+### Placement
+
+Leap Change cards are typically stacked vertically in a change log or activity
+feed. They work well inside side panels, detail pages, or dashboard widgets.
+
+## Feedback
+
+Help us improve this component by providing
+[feedback or contributing](https://github.com/carbon-design-system/carbon-website/issues/new/choose).

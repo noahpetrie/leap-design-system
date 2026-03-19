@@ -1,0 +1,18 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+
+$leap-green-500: #0c8c5e;
+
+.leap-data-table {
+  --cds-interactive: #{$leap-green-500};
+
+  :global {
+    .cds--data-table thead th {
+      background-color: $layer-01;
+    }
+  }
+}
+
+.leap-data-table-row--clickable {
+  cursor: pointer;
+}

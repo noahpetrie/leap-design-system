@@ -1,0 +1,42 @@
+diff --git a/node_modules/gatsby/dist/utils/babel-loader.js b/node_modules/gatsby/dist/utils/babel-loader.js
+index cdabbf9..3cb9448 100644
+--- a/node_modules/gatsby/dist/utils/babel-loader.js
++++ b/node_modules/gatsby/dist/utils/babel-loader.js
+@@ -60,20 +60,26 @@ const customBabelLoader = _babelLoader.default.custom(babel => {
+       let configCacheKey = `${stage}-${isPageTemplate}-${resourceQuery}`;
+       if (partialConfig.hasFilesystemConfig()) {
+         // partialConfig.files is a Set that accumulates used config files (absolute paths)
+-        partialConfig.files.forEach(configFilePath => {
+-          configCacheKey += `_${configFilePath}`;
+-        });
++        // Guard: some @babel/core versions may not set .files
++        const files = partialConfig.files;
++        if (files) {
++          files.forEach(configFilePath => {
++            configCacheKey += `_${configFilePath}`;
++          });
++        }
+ 
+         // after generating configCacheKey add link between babelrc files and cache keys that rely on it
+         // so we can invalidate memoized configs when used babelrc file changes
+-        partialConfig.files.forEach(configFilePath => {
+-          let cacheKeysToInvalidate = babelrcFileToCacheKey.get(configFilePath);
+-          if (!cacheKeysToInvalidate) {
+-            cacheKeysToInvalidate = new Set();
+-            babelrcFileToCacheKey.set(configFilePath, cacheKeysToInvalidate);
+-          }
+-          cacheKeysToInvalidate.add(configCacheKey);
+-        });
++        if (files) {
++          files.forEach(configFilePath => {
++            let cacheKeysToInvalidate = babelrcFileToCacheKey.get(configFilePath);
++            if (!cacheKeysToInvalidate) {
++              cacheKeysToInvalidate = new Set();
++              babelrcFileToCacheKey.set(configFilePath, cacheKeysToInvalidate);
++            }
++            cacheKeysToInvalidate.add(configCacheKey);
++          });
++        }
+       }
+       let {
+         options

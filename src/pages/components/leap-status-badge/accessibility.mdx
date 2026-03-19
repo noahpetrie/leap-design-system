@@ -1,0 +1,48 @@
+---
+title: Leap Status Badge
+description:
+  Leap Status Badge is a standalone status indicator for leave requests. It
+  provides a colour-coded label to communicate the current state of a request
+  at a glance.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+No accessibility annotations are needed for Leap Status Badge, but keep these
+considerations in mind if you are modifying the component or creating a custom
+component.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>What the component does</AnchorLink>
+<AnchorLink>Design recommendations</AnchorLink>
+<AnchorLink>Development considerations</AnchorLink>
+
+</AnchorLinks>
+
+## What the component does
+
+The Leap Status Badge conveys the status of a leave request using both colour
+and a text label. The text ensures the status is accessible regardless of how
+the user perceives colour.
+
+## Design recommendations
+
+- Do not rely solely on colour to communicate status; the text label is
+  essential for accessibility
+- Ensure all background and text colour combinations meet a minimum 4.5:1
+  contrast ratio for normal text
+- Use consistent status labels throughout the application so users can build
+  familiarity
+
+## Development considerations
+
+- The badge is a read-only, non-interactive element — it should not receive
+  keyboard focus unless it is part of a larger interactive context
+- Use a semantic element such as `<span>` with an appropriate `role` or
+  `aria-label` when the surrounding context does not already convey meaning
+- When the status changes dynamically, wrap the badge in an `aria-live="polite"`
+  region so screen readers announce the update

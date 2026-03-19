@@ -1,0 +1,192 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+
+.training-checklist {
+  background-color: $background;
+  border: 1px solid $border-subtle;
+  border-radius: 4px;
+  padding: $spacing-05;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: $leap-near-black;
+
+  &__title {
+    @include type-style('heading-compact-02');
+    margin-bottom: $spacing-05;
+    color: $leap-near-black;
+  }
+
+  &__summary {
+    display: flex;
+    align-items: center;
+    gap: $spacing-04;
+    margin-bottom: $spacing-05;
+  }
+
+  &__summary-text {
+    @include type-style('body-compact-01');
+    color: $text-secondary;
+    white-space: nowrap;
+    min-width: 140px;
+  }
+
+  &__progress-bar {
+    flex: 1;
+    height: 6px;
+    background-color: $border-subtle;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  &__progress-fill {
+    height: 100%;
+    background-color: $leap-green;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-04;
+    padding: $spacing-04;
+    border-bottom: 1px solid $border-subtle;
+    transition: background-color 0.15s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: $layer-hover;
+    }
+
+    &--completed {
+      opacity: 0.7;
+
+      .training-checklist__item-title {
+        text-decoration: line-through;
+        color: $text-secondary;
+      }
+    }
+  }
+
+  &__checkbox-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .training-checklist__checkmark {
+      background-color: $leap-green;
+      border-color: $leap-green;
+
+      &::after {
+        display: block;
+      }
+    }
+
+    &:focus + .training-checklist__checkmark {
+      outline: 2px solid $leap-green;
+      outline-offset: 2px;
+    }
+  }
+
+  &__checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid $border-strong;
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.15s ease;
+
+    &::after {
+      content: '';
+      display: none;
+      position: absolute;
+      left: 5px;
+      top: 1px;
+      width: 4px;
+      height: 9px;
+      border: solid #ffffff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-01;
+    min-width: 0;
+  }
+
+  &__item-title {
+    @include type-style('body-compact-01');
+    font-weight: 500;
+    color: $leap-near-black;
+  }
+
+  &__item-description {
+    @include type-style('helper-text-01');
+    color: $text-secondary;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $spacing-03;
+    flex-shrink: 0;
+  }
+
+  &__avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: $leap-near-black;
+    color: #ffffff;
+    @include type-style('label-01');
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  &__due-date {
+    @include type-style('label-01');
+    color: $text-secondary;
+    white-space: nowrap;
+
+    &--overdue {
+      color: #da1e28;
+      font-weight: 600;
+    }
+  }
+
+  &__empty {
+    @include type-style('body-compact-01');
+    color: $text-secondary;
+    text-align: center;
+    padding: $spacing-06;
+  }
+}

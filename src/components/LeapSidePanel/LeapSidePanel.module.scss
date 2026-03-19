@@ -1,0 +1,61 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+.side-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 8999;
+}
+
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  max-width: 90vw;
+  height: 100vh;
+  background: $layer-01;
+  border-left: 1px solid $border-subtle-01;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.side-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-05;
+  border-bottom: 1px solid $border-subtle-01;
+}
+
+.side-panel-title {
+  @include type-style('heading-compact-02');
+  color: $text-primary;
+}
+
+.side-panel-close {
+  background: none;
+  border: none;
+  color: $text-secondary;
+  cursor: pointer;
+  padding: $spacing-02;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.side-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-05;
+}

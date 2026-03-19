@@ -1,0 +1,23 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+
+$leap-green-500: #0c8c5e;
+
+.filter-bar {
+  --cds-focus: #{$leap-green-500};
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-03;
+}
+
+.filter-bar-dropdowns {
+  display: flex;
+  gap: $spacing-03;
+  flex-wrap: wrap;
+}
+
+.filter-bar-tags {
+  display: flex;
+  gap: $spacing-02;
+  flex-wrap: wrap;
+}

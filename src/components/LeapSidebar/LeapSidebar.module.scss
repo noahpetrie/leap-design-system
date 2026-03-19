@@ -1,0 +1,84 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-near-black: #1a1a18;
+$leap-green-tint: rgba(12, 140, 94, 0.18);
+
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: $leap-near-black;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.2s ease;
+}
+
+.sidebar--collapsed {
+  width: 56px;
+}
+
+.sidebar-logo {
+  @include type-style('heading-compact-02');
+  color: white;
+  padding: $spacing-05;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar-items {
+  flex: 1;
+  padding: $spacing-03 0;
+  overflow-y: auto;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-03;
+  width: 100%;
+  padding: $spacing-03 $spacing-05;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+
+  @include type-style('body-compact-01');
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: white;
+  }
+}
+
+.sidebar-item--active {
+  background: $leap-green-tint;
+  border-left-color: $leap-green-500;
+  color: white;
+
+  &:hover {
+    background: $leap-green-tint;
+  }
+}
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-04;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+  }
+}

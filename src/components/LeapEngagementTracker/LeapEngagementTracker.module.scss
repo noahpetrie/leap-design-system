@@ -1,0 +1,111 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+
+.engagement-tracker {
+  background-color: $background;
+  border: 1px solid $border-subtle;
+  border-radius: 4px;
+  padding: $spacing-05;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: $leap-near-black;
+
+  &__title {
+    @include type-style('heading-compact-02');
+    margin-bottom: $spacing-05;
+    color: $leap-near-black;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 0.5fr;
+    gap: $spacing-03;
+    padding: $spacing-03 $spacing-04;
+    border-bottom: 2px solid $leap-green;
+    @include type-style('label-01');
+    font-weight: 600;
+    color: $leap-near-black;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 0.5fr;
+    gap: $spacing-03;
+    align-items: center;
+    padding: $spacing-03 $spacing-04;
+    border-bottom: 1px solid $border-subtle;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: $layer-hover;
+    }
+
+    &--stale {
+      background-color: rgba(218, 30, 40, 0.08);
+      border-left: 3px solid #da1e28;
+
+      &:hover {
+        background-color: rgba(218, 30, 40, 0.14);
+      }
+    }
+  }
+
+  &__name {
+    @include type-style('body-compact-01');
+    font-weight: 500;
+    color: $leap-near-black;
+  }
+
+  &__days {
+    @include type-style('body-compact-01');
+    color: $text-secondary;
+  }
+
+  &__count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 24px;
+    padding: 0 $spacing-02;
+    border-radius: 12px;
+    background-color: $leap-green;
+    color: #ffffff;
+    @include type-style('label-01');
+    font-weight: 600;
+    width: fit-content;
+  }
+
+  &__trend {
+    text-align: center;
+    font-size: 0.75rem;
+
+    &--up {
+      color: $leap-green;
+    }
+
+    &--down {
+      color: #da1e28;
+    }
+
+    &--stable {
+      color: $text-secondary;
+    }
+  }
+
+  &__empty {
+    @include type-style('body-compact-01');
+    color: $text-secondary;
+    text-align: center;
+    padding: $spacing-06;
+  }
+}

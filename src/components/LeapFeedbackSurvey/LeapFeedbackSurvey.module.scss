@@ -1,0 +1,181 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+
+.leap-feedback-survey {
+  background: $white;
+  border: 1px solid $border-subtle-01;
+  border-radius: 8px;
+  padding: $spacing-06;
+  max-width: 640px;
+
+  /* Question block */
+  &__question {
+    border: none;
+    margin: 0 0 $spacing-06;
+    padding: 0;
+
+    &:last-of-type {
+      margin-bottom: $spacing-07;
+    }
+  }
+
+  &__legend {
+    @include type-style('heading-compact-01');
+    color: $leap-near-black;
+    margin-bottom: $spacing-04;
+    display: block;
+  }
+
+  &__number {
+    color: $leap-green;
+    font-weight: 700;
+    margin-right: $spacing-02;
+  }
+
+  /* Rating stars */
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: $spacing-02;
+  }
+
+  &__star {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $border-subtle-01;
+    padding: 2px;
+    transition: color 0.15s ease, transform 0.15s ease;
+
+    &:hover,
+    &--active {
+      color: $leap-green;
+    }
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  &__rating-value {
+    @include type-style('label-01');
+    color: $text-secondary;
+    margin-left: $spacing-03;
+  }
+
+  /* Textarea */
+  &__textarea {
+    @include type-style('body-compact-01');
+    width: 100%;
+    border: 1px solid $border-subtle-01;
+    border-radius: 4px;
+    padding: $spacing-03 $spacing-04;
+    resize: vertical;
+    font-family: inherit;
+    color: $leap-near-black;
+    transition: border-color 0.15s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $leap-green;
+      box-shadow: 0 0 0 1px $leap-green;
+    }
+
+    &::placeholder {
+      color: $text-placeholder;
+    }
+  }
+
+  /* Radio options */
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-03;
+  }
+
+  &__radio-label {
+    @include type-style('body-compact-01');
+    display: flex;
+    align-items: center;
+    gap: $spacing-03;
+    cursor: pointer;
+    color: $leap-near-black;
+    padding: $spacing-02 0;
+  }
+
+  &__radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .leap-feedback-survey__radio-indicator {
+      border-color: $leap-green;
+
+      &::after {
+        transform: scale(1);
+        background: $leap-green;
+      }
+    }
+
+    &:focus + .leap-feedback-survey__radio-indicator {
+      box-shadow: 0 0 0 2px rgba($leap-green, 0.3);
+    }
+  }
+
+  &__radio-indicator {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $border-subtle-01;
+    border-radius: 50%;
+    position: relative;
+    transition: border-color 0.15s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: transparent;
+      transform: scale(0);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+  }
+
+  /* Submit button */
+  &__submit {
+    @include type-style('body-compact-01');
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: $leap-green;
+    color: $white;
+    border: none;
+    border-radius: 4px;
+    padding: $spacing-03 $spacing-06;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: darken($leap-green, 8%);
+    }
+
+    &:active {
+      background: darken($leap-green, 14%);
+    }
+
+    &:focus {
+      outline: 2px solid $leap-green;
+      outline-offset: 2px;
+    }
+  }
+}

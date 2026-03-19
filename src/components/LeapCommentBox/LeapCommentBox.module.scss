@@ -1,0 +1,59 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+
+.comment-box {
+  --cds-button-primary: #{$leap-green-500};
+  --cds-button-primary-hover: #{$leap-green-700};
+  --cds-focus: #{$leap-green-500};
+  border: 1px solid $border-subtle-01;
+  border-radius: 4px;
+  background: $layer-01;
+  padding: $spacing-05;
+}
+
+.comment-box-list {
+  margin-bottom: $spacing-05;
+}
+
+.comment-box-item {
+  padding-bottom: $spacing-04;
+  margin-bottom: $spacing-04;
+  border-bottom: 1px solid $border-subtle-01;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}
+
+.comment-box-item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $spacing-02;
+}
+
+.comment-box-author {
+  @include type-style('heading-compact-01');
+  color: $text-primary;
+}
+
+.comment-box-time {
+  @include type-style('label-01');
+  color: $text-secondary;
+}
+
+.comment-box-text {
+  @include type-style('body-compact-01');
+  color: $text-secondary;
+  margin: 0;
+}
+
+.comment-box-input {
+  display: flex;
+  gap: $spacing-03;
+  align-items: flex-end;
+}

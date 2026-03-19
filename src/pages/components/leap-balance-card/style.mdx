@@ -1,0 +1,59 @@
+---
+title: Leap Balance Card
+description:
+  Leap Balance Card shows remaining leave balance with a progress bar.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+The following page documents visual specifications such as colour, typography,
+structure, and size.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>Colour</AnchorLink>
+<AnchorLink>Typography</AnchorLink>
+<AnchorLink>Structure</AnchorLink>
+
+</AnchorLinks>
+
+## Colour
+
+| Element          | Property         | Colour token        |
+| ---------------- | ---------------- | ------------------- |
+| Leave type label | text-color       | `$text-primary`     |
+| Balance text     | text-color       | `$text-primary`     |
+| Unit indicator   | text-color       | `$text-secondary`   |
+| Container        | background-color | `$layer-01`         |
+| Border           | border-color     | `$border-subtle-01` |
+| Progress track   | background-color | `$border-subtle-01` |
+| Progress fill    | background-color | `$support-success`  |
+
+### Low balance state
+
+| Element        | Property         | Colour token       |
+| -------------- | ---------------- | ------------------ |
+| Progress fill  | background-color | `$support-error`   |
+| Balance text   | text-color       | `$support-error`   |
+
+## Typography
+
+| Element          | Font-size | Font-weight | Type token            |
+| ---------------- | --------- | ----------- | --------------------- |
+| Leave type label | 14px      | Semi-Bold   | `$heading-compact-01` |
+| Balance text     | 20px      | Semi-Bold   | `$heading-03`         |
+| Unit indicator   | 12px      | Regular     | `$label-01`           |
+
+## Structure
+
+| Element        | Property      | px / rem  | Spacing token |
+| -------------- | ------------- | --------- | ------------- |
+| Container      | padding       | 16 / 1    | `$spacing-05` |
+| Container      | border-radius | 4px       | —             |
+| Leave type     | margin-bottom | 8 / 0.5   | `$spacing-03` |
+| Balance text   | margin-bottom | 12 / 0.75 | `$spacing-04` |
+| Progress bar   | height        | 8px       | —             |
+| Progress bar   | border-radius | 4px       | —             |

@@ -1,0 +1,83 @@
+---
+title: Leap Toggle
+description:
+  Leap Toggle is a branded wrapper around Carbon's Toggle component, styled
+  with the Leap green colour scheme for consistent visual identity.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+<PageDescription>
+
+Preview the Leap Toggle component with the React live demo. Leap Toggle wraps
+Carbon's Toggle and applies the Leap brand green to the checked state.
+
+</PageDescription>
+
+## Getting started
+
+```bash
+npm install @carbon/react
+```
+
+## Basic usage
+
+```jsx
+import { LeapToggle } from 'components/LeapToggle';
+
+function Settings() {
+  return (
+    <LeapToggle
+      id="auto-approve"
+      labelText="Auto-approve leave requests"
+      labelA="Off"
+      labelB="On"
+      onToggle={(checked) => console.log('Toggled:', checked)}
+    />
+  );
+}
+```
+
+## Small variant
+
+```jsx
+<LeapToggle
+  id="notifications"
+  labelText="Email notifications"
+  size="sm"
+  defaultToggled={true}
+/>
+```
+
+## Controlled usage
+
+```jsx
+import { useState } from 'react';
+
+function ControlledToggle() {
+  const [enabled, setEnabled] = useState(false);
+
+  return (
+    <LeapToggle
+      id="calendar-view"
+      labelText="Show calendar view"
+      toggled={enabled}
+      onToggle={(checked) => setEnabled(checked)}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Required | Default | Description |
+| ---- | ---- | -------- | ------- | ----------- |
+| `id` | `string` | Yes | — | Unique identifier |
+| `labelText` | `string` | Yes | — | Label describing the toggle |
+| `labelA` | `string` | No | `"Off"` | Text for the off state |
+| `labelB` | `string` | No | `"On"` | Text for the on state |
+| `size` | `string` | No | `"md"` | `"sm"` or `"md"` |
+| `disabled` | `bool` | No | `false` | Disables the toggle |
+| `toggled` | `bool` | No | — | Controlled toggled state |
+| `defaultToggled` | `bool` | No | `false` | Initial toggled state (uncontrolled) |
+| `onToggle` | `func` | No | — | Callback when toggled |
+| `hideLabel` | `bool` | No | `false` | Visually hide the label |

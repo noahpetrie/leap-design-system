@@ -1,0 +1,185 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+$readiness-high: #0c8c5e;
+$readiness-medium: #f1c21b;
+$readiness-low: #da1e28;
+
+.initiative-card {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-04;
+  padding: $spacing-05;
+  border: 1px solid $border-subtle-01;
+  border-radius: 8px;
+  background: $layer-01;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+}
+
+.initiative-card--clickable {
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: $leap-green;
+  }
+
+  &:focus {
+    outline: 2px solid $leap-green;
+    outline-offset: 2px;
+  }
+}
+
+.initiative-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-03;
+}
+
+.initiative-card__title {
+  @include type-style('heading-compact-02');
+  color: $leap-near-black;
+  margin: 0;
+  flex: 1;
+}
+
+.initiative-card__badge {
+  @include type-style('label-01');
+  font-weight: 600;
+  padding: $spacing-01 $spacing-03;
+  border-radius: 1rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.initiative-card__badge--draft {
+  background-color: rgba(#8d8d8d, 0.15);
+  color: #6f6f6f;
+}
+
+.initiative-card__badge--active {
+  background-color: rgba($leap-green, 0.12);
+  color: $leap-green;
+}
+
+.initiative-card__badge--completed {
+  background-color: rgba(#0043ce, 0.1);
+  color: #0043ce;
+}
+
+.initiative-card__badge--paused {
+  background-color: rgba(#f1c21b, 0.15);
+  color: #8e6a00;
+}
+
+.initiative-card__description {
+  @include type-style('body-compact-01');
+  color: $text-secondary;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.initiative-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-02;
+}
+
+.initiative-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-02;
+  @include type-style('label-01');
+  color: $text-secondary;
+
+  svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+}
+
+.initiative-card__footer {
+  display: flex;
+  align-items: flex-end;
+  gap: $spacing-05;
+  padding-top: $spacing-03;
+  border-top: 1px solid $border-subtle-01;
+}
+
+.initiative-card__readiness {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-02;
+}
+
+.initiative-card__readiness-header {
+  display: flex;
+  justify-content: space-between;
+  @include type-style('label-01');
+  color: $text-secondary;
+}
+
+.initiative-card__readiness-value--high {
+  color: $readiness-high;
+  font-weight: 600;
+}
+
+.initiative-card__readiness-value--medium {
+  color: $readiness-medium;
+  font-weight: 600;
+}
+
+.initiative-card__readiness-value--low {
+  color: $readiness-low;
+  font-weight: 600;
+}
+
+.initiative-card__readiness-track {
+  width: 100%;
+  height: 4px;
+  background-color: $border-subtle-01;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.initiative-card__readiness-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.initiative-card__readiness-fill--high {
+  background-color: $readiness-high;
+}
+
+.initiative-card__readiness-fill--medium {
+  background-color: $readiness-medium;
+}
+
+.initiative-card__readiness-fill--low {
+  background-color: $readiness-low;
+}
+
+.initiative-card__stakeholders {
+  display: flex;
+  align-items: center;
+  gap: $spacing-02;
+  @include type-style('label-01');
+  color: $text-secondary;
+  flex-shrink: 0;
+
+  svg {
+    opacity: 0.7;
+  }
+}

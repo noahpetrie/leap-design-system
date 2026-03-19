@@ -1,0 +1,7 @@
+@use '@carbon/styles/scss/theme' as *;
+
+$leap-green-500: #0c8c5e;
+
+.leap-search {
+  --cds-focus: #{$leap-green-500};
+}

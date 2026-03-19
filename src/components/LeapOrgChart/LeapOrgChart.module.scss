@@ -1,0 +1,108 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+$connector-color: #c6c6c0;
+
+.leap-org-chart {
+  background: $white;
+  border: 1px solid $border-subtle-01;
+  border-radius: 8px;
+  padding: $spacing-06;
+  overflow-x: auto;
+
+  /* Root node wrapper */
+  &__node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Card */
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $white;
+    border: 2px solid $leap-green;
+    border-radius: 8px;
+    padding: $spacing-03 $spacing-05;
+    min-width: 140px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.15s ease;
+
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  &__name {
+    @include type-style('heading-compact-01');
+    color: $leap-near-black;
+  }
+
+  &__role {
+    @include type-style('label-01');
+    color: $text-secondary;
+    margin-top: 2px;
+  }
+
+  /* Connector: vertical line going down from parent */
+  &__connector-down {
+    width: 2px;
+    height: 24px;
+    background: $connector-color;
+    margin: 0 auto;
+  }
+
+  /* Connector: vertical line going up to child card */
+  &__connector-up {
+    width: 2px;
+    height: 24px;
+    background: $connector-color;
+    margin: 0 auto;
+  }
+
+  /* Wrapper for children section */
+  &__children-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Horizontal children row */
+  &__children {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-05;
+    position: relative;
+
+    /* Horizontal connector bar */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      height: 2px;
+      background: $connector-color;
+      /* Stretch from center of first child to center of last child */
+      left: calc(50% / var(--child-count, 1));
+      right: calc(50% / var(--child-count, 1));
+    }
+  }
+
+  /* Individual child column */
+  &__child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Override horizontal bar based on child count - single child needs no bar */
+.leap-org-chart__children:only-child::before {
+  display: none;
+}

@@ -1,0 +1,96 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+
+.leap-comparison-table {
+  background: $white;
+  border: 1px solid $border-subtle-01;
+  border-radius: 8px;
+  padding: $spacing-05;
+  max-width: 900px;
+
+  &__scroll {
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  /* Criteria column header */
+  &__criteria-header {
+    @include type-style('label-01');
+    text-align: left;
+    padding: $spacing-04 $spacing-05;
+    color: $text-secondary;
+    font-weight: 600;
+    border-bottom: 2px solid $border-subtle-01;
+    white-space: nowrap;
+  }
+
+  /* Option column header */
+  &__option-header {
+    @include type-style('heading-compact-01');
+    text-align: center;
+    padding: $spacing-04 $spacing-05;
+    color: $leap-near-black;
+    border-bottom: 2px solid $border-subtle-01;
+    vertical-align: bottom;
+    min-width: 140px;
+
+    &--recommended {
+      background: rgba($leap-green, 0.06);
+      border-bottom-color: $leap-green;
+    }
+  }
+
+  &__option-name {
+    display: block;
+  }
+
+  &__recommended-badge {
+    @include type-style('label-01');
+    display: inline-block;
+    margin-top: $spacing-02;
+    padding: 1px $spacing-03;
+    border-radius: 12px;
+    background: $leap-green;
+    color: $white;
+    font-weight: 600;
+  }
+
+  /* Rows */
+  &__row--even {
+    background: $white;
+  }
+
+  &__row--odd {
+    background: $layer-01;
+  }
+
+  /* Criteria cell (first column) */
+  &__criteria-cell {
+    @include type-style('body-compact-01');
+    padding: $spacing-04 $spacing-05;
+    color: $leap-near-black;
+    font-weight: 600;
+    white-space: nowrap;
+    border-right: 1px solid $border-subtle-01;
+  }
+
+  /* Value cells */
+  &__value-cell {
+    @include type-style('body-compact-01');
+    padding: $spacing-04 $spacing-05;
+    text-align: center;
+    color: $text-secondary;
+
+    &--recommended {
+      background: rgba($leap-green, 0.04);
+    }
+  }
+}

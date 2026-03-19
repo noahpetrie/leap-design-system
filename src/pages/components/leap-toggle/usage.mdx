@@ -1,0 +1,89 @@
+---
+title: Leap Toggle
+description:
+  Leap Toggle is a branded wrapper around Carbon's Toggle component, styled
+  with the Leap green colour scheme for consistent visual identity.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+import StorybookDemo from 'components/StorybookDemo';
+
+<PageDescription>
+
+Leap Toggle is a branded wrapper around Carbon's Toggle component, styled with
+the Leap green colour scheme. It provides the same functionality as the Carbon
+Toggle with visual consistency across Leap applications.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>Overview</AnchorLink>
+<AnchorLink>Live demo</AnchorLink>
+<AnchorLink>Variants</AnchorLink>
+<AnchorLink>Formatting</AnchorLink>
+<AnchorLink>Feedback</AnchorLink>
+
+</AnchorLinks>
+
+## Overview
+
+The Leap Toggle wraps Carbon's `Toggle` component and overrides the checked
+state colour to use the Leap brand green (#0C8C5E) instead of Carbon's default
+blue. All other behaviour, accessibility, and interaction patterns remain
+identical to the Carbon Toggle.
+
+### When to use
+
+- For binary on/off settings in Leap applications
+- To enable or disable features, preferences, or configurations
+- When an immediate effect is expected (no submit button needed)
+
+### When not to use
+
+- When the user needs to select from more than two options — use a radio group
+- When the action requires confirmation — use a checkbox with a submit button
+- For triggering actions — use a button instead
+
+## Live demo
+
+<StorybookDemo
+  themeSelector
+  url="http://localhost:6006"
+  variants={[
+    { label: 'Default', variant: 'components-leaptoggle--default' },
+    { label: 'Small', variant: 'components-leaptoggle--small' },
+    { label: 'Default On', variant: 'components-leaptoggle--default-on' },
+    { label: 'Disabled', variant: 'components-leaptoggle--disabled' },
+  ]}
+/>
+
+## Variants
+
+| Variant | Description |
+| ------- | ----------- |
+| **Default (md)** | Standard size toggle, suitable for most use cases |
+| **Small (sm)** | Compact toggle for dense UIs or inline settings |
+
+## Formatting
+
+### Anatomy
+
+The Leap Toggle consists of:
+
+1. **Label** — describes what the toggle controls
+2. **Switch track** — the pill-shaped track that changes colour
+3. **Switch handle** — the circular indicator that slides between states
+4. **State label** (optional) — text showing the current state (On/Off)
+
+### Colour behaviour
+
+- **Off state**: Uses the default Carbon neutral colour
+- **On state**: Uses Leap brand green (#0C8C5E)
+- **Hover (on)**: Darkens to active green (#096B48)
+- **Focus**: Green outline matching the brand
+
+## Feedback
+
+Help us improve this component by providing
+[feedback or contributing](https://github.com/carbon-design-system/carbon-website/issues/new/choose).

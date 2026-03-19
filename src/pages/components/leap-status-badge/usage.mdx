@@ -1,0 +1,92 @@
+---
+title: Leap Status Badge
+description:
+  Leap Status Badge is a standalone status indicator for leave requests. It
+  provides a colour-coded label to communicate the current state of a request
+  at a glance.
+tabs: ['Usage', 'Style', 'Code', 'Accessibility']
+---
+
+import StorybookDemo from 'components/StorybookDemo';
+
+<PageDescription>
+
+Leap Status Badge is a standalone status indicator for leave requests. It
+provides a colour-coded label to communicate the current state of a request at a
+glance.
+
+</PageDescription>
+
+<AnchorLinks>
+
+<AnchorLink>Overview</AnchorLink>
+<AnchorLink>Live demo</AnchorLink>
+<AnchorLink>Status types</AnchorLink>
+<AnchorLink>Formatting</AnchorLink>
+<AnchorLink>Feedback</AnchorLink>
+
+</AnchorLinks>
+
+## Overview
+
+The Leap Status Badge displays a concise, colour-coded label representing the
+status of a leave request. It is designed to be used inline within tables, cards,
+or detail views wherever a request status needs to be communicated.
+
+### When to use
+
+- Inside data tables to show the status of each leave request row
+- On leave request detail pages alongside request metadata
+- In notification cards or timeline entries to reinforce status context
+
+### When not to use
+
+- To indicate a system-level status such as server health — use a standard
+  Carbon tag or indicator
+- As an interactive element — the badge is read-only
+- When you need to display change history — use Leap Change instead
+
+## Live demo
+
+<StorybookDemo
+  themeSelector
+  url="http://localhost:6006"
+  variants={[
+    { label: 'Approved', variant: 'components-leapstatusbadge--approved' },
+    { label: 'Denied', variant: 'components-leapstatusbadge--denied' },
+    { label: 'Pending', variant: 'components-leapstatusbadge--pending' },
+    { label: 'Cancelled', variant: 'components-leapstatusbadge--cancelled' },
+    { label: 'Active', variant: 'components-leapstatusbadge--active' },
+  ]}
+/>
+
+## Status types
+
+| Status | Usage |
+| ------ | ----- |
+| **Approved** | The leave request has been approved by a manager |
+| **Denied** | The leave request has been declined |
+| **Pending** | The request is awaiting review |
+| **Cancelled** | The request was cancelled by the employee |
+| **Active** | The employee is currently on the approved leave |
+
+## Formatting
+
+### Anatomy
+
+The Leap Status Badge consists of:
+
+1. **Colour indicator** — a filled background or dot conveying the status
+2. **Label text** — a short human-readable status name
+
+### Sizes
+
+| Size | Usage |
+| ---- | ----- |
+| **sm** | Compact size for use in dense tables or inline text |
+| **md** | Default size for cards, headers, and detail views |
+
+## Feedback
+
+Help us improve this component by providing
+[feedback or contributing](https://github.com/carbon-design-system/carbon-website/issues/new/choose).

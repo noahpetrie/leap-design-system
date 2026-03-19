@@ -1,0 +1,117 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-50: #f0faf5;
+$leap-blue: #4589ff;
+$leap-blue-light: #edf5ff;
+$leap-purple: #8a3ffc;
+$leap-purple-light: #f6f2ff;
+$leap-red: #da1e28;
+$leap-red-light: #fff1f1;
+
+.calendar {
+  border: 1px solid $border-subtle-01;
+  border-radius: 4px;
+  background: $layer-01;
+  padding: $spacing-05;
+  max-width: 420px;
+}
+
+.calendar-header {
+  @include type-style('heading-compact-02');
+  color: $text-primary;
+  text-align: center;
+  margin-bottom: $spacing-04;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.calendar-weekday {
+  @include type-style('label-01');
+  color: $text-secondary;
+  text-align: center;
+  padding: $spacing-02;
+}
+
+.calendar-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  position: relative;
+  cursor: default;
+}
+
+.calendar-cell-empty {
+  aspect-ratio: 1;
+}
+
+.calendar-cell--weekend {
+  background: $border-subtle-01;
+}
+
+.calendar-cell--Vacation,
+.calendar-cell--approved {
+  background: $leap-green-50;
+}
+
+.calendar-cell--Sick,
+.calendar-cell--sick {
+  background: $leap-blue-light;
+}
+
+.calendar-cell--Personal,
+.calendar-cell--personal {
+  background: $leap-purple-light;
+}
+
+.calendar-cell--holiday {
+  background: $leap-red-light;
+}
+
+.calendar-day {
+  @include type-style('body-compact-01');
+  color: $text-primary;
+}
+
+.calendar-indicator {
+  @include type-style('label-01');
+  font-size: 9px;
+  color: $text-secondary;
+}
+
+.calendar-legend {
+  display: flex;
+  gap: $spacing-05;
+  margin-top: $spacing-04;
+  flex-wrap: wrap;
+}
+
+.calendar-legend-item {
+  @include type-style('label-01');
+  color: $text-secondary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-02;
+}
+
+@mixin legend-dot($color) {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  background: $color;
+}
+
+.calendar-legend-dot--vacation { @include legend-dot($leap-green-500); }
+.calendar-legend-dot--sick { @include legend-dot($leap-blue); }
+.calendar-legend-dot--personal { @include legend-dot($leap-purple); }
+.calendar-legend-dot--holiday { @include legend-dot($leap-red); }

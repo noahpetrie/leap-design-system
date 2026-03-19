@@ -1,0 +1,63 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-50: #f0faf5;
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-03;
+  padding: $spacing-04 $spacing-05;
+  border-radius: 4px;
+  border-left: 4px solid;
+  background: $layer-01;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  max-width: 400px;
+}
+
+.toast--success { border-left-color: $leap-green-500; }
+.toast--success .toast-icon { color: $leap-green-500; }
+
+.toast--error { border-left-color: #da1e28; }
+.toast--error .toast-icon { color: #da1e28; }
+
+.toast--warning { border-left-color: #f1c21b; }
+.toast--warning .toast-icon { color: #f1c21b; }
+
+.toast--info { border-left-color: #4589ff; }
+.toast--info .toast-icon { color: #4589ff; }
+
+.toast-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-01;
+  flex: 1;
+}
+
+.toast-title {
+  @include type-style('heading-compact-01');
+  color: $text-primary;
+}
+
+.toast-message {
+  @include type-style('body-compact-01');
+  color: $text-secondary;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: $text-secondary;
+  cursor: pointer;
+  padding: 2px;
+  flex-shrink: 0;
+
+  &:hover { color: $text-primary; }
+}

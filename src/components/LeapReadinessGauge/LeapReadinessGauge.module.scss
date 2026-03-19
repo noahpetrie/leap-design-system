@@ -1,0 +1,140 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green: #0c8c5e;
+$leap-near-black: #1a1a18;
+$gauge-high: #0c8c5e;
+$gauge-medium: #f1c21b;
+$gauge-low: #da1e28;
+
+.readiness-gauge {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-04;
+  width: 100%;
+  max-width: 32rem;
+}
+
+.readiness-gauge__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.readiness-gauge__title {
+  @include type-style('heading-compact-01');
+  color: $leap-near-black;
+}
+
+.readiness-gauge__percentage {
+  @include type-style('heading-compact-02');
+  font-variant-numeric: tabular-nums;
+}
+
+.readiness-gauge__percentage--high {
+  color: $gauge-high;
+}
+
+.readiness-gauge__percentage--medium {
+  color: $gauge-medium;
+}
+
+.readiness-gauge__percentage--low {
+  color: $gauge-low;
+}
+
+.readiness-gauge__bar-track {
+  width: 100%;
+  height: 1rem;
+  background-color: $border-subtle-01;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.readiness-gauge__bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.5s ease;
+}
+
+.readiness-gauge__bar-fill--high {
+  background-color: $gauge-high;
+}
+
+.readiness-gauge__bar-fill--medium {
+  background-color: $gauge-medium;
+}
+
+.readiness-gauge__bar-fill--low {
+  background-color: $gauge-low;
+}
+
+.readiness-gauge__categories {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-04;
+  padding-top: $spacing-03;
+  border-top: 1px solid $border-subtle-01;
+}
+
+.readiness-gauge__category {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-02;
+}
+
+.readiness-gauge__category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.readiness-gauge__category-label {
+  @include type-style('body-compact-01');
+  color: $text-primary;
+}
+
+.readiness-gauge__category-value {
+  @include type-style('label-01');
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.readiness-gauge__category-value--high {
+  color: $gauge-high;
+}
+
+.readiness-gauge__category-value--medium {
+  color: $gauge-medium;
+}
+
+.readiness-gauge__category-value--low {
+  color: $gauge-low;
+}
+
+.readiness-gauge__category-track {
+  width: 100%;
+  height: 0.5rem;
+  background-color: $border-subtle-01;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.readiness-gauge__category-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.readiness-gauge__category-fill--high {
+  background-color: $gauge-high;
+}
+
+.readiness-gauge__category-fill--medium {
+  background-color: $gauge-medium;
+}
+
+.readiness-gauge__category-fill--low {
+  background-color: $gauge-low;
+}
