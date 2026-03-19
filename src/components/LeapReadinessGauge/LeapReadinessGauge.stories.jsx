@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A readiness gauge that displays an overall readiness percentage with a progress bar and optional category-level breakdowns.',
+        component: `A readiness gauge that displays an overall readiness percentage with a progress bar and optional category-level breakdowns.
+
+### Import
+\`\`\`jsx
+import { LeapReadinessGauge } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

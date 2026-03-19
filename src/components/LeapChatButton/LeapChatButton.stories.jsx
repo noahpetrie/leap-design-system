@@ -1,5 +1,5 @@
 import React from 'react';
-import { Add, Send, Renew, ThumbsUp } from '@carbon/react/icons';
+import { Add, Send, Renew, ThumbsUp } from '@carbon/icons-react';
 import LeapChatButton from './LeapChatButton.jsx';
 
 export default {
@@ -18,7 +18,13 @@ export default {
     docs: {
       description: {
         component:
-          'A chat-optimized pill-shaped button for conversational UI patterns. Supports standard button kinds (`primary`, `secondary`, `tertiary`, `ghost`, `danger`) and a `isQuickAction` mode for compact, outlined quick-reply buttons. Quick actions can be marked as `isSelected` to show a filled state.',
+          `A chat-optimized pill-shaped button for conversational UI patterns. Supports standard button kinds (\`primary\`, \`secondary\`, \`tertiary\`, \`ghost\`, \`danger\`) and a \`isQuickAction\` mode for compact, outlined quick-reply buttons. Quick actions can be marked as \`isSelected\` to show a filled state.
+
+### Import
+\`\`\`jsx
+import { LeapChatButton } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

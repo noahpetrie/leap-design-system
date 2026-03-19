@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Renders a timeline of planned communications for a change initiative, showing date, audience, channel (email, Slack, meeting, town hall), message preview, and delivery status.',
+        component: `Renders a timeline of planned communications for a change initiative, showing date, audience, channel (email, Slack, meeting, town hall), message preview, and delivery status.
+
+### Import
+\`\`\`jsx
+import { LeapCommunicationPlan } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

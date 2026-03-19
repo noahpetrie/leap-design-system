@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Shows a leave balance summary card with a progress bar indicating how much of a leave type (e.g. Vacation, Sick Leave) has been used versus the total allocation.',
+        component: `Shows a leave balance summary card with a progress bar indicating how much of a leave type (e.g. Vacation, Sick Leave) has been used versus the total allocation.
+
+### Import
+\`\`\`jsx
+import { LeapBalanceCard } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

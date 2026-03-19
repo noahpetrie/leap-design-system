@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A breadcrumb navigation component built on Carbon\'s Breadcrumb, rendering a list of linked path segments with the last item marked as the current page.',
+        component: `A breadcrumb navigation component built on Carbon's Breadcrumb, rendering a list of linked path segments with the last item marked as the current page.
+
+### Import
+\`\`\`jsx
+import { LeapBreadcrumb } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

@@ -12,7 +12,7 @@ import {
   Dashboard,
   NotificationNew,
   Help,
-} from '@carbon/react/icons';
+} from '@carbon/icons-react';
 import LeapCommandPalette from './LeapCommandPalette.jsx';
 
 export default {
@@ -23,7 +23,13 @@ export default {
     docs: {
       description: {
         component:
-          'A keyboard-driven command palette for quick navigation and actions. Supports fuzzy search, grouped commands, keyboard shortcuts, and arrow-key navigation. Open with \u2318K.',
+          `A keyboard-driven command palette for quick navigation and actions. Supports fuzzy search, grouped commands, keyboard shortcuts, and arrow-key navigation. Open with \u2318K.
+
+### Import
+\`\`\`jsx
+import { LeapCommandPalette } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

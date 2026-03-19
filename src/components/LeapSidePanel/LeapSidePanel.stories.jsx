@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A slide-in side panel overlay with a header, close button, and content area for displaying contextual details.',
+        component: `A slide-in side panel overlay with a header, close button, and content area for displaying contextual details.
+
+### Import
+\`\`\`jsx
+import { LeapSidePanel } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

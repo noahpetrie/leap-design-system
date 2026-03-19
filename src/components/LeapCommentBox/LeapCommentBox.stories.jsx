@@ -9,7 +9,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A threaded comment box that displays existing comments with author and timestamp, and provides a text area with submit button for adding new comments.',
+        component: `A threaded comment box that displays existing comments with author and timestamp, and provides a text area with submit button for adding new comments.
+
+### Import
+\`\`\`jsx
+import { LeapCommentBox } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

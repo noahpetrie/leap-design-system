@@ -1,13 +1,5 @@
 import React from 'react';
-import { Theme } from '@carbon/react';
-import '@carbon/styles/css/styles.css';
-
-const themeMap = {
-  white: 'white',
-  g10: 'g10',
-  g90: 'g90',
-  g100: 'g100',
-};
+import '../src/styles/globals.css';
 
 /** @type {import('storybook').Preview} */
 const preview = {
@@ -18,16 +10,14 @@ const preview = {
   },
   globalTypes: {
     theme: {
-      name: 'Carbon Theme',
-      description: 'Carbon design system theme',
-      defaultValue: 'white',
+      name: 'Theme',
+      description: 'Light or dark mode',
+      defaultValue: 'light',
       toolbar: {
         icon: 'paintbrush',
         items: [
-          { value: 'white', title: 'White' },
-          { value: 'g10', title: 'Gray 10' },
-          { value: 'g90', title: 'Gray 90' },
-          { value: 'g100', title: 'Gray 100' },
+          { value: 'light', title: 'Light' },
+          { value: 'dark', title: 'Dark' },
         ],
         dynamicTitle: true,
       },
@@ -36,21 +26,19 @@ const preview = {
   decorators: [
     (Story, context) => {
       const isDocsView = context.viewMode === 'docs';
-      const theme = themeMap[context.globals.theme] || 'white';
+      const theme = context.globals.theme || 'light';
       return React.createElement(
-        Theme,
-        { theme: theme },
-        React.createElement(
-          'div',
-          {
-            style: {
-              padding: isDocsView ? '1rem' : '2rem',
-              background: 'var(--cds-background)',
-              minHeight: isDocsView ? undefined : '100vh',
-            },
+        'div',
+        {
+          className: theme === 'dark' ? 'dark' : '',
+          style: {
+            padding: isDocsView ? '1rem' : '2rem',
+            minHeight: isDocsView ? undefined : '100vh',
+            backgroundColor: 'hsl(var(--background))',
+            color: 'hsl(var(--foreground))',
           },
-          React.createElement(Story)
-        )
+        },
+        React.createElement(Story)
       );
     },
   ],

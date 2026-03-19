@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dashboard, Calendar, UserMultiple, Document, Settings, Analytics } from '@carbon/react/icons';
+import { Dashboard, Calendar, UserMultiple, Document, Settings, Analytics } from '@carbon/icons-react';
 import LeapSidebar from './LeapSidebar.jsx';
 
 export default {
@@ -11,7 +11,13 @@ export default {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'A collapsible vertical navigation sidebar with icon and label items, active state tracking, and an optional logo.',
+        component: `A collapsible vertical navigation sidebar with icon and label items, active state tracking, and an optional logo.
+
+### Import
+\`\`\`jsx
+import { LeapSidebar } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

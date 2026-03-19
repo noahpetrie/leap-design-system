@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A collapsible accordion built on Carbon\'s Accordion, used to organize and reveal content sections such as FAQs or change management details.',
+        component: `A collapsible accordion built on Carbon's Accordion, used to organize and reveal content sections such as FAQs or change management details.
+
+### Import
+\`\`\`jsx
+import { LeapAccordion } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

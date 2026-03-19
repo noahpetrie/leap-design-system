@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A survey component that collects user feedback through star ratings, free-text responses, and single-select questions.',
+        component: `A survey component that collects user feedback through star ratings, free-text responses, and single-select questions.
+
+### Import
+\`\`\`jsx
+import { LeapFeedbackSurvey } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

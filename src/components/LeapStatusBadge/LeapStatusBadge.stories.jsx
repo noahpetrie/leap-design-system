@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A color-coded status badge with an icon, supporting approved, denied, pending, cancelled, and active states.',
+        component: `A color-coded status badge with an icon, supporting approved, denied, pending, cancelled, and active states.
+
+### Import
+\`\`\`jsx
+import { LeapStatusBadge } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

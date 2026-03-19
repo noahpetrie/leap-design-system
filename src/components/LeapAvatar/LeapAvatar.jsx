@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapAvatar.module.scss';
+import { cn } from '../../lib/utils';
 
 const getInitials = (name) =>
   name
@@ -17,6 +17,27 @@ const sizeMap = {
   xl: 96,
 };
 
+const initialsFontSize = {
+  sm: 'text-[10px]',
+  md: 'text-sm',
+  lg: 'text-[22px]',
+  xl: 'text-[32px]',
+};
+
+const statusDotSize = {
+  sm: 'w-2 h-2',
+  md: 'w-2.5 h-2.5',
+  lg: 'w-3.5 h-3.5',
+  xl: 'w-[18px] h-[18px]',
+};
+
+const statusColors = {
+  online: 'bg-[#24a148]',
+  away: 'bg-[#f1c21b]',
+  busy: 'bg-[#da1e28]',
+  offline: 'bg-[#8d8d8d]',
+};
+
 const LeapAvatar = ({
   name,
   src,
@@ -28,19 +49,25 @@ const LeapAvatar = ({
 
   return (
     <div
-      className={`${styles['avatar']} ${styles[`avatar--${size}`]}`}
+      className="relative rounded-full bg-[#f0faf5] text-primary inline-flex items-center justify-center shrink-0 overflow-visible"
       style={{ width: px, height: px }}
       title={name}
       {...rest}
     >
       {src ? (
-        <img className={styles['avatar-image']} src={src} alt={name} />
+        <img className="w-full h-full rounded-full object-cover" src={src} alt={name} />
       ) : (
-        <span className={styles['avatar-initials']}>{getInitials(name)}</span>
+        <span className={cn('font-semibold select-none', initialsFontSize[size])}>
+          {getInitials(name)}
+        </span>
       )}
       {status && (
         <span
-          className={`${styles['avatar-status']} ${styles[`avatar-status--${status}`] || ''}`}
+          className={cn(
+            'absolute bottom-0 right-0 rounded-full border-2 border-background',
+            statusDotSize[size],
+            statusColors[status],
+          )}
         />
       )}
     </div>

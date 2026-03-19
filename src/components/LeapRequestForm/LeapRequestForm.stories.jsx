@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A leave request form with leave type dropdown, date pickers, and notes field for submitting new time-off requests.',
+        component: `A leave request form with leave type dropdown, date pickers, and notes field for submitting new time-off requests.
+
+### Import
+\`\`\`jsx
+import { LeapRequestForm } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

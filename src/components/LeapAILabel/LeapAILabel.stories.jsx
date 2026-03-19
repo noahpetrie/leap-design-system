@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, FolderOpen, Folders } from '@carbon/react/icons';
-import { IconButton } from '@carbon/react';
+import { View, FolderOpen, Folders } from '@carbon/icons-react';
 import LeapAILabel, { LeapAILabelContent, LeapAILabelActions } from './LeapAILabel.jsx';
 
 export default {
@@ -10,7 +9,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'An AI indicator badge with a toggletip popover, used to mark AI-generated or AI-assisted content with optional revert and action buttons.',
+        component: `An AI indicator badge with a toggletip popover, used to mark AI-generated or AI-assisted content with optional revert and action buttons.
+
+### Import
+\`\`\`jsx
+import { LeapAILabel } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },
@@ -63,12 +68,12 @@ export const Inline = {
           <p>Confidence: 92%. Based on 340 historical data points.</p>
         </LeapAILabelContent>
         <LeapAILabelActions>
-          <IconButton kind="ghost" label="View sources" size="sm">
-            <View />
-          </IconButton>
-          <IconButton kind="ghost" label="Open folder" size="sm">
-            <FolderOpen />
-          </IconButton>
+          <button type="button" aria-label="View sources" className="inline-flex items-center justify-center w-8 h-8 rounded hover:bg-accent text-foreground">
+            <View size={16} />
+          </button>
+          <button type="button" aria-label="Open folder" className="inline-flex items-center justify-center w-8 h-8 rounded hover:bg-accent text-foreground">
+            <FolderOpen size={16} />
+          </button>
         </LeapAILabelActions>
       </LeapAILabel>{' '}
       and should be reviewed before sharing.
@@ -84,15 +89,15 @@ export const WithActions = {
         <p>Model: LeapChange Insights v2. Confidence: 87%.</p>
       </LeapAILabelContent>
       <LeapAILabelActions>
-        <IconButton kind="ghost" label="View details" size="sm">
-          <View />
-        </IconButton>
-        <IconButton kind="ghost" label="Open in folder" size="sm">
-          <FolderOpen />
-        </IconButton>
-        <IconButton kind="ghost" label="All versions" size="sm">
-          <Folders />
-        </IconButton>
+        <button type="button" aria-label="View details" className="inline-flex items-center justify-center w-8 h-8 rounded hover:bg-accent text-foreground">
+          <View size={16} />
+        </button>
+        <button type="button" aria-label="Open in folder" className="inline-flex items-center justify-center w-8 h-8 rounded hover:bg-accent text-foreground">
+          <FolderOpen size={16} />
+        </button>
+        <button type="button" aria-label="All versions" className="inline-flex items-center justify-center w-8 h-8 rounded hover:bg-accent text-foreground">
+          <Folders size={16} />
+        </button>
       </LeapAILabelActions>
     </LeapAILabel>
   ),

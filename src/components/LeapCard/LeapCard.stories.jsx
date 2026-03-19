@@ -13,7 +13,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A versatile card container available in default, raised, AI, danger, and metric variants. Supports optional click behavior, titles, subtitles, and AI labels.',
+        component: `A versatile card container available in default, raised, AI, danger, and metric variants. Supports optional click behavior, titles, subtitles, and AI labels.
+
+### Import
+\`\`\`jsx
+import { LeapCard } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

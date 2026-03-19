@@ -14,7 +14,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Displays a change log entry showing a leave request status transition (approved, denied, modified, or pending) with timestamp, employee name, and optional reason.',
+        component: `Displays a change log entry showing a leave request status transition (approved, denied, modified, or pending) with timestamp, employee name, and optional reason.
+
+### Import
+\`\`\`jsx
+import { LeapChange } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

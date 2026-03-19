@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { ChevronDown } from '@carbon/react/icons';
-import styles from './LeapComboBox.module.scss';
+import { ChevronDown } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const LeapComboBox = ({
   items = [],
@@ -127,17 +127,37 @@ const LeapComboBox = ({
     }
   };
 
+  const isItemSelected = (item) =>
+    selectedItem && (typeof selectedItem === 'string' ? selectedItem === item.id : selectedItem.id === item.id);
+
   return (
     <div
-      className={`${styles['leap-combo-box']} ${disabled ? styles['leap-combo-box--disabled'] : ''} ${invalid ? styles['leap-combo-box--invalid'] : ''}`}
+      className={cn('relative w-full', disabled && 'opacity-70')}
       ref={containerRef}
       {...rest}
     >
-      {label && <label className={styles['leap-combo-box__label']}>{label}</label>}
-      <div className={styles['leap-combo-box__field']}>
+      {label && (
+        <label className={cn(
+          'block mb-2 text-xs font-medium text-muted-foreground',
+          disabled && 'text-muted-foreground opacity-50'
+        )}>
+          {label}
+        </label>
+      )}
+      <div className={cn(
+        'flex items-center relative bg-muted border-b',
+        invalid ? 'border-destructive' : 'border-border',
+        disabled && 'bg-card border-transparent'
+      )}>
         <input
           ref={inputRef}
-          className={styles['leap-combo-box__input']}
+          className={cn(
+            'flex-1 h-10 px-4 pr-10 border-none bg-transparent text-foreground text-sm outline-none w-full',
+            'placeholder:text-muted-foreground',
+            'focus:outline-2 focus:outline-primary focus:outline-offset-[-2px]',
+            invalid && 'focus:outline-destructive',
+            disabled && 'text-muted-foreground opacity-50 cursor-not-allowed'
+          )}
           type="text"
           role="combobox"
           aria-expanded={isOpen}
@@ -151,7 +171,11 @@ const LeapComboBox = ({
           disabled={disabled}
         />
         <button
-          className={styles['leap-combo-box__toggle']}
+          className={cn(
+            'absolute right-0 top-0 flex items-center justify-center w-10 h-10 border-none bg-transparent text-foreground cursor-pointer p-0',
+            'hover:bg-accent',
+            disabled && 'text-muted-foreground opacity-50 cursor-not-allowed hover:bg-transparent'
+          )}
           type="button"
           tabIndex={-1}
           aria-label="Open dropdown"
@@ -169,15 +193,21 @@ const LeapComboBox = ({
       {isOpen && filteredItems.length > 0 && (
         <ul
           ref={listRef}
-          className={styles['leap-combo-box__list']}
+          className="absolute z-[9000] top-full left-0 right-0 max-h-52 overflow-y-auto m-0 p-0 list-none bg-card border border-border shadow-[0_2px_6px_rgba(0,0,0,0.2)]"
           role="listbox"
         >
           {filteredItems.map((item, index) => (
             <li
               key={item.id}
               role="option"
-              aria-selected={selectedItem && (typeof selectedItem === 'string' ? selectedItem === item.id : selectedItem.id === item.id)}
-              className={`${styles['leap-combo-box__item']} ${index === highlightedIndex ? styles['leap-combo-box__item--highlighted'] : ''} ${selectedItem && (typeof selectedItem === 'string' ? selectedItem === item.id : selectedItem.id === item.id) ? styles['leap-combo-box__item--selected'] : ''}`}
+              aria-selected={isItemSelected(item)}
+              className={cn(
+                'flex items-center py-1.5 px-4 text-foreground text-sm cursor-pointer',
+                'hover:bg-accent',
+                index === highlightedIndex && 'bg-accent',
+                isItemSelected(item) && 'bg-primary text-primary-foreground hover:bg-primary/80',
+                isItemSelected(item) && index === highlightedIndex && 'bg-primary/80'
+              )}
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => handleSelect(item)}
               onMouseEnter={() => setHighlightedIndex(index)}
@@ -188,10 +218,10 @@ const LeapComboBox = ({
         </ul>
       )}
       {invalid && invalidText && (
-        <div className={styles['leap-combo-box__error']}>{invalidText}</div>
+        <div className="mt-1 text-destructive text-xs">{invalidText}</div>
       )}
       {!invalid && helperText && (
-        <div className={styles['leap-combo-box__helper']}>{helperText}</div>
+        <div className="mt-1 text-muted-foreground text-xs">{helperText}</div>
       )}
     </div>
   );

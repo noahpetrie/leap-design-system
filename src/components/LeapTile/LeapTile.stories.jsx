@@ -14,8 +14,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          'A versatile tile/card component supporting default, clickable, selectable, and expandable variants. Use tiles to group related content in a visually contained surface.',
+        component: `A versatile tile/card component supporting default, clickable, selectable, and expandable variants. Use tiles to group related content in a visually contained surface.
+
+### Import
+\`\`\`jsx
+import { LeapTile } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

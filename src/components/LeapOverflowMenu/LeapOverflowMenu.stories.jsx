@@ -1,5 +1,5 @@
 import React from 'react';
-import { Edit, TrashCan, Download, Share, Settings, Restart } from '@carbon/react/icons';
+import { Edit, TrashCan, Download, Share, Settings, Restart } from '@carbon/icons-react';
 import LeapOverflowMenu from './LeapOverflowMenu.jsx';
 
 export default {
@@ -13,8 +13,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          'A three-dot overflow menu that reveals a list of actions. Supports icons, dividers, disabled items, danger actions, and flipped (right-aligned) positioning.',
+        component: `A three-dot overflow menu that reveals a list of actions. Supports icons, dividers, disabled items, danger actions, and flipped (right-aligned) positioning.
+
+### Import
+\`\`\`jsx
+import { LeapOverflowMenu } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

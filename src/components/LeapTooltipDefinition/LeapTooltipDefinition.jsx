@@ -1,6 +1,13 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapTooltipDefinition.module.scss';
+import { cn } from '../../lib/utils';
+
+const caretPositionMap = {
+  top: 'bottom-[-4px] left-1/2 -translate-x-1/2 rotate-45',
+  bottom: 'top-[-4px] left-1/2 -translate-x-1/2 rotate-45',
+  left: 'right-[-4px] top-1/2 -translate-y-1/2 rotate-45',
+  right: 'left-[-4px] top-1/2 -translate-y-1/2 rotate-45',
+};
 
 const LeapTooltipDefinition = ({ children, definition, align = 'bottom', openOnHover = true }) => {
   const [open, setOpen] = useState(false);
@@ -62,7 +69,7 @@ const LeapTooltipDefinition = ({ children, definition, align = 'bottom', openOnH
     <>
       <button
         ref={triggerRef}
-        className={styles['leap-tooltip-definition']}
+        className="inline border-none bg-transparent p-0 text-sm text-foreground border-b border-dotted border-b-foreground cursor-help leading-relaxed hover:border-b-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 focus-visible:rounded-sm"
         type="button"
         aria-describedby={open ? 'leap-tooltip-definition-popup' : undefined}
         onFocus={handleOpen}
@@ -76,11 +83,16 @@ const LeapTooltipDefinition = ({ children, definition, align = 'bottom', openOnH
         <div
           ref={tooltipRef}
           id="leap-tooltip-definition-popup"
-          className={`${styles['leap-tooltip-definition__tooltip']} ${styles[`leap-tooltip-definition__tooltip--${align}`]}`}
+          className="fixed z-[9999] max-w-[16rem] rounded-sm bg-foreground px-3 py-2 text-sm leading-snug text-primary-foreground shadow-md pointer-events-none"
           style={{ top: position.top, left: position.left }}
           role="tooltip"
         >
-          <span className={styles['leap-tooltip-definition__caret']} />
+          <span
+            className={cn(
+              'absolute h-2 w-2 bg-foreground',
+              caretPositionMap[align] || caretPositionMap.bottom
+            )}
+          />
           {definition}
         </div>
       )}

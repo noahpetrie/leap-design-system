@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { ChevronRight, Document, Folder } from '@carbon/react/icons';
-import styles from './LeapTreeView.module.scss';
+import { ChevronRight, Document, Folder } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const TreeNode = ({ node, level = 0, selectedId, onSelect, expandedIds, onToggle, size }) => {
   const hasChildren = node.children && node.children.length > 0;
@@ -27,12 +27,19 @@ const TreeNode = ({ node, level = 0, selectedId, onSelect, expandedIds, onToggle
     }
   };
 
+  const isSm = size === 'sm';
+
   return (
     <li role="treeitem" aria-expanded={hasChildren ? isExpanded : undefined} aria-selected={isSelected}>
       <button
-        className={`${styles['leap-tree-view__node']} ${styles[`leap-tree-view__node--${size}`]} ${
-          isSelected ? styles['leap-tree-view__node--selected'] : ''
-        } ${node.disabled ? styles['leap-tree-view__node--disabled'] : ''}`}
+        className={cn(
+          'flex w-full items-center gap-1 border-none bg-transparent text-left text-foreground cursor-pointer transition-colors duration-100',
+          isSm ? 'py-1 pr-2 text-xs font-medium' : 'py-1.5 pr-3 text-sm',
+          !isSelected && !node.disabled && 'hover:bg-accent',
+          isSelected && 'bg-primary/10 text-primary font-semibold',
+          node.disabled && 'text-muted-foreground opacity-50 cursor-not-allowed',
+          'focus-visible:outline-2 focus-visible:outline-primary focus-visible:-outline-offset-2'
+        )}
         style={{ paddingLeft: `${level * 1.25 + 0.5}rem` }}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
@@ -41,18 +48,21 @@ const TreeNode = ({ node, level = 0, selectedId, onSelect, expandedIds, onToggle
         type="button"
       >
         {hasChildren && (
-          <span className={`${styles['leap-tree-view__chevron']} ${isExpanded ? styles['leap-tree-view__chevron--expanded'] : ''}`}>
+          <span className={cn(
+            'flex shrink-0 items-center text-muted-foreground transition-transform duration-150',
+            isExpanded && 'rotate-90'
+          )}>
             <ChevronRight size={16} />
           </span>
         )}
-        {!hasChildren && <span className={styles['leap-tree-view__chevron-spacer']} />}
-        <span className={styles['leap-tree-view__icon']}>
+        {!hasChildren && <span className="inline-block w-4 shrink-0" />}
+        <span className={cn('flex shrink-0 items-center', isSelected ? 'text-primary' : 'text-muted-foreground')}>
           <NodeIcon size={16} />
         </span>
-        <span className={styles['leap-tree-view__label']}>{node.label}</span>
+        <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">{node.label}</span>
       </button>
       {hasChildren && isExpanded && (
-        <ul role="group" className={styles['leap-tree-view__group']}>
+        <ul role="group" className="m-0 list-none p-0">
           {node.children.map((child) => (
             <TreeNode
               key={child.id}
@@ -96,7 +106,7 @@ const LeapTreeView = ({ nodes = [], size = 'md', onSelect, defaultExpanded = [] 
   }, []);
 
   return (
-    <ul role="tree" className={`${styles['leap-tree-view']} ${styles[`leap-tree-view--${size}`]}`}>
+    <ul role="tree" className="m-0 list-none p-0">
       {nodes.map((node) => (
         <TreeNode
           key={node.id}

@@ -9,7 +9,13 @@ export default {
     docs: {
       description: {
         component:
-          'A code display component supporting inline, single-line, and multi-line variants with optional copy-to-clipboard, line numbers, and language labels.',
+          `A code display component supporting inline, single-line, and multi-line variants with optional copy-to-clipboard, line numbers, and language labels.
+
+### Import
+\`\`\`jsx
+import { LeapCodeSnippet } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

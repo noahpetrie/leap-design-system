@@ -12,7 +12,13 @@ export default {
     docs: {
       description: {
         component:
-          'A fluid-style search input with a built-in search icon and clear button. Fills its container width with an underline treatment. Use for search fields in fluid form layouts or as a standalone search bar in dense UIs.',
+          `A fluid-style search input with a built-in search icon and clear button. Fills its container width with an underline treatment. Use for search fields in fluid form layouts or as a standalone search bar in dense UIs.
+
+### Import
+\`\`\`jsx
+import { LeapFluidSearch } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

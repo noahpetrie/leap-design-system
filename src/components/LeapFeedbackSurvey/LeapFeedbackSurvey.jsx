@@ -1,19 +1,21 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapFeedbackSurvey.module.scss';
+import { cn } from '../../lib/utils';
 
 const RatingInput = ({ questionId, value, onChange }) => {
   const [hovered, setHovered] = useState(0);
 
   return (
-    <div className={styles['leap-feedback-survey__rating']}>
+    <div className="flex items-center gap-1">
       {[1, 2, 3, 4, 5].map((n) => (
         <button
           key={n}
           type="button"
-          className={`${styles['leap-feedback-survey__star']} ${
-            n <= (hovered || value) ? styles['leap-feedback-survey__star--active'] : ''
-          }`}
+          className={cn(
+            'border-none bg-transparent p-0.5 cursor-pointer transition-all duration-150',
+            n <= (hovered || value) ? 'text-primary' : 'text-border',
+            'hover:scale-[1.15] hover:text-primary'
+          )}
           onMouseEnter={() => setHovered(n)}
           onMouseLeave={() => setHovered(0)}
           onClick={() => onChange(questionId, n)}
@@ -25,7 +27,7 @@ const RatingInput = ({ questionId, value, onChange }) => {
         </button>
       ))}
       {value > 0 && (
-        <span className={styles['leap-feedback-survey__rating-value']}>
+        <span className="ml-2 text-xs font-medium text-muted-foreground">
           {value}/5
         </span>
       )}
@@ -35,7 +37,7 @@ const RatingInput = ({ questionId, value, onChange }) => {
 
 const TextInput = ({ questionId, value, onChange }) => (
   <textarea
-    className={styles['leap-feedback-survey__textarea']}
+    className="w-full resize-y rounded border border-border px-3 py-2 text-sm text-foreground transition-colors duration-150 placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
     value={value || ''}
     onChange={(e) => onChange(questionId, e.target.value)}
     rows={4}
@@ -44,18 +46,18 @@ const TextInput = ({ questionId, value, onChange }) => (
 );
 
 const SelectInput = ({ questionId, options, value, onChange }) => (
-  <div className={styles['leap-feedback-survey__options']}>
+  <div className="flex flex-col gap-2">
     {options.map((opt) => (
-      <label key={opt} className={styles['leap-feedback-survey__radio-label']}>
+      <label key={opt} className="flex cursor-pointer items-center gap-2 py-1 text-sm text-foreground">
         <input
           type="radio"
           name={questionId}
           value={opt}
           checked={value === opt}
           onChange={() => onChange(questionId, opt)}
-          className={styles['leap-feedback-survey__radio']}
+          className="sr-only peer"
         />
-        <span className={styles['leap-feedback-survey__radio-indicator']} />
+        <span className="relative flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full border-2 border-border transition-colors duration-150 peer-checked:border-primary peer-focus:ring-2 peer-focus:ring-primary/30 after:absolute after:h-2 after:w-2 after:rounded-full after:bg-transparent after:transition-transform after:scale-0 peer-checked:after:scale-100 peer-checked:after:bg-primary" />
         {opt}
       </label>
     ))}
@@ -80,16 +82,19 @@ const LeapFeedbackSurvey = ({ questions, onSubmit }) => {
 
   return (
     <form
-      className={styles['leap-feedback-survey']}
+      className="max-w-[640px] rounded-lg border border-border bg-background p-6"
       onSubmit={handleSubmit}
     >
       {questions.map((q, idx) => (
         <fieldset
           key={q.id}
-          className={styles['leap-feedback-survey__question']}
+          className={cn(
+            'border-none p-0 mb-6',
+            idx === questions.length - 1 && 'mb-8'
+          )}
         >
-          <legend className={styles['leap-feedback-survey__legend']}>
-            <span className={styles['leap-feedback-survey__number']}>
+          <legend className="mb-3 block text-sm font-semibold text-foreground">
+            <span className="mr-1 font-bold text-primary">
               {idx + 1}.
             </span>
             {q.text}
@@ -124,7 +129,7 @@ const LeapFeedbackSurvey = ({ questions, onSubmit }) => {
 
       <button
         type="submit"
-        className={styles['leap-feedback-survey__submit']}
+        className="inline-flex items-center justify-center rounded bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground transition-colors duration-150 hover:bg-primary/80 active:bg-primary/70 focus:outline-2 focus:outline-primary focus:outline-offset-2"
       >
         Submit Feedback
       </button>

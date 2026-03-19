@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapOrgChart.module.scss';
 
 const NodeCard = ({ name, role }) => (
-  <div className={styles['leap-org-chart__card']}>
-    <span className={styles['leap-org-chart__name']}>{name}</span>
-    <span className={styles['leap-org-chart__role']}>{role}</span>
+  <div className="flex flex-col items-center bg-white border-2 border-primary rounded-lg px-4 py-2 min-w-[140px] text-center shadow-sm transition-shadow hover:shadow-md">
+    <span className="text-sm font-semibold text-foreground">{name}</span>
+    <span className="text-xs font-medium text-muted-foreground mt-0.5">{role}</span>
   </div>
 );
 
@@ -14,19 +13,22 @@ const OrgNode = ({ node, depth = 0 }) => {
   const maxDepth = 3;
 
   return (
-    <div className={styles['leap-org-chart__node']}>
+    <div className="flex flex-col items-center">
       <NodeCard name={node.name} role={node.role} />
 
       {hasChildren && depth < maxDepth && (
-        <div className={styles['leap-org-chart__children-wrapper']}>
-          <div className={styles['leap-org-chart__connector-down']} />
-          <div className={styles['leap-org-chart__children']}>
+        <div className="flex flex-col items-center w-full">
+          {/* Connector down from parent */}
+          <div className="w-0.5 h-6 bg-[#c6c6c0] mx-auto" />
+          {/* Children row */}
+          <div className="flex justify-center gap-4 relative">
             {node.children.map((child, idx) => (
               <div
                 key={`${child.name}-${idx}`}
-                className={styles['leap-org-chart__child']}
+                className="flex flex-col items-center"
               >
-                <div className={styles['leap-org-chart__connector-up']} />
+                {/* Connector up to child */}
+                <div className="w-0.5 h-6 bg-[#c6c6c0] mx-auto" />
                 <OrgNode node={child} depth={depth + 1} />
               </div>
             ))}
@@ -41,7 +43,7 @@ const LeapOrgChart = ({ data }) => {
   if (!data) return null;
 
   return (
-    <div className={styles['leap-org-chart']}>
+    <div className="bg-white border border-border rounded-lg p-6 overflow-x-auto">
       <OrgNode node={data} depth={0} />
     </div>
   );

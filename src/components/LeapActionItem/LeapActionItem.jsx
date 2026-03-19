@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapActionItem.module.scss';
+import { cn } from '../../lib/utils';
 
 const PRIORITY_CONFIG = {
   urgent: { label: 'Urgent', modifier: 'urgent' },
@@ -14,6 +14,20 @@ const STATUS_OPTIONS = [
   { value: 'in-progress', label: 'In Progress' },
   { value: 'done', label: 'Done' },
 ];
+
+const priorityBarColors = {
+  urgent: 'bg-[#da1e28]',
+  high: 'bg-[#eb6200]',
+  medium: 'bg-[#f1c21b]',
+  low: 'bg-[#a8a8a0]',
+};
+
+const priorityTagStyles = {
+  urgent: 'bg-[#da1e28]/[0.12] text-[#da1e28]',
+  high: 'bg-[#eb6200]/[0.12] text-[#d45800]',
+  medium: 'bg-[#f1c21b]/[0.18] text-[#8e6a00]',
+  low: 'bg-[#a8a8a0]/[0.18] text-[#6f6f67]',
+};
 
 const getInitials = (name) => {
   if (!name) return '??';
@@ -42,51 +56,59 @@ const LeapActionItem = ({
 
   return (
     <div
-      className={`${styles['leap-action-item']} ${
-        status === 'done' ? styles['leap-action-item--done'] : ''
-      }`}
+      className={cn(
+        'flex bg-background border border-border rounded-lg overflow-hidden max-w-[560px] transition-shadow duration-150 ease-out hover:shadow-[0_2px_8px_rgba(0,0,0,0.08)]',
+        status === 'done' && 'opacity-70',
+      )}
     >
       {/* Priority bar */}
       <span
-        className={`${styles['leap-action-item__priority-bar']} ${styles[`leap-action-item__priority-bar--${prioConfig.modifier}`]}`}
+        className={cn('shrink-0 w-[5px]', priorityBarColors[prioConfig.modifier])}
         title={`Priority: ${prioConfig.label}`}
       />
 
-      <div className={styles['leap-action-item__body']}>
+      <div className="flex-1 px-4 py-3 min-w-0">
         {/* Top row: title + priority tag */}
-        <div className={styles['leap-action-item__top']}>
-          <h4 className={styles['leap-action-item__title']}>{title}</h4>
+        <div className="flex items-start justify-between gap-2 mb-2">
+          <h4
+            className={cn(
+              'text-sm font-semibold text-foreground m-0 flex-1 min-w-0 overflow-hidden text-ellipsis whitespace-nowrap',
+              status === 'done' && 'line-through text-muted-foreground',
+            )}
+          >
+            {title}
+          </h4>
           <span
-            className={`${styles['leap-action-item__priority-tag']} ${styles[`leap-action-item__priority-tag--${prioConfig.modifier}`]}`}
+            className={cn(
+              'text-xs font-medium inline-block px-2 py-px rounded-xl font-semibold whitespace-nowrap shrink-0',
+              priorityTagStyles[prioConfig.modifier],
+            )}
           >
             {prioConfig.label}
           </span>
         </div>
 
         {/* Bottom row: assignee, due date, status */}
-        <div className={styles['leap-action-item__bottom']}>
+        <div className="flex items-center gap-4 flex-wrap">
           {assignee && (
-            <span
-              className={styles['leap-action-item__assignee']}
-              title={assignee}
-            >
-              <span className={styles['leap-action-item__initials']}>
+            <span className="flex items-center gap-1" title={assignee}>
+              <span className="text-xs font-medium flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground font-bold shrink-0">
                 {getInitials(assignee)}
               </span>
-              <span className={styles['leap-action-item__assignee-name']}>
+              <span className="text-sm text-muted-foreground">
                 {assignee}
               </span>
             </span>
           )}
 
           {dueDate && (
-            <time className={styles['leap-action-item__due']}>
+            <time className="text-xs font-medium text-muted-foreground whitespace-nowrap">
               {dueDate}
             </time>
           )}
 
           <select
-            className={styles['leap-action-item__status-select']}
+            className="text-xs font-medium ml-auto py-1 pl-2 pr-3 border border-border rounded bg-background text-foreground cursor-pointer font-[inherit] focus:outline-2 focus:outline-primary focus:-outline-offset-1"
             value={status}
             onChange={handleStatusChange}
             aria-label="Change status"

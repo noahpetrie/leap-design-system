@@ -15,8 +15,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          'A number stepper input with +/- buttons, supporting min/max constraints, step increments, validation, and keyboard interaction. Use for numeric fields like quantities, scores, or thresholds.',
+        component: `A number stepper input with +/- buttons, supporting min/max constraints, step increments, validation, and keyboard interaction. Use for numeric fields like quantities, scores, or thresholds.
+
+### Import
+\`\`\`jsx
+import { LeapNumberInput } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

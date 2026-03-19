@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A team availability overview card showing avatar initials grouped by on-leave and available status with a count summary.',
+        component: `A team availability overview card showing avatar initials grouped by on-leave and available status with a count summary.
+
+### Import
+\`\`\`jsx
+import { LeapTeamOverview } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

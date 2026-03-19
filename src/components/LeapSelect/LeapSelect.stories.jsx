@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A dropdown select component that wraps Carbon\'s Dropdown, accepting string or object items for option selection.',
+        component: `A dropdown select component that wraps Carbon's Dropdown, accepting string or object items for option selection.
+
+### Import
+\`\`\`jsx
+import { LeapSelect } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

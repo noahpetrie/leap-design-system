@@ -8,8 +8,8 @@ import {
   Caution,
   CircleFill,
   CircleStroke,
-} from '@carbon/react/icons';
-import styles from './LeapShapeIndicator.module.scss';
+} from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 export const SHAPE_INDICATOR_KINDS = [
   'failed',
@@ -47,6 +47,20 @@ const shapeTypes = {
   'draft': CircleStroke,
 };
 
+const kindColorStyles = {
+  failed: { fill: '#da1e28' },
+  critical: { fill: '#da1e28' },
+  high: { fill: '#da1e28' },
+  medium: { fill: '#eb6200' },
+  low: { fill: '#f1c21b' },
+  cautious: { fill: '#f1c21b' },
+  undefined: { fill: '#8a3ffc' },
+  stable: { fill: '#24a148' },
+  informative: { fill: '#4589ff' },
+  incomplete: { fill: '#4589ff' },
+  draft: { fill: '#a8a8a8' },
+};
+
 /**
  * LeapShapeIndicator — Displays a severity/status shape with a label,
  * using distinct geometric shapes to convey priority levels.
@@ -58,19 +72,19 @@ const LeapShapeIndicator = React.forwardRef(function LeapShapeIndicator(
   const ShapeForKind = shapeTypes[kind];
   if (!ShapeForKind) return null;
 
-  const classNames = [
-    styles['leap-shape-indicator'],
-    textSize === 14 ? styles['leap-shape-indicator--14'] : '',
-    className || '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   return (
-    <div className={classNames} ref={ref}>
+    <div
+      className={cn(
+        'flex items-center text-muted-foreground',
+        textSize === 14 ? 'text-sm' : 'text-xs',
+        className
+      )}
+      ref={ref}
+    >
       <ShapeForKind
         size={16}
-        className={styles[`leap-shape-indicator--${kind}`]}
+        className="self-center mr-2"
+        style={kindColorStyles[kind]}
       />
       {label}
     </div>

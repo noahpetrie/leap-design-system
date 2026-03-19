@@ -14,7 +14,13 @@ export default {
     docs: {
       description: {
         component:
-          'A fluid-style multi-line text area for longer-form input. Pairs with `LeapFluidTextInput` for consistent fluid form layouts. Supports character counting with `enableCounter` + `maxCount` and validation states (invalid, warn).',
+          `A fluid-style multi-line text area for longer-form input. Pairs with \`LeapFluidTextInput\` for consistent fluid form layouts. Supports character counting with \`enableCounter\` + \`maxCount\` and validation states (invalid, warn).
+
+### Import
+\`\`\`jsx
+import { LeapFluidTextArea } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

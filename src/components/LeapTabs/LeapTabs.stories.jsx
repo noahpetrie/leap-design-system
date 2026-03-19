@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A tabbed content container built on Carbon Tabs, accepting an array of label/content pairs for organized panel navigation.',
+        component: `A tabbed content container built on Carbon Tabs, accepting an array of label/content pairs for organized panel navigation.
+
+### Import
+\`\`\`jsx
+import { LeapTabs } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

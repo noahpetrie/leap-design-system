@@ -22,7 +22,13 @@ export default {
     docs: {
       description: {
         component:
-          'A fluid-style multi-select dropdown for choosing multiple options from a list. Selected items appear as tags within the field. Use `itemToString` to control how each item renders. Pairs with `LeapFluidDropdown` for consistent fluid form patterns.',
+          `A fluid-style multi-select dropdown for choosing multiple options from a list. Selected items appear as tags within the field. Use \`itemToString\` to control how each item renders. Pairs with \`LeapFluidDropdown\` for consistent fluid form patterns.
+
+### Import
+\`\`\`jsx
+import { LeapFluidMultiSelect } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

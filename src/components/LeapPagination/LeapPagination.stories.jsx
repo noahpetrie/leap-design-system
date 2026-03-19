@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A pagination control that wraps Carbon Pagination with configurable page sizes and total item counts.',
+        component: `A pagination control that wraps Carbon Pagination with configurable page sizes and total item counts.
+
+### Import
+\`\`\`jsx
+import { LeapPagination } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

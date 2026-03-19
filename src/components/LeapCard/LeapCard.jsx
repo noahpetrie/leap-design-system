@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapCard.module.scss';
+import { cn } from '../../lib/utils';
+
+const variantClasses = {
+  default: '',
+  raised: 'shadow-[0_2px_6px_rgba(0,0,0,0.08)]',
+  ai: 'border-[#c6e8d9]',
+  danger: 'border-[#da1e28]',
+  metric: 'bg-border border-none',
+};
 
 const LeapCard = ({
   variant = 'default',
@@ -16,21 +24,25 @@ const LeapCard = ({
 
   return (
     <Tag
-      className={`${styles['card']} ${styles[`card--${variant}`]} ${isClickable ? styles['card--clickable'] : ''}`}
+      className={cn(
+        'border border-border rounded-lg bg-card p-4 text-left w-full',
+        variantClasses[variant],
+        isClickable && 'cursor-pointer transition-[box-shadow,border-color] duration-150 hover:shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:border-primary focus:outline-2 focus:outline-primary focus:outline-offset-2'
+      )}
       onClick={onClick}
       type={isClickable ? 'button' : undefined}
       {...rest}
     >
       {(title || aiLabel) && (
-        <div className={styles['card-header']}>
-          <div>
-            {title && <span className={styles['card-title']}>{title}</span>}
-            {subtitle && <span className={styles['card-subtitle']}>{subtitle}</span>}
+        <div className="flex justify-between items-start mb-3">
+          <div className="flex flex-col gap-0.5">
+            {title && <span className="text-sm font-semibold text-foreground">{title}</span>}
+            {subtitle && <span className="text-xs font-medium text-muted-foreground">{subtitle}</span>}
           </div>
-          {aiLabel && <div className={styles['card-ai']}>{aiLabel}</div>}
+          {aiLabel && <div>{aiLabel}</div>}
         </div>
       )}
-      <div className={styles['card-body']}>{children}</div>
+      <div className="text-sm text-muted-foreground">{children}</div>
     </Tag>
   );
 };

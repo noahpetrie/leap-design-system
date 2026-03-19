@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A severity/status indicator that pairs a shaped icon (circle, diamond, triangle, etc.) with a label to convey severity levels like critical, high, medium, and low.',
+        component: `A severity/status indicator that pairs a shaped icon (circle, diamond, triangle, etc.) with a label to convey severity levels like critical, high, medium, and low.
+
+### Import
+\`\`\`jsx
+import { LeapShapeIndicator } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

@@ -11,7 +11,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Renders an S-curve SVG visualization that tracks adoption progress through five stages: Awareness, Understanding, Commitment, Adoption, and Reinforcement.',
+        component: `Renders an S-curve SVG visualization that tracks adoption progress through five stages: Awareness, Understanding, Commitment, Adoption, and Reinforcement.
+
+### Import
+\`\`\`jsx
+import { LeapAdoptionCurve } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

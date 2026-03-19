@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Copy, Checkmark } from '@carbon/react/icons';
-import styles from './LeapCodeSnippet.module.scss';
+import { Copy, Checkmark } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const LeapCodeSnippet = ({
   children,
@@ -41,7 +41,10 @@ const LeapCodeSnippet = ({
   if (type === 'inline') {
     return (
       <code
-        className={`${styles['leap-code-snippet--inline']} ${className || ''}`}
+        className={cn(
+          'font-mono text-sm leading-5 bg-[#e0e0e0] text-[#161616] px-1.5 py-px rounded whitespace-nowrap',
+          className
+        )}
         {...rest}
       >
         {children}
@@ -49,37 +52,45 @@ const LeapCodeSnippet = ({
     );
   }
 
-  const classNames = [
-    styles['leap-code-snippet'],
-    styles[`leap-code-snippet--${type}`],
-    className || '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   return (
-    <div className={classNames} {...rest}>
+    <div
+      className={cn(
+        'relative bg-[#262626] text-[#f4f4f4] rounded font-mono text-sm leading-5',
+        type === 'single' && 'flex items-center min-h-[2.5rem] pl-4 pr-12',
+        type === 'multi' && 'p-4 pr-12',
+        className
+      )}
+      {...rest}
+    >
       {language && (
-        <div className={styles['leap-code-snippet__language']}>{language}</div>
+        <div className="pt-2 px-4 text-xs text-[#a8a8a8] tracking-wide">{language}</div>
       )}
       <div
-        className={styles['leap-code-snippet__body']}
+        className={cn(
+          type === 'single' && 'overflow-x-auto whitespace-nowrap flex-1',
+          type === 'multi' && 'flex'
+        )}
         style={type === 'multi' && maxHeight ? { maxHeight, overflowY: 'auto' } : undefined}
       >
         {type === 'multi' && showLineNumbers && (
-          <div className={styles['leap-code-snippet__line-numbers']} aria-hidden="true">
+          <div className="flex flex-col pr-4 mr-4 border-r border-[#525252] text-[#6f6f6f] text-right select-none shrink-0" aria-hidden="true">
             {lines.map((_, i) => (
-              <span key={i}>{i + 1}</span>
+              <span key={i} className="leading-5">{i + 1}</span>
             ))}
           </div>
         )}
-        <pre className={styles['leap-code-snippet__code']}>
+        <pre className="m-0 p-0 bg-transparent text-inherit font-inherit whitespace-pre flex-1 overflow-x-auto">
           <code>{children}</code>
         </pre>
       </div>
       {showCopy && (
         <button
-          className={`${styles['leap-code-snippet__copy']} ${copied ? styles['leap-code-snippet__copy--copied'] : ''}`}
+          className={cn(
+            'absolute top-2 right-2 flex items-center justify-center w-8 h-8 p-0 border-none rounded bg-transparent text-[#a8a8a8] cursor-pointer transition-[color,background-color] duration-150',
+            'hover:bg-[#393939] hover:text-[#f4f4f4]',
+            'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]',
+            copied && 'text-primary hover:text-primary'
+          )}
           type="button"
           aria-label={copied ? 'Copied!' : 'Copy code'}
           title={copied ? 'Copied!' : 'Copy code'}

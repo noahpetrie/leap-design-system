@@ -8,11 +8,54 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A searchable dropdown combo box with typeahead filtering, keyboard navigation, and support for string or object items.',
+        component: `A searchable dropdown combo box with typeahead filtering, keyboard navigation, and support for string or object items.
+
+### Import
+\`\`\`jsx
+import { LeapComboBox } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },
-  argTypes: { onChange: { action: 'changed' } },
+  argTypes: {
+    items: {
+      description: 'Array of items to display. Can be strings or objects with `id` and `label`.',
+      control: 'object',
+    },
+    selectedItem: {
+      description: 'The currently selected item (string or object).',
+      control: 'text',
+    },
+    onChange: {
+      description: 'Callback fired when an item is selected.',
+      action: 'changed',
+    },
+    placeholder: {
+      description: 'Placeholder text for the input field.',
+      control: 'text',
+    },
+    label: {
+      description: 'Label displayed above the combo box.',
+      control: 'text',
+    },
+    helperText: {
+      description: 'Helper text displayed below the combo box.',
+      control: 'text',
+    },
+    disabled: {
+      description: 'Whether the combo box is disabled.',
+      control: 'boolean',
+    },
+    invalid: {
+      description: 'Whether the combo box is in an invalid state.',
+      control: 'boolean',
+    },
+    invalidText: {
+      description: 'Error message displayed when `invalid` is true.',
+      control: 'text',
+    },
+  },
 };
 
 const countries = [

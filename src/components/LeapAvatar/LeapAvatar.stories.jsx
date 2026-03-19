@@ -12,7 +12,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Displays a user avatar with initials or an image, available in four sizes (sm, md, lg, xl) with optional online/away/busy/offline status indicators.',
+        component: `Displays a user avatar with initials or an image, available in four sizes (sm, md, lg, xl) with optional online/away/busy/offline status indicators.
+
+### Import
+\`\`\`jsx
+import { LeapAvatar } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapContextMenu.module.scss';
+import { cn } from '../../lib/utils';
 
 const LeapContextMenu = ({ children, items = [], onSelect }) => {
   const [visible, setVisible] = useState(false);
@@ -54,33 +54,37 @@ const LeapContextMenu = ({ children, items = [], onSelect }) => {
   };
 
   return (
-    <div className={styles['leap-context-menu-trigger']} onContextMenu={handleContextMenu}>
+    <div className="contents" onContextMenu={handleContextMenu}>
       {children}
       {visible && (
         <div
           ref={menuRef}
-          className={styles['leap-context-menu']}
+          className="fixed z-[9999] min-w-[10rem] max-w-[18rem] py-1 bg-card border border-border shadow-[0_2px_6px_rgba(0,0,0,0.2)] list-none"
           style={{ top: position.y, left: position.x }}
           role="menu"
         >
           {items.map((item) => {
             if (item.type === 'divider') {
-              return <div key={item.id} className={styles['leap-context-menu__divider']} role="separator" />;
+              return <div key={item.id} className="h-px my-1 bg-border" role="separator" />;
             }
             return (
               <button
                 key={item.id}
-                className={`${styles['leap-context-menu__item']} ${
-                  item.disabled ? styles['leap-context-menu__item--disabled'] : ''
-                } ${item.danger ? styles['leap-context-menu__item--danger'] : ''}`}
+                className={cn(
+                  'flex items-center gap-2 w-full py-1.5 px-4 border-none bg-transparent text-foreground text-sm cursor-pointer text-left whitespace-nowrap',
+                  'hover:bg-accent',
+                  'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]',
+                  item.disabled && 'text-muted-foreground opacity-50 cursor-not-allowed hover:bg-transparent',
+                  item.danger && 'text-destructive hover:bg-destructive hover:text-primary-foreground'
+                )}
                 role="menuitem"
                 disabled={item.disabled}
                 onClick={() => handleItemClick(item)}
               >
-                {item.icon && <span className={styles['leap-context-menu__icon']}>{item.icon}</span>}
-                <span className={styles['leap-context-menu__label']}>{item.label}</span>
+                {item.icon && <span className="flex items-center shrink-0 [&_svg]:w-4 [&_svg]:h-4 [&_svg]:fill-current">{item.icon}</span>}
+                <span className="flex-1">{item.label}</span>
                 {item.shortcut && (
-                  <span className={styles['leap-context-menu__shortcut']}>{item.shortcut}</span>
+                  <span className="ml-auto pl-8 text-muted-foreground text-xs font-medium">{item.shortcut}</span>
                 )}
               </button>
             );

@@ -9,7 +9,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A checkbox input component wrapping Carbon\'s Checkbox with support for controlled and uncontrolled states, labels, and disabled mode.',
+        component: `A checkbox input component wrapping Carbon's Checkbox with support for controlled and uncontrolled states, labels, and disabled mode.
+
+### Import
+\`\`\`jsx
+import { LeapCheckbox } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

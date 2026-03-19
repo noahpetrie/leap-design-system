@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A multi-line text input built on the Carbon TextArea, with optional character counter and configurable row count.',
+        component: `A multi-line text input built on the Carbon TextArea, with optional character counter and configurable row count.
+
+### Import
+\`\`\`jsx
+import { LeapTextArea } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

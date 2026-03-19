@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Search } from '@carbon/react';
-import styles from './LeapCommandPalette.module.scss';
+import { Search as SearchIcon } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
-const LeapCommandPalette = ({ open = false, onOpen, onClose, onSelect, commands = [], placeholder = 'Type a command…' }) => {
+const LeapCommandPalette = ({ open = false, onOpen, onClose, onSelect, commands = [], placeholder = 'Type a command\u2026' }) => {
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef(null);
@@ -45,7 +45,7 @@ const LeapCommandPalette = ({ open = false, onOpen, onClose, onSelect, commands 
     if (open) {
       setQuery('');
       setActiveIndex(0);
-      setTimeout(() => inputRef.current?.querySelector('input')?.focus(), 0);
+      setTimeout(() => inputRef.current?.focus(), 0);
     }
   }, [open]);
 
@@ -89,32 +89,37 @@ const LeapCommandPalette = ({ open = false, onOpen, onClose, onSelect, commands 
   let selectableIndex = -1;
 
   return (
-    <div className={styles['leap-command-palette__overlay']} onClick={onClose}>
+    <div className="fixed inset-0 z-[9999] flex justify-center pt-[15vh] bg-black/50" onClick={onClose}>
       <div
-        className={styles['leap-command-palette']}
+        className="flex flex-col w-full max-w-[36rem] max-h-96 bg-card border border-border rounded shadow-[0_8px_24px_rgba(0,0,0,0.25)] overflow-hidden self-start"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}
         role="dialog"
         aria-label="Command palette"
       >
-        <div className={styles['leap-command-palette__input']} ref={inputRef}>
-          <Search
-            labelText="Command search"
-            placeholder={placeholder}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            autoComplete="off"
-            size="lg"
-          />
+        <div className="shrink-0 border-b border-border relative">
+          <div className="flex items-center px-4">
+            <SearchIcon size={16} className="text-muted-foreground shrink-0" />
+            <input
+              ref={inputRef}
+              type="text"
+              className="flex-1 h-12 px-3 border-none bg-transparent text-foreground text-sm outline-none placeholder:text-muted-foreground"
+              placeholder={placeholder}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              autoComplete="off"
+              aria-label="Command search"
+            />
+          </div>
         </div>
-        <div className={styles['leap-command-palette__list']} ref={listRef} role="listbox">
+        <div className="flex-1 overflow-y-auto py-1" ref={listRef} role="listbox">
           {filtered.length === 0 && (
-            <div className={styles['leap-command-palette__empty']}>No results found</div>
+            <div className="py-6 px-4 text-muted-foreground text-sm text-center">No results found</div>
           )}
           {filtered.map((item) => {
             if (item.type === 'group') {
               return (
-                <div key={item.id} className={styles['leap-command-palette__group']}>
+                <div key={item.id} className="py-2 px-4 pb-1 text-muted-foreground text-xs font-medium uppercase tracking-wide">
                   {item.label}
                 </div>
               );
@@ -126,19 +131,25 @@ const LeapCommandPalette = ({ open = false, onOpen, onClose, onSelect, commands 
             return (
               <button
                 key={item.id}
-                className={`${styles['leap-command-palette__item']} ${
-                  !item.disabled && currentIndex === activeIndex ? styles['leap-command-palette__item--active'] : ''
-                } ${item.disabled ? styles['leap-command-palette__item--disabled'] : ''}`}
+                className={cn(
+                  'flex items-center gap-3 w-full py-2 px-4 border-none bg-transparent text-foreground text-sm cursor-pointer text-left',
+                  'hover:bg-accent',
+                  'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]',
+                  !item.disabled && currentIndex === activeIndex && 'bg-accent outline-none',
+                  item.disabled && 'text-muted-foreground opacity-50 cursor-not-allowed hover:bg-transparent'
+                )}
                 role="option"
                 aria-selected={!item.disabled && currentIndex === activeIndex}
                 data-index={!item.disabled ? currentIndex : undefined}
                 onClick={() => handleSelect(item)}
                 disabled={item.disabled}
               >
-                {item.icon && <span className={styles['leap-command-palette__item-icon']}>{item.icon}</span>}
-                <span className={styles['leap-command-palette__item-label']}>{item.label}</span>
+                {item.icon && <span className="flex items-center shrink-0 [&_svg]:w-4 [&_svg]:h-4 [&_svg]:fill-current">{item.icon}</span>}
+                <span className="flex-1">{item.label}</span>
                 {item.shortcut && (
-                  <span className={styles['leap-command-palette__item-shortcut']}>{item.shortcut}</span>
+                  <span className="ml-auto px-1.5 py-0.5 rounded-sm bg-muted border border-border text-muted-foreground text-xs font-mono">
+                    {item.shortcut}
+                  </span>
                 )}
               </button>
             );

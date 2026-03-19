@@ -6,14 +6,35 @@ import {
   WarningFilled,
   InformationFilled,
   Close,
-} from '@carbon/react/icons';
-import styles from './LeapInlineNotification.module.scss';
+} from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const iconMap = {
   success: Checkmark,
   error: ErrorFilled,
   warning: WarningFilled,
   info: InformationFilled,
+};
+
+const KIND_BORDER_COLORS = {
+  success: 'border-l-primary',
+  error: 'border-l-destructive',
+  warning: 'border-l-[#f1c21b]',
+  info: 'border-l-[#4589ff]',
+};
+
+const KIND_ICON_COLORS = {
+  success: 'fill-primary',
+  error: 'fill-destructive',
+  warning: 'fill-[#f1c21b]',
+  info: 'fill-[#4589ff]',
+};
+
+const KIND_LOW_CONTRAST_BG = {
+  success: 'bg-[rgba(12,140,94,0.1)]',
+  error: 'bg-[rgba(218,30,40,0.1)]',
+  warning: 'bg-[rgba(241,194,27,0.1)]',
+  info: 'bg-[rgba(69,137,255,0.1)]',
 };
 
 /**
@@ -42,26 +63,26 @@ const LeapInlineNotification = ({
     if (onClose) onClose(e);
   };
 
-  const classNames = [
-    styles['leap-inline-notification'],
-    styles[`leap-inline-notification--${kind}`],
-    lowContrast ? styles['leap-inline-notification--low-contrast'] : '',
-    className || '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   return (
-    <div className={classNames} role="alert" {...rest}>
-      <Icon className={styles['leap-inline-notification__icon']} size={20} />
-      <div className={styles['leap-inline-notification__content']}>
+    <div
+      className={cn(
+        'flex items-start py-3 px-4 mb-3 border-l-[3px] gap-2',
+        lowContrast ? KIND_LOW_CONTRAST_BG[kind] : 'bg-card',
+        KIND_BORDER_COLORS[kind],
+        className,
+      )}
+      role="alert"
+      {...rest}
+    >
+      <Icon className={cn('shrink-0 mt-0.5', KIND_ICON_COLORS[kind])} size={20} />
+      <div className="flex flex-col flex-1 gap-1">
         {title && (
-          <span className={styles['leap-inline-notification__title']}>
+          <span className="text-sm font-semibold text-foreground">
             {title}
           </span>
         )}
         {subtitle && (
-          <span className={styles['leap-inline-notification__subtitle']}>
+          <span className="text-sm text-muted-foreground">
             {subtitle}
           </span>
         )}
@@ -69,7 +90,7 @@ const LeapInlineNotification = ({
       {closable && (
         <button
           type="button"
-          className={styles['leap-inline-notification__close']}
+          className="flex items-center justify-center shrink-0 w-6 h-6 p-0 border-none bg-transparent cursor-pointer text-foreground hover:bg-accent focus:outline-2 focus:outline-ring focus:-outline-offset-2"
           aria-label="Close notification"
           onClick={handleClose}
         >

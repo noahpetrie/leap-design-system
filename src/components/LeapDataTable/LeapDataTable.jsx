@@ -1,48 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  DataTable,
-  Table,
-  TableHead,
-  TableRow,
-  TableHeader,
-  TableBody,
-  TableCell,
-} from '@carbon/react';
-import styles from './LeapDataTable.module.scss';
+import { cn } from '../../lib/utils';
 
 const LeapDataTable = ({ rows, headers, onRowClick, ...rest }) => {
   return (
-    <div className={styles['leap-data-table']} {...rest}>
-      <DataTable rows={rows} headers={headers}>
-        {({ rows: tableRows, headers: tableHeaders, getTableProps, getHeaderProps, getRowProps }) => (
-          <Table {...getTableProps()}>
-            <TableHead>
-              <TableRow>
-                {tableHeaders.map((header) => (
-                  <TableHeader key={header.key} {...getHeaderProps({ header })}>
-                    {header.header}
-                  </TableHeader>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {tableRows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  {...getRowProps({ row })}
-                  onClick={() => onRowClick && onRowClick(row)}
-                  className={onRowClick ? styles['leap-data-table-row--clickable'] : ''}
+    <div className="w-full" {...rest}>
+      <table className="w-full border-collapse text-sm">
+        <thead>
+          <tr>
+            {headers.map((header) => (
+              <th
+                key={header.key}
+                className="bg-card px-4 py-3 text-left text-xs font-semibold text-foreground"
+              >
+                {header.header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr
+              key={row.id}
+              onClick={() => onRowClick && onRowClick(row)}
+              className={cn(
+                'border-b border-border',
+                onRowClick && 'cursor-pointer hover:bg-accent'
+              )}
+            >
+              {headers.map((header) => (
+                <td
+                  key={`${row.id}-${header.key}`}
+                  className="px-4 py-3 text-foreground"
                 >
-                  {row.cells.map((cell) => (
-                    <TableCell key={cell.id}>{cell.value}</TableCell>
-                  ))}
-                </TableRow>
+                  {row[header.key]}
+                </td>
               ))}
-            </TableBody>
-          </Table>
-        )}
-      </DataTable>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

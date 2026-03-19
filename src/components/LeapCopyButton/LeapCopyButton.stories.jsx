@@ -14,7 +14,13 @@ export default {
     docs: {
       description: {
         component:
-          'A one-click copy-to-clipboard button with visual feedback. Supports ghost, primary, and icon-only variants with configurable feedback text and timeout.',
+          `A one-click copy-to-clipboard button with visual feedback. Supports ghost, primary, and icon-only variants with configurable feedback text and timeout.
+
+### Import
+\`\`\`jsx
+import { LeapCopyButton } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

@@ -12,7 +12,13 @@ export default {
     docs: {
       description: {
         component:
-          'A file upload component with drag-and-drop support, file type and size validation, and a removable file list.',
+          `A file upload component with drag-and-drop support, file type and size validation, and a removable file list.
+
+### Import
+\`\`\`jsx
+import { LeapFileUploader } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

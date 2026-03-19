@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapBalanceCard.module.scss';
+import { cn } from '../../lib/utils';
 
 const LeapBalanceCard = ({ leaveType, used, total, unit = 'days', ...rest }) => {
   const remaining = total - used;
@@ -8,20 +8,23 @@ const LeapBalanceCard = ({ leaveType, used, total, unit = 'days', ...rest }) => 
   const isLow = percentage >= 80;
 
   return (
-    <div className={styles['balance-card']} {...rest}>
-      <div className={styles['balance-card-header']}>
-        <span className={styles['balance-card-type']}>{leaveType}</span>
-        <span className={styles['balance-card-remaining']}>
+    <div className="border border-border rounded bg-card p-4" {...rest}>
+      <div className="flex justify-between items-baseline mb-3">
+        <span className="text-sm font-semibold text-foreground">{leaveType}</span>
+        <span className="text-xs font-medium text-muted-foreground">
           {remaining} {unit} remaining
         </span>
       </div>
-      <div className={styles['balance-card-bar-track']}>
+      <div className="h-2 bg-border rounded overflow-hidden mb-2">
         <div
-          className={`${styles['balance-card-bar-fill']} ${isLow ? styles['balance-card-bar-fill--low'] : ''}`}
+          className={cn(
+            'h-full rounded transition-[width] duration-300 ease-out',
+            isLow ? 'bg-destructive' : 'bg-primary',
+          )}
           style={{ width: `${Math.min(percentage, 100)}%` }}
         />
       </div>
-      <div className={styles['balance-card-footer']}>
+      <div className="text-xs font-medium flex justify-between text-muted-foreground">
         <span>{used} {unit} used</span>
         <span>{total} {unit} total</span>
       </div>

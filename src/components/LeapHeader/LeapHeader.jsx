@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Menu } from '@carbon/react/icons';
-import styles from './LeapHeader.module.scss';
+import { Menu } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const LeapHeader = ({
   appName = 'Leap',
@@ -13,11 +13,14 @@ const LeapHeader = ({
   ...rest
 }) => {
   return (
-    <header className={styles['header']} {...rest}>
-      <div className={styles['header-left']}>
+    <header
+      className="flex items-center h-12 w-full px-4 bg-foreground text-primary-foreground fixed top-0 left-0 z-[8000]"
+      {...rest}
+    >
+      <div className="flex items-center gap-2 shrink-0">
         {onMenuClick && (
           <button
-            className={styles['header-menu-btn']}
+            className="flex items-center justify-center w-8 h-8 p-0 border-none bg-transparent text-primary-foreground cursor-pointer hover:bg-white/10 focus:outline-2 focus:outline-ring focus:-outline-offset-2"
             type="button"
             aria-label="Open menu"
             onClick={onMenuClick}
@@ -26,19 +29,24 @@ const LeapHeader = ({
           </button>
         )}
         {logo || (logoSrc && (
-          <img className={styles['header-logo']} src={logoSrc} alt={`${appName} logo`} />
+          <img className="h-5 w-auto" src={logoSrc} alt={`${appName} logo`} />
         ))}
-        <span className={styles['header-app-name']}>{appName}</span>
+        <span className="text-sm font-semibold text-primary-foreground whitespace-nowrap">{appName}</span>
       </div>
 
       {navItems.length > 0 && (
-        <nav className={styles['header-nav']} aria-label="Main navigation">
+        <nav className="flex items-center h-full ml-4 overflow-x-auto" aria-label="Main navigation">
           {navItems.map((item) => {
             const Element = item.href ? 'a' : 'button';
             return (
               <Element
                 key={item.id}
-                className={`${styles['header-nav-item']} ${item.isActive ? styles['header-nav-item--active'] : ''}`}
+                className={cn(
+                  'flex items-center h-full px-4 text-sm text-primary-foreground no-underline border-none bg-transparent cursor-pointer whitespace-nowrap border-b-2 border-transparent',
+                  'hover:bg-white/10 hover:text-primary-foreground',
+                  'focus:outline-2 focus:outline-ring focus:-outline-offset-2',
+                  item.isActive && 'border-b-primary hover:border-b-primary/80',
+                )}
                 href={item.href || undefined}
                 onClick={item.onClick}
                 type={item.href ? undefined : 'button'}
@@ -50,7 +58,7 @@ const LeapHeader = ({
         </nav>
       )}
 
-      {actions && <div className={styles['header-actions']}>{actions}</div>}
+      {actions && <div className="flex items-center gap-2 ml-auto shrink-0">{actions}</div>}
     </header>
   );
 };

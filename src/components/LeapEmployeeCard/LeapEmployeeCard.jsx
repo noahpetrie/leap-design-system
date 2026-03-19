@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapEmployeeCard.module.scss';
 
 const getInitials = (name) => {
   return name
@@ -20,29 +19,29 @@ const LeapEmployeeCard = ({
   ...rest
 }) => {
   return (
-    <div className={styles['employee-card']} {...rest}>
-      <div className={styles['employee-card-avatar']}>
+    <div className="flex items-center gap-4 rounded border border-border bg-card p-4" {...rest}>
+      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-primary/10 text-sm font-semibold text-primary">
         {avatarUrl ? (
-          <img src={avatarUrl} alt={name} />
+          <img src={avatarUrl} alt={name} className="h-full w-full object-cover" />
         ) : (
           <span>{getInitials(name)}</span>
         )}
       </div>
-      <div className={styles['employee-card-info']}>
-        <span className={styles['employee-card-name']}>{name}</span>
-        <span className={styles['employee-card-role']}>{role}</span>
+      <div className="flex flex-1 flex-col gap-0.5">
+        <span className="text-sm font-semibold text-foreground">{name}</span>
+        <span className="text-sm text-muted-foreground">{role}</span>
         {department && (
-          <span className={styles['employee-card-department']}>
+          <span className="text-xs font-medium text-muted-foreground">
             {department}
           </span>
         )}
       </div>
       {leaveBalance !== undefined && (
-        <div className={styles['employee-card-balance']}>
-          <span className={styles['employee-card-balance-value']}>
+        <div className="flex flex-shrink-0 flex-col items-center">
+          <span className="text-base font-semibold text-primary">
             {leaveBalance}
           </span>
-          <span className={styles['employee-card-balance-label']}>
+          <span className="text-xs font-medium text-muted-foreground">
             days left
           </span>
         </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapAdoptionCurve.module.scss';
 
 const DEFAULT_STAGES = [
   { label: 'Awareness', threshold: 20 },
@@ -51,18 +50,18 @@ const LeapAdoptionCurve = ({
     stages[0];
 
   return (
-    <div className={styles['leap-adoption-curve']}>
-      <div className={styles['leap-adoption-curve__header']}>
-        <span className={styles['leap-adoption-curve__percentage']}>
+    <div className="bg-background border border-border rounded-lg p-4 max-w-[720px]">
+      <div className="flex items-baseline gap-2 mb-4">
+        <span className="text-2xl font-bold text-primary tabular-nums">
           {clampedPct}%
         </span>
-        <span className={styles['leap-adoption-curve__stage-label']}>
+        <span className="text-sm text-muted-foreground uppercase tracking-[0.08em]">
           {currentStage.label}
         </span>
       </div>
 
       <svg
-        className={styles['leap-adoption-curve__svg']}
+        className="w-full h-auto"
         viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
         role="img"
         aria-label={`Adoption curve at ${clampedPct} percent`}
@@ -77,12 +76,16 @@ const LeapAdoptionCurve = ({
                 y1={y}
                 x2={PAD.left + W}
                 y2={y}
-                className={styles['leap-adoption-curve__grid']}
+                stroke="hsl(var(--border))"
+                strokeWidth={1}
               />
               <text
                 x={PAD.left - 8}
                 y={y + 4}
-                className={styles['leap-adoption-curve__y-label']}
+                className="text-xs font-medium"
+                fill="hsl(var(--muted-foreground))"
+                textAnchor="end"
+                dominantBaseline="middle"
               >
                 {tick}%
               </text>
@@ -93,13 +96,16 @@ const LeapAdoptionCurve = ({
         {/* Area fill */}
         <path
           d={buildAreaPath()}
-          className={styles['leap-adoption-curve__area']}
+          fill="rgba(12, 140, 94, 0.12)"
         />
 
         {/* Curve line */}
         <path
           d={buildCurvePath()}
-          className={styles['leap-adoption-curve__line']}
+          fill="none"
+          stroke="hsl(var(--primary))"
+          strokeWidth={2.5}
+          strokeLinejoin="round"
         />
 
         {/* Vertical dashed marker */}
@@ -108,7 +114,9 @@ const LeapAdoptionCurve = ({
           y1={PAD.top}
           x2={markerX}
           y2={PAD.top + H}
-          className={styles['leap-adoption-curve__marker']}
+          stroke="#1a1a18"
+          strokeWidth={1.5}
+          strokeDasharray="6 4"
         />
 
         {/* Dot on curve */}
@@ -116,7 +124,9 @@ const LeapAdoptionCurve = ({
           cx={markerX}
           cy={markerY}
           r={6}
-          className={styles['leap-adoption-curve__dot']}
+          fill="hsl(var(--primary))"
+          stroke="white"
+          strokeWidth={2}
         />
 
         {/* Stage labels along bottom */}
@@ -129,19 +139,24 @@ const LeapAdoptionCurve = ({
                 y1={PAD.top + H}
                 x2={x}
                 y2={PAD.top + H + 8}
-                className={styles['leap-adoption-curve__tick']}
+                stroke="hsl(var(--muted-foreground))"
+                strokeWidth={1}
               />
               <text
                 x={x}
                 y={PAD.top + H + 24}
-                className={styles['leap-adoption-curve__x-label']}
+                className="text-xs font-semibold"
+                fill="#1a1a18"
+                textAnchor="middle"
               >
                 {stage.label}
               </text>
               <text
                 x={x}
                 y={PAD.top + H + 40}
-                className={styles['leap-adoption-curve__x-sub']}
+                className="text-xs font-medium"
+                fill="hsl(var(--muted-foreground))"
+                textAnchor="middle"
               >
                 {stage.threshold}%
               </text>

@@ -14,7 +14,13 @@ export default {
     docs: {
       description: {
         component:
-          'A fluid-style number input with increment/decrement controls. Supports `min`, `max`, and `step` constraints. Use for numeric fields like quantities, team sizes, or scores in fluid form layouts.',
+          `A fluid-style number input with increment/decrement controls. Supports \`min\`, \`max\`, and \`step\` constraints. Use for numeric fields like quantities, team sizes, or scores in fluid form layouts.
+
+### Import
+\`\`\`jsx
+import { LeapFluidNumberInput } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

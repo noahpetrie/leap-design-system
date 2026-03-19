@@ -1,4 +1,6 @@
 // Leap Design System — barrel export
+export { cn } from './lib/utils';
+import './styles/globals.css';
 export { default as LeapAILabel } from './components/LeapAILabel';
 export { default as LeapAISkeleton } from './components/LeapAISkeleton';
 export { default as LeapAccordion } from './components/LeapAccordion';

@@ -1,7 +1,19 @@
 import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Copy, Checkmark } from '@carbon/react/icons';
-import styles from './LeapCopyButton.module.scss';
+import { Copy, Checkmark } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
+
+const kindClasses = {
+  ghost: 'py-1.5 px-3 bg-transparent text-muted-foreground hover:bg-accent hover:text-foreground',
+  primary: 'py-1.5 px-3 bg-primary text-white hover:bg-primary/80',
+  'icon-only': 'p-1.5 bg-transparent text-muted-foreground hover:bg-accent hover:text-foreground',
+};
+
+const sizeOverrides = {
+  sm: 'pt-1 pb-1 text-xs font-medium',
+  md: '',
+  lg: 'pt-2 pb-2',
+};
 
 const LeapCopyButton = ({ text, label = 'Copy', feedbackText = 'Copied!', feedbackTimeout = 2000, size = 'md', kind = 'ghost', onCopy }) => {
   const [copied, setCopied] = useState(false);
@@ -28,12 +40,16 @@ const LeapCopyButton = ({ text, label = 'Copy', feedbackText = 'Copied!', feedba
     timerRef.current = setTimeout(() => setCopied(false), feedbackTimeout);
   }, [text, feedbackTimeout, onCopy]);
 
-  const sizeClass = styles[`leap-copy-button--${size}`] || '';
-  const kindClass = styles[`leap-copy-button--${kind}`] || '';
-
   return (
     <button
-      className={`${styles['leap-copy-button']} ${sizeClass} ${kindClass} ${copied ? styles['leap-copy-button--copied'] : ''}`}
+      className={cn(
+        'inline-flex items-center gap-1.5 border-none rounded cursor-pointer transition-[background,color] duration-150 text-sm',
+        'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2',
+        kindClasses[kind],
+        sizeOverrides[size],
+        copied && 'text-primary',
+        copied && kind === 'primary' && 'text-white'
+      )}
       onClick={handleClick}
       type="button"
       aria-label={copied ? feedbackText : label}
@@ -42,12 +58,12 @@ const LeapCopyButton = ({ text, label = 'Copy', feedbackText = 'Copied!', feedba
       {copied ? (
         <>
           <Checkmark size={size === 'sm' ? 14 : 16} />
-          {kind !== 'icon-only' && <span className={styles['leap-copy-button__label']}>{feedbackText}</span>}
+          {kind !== 'icon-only' && <span className="whitespace-nowrap">{feedbackText}</span>}
         </>
       ) : (
         <>
           <Copy size={size === 'sm' ? 14 : 16} />
-          {kind !== 'icon-only' && <span className={styles['leap-copy-button__label']}>{label}</span>}
+          {kind !== 'icon-only' && <span className="whitespace-nowrap">{label}</span>}
         </>
       )}
     </button>

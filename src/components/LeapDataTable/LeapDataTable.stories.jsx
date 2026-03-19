@@ -9,7 +9,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A data table component built on Carbon\'s DataTable that renders rows and headers with optional clickable row support.',
+        component: `A data table component built on Carbon's DataTable that renders rows and headers with optional clickable row support.
+
+### Import
+\`\`\`jsx
+import { LeapDataTable } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

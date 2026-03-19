@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A hierarchical organization chart that renders a tree of people with name and role cards, supporting up to three levels of depth.',
+        component: `A hierarchical organization chart that renders a tree of people with name and role cards, supporting up to three levels of depth.
+
+### Import
+\`\`\`jsx
+import { LeapOrgChart } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

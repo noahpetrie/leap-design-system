@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'An inline notification component that displays success, error, warning, or info messages with an optional timestamp.',
+        component: `An inline notification component that displays success, error, warning, or info messages with an optional timestamp.
+
+### Import
+\`\`\`jsx
+import { LeapNotification } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

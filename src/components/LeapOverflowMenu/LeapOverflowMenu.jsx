@@ -1,7 +1,13 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { OverflowMenuVertical } from '@carbon/react/icons';
-import styles from './LeapOverflowMenu.module.scss';
+import { OverflowMenuVertical } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
+
+const triggerSizeStyles = {
+  sm: 'w-8 h-8',
+  md: 'w-10 h-10',
+  lg: 'w-12 h-12',
+};
 
 const LeapOverflowMenu = ({ items = [], icon: Icon = OverflowMenuVertical, size = 'md', flipped = false, onSelect, ariaLabel = 'Options' }) => {
   const [open, setOpen] = useState(false);
@@ -37,14 +43,12 @@ const LeapOverflowMenu = ({ items = [], icon: Icon = OverflowMenuVertical, size 
       let { top, left } = menuPos;
 
       if (flipped) {
-        // Right-aligned: ensure left edge isn't off-screen
         const adjustedLeft = left - menu.width;
         left = adjustedLeft < 4 ? 4 : left;
       } else {
         if (left + menu.width > vw - 4) left = vw - menu.width - 4;
       }
       if (top + menu.height > vh - 4) {
-        // Flip above
         top = triggerRef.current.getBoundingClientRect().top - menu.height - 2;
       }
 
@@ -85,10 +89,15 @@ const LeapOverflowMenu = ({ items = [], icon: Icon = OverflowMenuVertical, size 
   const iconSize = size === 'sm' ? 16 : size === 'lg' ? 24 : 20;
 
   return (
-    <div className={styles['leap-overflow-menu']}>
+    <div className="inline-block relative">
       <button
         ref={triggerRef}
-        className={`${styles['leap-overflow-menu__trigger']} ${styles[`leap-overflow-menu__trigger--${size}`]}`}
+        className={cn(
+          'inline-flex items-center justify-center border-none rounded bg-transparent text-foreground cursor-pointer transition-colors',
+          'hover:bg-accent',
+          'focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-[-2px]',
+          triggerSizeStyles[size]
+        )}
         onClick={() => setOpen((prev) => !prev)}
         aria-haspopup="true"
         aria-expanded={open}
@@ -100,25 +109,29 @@ const LeapOverflowMenu = ({ items = [], icon: Icon = OverflowMenuVertical, size 
       {open && (
         <div
           ref={menuRef}
-          className={`${styles['leap-overflow-menu__menu']} ${flipped ? styles['leap-overflow-menu__menu--flipped'] : ''}`}
+          className="fixed z-[9999] min-w-[10rem] max-w-[18rem] py-1 bg-card border border-border shadow-[0_2px_6px_rgba(0,0,0,0.2)]"
           style={{ top: menuPos.top, left: flipped ? 'auto' : menuPos.left, right: flipped ? `calc(100vw - ${menuPos.left}px)` : 'auto' }}
           role="menu"
         >
           {items.map((item) => {
             if (item.type === 'divider') {
-              return <div key={item.id} className={styles['leap-overflow-menu__divider']} role="separator" />;
+              return <div key={item.id} className="h-px my-1 bg-border" role="separator" />;
             }
             return (
               <button
                 key={item.id}
-                className={`${styles['leap-overflow-menu__item']} ${
-                  item.danger ? styles['leap-overflow-menu__item--danger'] : ''
-                } ${item.disabled ? styles['leap-overflow-menu__item--disabled'] : ''}`}
+                className={cn(
+                  'flex items-center gap-2 w-full px-4 py-2 border-none bg-transparent text-foreground text-sm cursor-pointer text-left whitespace-nowrap',
+                  'hover:bg-accent',
+                  'focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-[-2px]',
+                  item.danger && 'text-destructive hover:bg-destructive hover:text-primary-foreground',
+                  item.disabled && 'text-muted-foreground opacity-50 cursor-not-allowed hover:bg-transparent'
+                )}
                 role="menuitem"
                 disabled={item.disabled}
                 onClick={() => handleItemClick(item)}
               >
-                {item.icon && <span className={styles['leap-overflow-menu__item-icon']}>{item.icon}</span>}
+                {item.icon && <span className="flex items-center flex-shrink-0 [&_svg]:w-4 [&_svg]:h-4 [&_svg]:fill-current">{item.icon}</span>}
                 <span>{item.label}</span>
               </button>
             );

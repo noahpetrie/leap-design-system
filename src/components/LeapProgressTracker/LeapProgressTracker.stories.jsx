@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A horizontal step tracker that shows sequential progress through numbered steps with completed, current, and upcoming states.',
+        component: `A horizontal step tracker that shows sequential progress through numbered steps with completed, current, and upcoming states.
+
+### Import
+\`\`\`jsx
+import { LeapProgressTracker } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

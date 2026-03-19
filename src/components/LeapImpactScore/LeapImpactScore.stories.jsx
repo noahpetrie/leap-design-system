@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A circular gauge that visualizes an impact score from 0 to 100 with color-coded severity levels and an optional AI badge.',
+        component: `A circular gauge that visualizes an impact score from 0 to 100 with color-coded severity levels and an optional AI badge.
+
+### Import
+\`\`\`jsx
+import { LeapImpactScore } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

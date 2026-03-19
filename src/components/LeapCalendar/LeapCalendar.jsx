@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapCalendar.module.scss';
+import { cn } from '../../lib/utils';
 
 const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTH_NAMES = [
@@ -10,6 +10,15 @@ const MONTH_NAMES = [
 
 const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
 const getFirstDayOfMonth = (month, year) => new Date(year, month, 1).getDay();
+
+const statusBgMap = {
+  Vacation: 'bg-[#f0faf5]',
+  approved: 'bg-[#f0faf5]',
+  Sick: 'bg-[#edf5ff]',
+  sick: 'bg-[#edf5ff]',
+  Personal: 'bg-[#f6f2ff]',
+  personal: 'bg-[#f6f2ff]',
+};
 
 const LeapCalendar = ({
   month = new Date().getMonth(),
@@ -31,43 +40,57 @@ const LeapCalendar = ({
 
   const cells = [];
   for (let i = 0; i < firstDay; i++) {
-    cells.push(<div key={`empty-${i}`} className={styles['calendar-cell-empty']} />);
+    cells.push(<div key={`empty-${i}`} className="aspect-square" />);
   }
   for (let day = 1; day <= daysInMonth; day++) {
     const leave = leaveMap[day];
     const isHoliday = holidaySet.has(day);
     const isWeekend = (firstDay + day - 1) % 7 === 0 || (firstDay + day - 1) % 7 === 6;
 
-    let cellClass = styles['calendar-cell'];
-    if (leave) cellClass += ` ${styles[`calendar-cell--${leave.status || leave.type}`] || ''}`;
-    if (isHoliday) cellClass += ` ${styles['calendar-cell--holiday']}`;
-    if (isWeekend) cellClass += ` ${styles['calendar-cell--weekend']}`;
+    const statusKey = leave ? (leave.status || leave.type) : null;
 
     cells.push(
-      <div key={day} className={cellClass} title={leave ? `${leave.type}: ${leave.status || ''}` : isHoliday ? 'Holiday' : ''}>
-        <span className={styles['calendar-day']}>{day}</span>
-        {leave && <span className={styles['calendar-indicator']}>{leave.type?.[0]}</span>}
-        {isHoliday && !leave && <span className={styles['calendar-indicator']}>H</span>}
+      <div
+        key={day}
+        className={cn(
+          'aspect-square flex flex-col items-center justify-center rounded cursor-default relative',
+          isWeekend && 'bg-border',
+          statusKey && statusBgMap[statusKey],
+          isHoliday && 'bg-[#fff1f1]'
+        )}
+        title={leave ? `${leave.type}: ${leave.status || ''}` : isHoliday ? 'Holiday' : ''}
+      >
+        <span className="text-sm text-foreground">{day}</span>
+        {leave && <span className="text-[9px] font-medium text-muted-foreground">{leave.type?.[0]}</span>}
+        {isHoliday && !leave && <span className="text-[9px] font-medium text-muted-foreground">H</span>}
       </div>
     );
   }
 
   return (
-    <div className={styles['calendar']} {...rest}>
-      <div className={styles['calendar-header']}>
+    <div className="border border-border rounded bg-card p-4 max-w-[420px]" {...rest}>
+      <div className="text-sm font-semibold text-foreground text-center mb-3">
         {MONTH_NAMES[month]} {year}
       </div>
-      <div className={styles['calendar-grid']}>
+      <div className="grid grid-cols-7 gap-0.5">
         {DAYS_OF_WEEK.map((d) => (
-          <div key={d} className={styles['calendar-weekday']}>{d}</div>
+          <div key={d} className="text-xs font-medium text-muted-foreground text-center p-1">{d}</div>
         ))}
         {cells}
       </div>
-      <div className={styles['calendar-legend']}>
-        <span className={styles['calendar-legend-item']}><span className={styles['calendar-legend-dot--vacation']} /> Vacation</span>
-        <span className={styles['calendar-legend-item']}><span className={styles['calendar-legend-dot--sick']} /> Sick</span>
-        <span className={styles['calendar-legend-item']}><span className={styles['calendar-legend-dot--personal']} /> Personal</span>
-        <span className={styles['calendar-legend-item']}><span className={styles['calendar-legend-dot--holiday']} /> Holiday</span>
+      <div className="flex gap-4 mt-3 flex-wrap">
+        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+          <span className="w-2 h-2 rounded-full inline-block bg-primary" /> Vacation
+        </span>
+        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+          <span className="w-2 h-2 rounded-full inline-block bg-[#4589ff]" /> Sick
+        </span>
+        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+          <span className="w-2 h-2 rounded-full inline-block bg-[#8a3ffc]" /> Personal
+        </span>
+        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+          <span className="w-2 h-2 rounded-full inline-block bg-[#da1e28]" /> Holiday
+        </span>
       </div>
     </div>
   );

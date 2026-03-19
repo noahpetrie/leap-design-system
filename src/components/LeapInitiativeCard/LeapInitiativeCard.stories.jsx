@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A card displaying a change initiative with its status, owner, timeline, readiness progress bar, and stakeholder count.',
+        component: `A card displaying a change initiative with its status, owner, timeline, readiness progress bar, and stakeholder count.
+
+### Import
+\`\`\`jsx
+import { LeapInitiativeCard } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

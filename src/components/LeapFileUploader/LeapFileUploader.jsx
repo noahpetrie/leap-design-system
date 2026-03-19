@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Upload, Close } from '@carbon/react/icons';
-import styles from './LeapFileUploader.module.scss';
+import { Upload, Close } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const LeapFileUploader = ({
   accept,
@@ -76,18 +76,16 @@ const LeapFileUploader = ({
     onChange?.(next);
   };
 
-  const dropZoneClass = [
-    styles['drop-zone'],
-    dragOver && styles['drop-zone--drag-over'],
-    disabled && styles['drop-zone--disabled'],
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   return (
-    <div className={styles['file-uploader']} {...rest}>
+    <div className="flex flex-col gap-4" {...rest}>
       <div
-        className={dropZoneClass}
+        className={cn(
+          'flex flex-col items-center justify-center gap-2 rounded border-2 border-dashed border-border bg-card p-8 cursor-pointer transition-colors duration-150',
+          'hover:border-primary',
+          'focus:outline-2 focus:outline-primary focus:outline-offset-2',
+          dragOver && 'border-primary bg-primary/10',
+          disabled && 'opacity-50 cursor-not-allowed hover:border-border'
+        )}
         role="button"
         tabIndex={disabled ? -1 : 0}
         onClick={handleClick}
@@ -98,9 +96,9 @@ const LeapFileUploader = ({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
       >
-        <Upload size={24} className={styles['drop-zone-icon']} />
-        <p className={styles['drop-zone-label']}>{label}</p>
-        {description && <p className={styles['drop-zone-description']}>{description}</p>}
+        <Upload size={24} className="text-primary" />
+        <p className="m-0 text-sm text-foreground">{label}</p>
+        {description && <p className="m-0 text-xs text-muted-foreground">{description}</p>}
         <input
           ref={inputRef}
           type="file"
@@ -108,19 +106,19 @@ const LeapFileUploader = ({
           multiple={multiple}
           disabled={disabled}
           onChange={handleInputChange}
-          className={styles['file-input']}
+          className="hidden"
           tabIndex={-1}
         />
       </div>
 
       {files.length > 0 && (
-        <ul className={styles['file-list']}>
+        <ul className="m-0 flex list-none flex-col gap-2 p-0">
           {files.map((file, index) => (
-            <li key={`${file.name}-${index}`} className={styles['file-list-item']}>
-              <span className={styles['file-list-name']}>{file.name}</span>
+            <li key={`${file.name}-${index}`} className="flex items-center justify-between rounded border border-border bg-card px-3 py-2">
+              <span className="truncate text-sm text-foreground">{file.name}</span>
               <button
                 type="button"
-                className={styles['file-list-remove']}
+                className="flex flex-shrink-0 items-center justify-center rounded border-none bg-transparent p-1 text-muted-foreground cursor-pointer hover:bg-accent hover:text-foreground focus:outline-2 focus:outline-primary focus:outline-offset-1"
                 onClick={() => handleRemove(index)}
                 aria-label={`Remove ${file.name}`}
               >

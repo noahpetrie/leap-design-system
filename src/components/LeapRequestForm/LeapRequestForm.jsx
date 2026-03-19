@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  DatePicker,
-  DatePickerInput,
-  Dropdown,
-  TextArea,
-  Button,
-} from '@carbon/react';
-import styles from './LeapRequestForm.module.scss';
 
 const LeapRequestForm = ({
   leaveTypes = ['Vacation', 'Sick Leave', 'Personal', 'Bereavement'],
@@ -15,7 +7,7 @@ const LeapRequestForm = ({
   onCancel,
   ...rest
 }) => {
-  const [leaveType, setLeaveType] = useState(null);
+  const [leaveType, setLeaveType] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [notes, setNotes] = useState('');
@@ -27,62 +19,90 @@ const LeapRequestForm = ({
     }
   };
 
-  const typeItems = leaveTypes.map((t) => ({ id: t, label: t }));
-
   return (
-    <form className={styles['request-form']} onSubmit={handleSubmit} {...rest}>
-      <div className={styles['request-form-title']}>New Leave Request</div>
-      <div className={styles['request-form-field']}>
-        <Dropdown
+    <form
+      className="border border-border rounded bg-card p-6 max-w-[600px]"
+      onSubmit={handleSubmit}
+      {...rest}
+    >
+      <div className="text-base font-semibold text-foreground mb-4">New Leave Request</div>
+
+      <div className="mb-4">
+        <label htmlFor="leave-type" className="block text-xs font-medium text-muted-foreground mb-1">
+          Leave type
+        </label>
+        <select
           id="leave-type"
-          titleText="Leave type"
-          label="Select leave type"
-          items={typeItems}
-          itemToString={(item) => (item ? item.label : '')}
-          onChange={({ selectedItem }) => setLeaveType(selectedItem?.id)}
-        />
-      </div>
-      <div className={styles['request-form-dates']}>
-        <DatePicker
-          datePickerType="single"
-          onChange={([date]) => setStartDate(date)}
+          className="w-full h-10 rounded border border-border bg-muted px-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+          value={leaveType}
+          onChange={(e) => setLeaveType(e.target.value)}
         >
-          <DatePickerInput
+          <option value="" disabled>Select leave type</option>
+          {leaveTypes.map((t) => (
+            <option key={t} value={t}>{t}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="flex gap-4 mb-4 flex-wrap">
+        <div className="flex-1 min-w-[140px]">
+          <label htmlFor="start-date" className="block text-xs font-medium text-muted-foreground mb-1">
+            Start date
+          </label>
+          <input
             id="start-date"
-            labelText="Start date"
+            type="date"
+            className="w-full h-10 rounded border border-border bg-muted px-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
             placeholder="mm/dd/yyyy"
           />
-        </DatePicker>
-        <DatePicker
-          datePickerType="single"
-          onChange={([date]) => setEndDate(date)}
-        >
-          <DatePickerInput
+        </div>
+        <div className="flex-1 min-w-[140px]">
+          <label htmlFor="end-date" className="block text-xs font-medium text-muted-foreground mb-1">
+            End date
+          </label>
+          <input
             id="end-date"
-            labelText="End date"
+            type="date"
+            className="w-full h-10 rounded border border-border bg-muted px-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
             placeholder="mm/dd/yyyy"
           />
-        </DatePicker>
+        </div>
       </div>
-      <div className={styles['request-form-field']}>
-        <TextArea
+
+      <div className="mb-4">
+        <label htmlFor="notes" className="block text-xs font-medium text-muted-foreground mb-1">
+          Notes (optional)
+        </label>
+        <textarea
           id="notes"
-          labelText="Notes (optional)"
+          className="w-full rounded border border-border bg-muted px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-y"
           placeholder="Add any additional context..."
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           rows={3}
         />
       </div>
-      <div className={styles['request-form-actions']}>
+
+      <div className="flex justify-end gap-2 mt-6">
         {onCancel && (
-          <Button kind="secondary" onClick={onCancel}>
+          <button
+            type="button"
+            className="px-4 py-2 text-sm font-medium rounded border border-border bg-card text-foreground hover:bg-accent transition-colors"
+            onClick={onCancel}
+          >
             Cancel
-          </Button>
+          </button>
         )}
-        <Button type="submit" kind="primary">
+        <button
+          type="submit"
+          className="px-4 py-2 text-sm font-medium rounded bg-primary text-primary-foreground hover:bg-primary/80 transition-colors"
+        >
           Submit Request
-        </Button>
+        </button>
       </div>
     </form>
   );

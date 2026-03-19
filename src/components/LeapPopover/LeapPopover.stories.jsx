@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from '@carbon/react';
 import LeapPopover from './LeapPopover.jsx';
+import LeapButton from '../LeapButton/LeapButton.jsx';
 
 export default {
   title: 'Components/LeapPopover',
@@ -9,8 +9,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          'A general-purpose popover container that anchors to a trigger element. Supports click and hover triggers, four alignment directions, controlled and uncontrolled open state, and closes on outside click or Escape.',
+        component: `A general-purpose popover container that anchors to a trigger element. Supports click and hover triggers, four alignment directions, controlled and uncontrolled open state, and closes on outside click or Escape.
+
+### Import
+\`\`\`jsx
+import { LeapPopover } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },
@@ -21,7 +26,7 @@ export const Default = () => (
     <LeapPopover
       content={<p>This is a basic popover with some helpful context for the user.</p>}
     >
-      <Button size="sm">Click me</Button>
+      <LeapButton size="sm">Click me</LeapButton>
     </LeapPopover>
   </div>
 );
@@ -32,7 +37,7 @@ export const HoverTrigger = () => (
       trigger="hover"
       content={<p>Popover appears on hover and dismisses when the cursor leaves.</p>}
     >
-      <Button size="sm" kind="tertiary">Hover me</Button>
+      <LeapButton size="sm" kind="tertiary">Hover me</LeapButton>
     </LeapPopover>
   </div>
 );
@@ -43,7 +48,7 @@ export const TopAligned = () => (
       align="top"
       content={<p>This popover is aligned above the trigger element.</p>}
     >
-      <Button size="sm">Open above</Button>
+      <LeapButton size="sm">Open above</LeapButton>
     </LeapPopover>
   </div>
 );
@@ -54,7 +59,7 @@ export const RightAligned = () => (
       align="right"
       content={<p>This popover is aligned to the right of the trigger.</p>}
     >
-      <Button size="sm">Open right</Button>
+      <LeapButton size="sm">Open right</LeapButton>
     </LeapPopover>
   </div>
 );
@@ -69,13 +74,13 @@ export const RichContent = () => (
             This popover contains richer content including a heading, descriptive
             text, and an action button.
           </p>
-          <Button size="sm" kind="primary">
+          <LeapButton size="sm" kind="primary">
             Take action
-          </Button>
+          </LeapButton>
         </div>
       }
     >
-      <Button size="sm" kind="ghost">Show details</Button>
+      <LeapButton size="sm" kind="ghost">Show details</LeapButton>
     </LeapPopover>
   </div>
 );

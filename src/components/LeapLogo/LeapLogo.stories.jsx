@@ -14,7 +14,13 @@ export default {
     docs: {
       description: {
         component:
-          'The official Leap logo as a React component. Available in two variants: "mark" (the triple-circle logomark) and "bordered" (logomark inside a rounded square border). Supports custom size and color.',
+          `The official Leap logo as a React component. Available in two variants: "mark" (the triple-circle logomark) and "bordered" (logomark inside a rounded square border). Supports custom size and color.
+
+### Import
+\`\`\`jsx
+import { LeapLogo } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

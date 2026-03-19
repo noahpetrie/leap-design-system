@@ -5,18 +5,6 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   publicDir: false,
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use '@carbon/colors' as *;\n`,
-        includePaths: [
-          'node_modules',
-          'node_modules/@carbon/styles/scss',
-          'node_modules/@carbon/react/scss',
-        ],
-      },
-    },
-  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
@@ -29,7 +17,8 @@ export default defineConfig({
         'react-dom',
         'react/jsx-runtime',
         'prop-types',
-        /^@carbon\//,
+        /^@carbon\/react\/icons/,
+        /^@carbon\/icons-react/,
       ],
       output: {
         globals: {

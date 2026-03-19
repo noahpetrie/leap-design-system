@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A training progress checklist with toggleable items, assignee avatars, due date tracking, overdue highlighting, and a progress bar.',
+        component: `A training progress checklist with toggleable items, assignee avatars, due date tracking, overdue highlighting, and a progress bar.
+
+### Import
+\`\`\`jsx
+import { LeapTrainingChecklist } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A color-coded tag component built on Carbon Tag, supporting multiple color types, sizes, and an optional filterable close action.',
+        component: `A color-coded tag component built on Carbon Tag, supporting multiple color types, sizes, and an optional filterable close action.
+
+### Import
+\`\`\`jsx
+import { LeapTag } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

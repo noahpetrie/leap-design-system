@@ -13,8 +13,8 @@ import {
   WarningSquareFilled,
   CheckmarkOutline,
   PendingFilled,
-} from '@carbon/react/icons';
-import styles from './LeapIconIndicator.module.scss';
+} from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 export const ICON_INDICATOR_KINDS = [
   'failed',
@@ -46,6 +46,21 @@ const iconTypes = {
   'informative': WarningSquareFilled,
 };
 
+const kindColorMap = {
+  'failed': 'fill-[#da1e28]',
+  'caution-major': 'fill-[#eb6200]',
+  'caution-minor': 'fill-[#f1c21b]',
+  'undefined': 'fill-[#8a3ffc]',
+  'succeeded': 'fill-[#24a148]',
+  'normal': 'fill-[#4589ff]',
+  'in-progress': 'fill-[#4589ff]',
+  'incomplete': 'fill-[#4589ff]',
+  'not-started': 'fill-[#a8a8a8]',
+  'pending': 'fill-[#a8a8a8]',
+  'unknown': 'fill-[#a8a8a8]',
+  'informative': 'fill-[#4589ff]',
+};
+
 /**
  * LeapIconIndicator — Displays a status icon with a label,
  * used to communicate system or item status across the Leap platform.
@@ -57,19 +72,18 @@ const LeapIconIndicator = React.forwardRef(function LeapIconIndicator(
   const IconForKind = iconTypes[kind];
   if (!IconForKind) return null;
 
-  const classNames = [
-    styles['leap-icon-indicator'],
-    size === 20 ? styles['leap-icon-indicator--20'] : '',
-    className || '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   return (
-    <div className={classNames} ref={ref}>
+    <div
+      className={cn(
+        'flex items-center text-muted-foreground',
+        size === 20 ? 'text-base' : 'text-sm',
+        className
+      )}
+      ref={ref}
+    >
       <IconForKind
         size={size}
-        className={styles[`leap-icon-indicator--${kind}`]}
+        className={cn('self-center mr-2', kindColorMap[kind])}
       />
       {label}
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pending, Checkmark, Calendar, UserMultiple } from '@carbon/react/icons';
+import { Pending, Checkmark, Calendar, UserMultiple } from '@carbon/icons-react';
 import LeapStatCard from './LeapStatCard.jsx';
 
 export default {
@@ -9,7 +9,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A compact statistics card displaying a label, value, optional icon, and optional trend indicator with directional styling.',
+        component: `A compact statistics card displaying a label, value, optional icon, and optional trend indicator with directional styling.
+
+### Import
+\`\`\`jsx
+import { LeapStatCard } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

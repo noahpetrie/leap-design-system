@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A horizontal filter bar with dropdown selectors and active filter tags that can be individually cleared.',
+        component: `A horizontal filter bar with dropdown selectors and active filter tags that can be individually cleared.
+
+### Import
+\`\`\`jsx
+import { LeapFilterBar } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

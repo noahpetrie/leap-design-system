@@ -16,7 +16,13 @@ export default {
     docs: {
       description: {
         component:
-          'A fluid-style single-select dropdown that fills its container width. Use for choosing one option from a list in fluid form layouts. Pass items as an array and provide `itemToString` to control how each item renders as text.',
+          `A fluid-style single-select dropdown that fills its container width. Use for choosing one option from a list in fluid form layouts. Pass items as an array and provide \`itemToString\` to control how each item renders as text.
+
+### Import
+\`\`\`jsx
+import { LeapFluidDropdown } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

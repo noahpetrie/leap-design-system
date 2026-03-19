@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A progress bar that visualizes completion status with support for determinate values, indeterminate loading, size variants, and active/success/error states using Leap brand colors.',
+        component: `A progress bar that visualizes completion status with support for determinate values, indeterminate loading, size variants, and active/success/error states using Leap brand colors.
+
+### Import
+\`\`\`jsx
+import { LeapProgressBar } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

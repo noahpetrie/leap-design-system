@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A four-quadrant influence/interest stakeholder map that plots stakeholders with sentiment-colored indicators and tooltip details.',
+        component: `A four-quadrant influence/interest stakeholder map that plots stakeholders with sentiment-colored indicators and tooltip details.
+
+### Import
+\`\`\`jsx
+import { LeapStakeholderMap } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

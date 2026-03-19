@@ -8,8 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          'A horizontal or vertical step-by-step wizard/stepper that guides users through a sequential process with completed, current, and incomplete states.',
+        component: `A horizontal or vertical step-by-step wizard/stepper that guides users through a sequential process with completed, current, and incomplete states.
+
+### Import
+\`\`\`jsx
+import { LeapProgressIndicator } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

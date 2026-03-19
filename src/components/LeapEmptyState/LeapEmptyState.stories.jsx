@@ -12,7 +12,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A placeholder component for empty views that displays an icon, title, optional description, and an optional call-to-action button.',
+        component: `A placeholder component for empty views that displays an icon, title, optional description, and an optional call-to-action button.
+
+### Import
+\`\`\`jsx
+import { LeapEmptyState } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

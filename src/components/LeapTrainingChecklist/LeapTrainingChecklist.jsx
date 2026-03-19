@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapTrainingChecklist.module.scss';
+import { cn } from '../../lib/utils';
 
 const getInitials = (name) => {
   if (!name) return '?';
@@ -36,9 +36,9 @@ const LeapTrainingChecklist = ({ items, onToggle }) => {
 
   if (!items || items.length === 0) {
     return (
-      <div className={styles['training-checklist']}>
-        <h3 className={styles['training-checklist__title']}>Training Checklist</h3>
-        <p className={styles['training-checklist__empty']}>
+      <div className="rounded border border-border bg-background p-4">
+        <h3 className="text-sm font-semibold text-foreground mb-4">Training Checklist</h3>
+        <p className="text-sm text-muted-foreground text-center py-6">
           No training items assigned.
         </p>
       </div>
@@ -46,15 +46,15 @@ const LeapTrainingChecklist = ({ items, onToggle }) => {
   }
 
   return (
-    <div className={styles['training-checklist']}>
-      <h3 className={styles['training-checklist__title']}>Training Checklist</h3>
-      <div className={styles['training-checklist__summary']}>
-        <span className={styles['training-checklist__summary-text']}>
+    <div className="rounded border border-border bg-background p-4">
+      <h3 className="text-sm font-semibold text-foreground mb-4">Training Checklist</h3>
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-sm text-muted-foreground whitespace-nowrap min-w-[140px]">
           {completedCount} of {totalCount} completed
         </span>
-        <div className={styles['training-checklist__progress-bar']}>
+        <div className="flex-1 h-1.5 rounded-full bg-border overflow-hidden">
           <div
-            className={styles['training-checklist__progress-fill']}
+            className="h-full rounded-full bg-primary transition-[width] duration-300 ease-in-out"
             style={{ width: `${progressPercent}%` }}
             role="progressbar"
             aria-valuenow={completedCount}
@@ -63,51 +63,66 @@ const LeapTrainingChecklist = ({ items, onToggle }) => {
           />
         </div>
       </div>
-      <ul className={styles['training-checklist__list']}>
+      <ul className="m-0 list-none p-0">
         {items.map((item) => {
           const overdue = !item.completed && isOverdue(item.dueDate);
           return (
             <li
               key={item.id}
-              className={`${styles['training-checklist__item']} ${
-                item.completed ? styles['training-checklist__item--completed'] : ''
-              }`}
+              className={cn(
+                'flex items-start gap-3 p-3 border-b border-border transition-colors duration-150 last:border-b-0 hover:bg-accent',
+                item.completed && 'opacity-70'
+              )}
             >
-              <label className={styles['training-checklist__checkbox-label']}>
+              <label className="relative flex shrink-0 cursor-pointer items-center pt-0.5">
                 <input
                   type="checkbox"
-                  className={styles['training-checklist__checkbox']}
+                  className="peer absolute h-0 w-0 opacity-0"
                   checked={item.completed}
                   onChange={() => onToggle && onToggle(item.id)}
                   aria-label={`Mark "${item.title}" as ${
                     item.completed ? 'incomplete' : 'complete'
                   }`}
                 />
-                <span className={styles['training-checklist__checkmark']} />
+                <span
+                  className={cn(
+                    'relative block h-[18px] w-[18px] rounded-sm border-2 border-border transition-all duration-150',
+                    'peer-focus-visible:outline-2 peer-focus-visible:outline-primary peer-focus-visible:outline-offset-2',
+                    'peer-checked:border-primary peer-checked:bg-primary',
+                    'after:absolute after:left-[5px] after:top-[1px] after:hidden after:h-[9px] after:w-[4px] after:rotate-45 after:border-b-2 after:border-r-2 after:border-white',
+                    'peer-checked:after:block'
+                  )}
+                />
               </label>
-              <div className={styles['training-checklist__content']}>
-                <span className={styles['training-checklist__item-title']}>
+              <div className="flex flex-1 flex-col gap-0.5 min-w-0">
+                <span
+                  className={cn(
+                    'text-sm font-medium text-foreground',
+                    item.completed && 'line-through text-muted-foreground'
+                  )}
+                >
                   {item.title}
                 </span>
                 {item.description && (
-                  <span className={styles['training-checklist__item-description']}>
+                  <span className="text-xs text-muted-foreground">
                     {item.description}
                   </span>
                 )}
               </div>
-              <div className={styles['training-checklist__meta']}>
+              <div className="flex shrink-0 items-center gap-2">
                 <span
-                  className={styles['training-checklist__avatar']}
+                  className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-foreground text-xs font-semibold text-primary-foreground"
                   title={item.assignee}
                 >
                   {getInitials(item.assignee)}
                 </span>
                 <span
-                  className={`${styles['training-checklist__due-date']} ${
-                    overdue ? styles['training-checklist__due-date--overdue'] : ''
-                  }`}
+                  className={cn(
+                    'text-xs font-medium text-muted-foreground whitespace-nowrap',
+                    overdue && 'text-destructive font-semibold'
+                  )}
                 >
-                  {overdue && '⚠ '}
+                  {overdue && '\u26A0 '}
                   {formatDate(item.dueDate)}
                 </span>
               </div>

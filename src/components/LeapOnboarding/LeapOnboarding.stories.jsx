@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Dashboard, Calendar, UserMultiple, Analytics, Collaborate, Education } from '@carbon/react/icons';
-import { Button, Tag } from '@carbon/react';
+import { Dashboard, Calendar, UserMultiple, Analytics, Collaborate, Education } from '@carbon/icons-react';
+import LeapButton from '../LeapButton/LeapButton.jsx';
+import LeapTag from '../LeapTag/LeapTag.jsx';
 import LeapOnboarding from './LeapOnboarding.jsx';
 
 export default {
@@ -11,7 +12,13 @@ export default {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'A multi-step onboarding overlay that guides new users through a series of welcome and setup screens with illustrations and interactive content.',
+        component: `A multi-step onboarding overlay that guides new users through a series of welcome and setup screens with illustrations and interactive content.
+
+### Import
+\`\`\`jsx
+import { LeapOnboarding } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },
@@ -46,13 +53,13 @@ const defaultSteps = [
     description: 'Select the areas you would like to explore first. You can always change these later in your settings.',
     content: (
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' }}>
-        <Tag type="green" size="md">Change Management</Tag>
-        <Tag type="cool-gray" size="md">Stakeholder Analysis</Tag>
-        <Tag type="cool-gray" size="md">Impact Assessment</Tag>
-        <Tag type="green" size="md">Team Readiness</Tag>
-        <Tag type="cool-gray" size="md">Communications</Tag>
-        <Tag type="green" size="md">Analytics</Tag>
-        <Tag type="cool-gray" size="md">Training Plans</Tag>
+        <LeapTag type="green" size="md">Change Management</LeapTag>
+        <LeapTag type="cool-gray" size="md">Stakeholder Analysis</LeapTag>
+        <LeapTag type="cool-gray" size="md">Impact Assessment</LeapTag>
+        <LeapTag type="green" size="md">Team Readiness</LeapTag>
+        <LeapTag type="cool-gray" size="md">Communications</LeapTag>
+        <LeapTag type="green" size="md">Analytics</LeapTag>
+        <LeapTag type="cool-gray" size="md">Training Plans</LeapTag>
       </div>
     ),
   },
@@ -63,7 +70,7 @@ export const FirstTimeOrientation = {
     const [open, setOpen] = useState(true);
     return (
       <div style={{ padding: '2rem' }}>
-        <Button onClick={() => setOpen(true)}>Launch Onboarding</Button>
+        <LeapButton onClick={() => setOpen(true)}>Launch Onboarding</LeapButton>
         <LeapOnboarding
           open={open}
           headerTitle="Welcome to your workspace, Noah!"
@@ -81,7 +88,7 @@ export const TwoSteps = {
     const [open, setOpen] = useState(true);
     return (
       <div style={{ padding: '2rem' }}>
-        <Button onClick={() => setOpen(true)}>Launch Onboarding</Button>
+        <LeapButton onClick={() => setOpen(true)}>Launch Onboarding</LeapButton>
         <LeapOnboarding
           open={open}
           headerTitle="Quick Setup"

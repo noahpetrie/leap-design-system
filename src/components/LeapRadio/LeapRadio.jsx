@@ -1,17 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { RadioButtonGroup, RadioButton } from '@carbon/react';
-import styles from './LeapRadio.module.scss';
+import { cn } from '../../lib/utils';
 
 const LeapRadio = ({ legendText, name, options = [], defaultSelected, onChange, orientation = 'vertical', ...rest }) => {
+  const [selected, setSelected] = useState(defaultSelected || '');
+
+  const handleChange = (value) => {
+    setSelected(value);
+    if (onChange) onChange(value);
+  };
+
   return (
-    <div className={styles['leap-radio']} {...rest}>
-      <RadioButtonGroup legendText={legendText} name={name} defaultSelected={defaultSelected} onChange={onChange} orientation={orientation}>
+    <fieldset className="flex flex-col gap-2" {...rest}>
+      <legend className="text-sm font-medium text-foreground mb-2">{legendText}</legend>
+      <div className={cn('flex gap-3', orientation === 'horizontal' ? 'flex-row flex-wrap' : 'flex-col')}>
         {options.map((opt) => (
-          <RadioButton key={opt.value} id={`${name}-${opt.value}`} value={opt.value} labelText={opt.label} />
+          <label
+            key={opt.value}
+            className="flex items-center gap-2 cursor-pointer text-sm text-foreground"
+          >
+            <span className="relative flex items-center justify-center">
+              <input
+                type="radio"
+                name={name}
+                id={`${name}-${opt.value}`}
+                value={opt.value}
+                checked={selected === opt.value}
+                onChange={() => handleChange(opt.value)}
+                className="peer sr-only"
+              />
+              <span className="h-[18px] w-[18px] rounded-full border-2 border-border peer-checked:border-primary peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-1 transition-colors" />
+              <span className="absolute h-2 w-2 rounded-full bg-primary scale-0 peer-checked:scale-100 transition-transform" />
+            </span>
+            {opt.label}
+          </label>
         ))}
-      </RadioButtonGroup>
-    </div>
+      </div>
+    </fieldset>
   );
 };
 

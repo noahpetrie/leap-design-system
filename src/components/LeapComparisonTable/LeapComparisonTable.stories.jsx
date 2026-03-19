@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A side-by-side comparison table that evaluates multiple options against a set of criteria, with optional recommended-option highlighting.',
+        component: `A side-by-side comparison table that evaluates multiple options against a set of criteria, with optional recommended-option highlighting.
+
+### Import
+\`\`\`jsx
+import { LeapComparisonTable } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

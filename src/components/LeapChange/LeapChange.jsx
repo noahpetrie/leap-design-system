@@ -1,35 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tag } from '@carbon/react';
 import {
   CheckmarkFilled,
   CloseFilled,
   Pending,
   Edit,
   ArrowRight,
-} from '@carbon/react/icons';
-
-import styles from './LeapChange.module.scss';
+} from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const changeTypeConfig = {
   approved: {
     label: 'Approved',
-    tagType: 'green',
+    badgeClasses: 'bg-[#defbe6] text-[#198038]',
     icon: CheckmarkFilled,
   },
   denied: {
     label: 'Denied',
-    tagType: 'red',
+    badgeClasses: 'bg-[#fff1f1] text-[#da1e28]',
     icon: CloseFilled,
   },
   modified: {
     label: 'Modified',
-    tagType: 'blue',
+    badgeClasses: 'bg-[#edf5ff] text-[#0043ce]',
     icon: Edit,
   },
   pending: {
     label: 'Pending',
-    tagType: 'warm-gray',
+    badgeClasses: 'bg-[#f2f2f2] text-[#6f6f6f]',
     icon: Pending,
   },
 };
@@ -48,42 +46,42 @@ const LeapChange = ({
   const StatusIcon = config.icon;
 
   return (
-    <div className={styles['leap-change']} {...rest}>
-      <div className={styles['leap-change-header']}>
+    <div className="border border-border rounded bg-card p-4 mb-4 last:mb-0" {...rest}>
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <span className={styles['leap-change-employee']}>{employeeName}</span>
-          <span className={styles['leap-change-leave-type']}>{leaveType}</span>
+          <span className="text-sm font-semibold text-foreground mr-2">{employeeName}</span>
+          <span className="text-xs font-medium text-muted-foreground">{leaveType}</span>
         </div>
-        <div className={styles['leap-change-badge']}>
-          <Tag type={config.tagType} size="sm">
+        <div>
+          <span className={cn('inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium', config.badgeClasses)}>
             <StatusIcon size={12} />
             <span>{config.label}</span>
-          </Tag>
+          </span>
         </div>
       </div>
-      <div className={styles['leap-change-body']}>
-        <div className={styles['leap-change-values']}>
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="flex items-center gap-3">
           {previousValue && (
             <>
-              <div className={styles['leap-change-previous']}>
-                <span className={styles['leap-change-label']}>Previous</span>
-                <span>{previousValue}</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-xs font-medium text-muted-foreground">Previous</span>
+                <span className="text-sm text-muted-foreground line-through">{previousValue}</span>
               </div>
-              <ArrowRight size={16} className={styles['leap-change-arrow']} />
+              <ArrowRight size={16} className="fill-muted-foreground shrink-0 mt-3" />
             </>
           )}
-          <div className={styles['leap-change-new']}>
-            <span className={styles['leap-change-label']}>
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-medium text-muted-foreground">
               {previousValue ? 'New' : 'Value'}
             </span>
-            <span>{newValue}</span>
+            <span className="text-sm text-foreground">{newValue}</span>
           </div>
         </div>
-        <div className={styles['leap-change-timestamp']}>{timestamp}</div>
+        <div className="text-xs font-medium text-muted-foreground">{timestamp}</div>
       </div>
       {reason && (
-        <div className={styles['leap-change-reason']}>
-          <span className={styles['leap-change-label']}>Reason</span>
+        <div className="flex flex-col gap-1 mt-3 pt-3 border-t border-border text-sm text-foreground">
+          <span className="text-xs font-medium text-muted-foreground">Reason</span>
           <span>{reason}</span>
         </div>
       )}

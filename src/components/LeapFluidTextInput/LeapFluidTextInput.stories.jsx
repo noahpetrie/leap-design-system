@@ -16,7 +16,13 @@ export default {
     docs: {
       description: {
         component:
-          'A fluid-style text input that fills its container width with an underline treatment instead of a bordered box. Ideal for dense form layouts, inline editing, and settings panels. Supports password mode via `isPassword` and character counting via `enableCounter` + `maxCount`.',
+          `A fluid-style text input that fills its container width with an underline treatment instead of a bordered box. Ideal for dense form layouts, inline editing, and settings panels. Supports password mode via \`isPassword\` and character counting via \`enableCounter\` + \`maxCount\`.
+
+### Import
+\`\`\`jsx
+import { LeapFluidTextInput } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

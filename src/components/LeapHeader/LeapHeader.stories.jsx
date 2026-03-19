@@ -1,5 +1,5 @@
 import React from 'react';
-import { Notification, UserAvatar } from '@carbon/react/icons';
+import { Notification, UserAvatar } from '@carbon/icons-react';
 import LeapHeader from './LeapHeader.jsx';
 import LeapLogo from '../LeapLogo/LeapLogo.jsx';
 
@@ -11,7 +11,13 @@ export default {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'A fixed top navigation bar with app branding, horizontal nav items, and an action slot for icons and controls.',
+        component: `A fixed top navigation bar with app branding, horizontal nav items, and an action slot for icons and controls.
+
+### Import
+\`\`\`jsx
+import { LeapHeader } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

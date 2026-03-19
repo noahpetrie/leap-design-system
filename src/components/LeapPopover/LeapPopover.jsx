@@ -1,6 +1,13 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapPopover.module.scss';
+import { cn } from '../../lib/utils';
+
+const alignTransform = {
+  bottom: '-translate-x-1/2',
+  top: '-translate-x-1/2 -translate-y-full',
+  left: '-translate-x-full -translate-y-1/2',
+  right: '-translate-y-1/2',
+};
 
 const LeapPopover = ({
   children,
@@ -129,13 +136,19 @@ const LeapPopover = ({
         }
       : {};
 
-  const alignClass = styles[`leap-popover__content--${align}`] || '';
+  // Caret styles per alignment
+  const caretStyles = {
+    bottom: 'top-[-6px] left-1/2 -translate-x-1/2 border-l-[6px] border-r-[6px] border-b-[6px] border-l-transparent border-r-transparent border-b-card border-t-0 drop-shadow-[0_-1px_0_var(--border)]',
+    top: 'bottom-[-6px] left-1/2 -translate-x-1/2 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-card border-b-0 drop-shadow-[0_1px_0_var(--border)]',
+    left: 'right-[-6px] top-1/2 -translate-y-1/2 border-t-[6px] border-b-[6px] border-l-[6px] border-t-transparent border-b-transparent border-l-card border-r-0 drop-shadow-[1px_0_0_var(--border)]',
+    right: 'left-[-6px] top-1/2 -translate-y-1/2 border-t-[6px] border-b-[6px] border-r-[6px] border-t-transparent border-b-transparent border-r-card border-l-0 drop-shadow-[-1px_0_0_var(--border)]',
+  };
 
   return (
-    <div className={styles['leap-popover']}>
+    <div className="inline-block relative">
       <div
         ref={triggerRef}
-        className={styles['leap-popover__trigger']}
+        className="inline-flex cursor-pointer"
         {...triggerProps}
       >
         {children}
@@ -143,13 +156,17 @@ const LeapPopover = ({
       {isOpen && (
         <div
           ref={popoverRef}
-          className={`${styles['leap-popover__content']} ${alignClass}`}
+          className={cn(
+            'fixed z-[9999] min-w-[12rem] max-w-[20rem] bg-card border border-border rounded shadow-[0_2px_8px_rgba(0,0,0,0.15)] text-sm',
+            'focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-[-2px]',
+            alignTransform[align]
+          )}
           style={{ top: position.top, left: position.left }}
           role="dialog"
           {...popoverHoverProps}
         >
-          <div className={styles['leap-popover__caret']} />
-          <div className={styles['leap-popover__body']}>{content}</div>
+          <div className={cn('absolute w-0 h-0 border-solid', caretStyles[align])} />
+          <div className="px-4 py-3 text-foreground">{content}</div>
         </div>
       )}
     </div>

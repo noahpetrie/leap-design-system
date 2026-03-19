@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A color-coded heatmap table that visualizes change management metrics (e.g., readiness, impact, training, adoption) across departments or teams.',
+        component: `A color-coded heatmap table that visualizes change management metrics (e.g., readiness, impact, training, adoption) across departments or teams.
+
+### Import
+\`\`\`jsx
+import { LeapChangeHeatmap } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

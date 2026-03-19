@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A monthly calendar grid that highlights leave days by type and status, marks holidays, and distinguishes weekends for team schedule visibility.',
+        component: `A monthly calendar grid that highlights leave days by type and status, marks holidays, and distinguishes weekends for team schedule visibility.
+
+### Import
+\`\`\`jsx
+import { LeapCalendar } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

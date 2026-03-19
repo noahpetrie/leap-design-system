@@ -19,7 +19,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Displays a single action item with title, assignee, due date, priority badge, and a status dropdown. Supports urgent, high, medium, and low priority levels.',
+        component: `Displays a single action item with title, assignee, due date, priority badge, and a status dropdown. Supports urgent, high, medium, and low priority levels.
+
+### Import
+\`\`\`jsx
+import { LeapActionItem } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

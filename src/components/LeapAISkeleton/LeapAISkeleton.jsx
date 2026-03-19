@@ -1,20 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  SkeletonText,
-  SkeletonIcon,
-  SkeletonPlaceholder,
-} from '@carbon/react';
-import styles from './LeapAISkeleton.module.scss';
+import { cn } from '../../lib/utils';
+
+const shimmerClasses =
+  'animate-leap-ai-shimmer bg-[length:200%_100%] bg-[linear-gradient(90deg,#e6f4ee_0%,rgba(12,140,94,0.12)_40%,#e6f4ee_60%,rgba(12,140,94,0.12)_100%)]';
 
 /**
  * LeapAISkeletonText — A skeleton text loader with an AI shimmer effect,
  * indicating that AI-generated content is being loaded.
  */
-export const LeapAISkeletonText = ({ className, ...rest }) => {
+export const LeapAISkeletonText = ({
+  className,
+  heading,
+  lineCount = 3,
+  paragraph,
+  width = '100%',
+  ...rest
+}) => {
+  if (paragraph) {
+    return (
+      <div className={cn('space-y-2', className)} {...rest}>
+        {Array.from({ length: lineCount }).map((_, i) => (
+          <div
+            key={i}
+            className={cn(
+              shimmerClasses,
+              heading ? 'h-6 rounded' : 'h-4 rounded',
+            )}
+            style={{ width: i === lineCount - 1 ? '80%' : width }}
+          />
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <SkeletonText
-      className={[styles['leap-ai-skeleton-text'], className].filter(Boolean).join(' ')}
+    <div
+      className={cn(
+        shimmerClasses,
+        heading ? 'h-6 rounded' : 'h-4 rounded',
+        className,
+      )}
+      style={{ width }}
       {...rest}
     />
   );
@@ -37,8 +64,8 @@ LeapAISkeletonText.propTypes = {
  */
 export const LeapAISkeletonIcon = ({ className, style, ...rest }) => {
   return (
-    <SkeletonIcon
-      className={[styles['leap-ai-skeleton-icon'], className].filter(Boolean).join(' ')}
+    <div
+      className={cn(shimmerClasses, 'w-4 h-4 rounded-full', className)}
       style={style}
       {...rest}
     />
@@ -56,8 +83,8 @@ LeapAISkeletonIcon.propTypes = {
  */
 export const LeapAISkeletonPlaceholder = ({ className, ...rest }) => {
   return (
-    <SkeletonPlaceholder
-      className={[styles['leap-ai-skeleton-placeholder'], className].filter(Boolean).join(' ')}
+    <div
+      className={cn(shimmerClasses, 'w-full h-24 rounded-lg', className)}
       {...rest}
     />
   );

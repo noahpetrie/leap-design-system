@@ -1,5 +1,5 @@
 import React from 'react';
-import { Notification } from '@carbon/react/icons';
+import { Notification } from '@carbon/icons-react';
 import LeapBadgeIndicator from './LeapBadgeIndicator.jsx';
 
 export default {
@@ -9,7 +9,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A small notification badge indicator, used as an overlay on icons or avatars to show a dot or numeric unread count (capped at 999+).',
+        component: `A small notification badge indicator, used as an overlay on icons or avatars to show a dot or numeric unread count (capped at 999+).
+
+### Import
+\`\`\`jsx
+import { LeapBadgeIndicator } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

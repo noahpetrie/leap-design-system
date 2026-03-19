@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapStakeholderMap.module.scss';
+import { cn } from '../../lib/utils';
 
 const QUADRANTS = {
   'high-low': { label: 'Keep Satisfied', row: 0, col: 0 },
@@ -15,6 +15,19 @@ const SENTIMENT_COLORS = {
   negative: 'negative',
 };
 
+const quadrantBg = {
+  'high-low': 'bg-[#f1c21b]/[0.08]',
+  'high-high': 'bg-[#0c8c5e]/[0.08]',
+  'low-low': 'bg-[#8d8d8d]/[0.06]',
+  'low-high': 'bg-[#0043ce]/[0.06]',
+};
+
+const dotColors = {
+  positive: 'bg-[#0c8c5e]',
+  neutral: 'bg-[#8d8d8d]',
+  negative: 'bg-[#da1e28]',
+};
+
 const LeapStakeholderMap = ({ stakeholders = [] }) => {
   const [activeTooltip, setActiveTooltip] = useState(null);
 
@@ -26,16 +39,17 @@ const LeapStakeholderMap = ({ stakeholders = [] }) => {
     );
 
   return (
-    <div className={styles['stakeholder-map']}>
-      <div className={styles['stakeholder-map__y-label']}>
-        <span>Influence</span>
-      </div>
-      <div className={styles['stakeholder-map__container']}>
-        <div className={styles['stakeholder-map__y-axis']}>
-          <span>High</span>
-          <span>Low</span>
+    <div className="flex flex-col gap-3">
+      {/* Hidden y-label (matches original which has display:none) */}
+      <div className="grid grid-cols-[auto_1fr] grid-rows-[1fr_auto_auto]">
+        {/* Y-axis */}
+        <div className="row-start-1 col-start-1 flex flex-col justify-between items-center pr-2 relative">
+          <span className="text-xs font-medium text-muted-foreground">High</span>
+          <span className="text-xs font-medium text-muted-foreground">Low</span>
         </div>
-        <div className={styles['stakeholder-map__grid']}>
+
+        {/* Grid */}
+        <div className="row-start-1 col-start-2 grid grid-cols-2 grid-rows-2 gap-[2px] border border-border rounded overflow-hidden min-h-[20rem]">
           {[
             { influence: 'high', interest: 'low' },
             { influence: 'high', interest: 'high' },
@@ -49,29 +63,35 @@ const LeapStakeholderMap = ({ stakeholders = [] }) => {
             return (
               <div
                 key={key}
-                className={`${styles['stakeholder-map__quadrant']} ${styles[`stakeholder-map__quadrant--${key}`]}`}
+                className={cn(
+                  'flex flex-col p-3 min-h-[10rem] relative',
+                  quadrantBg[key]
+                )}
               >
-                <span className={styles['stakeholder-map__quadrant-label']}>
+                <span className="text-sm font-semibold text-foreground mb-2">
                   {quadrant.label}
                 </span>
-                <div className={styles['stakeholder-map__dots']}>
-                  {members.map((stakeholder, i) => (
+                <div className="flex flex-wrap gap-2 items-start">
+                  {members.map((stakeholder) => (
                     <div
                       key={stakeholder.name}
-                      className={styles['stakeholder-map__dot-wrapper']}
+                      className="relative inline-flex"
                       onMouseEnter={() => setActiveTooltip(stakeholder.name)}
                       onMouseLeave={() => setActiveTooltip(null)}
                       onFocus={() => setActiveTooltip(stakeholder.name)}
                       onBlur={() => setActiveTooltip(null)}
                     >
                       <div
-                        className={`${styles['stakeholder-map__dot']} ${styles[`stakeholder-map__dot--${SENTIMENT_COLORS[stakeholder.sentiment] || 'neutral'}`]}`}
+                        className={cn(
+                          'w-4 h-4 rounded-full border-2 border-white cursor-default transition-transform shadow-sm hover:scale-125 focus:scale-125 focus:outline-none',
+                          dotColors[stakeholder.sentiment || 'neutral']
+                        )}
                         role="img"
                         aria-label={`${stakeholder.name}: ${stakeholder.sentiment} sentiment`}
                         tabIndex={0}
                       />
                       {activeTooltip === stakeholder.name && (
-                        <div className={styles['stakeholder-map__tooltip']}>
+                        <div className="absolute bottom-[calc(100%+6px)] left-1/2 -translate-x-1/2 bg-[#1a1a18] text-white text-xs px-2 py-1 rounded whitespace-nowrap z-10 pointer-events-none after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#1a1a18]">
                           {stakeholder.name}
                         </div>
                       )}
@@ -82,26 +102,32 @@ const LeapStakeholderMap = ({ stakeholders = [] }) => {
             );
           })}
         </div>
-        <div className={styles['stakeholder-map__x-axis']}>
-          <span>Low</span>
-          <span>High</span>
+
+        {/* X-axis */}
+        <div className="row-start-2 col-start-2 flex justify-between pt-1">
+          <span className="text-xs font-medium text-muted-foreground">Low</span>
+          <span className="text-xs font-medium text-muted-foreground">High</span>
         </div>
-        <div className={styles['stakeholder-map__x-label']}>
-          <span>Interest</span>
+
+        {/* X-label */}
+        <div className="row-start-3 col-start-2 text-center pt-1">
+          <span className="text-sm font-semibold text-foreground">Interest</span>
         </div>
       </div>
-      <div className={styles['stakeholder-map__legend']}>
-        <div className={styles['stakeholder-map__legend-item']}>
-          <span className={`${styles['stakeholder-map__legend-dot']} ${styles['stakeholder-map__dot--positive']}`} />
-          <span>Positive</span>
+
+      {/* Legend */}
+      <div className="flex gap-4 justify-center">
+        <div className="flex items-center gap-1">
+          <span className={cn('w-2.5 h-2.5 rounded-full inline-block', dotColors.positive)} />
+          <span className="text-xs font-medium text-muted-foreground">Positive</span>
         </div>
-        <div className={styles['stakeholder-map__legend-item']}>
-          <span className={`${styles['stakeholder-map__legend-dot']} ${styles['stakeholder-map__dot--neutral']}`} />
-          <span>Neutral</span>
+        <div className="flex items-center gap-1">
+          <span className={cn('w-2.5 h-2.5 rounded-full inline-block', dotColors.neutral)} />
+          <span className="text-xs font-medium text-muted-foreground">Neutral</span>
         </div>
-        <div className={styles['stakeholder-map__legend-item']}>
-          <span className={`${styles['stakeholder-map__legend-dot']} ${styles['stakeholder-map__dot--negative']}`} />
-          <span>Negative</span>
+        <div className="flex items-center gap-1">
+          <span className={cn('w-2.5 h-2.5 rounded-full inline-block', dotColors.negative)} />
+          <span className="text-xs font-medium text-muted-foreground">Negative</span>
         </div>
       </div>
     </div>

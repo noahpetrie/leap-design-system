@@ -14,7 +14,13 @@ export default {
     docs: {
       description: {
         component:
-          'Displays a status icon with a text label to communicate system or item status. Supports 12 status kinds: `failed`, `caution-major`, `caution-minor`, `undefined`, `succeeded`, `normal`, `in-progress`, `incomplete`, `not-started`, `pending`, `unknown`, and `informative`. Each kind maps to a distinct icon and color. Available in size 16 (default) and 20.',
+          `Displays a status icon with a text label to communicate system or item status. Supports 12 status kinds: \`failed\`, \`caution-major\`, \`caution-minor\`, \`undefined\`, \`succeeded\`, \`normal\`, \`in-progress\`, \`incomplete\`, \`not-started\`, \`pending\`, \`unknown\`, and \`informative\`. Each kind maps to a distinct icon and color. Available in size 16 (default) and 20.
+
+### Import
+\`\`\`jsx
+import { LeapIconIndicator } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

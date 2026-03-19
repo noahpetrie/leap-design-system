@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Button, TextInput } from '@carbon/react';
+import LeapButton from '../LeapButton/LeapButton.jsx';
+import LeapInput from '../LeapInput/LeapInput.jsx';
 import LeapDialog, {
   DialogHeader,
   DialogBody,
@@ -22,7 +23,13 @@ export default {
     docs: {
       description: {
         component:
-          'A lightweight dialog built on the native HTML `<dialog>` element, supporting both modal and non-modal modes. Use `modal` for blocking interactions (confirmations, destructive actions) and non-modal for supplementary info that doesn\'t interrupt workflow. Compose with `DialogHeader`, `DialogBody`, `DialogFooter`, `DialogTitle`, `DialogSubtitle`, `DialogControls`, and `DialogCloseButton` sub-components.',
+          `A lightweight dialog built on the native HTML \`<dialog>\` element, supporting both modal and non-modal modes. Use \`modal\` for blocking interactions (confirmations, destructive actions) and non-modal for supplementary info that doesn't interrupt workflow. Compose with \`DialogHeader\`, \`DialogBody\`, \`DialogFooter\`, \`DialogTitle\`, \`DialogSubtitle\`, \`DialogControls\`, and \`DialogCloseButton\` sub-components.
+
+### Import
+\`\`\`jsx
+import { LeapDialog } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },
@@ -34,9 +41,9 @@ export const Modal = () => {
 
   return (
     <>
-      <Button ref={buttonRef} onClick={() => setOpen(true)}>
+      <LeapButton ref={buttonRef} onClick={() => setOpen(true)}>
         Open modal dialog
-      </Button>
+      </LeapButton>
       <LeapDialog
         modal
         open={open}
@@ -56,7 +63,7 @@ export const Modal = () => {
             Are you sure you want to proceed with this action? This will apply
             the changes to the selected items.
           </p>
-          <TextInput id="dialog-input" labelText="Confirmation note" placeholder="Optional note..." />
+          <LeapInput id="dialog-input" label="Confirmation note" placeholder="Optional note..." />
         </DialogBody>
         <DialogFooter
           primaryButtonText="Confirm"
@@ -75,9 +82,9 @@ export const NonModal = () => {
 
   return (
     <>
-      <Button ref={buttonRef} onClick={() => setOpen(!open)}>
+      <LeapButton ref={buttonRef} onClick={() => setOpen(!open)}>
         Toggle non-modal dialog
-      </Button>
+      </LeapButton>
       <LeapDialog
         open={open}
         onClose={() => setOpen(false)}
@@ -104,9 +111,9 @@ export const Danger = () => {
 
   return (
     <>
-      <Button kind="danger" ref={buttonRef} onClick={() => setOpen(true)}>
+      <LeapButton kind="danger" ref={buttonRef} onClick={() => setOpen(true)}>
         Delete item
-      </Button>
+      </LeapButton>
       <LeapDialog
         modal
         open={open}

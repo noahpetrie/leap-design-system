@@ -1,20 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tag } from '@carbon/react';
 import {
   CheckmarkFilled,
   CloseFilled,
   Pending,
   ErrorFilled,
   CircleFilled,
-} from '@carbon/react/icons';
+} from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const statusConfig = {
-  approved: { label: 'Approved', tagType: 'green', Icon: CheckmarkFilled },
-  denied: { label: 'Denied', tagType: 'red', Icon: CloseFilled },
-  pending: { label: 'Pending', tagType: 'warm-gray', Icon: Pending },
-  cancelled: { label: 'Cancelled', tagType: 'cool-gray', Icon: ErrorFilled },
-  active: { label: 'Active', tagType: 'teal', Icon: CircleFilled },
+  approved: {
+    label: 'Approved',
+    Icon: CheckmarkFilled,
+    classes: 'bg-green-100 text-green-800 border-green-300',
+  },
+  denied: {
+    label: 'Denied',
+    Icon: CloseFilled,
+    classes: 'bg-red-100 text-red-800 border-red-300',
+  },
+  pending: {
+    label: 'Pending',
+    Icon: Pending,
+    classes: 'bg-gray-100 text-gray-700 border-gray-300',
+  },
+  cancelled: {
+    label: 'Cancelled',
+    Icon: ErrorFilled,
+    classes: 'bg-gray-100 text-gray-600 border-gray-300',
+  },
+  active: {
+    label: 'Active',
+    Icon: CircleFilled,
+    classes: 'bg-teal-100 text-teal-800 border-teal-300',
+  },
 };
 
 const LeapStatusBadge = ({ status, size = 'md', ...rest }) => {
@@ -22,10 +42,17 @@ const LeapStatusBadge = ({ status, size = 'md', ...rest }) => {
   const { Icon } = config;
 
   return (
-    <Tag type={config.tagType} size={size === 'sm' ? 'sm' : 'md'} {...rest}>
-      <Icon size={size === 'sm' ? 10 : 12} style={{ marginRight: '4px' }} />
+    <span
+      className={cn(
+        'inline-flex items-center rounded-full border font-medium',
+        size === 'sm' ? 'px-2 py-0.5 text-xs' : 'px-3 py-1 text-sm',
+        config.classes
+      )}
+      {...rest}
+    >
+      <Icon size={size === 'sm' ? 10 : 12} className="mr-1 shrink-0" />
       {config.label}
-    </Tag>
+    </span>
   );
 };
 

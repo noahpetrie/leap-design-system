@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A 5x5 risk assessment matrix that plots risks by likelihood and impact, with color-coded cells indicating severity levels.',
+        component: `A 5x5 risk assessment matrix that plots risks by likelihood and impact, with color-coded cells indicating severity levels.
+
+### Import
+\`\`\`jsx
+import { LeapRiskMatrix } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

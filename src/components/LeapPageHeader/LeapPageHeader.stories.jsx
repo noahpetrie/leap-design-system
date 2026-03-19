@@ -1,7 +1,7 @@
 import React from 'react';
-import { Add } from '@carbon/react/icons';
-import { Button } from '@carbon/react';
+import { Add } from '@carbon/icons-react';
 import LeapPageHeader from './LeapPageHeader.jsx';
+import LeapButton from '../LeapButton/LeapButton.jsx';
 
 export default {
   title: 'Components/LeapPageHeader',
@@ -10,7 +10,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A page header with a title, optional subtitle, breadcrumb navigation, and an action slot for buttons.',
+        component: `A page header with a title, optional subtitle, breadcrumb navigation, and an action slot for buttons.
+
+### Import
+\`\`\`jsx
+import { LeapPageHeader } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },
@@ -33,7 +39,7 @@ export const WithActions = {
       title="Team Calendar"
       subtitle="View team availability and scheduled leave"
       breadcrumbs={[{ label: 'Dashboard', href: '#' }, { label: 'Team Calendar' }]}
-      actions={<Button size="sm" renderIcon={Add}>New Request</Button>}
+      actions={<LeapButton size="sm" renderIcon={Add}>New Request</LeapButton>}
     />
   ),
 };

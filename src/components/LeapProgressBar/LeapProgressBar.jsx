@@ -1,6 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapProgressBar.module.scss';
+import { cn } from '../../lib/utils';
+
+const trackSizeStyles = {
+  sm: 'h-1',
+  md: 'h-2',
+};
+
+const fillStatusStyles = {
+  active: 'bg-primary',
+  success: 'bg-green-600',
+  error: 'bg-destructive',
+};
 
 const LeapProgressBar = ({
   value,
@@ -15,17 +26,20 @@ const LeapProgressBar = ({
   const clampedValue = indeterminate ? undefined : Math.min(100, Math.max(0, value ?? 0));
 
   return (
-    <div className={styles['leap-progress-bar']} {...rest}>
+    <div className="w-full" {...rest}>
       {(label || (showValue && !indeterminate)) && (
-        <div className={styles['leap-progress-bar__header']}>
-          {label && <span className={styles['leap-progress-bar__label']}>{label}</span>}
+        <div className="flex justify-between items-baseline mb-1">
+          {label && <span className="text-sm text-foreground">{label}</span>}
           {showValue && !indeterminate && (
-            <span className={styles['leap-progress-bar__value']}>{clampedValue}%</span>
+            <span className="text-sm text-muted-foreground">{clampedValue}%</span>
           )}
         </div>
       )}
       <div
-        className={`${styles['leap-progress-bar__track']} ${styles[`leap-progress-bar__track--${size}`]}`}
+        className={cn(
+          'w-full bg-muted rounded-sm overflow-hidden',
+          trackSizeStyles[size]
+        )}
         role="progressbar"
         aria-valuenow={indeterminate ? undefined : clampedValue}
         aria-valuemin={0}
@@ -33,18 +47,26 @@ const LeapProgressBar = ({
         aria-label={label || 'Progress'}
       >
         <div
-          className={[
-            styles['leap-progress-bar__fill'],
-            styles[`leap-progress-bar__fill--${status}`],
-            indeterminate ? styles['leap-progress-bar__fill--indeterminate'] : '',
-          ]
-            .filter(Boolean)
-            .join(' ')}
+          className={cn(
+            'h-full rounded-sm transition-[width] duration-300 ease-in-out',
+            fillStatusStyles[status],
+            indeterminate && 'w-[30%] animate-[leap-progress-slide_1.5s_ease-in-out_infinite]'
+          )}
           style={indeterminate ? undefined : { width: `${clampedValue}%` }}
         />
       </div>
       {helperText && (
-        <span className={styles['leap-progress-bar__helper-text']}>{helperText}</span>
+        <span className="text-xs text-muted-foreground mt-1 block">{helperText}</span>
+      )}
+
+      {/* Indeterminate animation keyframes */}
+      {indeterminate && (
+        <style>{`
+          @keyframes leap-progress-slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(333%); }
+          }
+        `}</style>
       )}
     </div>
   );
@@ -58,13 +80,6 @@ LeapProgressBar.propTypes = {
   size: PropTypes.oneOf(['sm', 'md']),
   status: PropTypes.oneOf(['active', 'success', 'error']),
   indeterminate: PropTypes.bool,
-};
-
-LeapProgressBar.defaultProps = {
-  showValue: true,
-  size: 'md',
-  status: 'active',
-  indeterminate: false,
 };
 
 export default LeapProgressBar;

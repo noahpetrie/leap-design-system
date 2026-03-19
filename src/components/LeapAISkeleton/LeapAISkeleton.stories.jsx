@@ -7,7 +7,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'AI-themed skeleton loading states with a green shimmer effect, indicating AI-generated content is being loaded.',
+        component: `AI-themed skeleton loading states with a green shimmer effect, indicating AI-generated content is being loaded.
+
+### Import
+\`\`\`jsx
+import { LeapAISkeleton } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

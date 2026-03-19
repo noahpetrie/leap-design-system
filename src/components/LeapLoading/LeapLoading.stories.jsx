@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A loading indicator that supports full-page spinners, overlay mode, and inline status indicators for active, finished, and error states.',
+        component: `A loading indicator that supports full-page spinners, overlay mode, and inline status indicators for active, finished, and error states.
+
+### Import
+\`\`\`jsx
+import { LeapLoading } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

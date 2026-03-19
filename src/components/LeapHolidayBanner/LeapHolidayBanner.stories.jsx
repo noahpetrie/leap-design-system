@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A dismissible banner that displays an upcoming or current holiday with its date and a countdown in days.',
+        component: `A dismissible banner that displays an upcoming or current holiday with its date and a countdown in days.
+
+### Import
+\`\`\`jsx
+import { LeapHolidayBanner } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

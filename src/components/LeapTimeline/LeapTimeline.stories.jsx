@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A vertical timeline displaying chronological events with type-colored dots, timestamps, titles, and optional descriptions.',
+        component: `A vertical timeline displaying chronological events with type-colored dots, timestamps, titles, and optional descriptions.
+
+### Import
+\`\`\`jsx
+import { LeapTimeline } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

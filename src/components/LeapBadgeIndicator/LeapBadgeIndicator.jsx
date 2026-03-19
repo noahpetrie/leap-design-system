@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapBadgeIndicator.module.scss';
+import { cn } from '../../lib/utils';
 
 /**
  * LeapBadgeIndicator — A small notification badge, typically used
@@ -10,18 +10,18 @@ const LeapBadgeIndicator = React.forwardRef(function LeapBadgeIndicator(
   { className, count, ...rest },
   ref
 ) {
-  const classNames = [
-    styles['leap-badge-indicator'],
-    count ? styles['leap-badge-indicator--count'] : '',
-    className || '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   const displayCount = count && count > 999 ? '999+' : count;
 
   return (
-    <div className={classNames} ref={ref} {...rest}>
+    <div
+      className={cn(
+        'absolute flex items-center justify-center px-1 pb-0.5 rounded-full bg-destructive text-primary-foreground text-xs top-0 right-0 mt-2 mr-2 max-h-4 min-h-2 min-w-2',
+        count && 'mt-1 mr-1',
+        className,
+      )}
+      ref={ref}
+      {...rest}
+    >
       {displayCount}
     </div>
   );

@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A themed text input wrapper around Carbon TextInput with support for helper text, validation, and disabled states.',
+        component: `A themed text input wrapper around Carbon TextInput with support for helper text, validation, and disabled states.
+
+### Import
+\`\`\`jsx
+import { LeapInput } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

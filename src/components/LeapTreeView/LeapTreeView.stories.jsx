@@ -1,5 +1,5 @@
 import React from 'react';
-import { Folder, Document, Image, Code, Settings, DataBase } from '@carbon/react/icons';
+import { Folder, Document, Image, Code, Settings, DataBase } from '@carbon/icons-react';
 import LeapTreeView from './LeapTreeView.jsx';
 
 export default {
@@ -13,8 +13,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          'A hierarchical tree view for displaying nested data such as file systems, org structures, or navigation. Supports expand/collapse, selection, custom icons, keyboard navigation, and disabled nodes.',
+        component: `A hierarchical tree view for displaying nested data such as file systems, org structures, or navigation. Supports expand/collapse, selection, custom icons, keyboard navigation, and disabled nodes.
+
+### Import
+\`\`\`jsx
+import { LeapTreeView } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

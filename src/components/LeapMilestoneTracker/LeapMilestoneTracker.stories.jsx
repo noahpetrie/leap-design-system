@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A vertical timeline that tracks project milestones with completed, current, upcoming, and overdue status indicators.',
+        component: `A vertical timeline that tracks project milestones with completed, current, upcoming, and overdue status indicators.
+
+### Import
+\`\`\`jsx
+import { LeapMilestoneTracker } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

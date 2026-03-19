@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Tracks stakeholder engagement by displaying each stakeholder\'s last engagement date, total engagement count, and trend direction (up, down, stable), sorted by least recently engaged.',
+        component: `Tracks stakeholder engagement by displaying each stakeholder's last engagement date, total engagement count, and trend direction (up, down, stable), sorted by least recently engaged.
+
+### Import
+\`\`\`jsx
+import { LeapEngagementTracker } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

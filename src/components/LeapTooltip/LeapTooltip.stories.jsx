@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A toggletip-based tooltip that displays descriptive text on click, with configurable alignment and an information icon trigger.',
+        component: `A toggletip-based tooltip that displays descriptive text on click, with configurable alignment and an information icon trigger.
+
+### Import
+\`\`\`jsx
+import { LeapTooltip } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

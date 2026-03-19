@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A dismissible toast notification with success, error, warning, and info variants, supporting auto-dismiss via a configurable duration.',
+        component: `A dismissible toast notification with success, error, warning, and info variants, supporting auto-dismiss via a configurable duration.
+
+### Import
+\`\`\`jsx
+import { LeapToast } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

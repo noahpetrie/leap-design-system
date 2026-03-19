@@ -1,11 +1,29 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapKPICard.module.scss';
+import { cn } from '../../lib/utils';
 
 const STATUS_LABELS = {
   'on-track': 'On Track',
   'at-risk': 'At Risk',
   'off-track': 'Off Track',
+};
+
+const STATUS_DOT_COLORS = {
+  'on-track': 'bg-primary',
+  'at-risk': 'bg-[#f1c21b]',
+  'off-track': 'bg-[#da1e28]',
+};
+
+const STATUS_BADGE_STYLES = {
+  'on-track': 'bg-[rgba(12,140,94,0.15)] text-primary',
+  'at-risk': 'bg-[rgba(241,194,27,0.2)] text-[#8e6a00]',
+  'off-track': 'bg-[#fff1f1] text-[#da1e28]',
+};
+
+const STATUS_STROKE_COLORS = {
+  'on-track': '#0c8c5e',
+  'at-risk': '#f1c21b',
+  'off-track': '#da1e28',
 };
 
 const buildSparklinePath = (trend, width = 120, height = 32) => {
@@ -35,48 +53,35 @@ const LeapKPICard = ({ label, value, unit, target, trend, status }) => {
     [trend]
   );
 
-  const statusColor = useMemo(() => {
-    switch (status) {
-      case 'on-track':
-        return '#0c8c5e';
-      case 'at-risk':
-        return '#f1c21b';
-      case 'off-track':
-        return '#da1e28';
-      default:
-        return '#525252';
-    }
-  }, [status]);
+  const statusColor = STATUS_STROKE_COLORS[status] || '#525252';
 
   return (
-    <div className={styles['kpi-card']}>
-      <div className={styles['kpi-card__header']}>
-        <span className={styles['kpi-card__label']}>{label}</span>
+    <div className="bg-background border border-border rounded p-4 min-w-[200px] max-w-[280px] text-foreground">
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{label}</span>
         <span
-          className={`${styles['kpi-card__status-dot']} ${
-            styles[`kpi-card__status-dot--${status}`]
-          }`}
+          className={cn('w-2.5 h-2.5 rounded-full shrink-0', STATUS_DOT_COLORS[status])}
           title={STATUS_LABELS[status]}
           aria-label={STATUS_LABELS[status]}
         />
       </div>
-      <div className={styles['kpi-card__value-row']}>
-        <span className={styles['kpi-card__value']}>{value}</span>
-        {unit && <span className={styles['kpi-card__unit']}>{unit}</span>}
+      <div className="flex items-baseline gap-1 mb-1">
+        <span className="text-3xl font-semibold leading-tight text-foreground">{value}</span>
+        {unit && <span className="text-sm text-muted-foreground">{unit}</span>}
       </div>
       {target !== undefined && target !== null && (
-        <div className={styles['kpi-card__target']}>
+        <div className="text-xs text-muted-foreground mb-3">
           Target: {target}
           {unit ? ` ${unit}` : ''}
         </div>
       )}
       {sparklinePoints && (
-        <div className={styles['kpi-card__sparkline']}>
+        <div className="mb-3 py-1">
           <svg
             width="120"
             height="32"
             viewBox="0 0 120 32"
-            className={styles['kpi-card__sparkline-svg']}
+            className="block w-full h-8"
             aria-hidden="true"
           >
             <polyline
@@ -90,11 +95,12 @@ const LeapKPICard = ({ label, value, unit, target, trend, status }) => {
           </svg>
         </div>
       )}
-      <div className={styles['kpi-card__status-label']}>
+      <div className="flex">
         <span
-          className={`${styles['kpi-card__status-badge']} ${
-            styles[`kpi-card__status-badge--${status}`]
-          }`}
+          className={cn(
+            'inline-block px-2 py-0.5 rounded-xl text-xs font-semibold',
+            STATUS_BADGE_STYLES[status],
+          )}
         >
           {STATUS_LABELS[status]}
         </span>

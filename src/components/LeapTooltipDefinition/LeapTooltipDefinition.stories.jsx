@@ -11,8 +11,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          'An inline term with a dotted underline that reveals a definition tooltip on hover or focus. Useful for defining jargon, acronyms, or domain-specific terms without interrupting reading flow.',
+        component: `An inline term with a dotted underline that reveals a definition tooltip on hover or focus. Useful for defining jargon, acronyms, or domain-specific terms without interrupting reading flow.
+
+### Import
+\`\`\`jsx
+import { LeapTooltipDefinition } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

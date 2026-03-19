@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A radio button group wrapper around Carbon RadioButtonGroup that supports vertical and horizontal orientations with configurable options.',
+        component: `A radio button group wrapper around Carbon RadioButtonGroup that supports vertical and horizontal orientations with configurable options.
+
+### Import
+\`\`\`jsx
+import { LeapRadio } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

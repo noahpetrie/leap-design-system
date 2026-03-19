@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapCommunicationPlan.module.scss';
+import { cn } from '../../lib/utils';
 
 const CHANNEL_LABELS = {
   email: 'Email',
@@ -16,10 +16,17 @@ const STATUS_MAP = {
   cancelled: 'Cancelled',
 };
 
+const statusBadgeClasses = {
+  draft: 'bg-[#e0e0e0] text-[#525252]',
+  scheduled: 'bg-[#d0e2ff] text-[#0043ce]',
+  sent: 'bg-primary/15 text-primary',
+  cancelled: 'bg-[#fff1f1] text-[#da1e28]',
+};
+
 const truncateMessage = (message, maxLength = 80) => {
   if (!message) return '';
   if (message.length <= maxLength) return message;
-  return message.substring(0, maxLength).trimEnd() + '…';
+  return message.substring(0, maxLength).trimEnd() + '\u2026';
 };
 
 const formatDate = (dateString) => {
@@ -34,9 +41,9 @@ const formatDate = (dateString) => {
 const LeapCommunicationPlan = ({ communications }) => {
   if (!communications || communications.length === 0) {
     return (
-      <div className={styles['communication-plan']}>
-        <h3 className={styles['communication-plan__title']}>Communication Plan</h3>
-        <p className={styles['communication-plan__empty']}>
+      <div className="bg-background border border-border rounded p-4 text-foreground">
+        <h3 className="text-sm font-semibold mb-4 text-foreground">Communication Plan</h3>
+        <p className="text-sm text-muted-foreground text-center py-6">
           No communications planned yet.
         </p>
       </div>
@@ -44,37 +51,41 @@ const LeapCommunicationPlan = ({ communications }) => {
   }
 
   return (
-    <div className={styles['communication-plan']}>
-      <h3 className={styles['communication-plan__title']}>Communication Plan</h3>
-      <div className={styles['communication-plan__header']}>
-        <span className={styles['communication-plan__header-date']}>Date</span>
-        <span className={styles['communication-plan__header-audience']}>Audience</span>
-        <span className={styles['communication-plan__header-channel']}>Channel</span>
-        <span className={styles['communication-plan__header-message']}>Message</span>
-        <span className={styles['communication-plan__header-status']}>Status</span>
+    <div className="bg-background border border-border rounded p-4 text-foreground">
+      <h3 className="text-sm font-semibold mb-4 text-foreground">Communication Plan</h3>
+      <div className="grid grid-cols-[120px_1fr_100px_2fr_100px] gap-2 px-3 py-2 border-b-2 border-primary text-xs font-semibold text-foreground">
+        <span>Date</span>
+        <span>Audience</span>
+        <span>Channel</span>
+        <span>Message</span>
+        <span>Status</span>
       </div>
-      <ul className={styles['communication-plan__list']}>
+      <ul className="list-none m-0 p-0">
         {communications.map((comm) => (
-          <li key={comm.id} className={styles['communication-plan__row']}>
-            <span className={styles['communication-plan__date']}>
+          <li
+            key={comm.id}
+            className="grid grid-cols-[120px_1fr_100px_2fr_100px] gap-2 items-center px-3 py-2 border-b border-border transition-colors duration-150 hover:bg-accent"
+          >
+            <span className="text-sm text-muted-foreground whitespace-nowrap">
               {formatDate(comm.date)}
             </span>
-            <span className={styles['communication-plan__audience']}>
-              <span className={styles['communication-plan__audience-tag']}>
+            <span>
+              <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
                 {comm.audience}
               </span>
             </span>
-            <span className={styles['communication-plan__channel']}>
+            <span className="text-sm text-foreground font-medium">
               {CHANNEL_LABELS[comm.channel] || comm.channel}
             </span>
-            <span className={styles['communication-plan__message']}>
+            <span className="text-sm text-muted-foreground overflow-hidden text-ellipsis whitespace-nowrap">
               {truncateMessage(comm.message)}
             </span>
-            <span className={styles['communication-plan__status']}>
+            <span>
               <span
-                className={`${styles['communication-plan__status-badge']} ${
-                  styles[`communication-plan__status-badge--${comm.status}`]
-                }`}
+                className={cn(
+                  'inline-block px-2 py-0.5 rounded-full text-xs font-semibold text-center',
+                  statusBadgeClasses[comm.status]
+                )}
               >
                 {STATUS_MAP[comm.status] || comm.status}
               </span>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapLogo.module.scss';
+import { cn } from '../../lib/utils';
 
 const LogoMark = ({ size, color }) => (
   <svg width={size} height={size} viewBox="0 0 182 167" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +63,11 @@ const LogoWithBorder = ({ size, color }) => (
 
 const LeapLogo = ({ variant = 'mark', size = 48, color = '#0C8C5E', className }) => {
   return (
-    <span className={`${styles['leap-logo']} ${className || ''}`} role="img" aria-label="Leap logo">
+    <span
+      className={cn('inline-flex items-center justify-center shrink-0 leading-none', className)}
+      role="img"
+      aria-label="Leap logo"
+    >
       {variant === 'bordered' ? (
         <LogoWithBorder size={size} color={color} />
       ) : (

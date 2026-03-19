@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'An expandable log that tracks sources of resistance during change initiatives, showing severity, status, and mitigation strategies.',
+        component: `An expandable log that tracks sources of resistance during change initiatives, showing severity, status, and mitigation strategies.
+
+### Import
+\`\`\`jsx
+import { LeapResistanceLog } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

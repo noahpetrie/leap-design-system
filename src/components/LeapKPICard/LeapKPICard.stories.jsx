@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A KPI card that displays a metric value, target, status indicator, and an optional sparkline trend chart.',
+        component: `A KPI card that displays a metric value, target, status indicator, and an optional sparkline trend chart.
+
+### Import
+\`\`\`jsx
+import { LeapKPICard } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

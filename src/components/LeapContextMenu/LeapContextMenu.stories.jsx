@@ -1,5 +1,5 @@
 import React from 'react';
-import { Copy, Cut, Paste, TrashCan, Edit, Download, Share, FolderOpen } from '@carbon/react/icons';
+import { Copy, Cut, Paste, TrashCan, Edit, Download, Share, FolderOpen } from '@carbon/icons-react';
 import LeapContextMenu from './LeapContextMenu.jsx';
 
 export default {
@@ -10,7 +10,13 @@ export default {
     docs: {
       description: {
         component:
-          'A right-click context menu that appears at the cursor position, supporting icons, keyboard shortcuts, dividers, disabled items, and danger actions.',
+          `A right-click context menu that appears at the cursor position, supporting icons, keyboard shortcuts, dividers, disabled items, and danger actions.
+
+### Import
+\`\`\`jsx
+import { LeapContextMenu } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

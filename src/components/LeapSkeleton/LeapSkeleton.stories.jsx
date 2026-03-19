@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A placeholder skeleton loader supporting text, heading, card, avatar, and button variants for use during content loading.',
+        component: `A placeholder skeleton loader supporting text, heading, card, avatar, and button variants for use during content loading.
+
+### Import
+\`\`\`jsx
+import { LeapSkeleton } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

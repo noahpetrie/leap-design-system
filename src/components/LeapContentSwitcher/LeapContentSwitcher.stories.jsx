@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, Grid, TreeView, ChartBar, TableSplit } from '@carbon/react/icons';
+import { List, Grid, TreeView, ChartBar, TableSplit } from '@carbon/icons-react';
 import LeapContentSwitcher from './LeapContentSwitcher.jsx';
 
 export default {
@@ -14,7 +14,13 @@ export default {
     docs: {
       description: {
         component:
-          'A segmented toggle for switching between related content views. Supports icons, keyboard navigation (arrow keys, Home, End), and multiple sizes.',
+          `A segmented toggle for switching between related content views. Supports icons, keyboard navigation (arrow keys, Home, End), and multiple sizes.
+
+### Import
+\`\`\`jsx
+import { LeapContentSwitcher } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

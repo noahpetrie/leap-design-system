@@ -9,7 +9,13 @@ export default {
     docs: {
       description: {
         component:
-          'A compact inline notification/alert that communicates success, error, warning, or informational messages with a colored border stripe, icon, and optional close button.',
+          `A compact inline notification/alert that communicates success, error, warning, or informational messages with a colored border stripe, icon, and optional close button.
+
+### Import
+\`\`\`jsx
+import { LeapInlineNotification } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

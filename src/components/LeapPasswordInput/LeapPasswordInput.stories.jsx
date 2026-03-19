@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A password input with show/hide toggle, supporting validation states, helper text, and multiple sizes.',
+        component: `A password input with show/hide toggle, supporting validation states, helper text, and multiple sizes.
+
+### Import
+\`\`\`jsx
+import { LeapPasswordInput } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ChevronDown, Checkmark } from '@carbon/react/icons';
-import styles from './LeapTile.module.scss';
+import { ChevronDown, Checkmark } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const LeapTile = ({
   variant = 'default',
@@ -20,17 +20,6 @@ const LeapTile = ({
   const isSelectable = variant === 'selectable';
   const isExpandable = variant === 'expandable';
 
-  const classNames = [
-    styles['tile'],
-    styles[`tile--${variant}`],
-    selected && isSelectable ? styles['tile--selected'] : '',
-    expanded && isExpandable ? styles['tile--expanded'] : '',
-    disabled ? styles['tile--disabled'] : '',
-    light ? styles['tile--light'] : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   const handleClick = () => {
     if (disabled) return;
     if (isClickable && onClick) onClick();
@@ -43,7 +32,15 @@ const LeapTile = ({
 
   return (
     <Tag
-      className={classNames}
+      className={cn(
+        'w-full rounded-lg border border-border bg-card p-4 text-left text-sm text-foreground',
+        light && 'bg-muted',
+        disabled && 'pointer-events-none opacity-50',
+        isClickable && 'cursor-pointer transition-[box-shadow,border-color] duration-150 hover:shadow-md hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        isSelectable && 'cursor-pointer transition-[border-color,background-color] duration-150 hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        isExpandable && 'cursor-pointer transition-[border-color] duration-150 hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        selected && isSelectable && 'border-primary bg-primary/10'
+      )}
       onClick={isInteractive ? handleClick : undefined}
       type={isInteractive ? 'button' : undefined}
       disabled={isInteractive ? disabled : undefined}
@@ -51,21 +48,33 @@ const LeapTile = ({
       aria-pressed={isSelectable ? selected : undefined}
       {...rest}
     >
-      <div className={styles['tile-content']}>
-        <div className={styles['tile-body']}>{children}</div>
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex-1">{children}</div>
         {isSelectable && (
-          <span className={styles['tile-checkmark']}>
-            <Checkmark size={16} />
+          <span
+            className={cn(
+              'flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-border transition-[border-color,background-color,color] duration-150',
+              selected && 'border-primary bg-primary text-white'
+            )}
+          >
+            <Checkmark size={16} className={cn(!selected && 'text-transparent')} />
           </span>
         )}
         {isExpandable && (
-          <span className={styles['tile-chevron']}>
+          <span
+            className={cn(
+              'flex shrink-0 items-center justify-center text-muted-foreground transition-transform duration-200',
+              expanded && 'rotate-180'
+            )}
+          >
             <ChevronDown size={16} />
           </span>
         )}
       </div>
       {isExpandable && expanded && expandedContent && (
-        <div className={styles['tile-expanded']}>{expandedContent}</div>
+        <div className="mt-3 border-t border-border pt-3 text-sm text-muted-foreground">
+          {expandedContent}
+        </div>
       )}
     </Tag>
   );

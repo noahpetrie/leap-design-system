@@ -1,6 +1,13 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapContentSwitcher.module.scss';
+import { cn } from '../../lib/utils';
+
+const sizeClasses = {
+  sm: 'py-1 px-3 text-xs font-medium',
+  md: 'py-1.5 px-4 text-sm',
+  lg: 'py-2 px-5 text-sm',
+  xl: 'py-2.5 px-6 text-base',
+};
 
 const LeapContentSwitcher = ({ items = [], selectedIndex = 0, onChange, size = 'md' }) => {
   const [activeIndex, setActiveIndex] = useState(selectedIndex);
@@ -35,16 +42,25 @@ const LeapContentSwitcher = ({ items = [], selectedIndex = 0, onChange, size = '
 
   return (
     <div
-      className={`${styles['leap-content-switcher']} ${styles[`leap-content-switcher--${size}`]}`}
+      className="inline-flex rounded bg-card border border-border"
       role="tablist"
     >
       {items.map((item, index) => (
         <button
           key={item.id || index}
           ref={(el) => (buttonsRef.current[index] = el)}
-          className={`${styles['leap-content-switcher__item']} ${
-            index === activeIndex ? styles['leap-content-switcher__item--selected'] : ''
-          }`}
+          className={cn(
+            'inline-flex items-center gap-1.5 border-none bg-transparent text-muted-foreground cursor-pointer whitespace-nowrap transition-[background,color] duration-150 relative',
+            sizeClasses[size],
+            index !== items.length - 1 && 'border-r border-border',
+            index === 0 && 'rounded-l-[3px]',
+            index === items.length - 1 && 'rounded-r-[3px]',
+            index !== activeIndex && !item.disabled && 'hover:bg-accent hover:text-foreground',
+            index === activeIndex && 'bg-primary text-white hover:bg-primary/80',
+            index === activeIndex && index !== items.length - 1 && 'border-r-primary',
+            item.disabled && 'text-muted-foreground opacity-50 cursor-not-allowed',
+            'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px] focus-visible:z-[1]'
+          )}
           role="tab"
           aria-selected={index === activeIndex}
           tabIndex={index === activeIndex ? 0 : -1}
@@ -52,7 +68,7 @@ const LeapContentSwitcher = ({ items = [], selectedIndex = 0, onChange, size = '
           onKeyDown={(e) => handleKeyDown(e, index)}
           disabled={item.disabled}
         >
-          {item.icon && <span className={styles['leap-content-switcher__icon']}>{item.icon}</span>}
+          {item.icon && <span className="flex items-center [&_svg]:w-4 [&_svg]:h-4 [&_svg]:fill-current">{item.icon}</span>}
           <span>{item.label}</span>
         </button>
       ))}

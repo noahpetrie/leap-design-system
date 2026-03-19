@@ -9,7 +9,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A date range picker component wrapping Carbon\'s DatePicker in range mode, providing start and end date inputs with customizable labels.',
+        component: `A date range picker component wrapping Carbon's DatePicker in range mode, providing start and end date inputs with customizable labels.
+
+### Import
+\`\`\`jsx
+import { LeapDateRangePicker } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

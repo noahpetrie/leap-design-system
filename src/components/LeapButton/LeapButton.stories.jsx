@@ -1,5 +1,5 @@
 import React from 'react';
-import { Add, TrashCan, ArrowRight } from '@carbon/react/icons';
+import { Add, TrashCan, ArrowRight } from '@carbon/icons-react';
 import LeapButton from './LeapButton.jsx';
 
 export default {
@@ -14,7 +14,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A themed button wrapper around Carbon\'s Button component, supporting primary, secondary, tertiary, ghost, and danger variants with optional icons.',
+        component: `A themed button wrapper around Carbon's Button component, supporting primary, secondary, tertiary, ghost, and danger variants with optional icons.
+
+### Import
+\`\`\`jsx
+import { LeapButton } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapTeamOverview.module.scss';
+import { cn } from '../../lib/utils';
 
 const getInitials = (name) =>
   name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2);
@@ -10,30 +10,38 @@ const LeapTeamOverview = ({ members = [], title = "Team today", ...rest }) => {
   const available = members.filter((m) => !m.onLeave);
 
   return (
-    <div className={styles['team-overview']} {...rest}>
-      <div className={styles['team-overview-header']}>
-        <span className={styles['team-overview-title']}>{title}</span>
-        <span className={styles['team-overview-count']}>
+    <div className="rounded border border-border bg-card p-4" {...rest}>
+      <div className="flex items-baseline justify-between mb-4">
+        <span className="text-sm font-semibold text-foreground">{title}</span>
+        <span className="text-xs font-medium text-muted-foreground">
           {available.length}/{members.length} available
         </span>
       </div>
       {onLeave.length > 0 && (
-        <div className={styles['team-overview-section']}>
-          <span className={styles['team-overview-section-label']}>On leave</span>
-          <div className={styles['team-overview-avatars']}>
+        <div className="mb-3">
+          <span className="block text-xs font-medium text-muted-foreground mb-2">On leave</span>
+          <div className="flex flex-wrap gap-2">
             {onLeave.map((m, i) => (
-              <div key={i} className={`${styles['team-overview-avatar']} ${styles['team-overview-avatar--leave']}`} title={`${m.name} — ${m.leaveType || 'Leave'}`}>
+              <div
+                key={i}
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-red-50 text-xs font-semibold text-red-600 opacity-80 cursor-default"
+                title={`${m.name} — ${m.leaveType || 'Leave'}`}
+              >
                 {getInitials(m.name)}
               </div>
             ))}
           </div>
         </div>
       )}
-      <div className={styles['team-overview-section']}>
-        <span className={styles['team-overview-section-label']}>Available</span>
-        <div className={styles['team-overview-avatars']}>
+      <div>
+        <span className="block text-xs font-medium text-muted-foreground mb-2">Available</span>
+        <div className="flex flex-wrap gap-2">
           {available.map((m, i) => (
-            <div key={i} className={styles['team-overview-avatar']} title={m.name}>
+            <div
+              key={i}
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary cursor-default"
+              title={m.name}
+            >
               {getInitials(m.name)}
             </div>
           ))}

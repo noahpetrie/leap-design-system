@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A confirmation modal dialog built on Carbon Modal with support for standard and danger variants.',
+        component: `A confirmation modal dialog built on Carbon Modal with support for standard and danger variants.
+
+### Import
+\`\`\`jsx
+import { LeapModal } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

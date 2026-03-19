@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A search input field that wraps Carbon\'s Search component, supporting configurable size and placeholder text.',
+        component: `A search input field that wraps Carbon's Search component, supporting configurable size and placeholder text.
+
+### Import
+\`\`\`jsx
+import { LeapSearch } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

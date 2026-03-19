@@ -8,7 +8,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A custom range slider with a filled track and thumb styled in Leap green, supporting labels, helper text, and keyboard navigation.',
+        component: `A custom range slider with a filled track and thumb styled in Leap green, supporting labels, helper text, and keyboard navigation.
+
+### Import
+\`\`\`jsx
+import { LeapSlider } from '@noahpetrie/leap-design-system';
+import '@noahpetrie/leap-design-system/styles';
+\`\`\``,
       },
     },
   },

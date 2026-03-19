@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from './LeapResistanceLog.module.scss';
+import { cn } from '../../lib/utils';
 
 const SEVERITY_LABELS = {
   low: 'Low',
@@ -12,6 +12,24 @@ const STATUS_LABELS = {
   identified: 'Identified',
   mitigating: 'Mitigating',
   resolved: 'Resolved',
+};
+
+const severityBorderColors = {
+  low: 'border-l-[#0c8c5e]',
+  medium: 'border-l-[#f1c21b]',
+  high: 'border-l-[#da1e28]',
+};
+
+const severityBadge = {
+  low: 'bg-[#0c8c5e]/15 text-[#0c8c5e]',
+  medium: 'bg-[#f1c21b]/20 text-[#8e6a00]',
+  high: 'bg-[#fff1f1] text-[#da1e28]',
+};
+
+const statusBadge = {
+  identified: 'bg-[#e0e0e0] text-[#525252]',
+  mitigating: 'bg-[#d0e2ff] text-[#0043ce]',
+  resolved: 'bg-[#0c8c5e]/15 text-[#0c8c5e]',
 };
 
 const LeapResistanceLog = ({ entries }) => {
@@ -31,9 +49,9 @@ const LeapResistanceLog = ({ entries }) => {
 
   if (!entries || entries.length === 0) {
     return (
-      <div className={styles['resistance-log']}>
-        <h3 className={styles['resistance-log__title']}>Resistance Log</h3>
-        <p className={styles['resistance-log__empty']}>
+      <div className="text-foreground">
+        <h3 className="text-base font-semibold mb-4 text-foreground">Resistance Log</h3>
+        <p className="text-sm text-muted-foreground text-center py-6">
           No resistance entries recorded.
         </p>
       </div>
@@ -41,54 +59,57 @@ const LeapResistanceLog = ({ entries }) => {
   }
 
   return (
-    <div className={styles['resistance-log']}>
-      <h3 className={styles['resistance-log__title']}>Resistance Log</h3>
-      <div className={styles['resistance-log__grid']}>
+    <div className="text-foreground">
+      <h3 className="text-base font-semibold mb-4 text-foreground">Resistance Log</h3>
+      <div className="grid grid-cols-1 gap-3">
         {entries.map((entry) => {
           const isExpanded = expandedIds.has(entry.id);
           return (
             <div
               key={entry.id}
-              className={`${styles['resistance-log__card']} ${
-                styles[`resistance-log__card--${entry.severity}`]
-              }`}
+              className={cn(
+                'bg-card border border-border rounded p-4 border-l-4',
+                severityBorderColors[entry.severity]
+              )}
             >
-              <div className={styles['resistance-log__card-header']}>
+              <div className="flex items-center justify-between mb-2">
                 <span
-                  className={`${styles['resistance-log__severity']} ${
-                    styles[`resistance-log__severity--${entry.severity}`]
-                  }`}
+                  className={cn(
+                    'inline-block px-2 py-0.5 rounded-full text-xs font-semibold',
+                    severityBadge[entry.severity]
+                  )}
                 >
                   {SEVERITY_LABELS[entry.severity]}
                 </span>
                 <span
-                  className={`${styles['resistance-log__status']} ${
-                    styles[`resistance-log__status--${entry.status}`]
-                  }`}
+                  className={cn(
+                    'inline-block px-2 py-0.5 rounded-full text-xs font-medium',
+                    statusBadge[entry.status]
+                  )}
                 >
                   {STATUS_LABELS[entry.status]}
                 </span>
               </div>
-              <h4 className={styles['resistance-log__source']}>{entry.source}</h4>
-              <p className={styles['resistance-log__description']}>
+              <h4 className="text-sm font-semibold text-foreground mb-1">{entry.source}</h4>
+              <p className="text-sm text-muted-foreground mb-2 leading-relaxed">
                 {entry.description}
               </p>
               {entry.mitigation && (
                 <>
                   <button
                     type="button"
-                    className={styles['resistance-log__toggle']}
+                    className="bg-transparent border-none p-0 cursor-pointer text-xs font-medium text-primary hover:underline focus:outline-2 focus:outline-primary focus:outline-offset-2 focus:rounded-sm"
                     onClick={() => toggleExpand(entry.id)}
                     aria-expanded={isExpanded}
                   >
-                    {isExpanded ? '▾ Hide mitigation' : '▸ Show mitigation'}
+                    {isExpanded ? '\u25BE Hide mitigation' : '\u25B8 Show mitigation'}
                   </button>
                   {isExpanded && (
-                    <div className={styles['resistance-log__mitigation']}>
-                      <span className={styles['resistance-log__mitigation-label']}>
+                    <div className="mt-2 p-3 bg-muted rounded">
+                      <span className="text-xs font-semibold text-foreground block mb-1">
                         Mitigation Plan
                       </span>
-                      <p className={styles['resistance-log__mitigation-text']}>
+                      <p className="text-sm text-muted-foreground m-0 leading-relaxed">
                         {entry.mitigation}
                       </p>
                     </div>
