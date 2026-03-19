@@ -4,7 +4,15 @@ import LeapDataTable from './LeapDataTable.jsx';
 export default {
   title: 'Components/LeapDataTable',
   component: LeapDataTable,
+  tags: ['autodocs'],
   argTypes: { onRowClick: { action: 'row clicked' } },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A data table component built on Carbon\'s DataTable that renders rows and headers with optional clickable row support.',
+      },
+    },
+  },
 };
 
 const headers = [

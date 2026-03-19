@@ -1,7 +1,19 @@
 import React from 'react';
 import LeapRadio from './LeapRadio.jsx';
 
-export default { title: 'Components/LeapRadio', component: LeapRadio, argTypes: { onChange: { action: 'changed' }, orientation: { control: 'select', options: ['vertical', 'horizontal'] } } };
+export default {
+  title: 'Components/LeapRadio',
+  component: LeapRadio,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A radio button group wrapper around Carbon RadioButtonGroup that supports vertical and horizontal orientations with configurable options.',
+      },
+    },
+  },
+  argTypes: { onChange: { action: 'changed' }, orientation: { control: 'select', options: ['vertical', 'horizontal'] } },
+};
 
 export const Default = {
   args: { legendText: 'Leave type', name: 'leave-type', options: [{ value: 'vacation', label: 'Vacation' }, { value: 'sick', label: 'Sick Leave' }, { value: 'personal', label: 'Personal' }], defaultSelected: 'vacation' },

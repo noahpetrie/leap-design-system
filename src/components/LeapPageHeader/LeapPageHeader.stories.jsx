@@ -6,6 +6,14 @@ import LeapPageHeader from './LeapPageHeader.jsx';
 export default {
   title: 'Components/LeapPageHeader',
   component: LeapPageHeader,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A page header with a title, optional subtitle, breadcrumb navigation, and an action slot for buttons.',
+      },
+    },
+  },
 };
 
 export const Default = {

@@ -4,6 +4,14 @@ import LeapImpactScore from './LeapImpactScore.jsx';
 export default {
   title: 'Components/LeapImpactScore',
   component: LeapImpactScore,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A circular gauge that visualizes an impact score from 0 to 100 with color-coded severity levels and an optional AI badge.',
+      },
+    },
+  },
   argTypes: {
     score: { control: { type: 'range', min: 0, max: 100 } },
     size: { control: 'select', options: ['sm', 'md', 'lg'] },

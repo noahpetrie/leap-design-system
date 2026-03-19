@@ -4,9 +4,17 @@ import LeapEmptyState from './LeapEmptyState.jsx';
 export default {
   title: 'Components/LeapEmptyState',
   component: LeapEmptyState,
+  tags: ['autodocs'],
   argTypes: {
     icon: { control: 'select', options: ['calendar', 'document', 'search'] },
     onAction: { action: 'action clicked' },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A placeholder component for empty views that displays an icon, title, optional description, and an optional call-to-action button.',
+      },
+    },
   },
 };
 

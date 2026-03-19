@@ -4,6 +4,14 @@ import LeapEngagementTracker from './LeapEngagementTracker';
 export default {
   title: 'Change Management/LeapEngagementTracker',
   component: LeapEngagementTracker,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'Tracks stakeholder engagement by displaying each stakeholder\'s last engagement date, total engagement count, and trend direction (up, down, stable), sorted by least recently engaged.',
+      },
+    },
+  },
 };
 
 const today = new Date();

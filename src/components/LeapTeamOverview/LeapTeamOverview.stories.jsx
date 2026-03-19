@@ -4,6 +4,14 @@ import LeapTeamOverview from './LeapTeamOverview.jsx';
 export default {
   title: 'Components/LeapTeamOverview',
   component: LeapTeamOverview,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A team availability overview card showing avatar initials grouped by on-leave and available status with a count summary.',
+      },
+    },
+  },
 };
 
 export const Default = {

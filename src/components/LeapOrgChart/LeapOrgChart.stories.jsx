@@ -4,6 +4,14 @@ import LeapOrgChart from './LeapOrgChart.jsx';
 export default {
   title: 'Components/LeapOrgChart',
   component: LeapOrgChart,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A hierarchical organization chart that renders a tree of people with name and role cards, supporting up to three levels of depth.',
+      },
+    },
+  },
 };
 
 export const Default = {

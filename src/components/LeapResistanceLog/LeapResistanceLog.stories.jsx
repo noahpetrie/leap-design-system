@@ -4,6 +4,14 @@ import LeapResistanceLog from './LeapResistanceLog';
 export default {
   title: 'Change Management/LeapResistanceLog',
   component: LeapResistanceLog,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'An expandable log that tracks sources of resistance during change initiatives, showing severity, status, and mitigation strategies.',
+      },
+    },
+  },
 };
 
 export const Default = {

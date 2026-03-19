@@ -4,6 +4,14 @@ import LeapRequestForm from './LeapRequestForm.jsx';
 export default {
   title: 'Components/LeapRequestForm',
   component: LeapRequestForm,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A leave request form with leave type dropdown, date pickers, and notes field for submitting new time-off requests.',
+      },
+    },
+  },
   argTypes: {
     onSubmit: { action: 'submitted' },
     onCancel: { action: 'cancelled' },

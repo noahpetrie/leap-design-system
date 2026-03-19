@@ -4,6 +4,14 @@ import LeapFilterBar from './LeapFilterBar.jsx';
 export default {
   title: 'Components/LeapFilterBar',
   component: LeapFilterBar,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A horizontal filter bar with dropdown selectors and active filter tags that can be individually cleared.',
+      },
+    },
+  },
   argTypes: { onChange: { action: 'filter changed' }, onClear: { action: 'filter cleared' } },
 };
 

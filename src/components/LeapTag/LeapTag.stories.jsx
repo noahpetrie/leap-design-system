@@ -1,7 +1,19 @@
 import React from 'react';
 import LeapTag from './LeapTag.jsx';
 
-export default { title: 'Components/LeapTag', component: LeapTag, argTypes: { onClose: { action: 'closed' } } };
+export default {
+  title: 'Components/LeapTag',
+  component: LeapTag,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A color-coded tag component built on Carbon Tag, supporting multiple color types, sizes, and an optional filterable close action.',
+      },
+    },
+  },
+  argTypes: { onClose: { action: 'closed' } },
+};
 
 export const AllTypes = {
   render: () => (

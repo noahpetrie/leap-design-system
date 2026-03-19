@@ -6,11 +6,15 @@ module.exports = {
     name: '@storybook/react-vite',
     options: {},
   },
+  docs: {
+    autodocs: true,
+  },
   viteFinal: async (config) => {
     config.css = {
       ...config.css,
       preprocessorOptions: {
         scss: {
+          additionalData: `@use '@carbon/colors' as *;\n`,
           includePaths: [
             'node_modules',
             'node_modules/@carbon/styles/scss',

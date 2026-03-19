@@ -4,10 +4,18 @@ import LeapChange from './LeapChange.jsx';
 export default {
   title: 'Components/LeapChange',
   component: LeapChange,
+  tags: ['autodocs'],
   argTypes: {
     changeType: {
       control: 'select',
       options: ['approved', 'denied', 'modified', 'pending'],
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Displays a change log entry showing a leave request status transition (approved, denied, modified, or pending) with timestamp, employee name, and optional reason.',
+      },
     },
   },
 };

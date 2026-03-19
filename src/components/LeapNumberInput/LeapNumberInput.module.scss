@@ -1,0 +1,25 @@
+@use '@carbon/styles/scss/theme' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+
+.leap-number-input {
+  --cds-interactive: #{$leap-green-500};
+  --cds-focus: #{$leap-green-500};
+  --cds-border-interactive: #{$leap-green-500};
+
+  // Stepper buttons adopt Leap green on hover/active
+  :global(.cds--number__control-btn):hover {
+    background-color: $leap-green-500;
+    color: $white;
+  }
+
+  :global(.cds--number__control-btn):active {
+    background-color: $leap-green-700;
+  }
+
+  // Focus ring uses Leap green
+  :global(.cds--number input[type='number']):focus {
+    outline-color: $leap-green-500;
+  }
+}

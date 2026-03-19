@@ -4,6 +4,14 @@ import LeapHolidayBanner from './LeapHolidayBanner.jsx';
 export default {
   title: 'Components/LeapHolidayBanner',
   component: LeapHolidayBanner,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A dismissible banner that displays an upcoming or current holiday with its date and a countdown in days.',
+      },
+    },
+  },
   argTypes: { onDismiss: { action: 'dismissed' } },
 };
 

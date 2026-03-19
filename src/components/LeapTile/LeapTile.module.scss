@@ -1,0 +1,125 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-100: #e6f4ee;
+
+.tile {
+  border: 1px solid $border-subtle-01;
+  border-radius: 8px;
+  background: $layer-01;
+  padding: $spacing-05;
+  text-align: left;
+  width: 100%;
+  @include type-style('body-compact-01');
+  color: $text-primary;
+}
+
+.tile--light {
+  background: $layer-02;
+}
+
+.tile--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.tile--clickable {
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: $leap-green-500;
+  }
+
+  &:focus {
+    outline: 2px solid $leap-green-500;
+    outline-offset: 2px;
+  }
+}
+
+.tile--selectable {
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+
+  &:hover {
+    border-color: $leap-green-500;
+  }
+
+  &:focus {
+    outline: 2px solid $leap-green-500;
+    outline-offset: 2px;
+  }
+}
+
+.tile--selected {
+  border-color: $leap-green-500;
+  background: $leap-green-100;
+}
+
+.tile--expandable {
+  cursor: pointer;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: $leap-green-500;
+  }
+
+  &:focus {
+    outline: 2px solid $leap-green-500;
+    outline-offset: 2px;
+  }
+}
+
+.tile-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-04;
+}
+
+.tile-body {
+  flex: 1;
+}
+
+.tile-checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid $border-subtle-01;
+  flex-shrink: 0;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+  color: transparent;
+
+  .tile--selected & {
+    border-color: $leap-green-500;
+    background: $leap-green-500;
+    color: #fff;
+  }
+}
+
+.tile-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  color: $text-secondary;
+
+  .tile--expanded & {
+    transform: rotate(180deg);
+  }
+}
+
+.tile-expanded {
+  margin-top: $spacing-04;
+  padding-top: $spacing-04;
+  border-top: 1px solid $border-subtle-01;
+  @include type-style('body-compact-01');
+  color: $text-secondary;
+}

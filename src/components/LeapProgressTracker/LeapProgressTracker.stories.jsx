@@ -4,6 +4,14 @@ import LeapProgressTracker from './LeapProgressTracker.jsx';
 export default {
   title: 'Components/LeapProgressTracker',
   component: LeapProgressTracker,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A horizontal step tracker that shows sequential progress through numbered steps with completed, current, and upcoming states.',
+      },
+    },
+  },
   argTypes: { currentStep: { control: { type: 'number', min: 0, max: 4 } } },
 };
 

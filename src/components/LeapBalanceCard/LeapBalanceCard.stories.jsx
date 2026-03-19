@@ -4,6 +4,14 @@ import LeapBalanceCard from './LeapBalanceCard.jsx';
 export default {
   title: 'Components/LeapBalanceCard',
   component: LeapBalanceCard,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'Shows a leave balance summary card with a progress bar indicating how much of a leave type (e.g. Vacation, Sick Leave) has been used versus the total allocation.',
+      },
+    },
+  },
 };
 
 export const Vacation = {

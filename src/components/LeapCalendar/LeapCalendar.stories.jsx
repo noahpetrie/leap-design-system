@@ -4,6 +4,14 @@ import LeapCalendar from './LeapCalendar.jsx';
 export default {
   title: 'Components/LeapCalendar',
   component: LeapCalendar,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A monthly calendar grid that highlights leave days by type and status, marks holidays, and distinguishes weekends for team schedule visibility.',
+      },
+    },
+  },
 };
 
 export const Default = {

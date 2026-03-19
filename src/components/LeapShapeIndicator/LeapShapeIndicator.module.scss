@@ -1,0 +1,57 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/type' as *;
+@use '@carbon/styles/scss/spacing' as *;
+
+// Status colors
+$status-red: #da1e28;
+$status-orange: #eb6200;
+$status-yellow: #f1c21b;
+$status-green: #24a148;
+$status-blue: #4589ff;
+$status-purple: #8a3ffc;
+$status-gray: #a8a8a8;
+
+.leap-shape-indicator {
+  @include type-style('helper-text-01');
+  display: flex;
+  align-items: center;
+  color: $text-secondary;
+
+  svg {
+    align-self: center;
+    margin-inline-end: $spacing-03;
+  }
+}
+
+.leap-shape-indicator--14 {
+  @include type-style('body-compact-01');
+}
+
+.leap-shape-indicator--failed { fill: $status-red; }
+.leap-shape-indicator--critical { fill: $status-red; }
+.leap-shape-indicator--high { fill: $status-red; }
+
+.leap-shape-indicator--medium {
+  fill: $status-orange;
+  path:first-of-type { fill: $status-orange; }
+}
+
+.leap-shape-indicator--low {
+  fill: $status-yellow;
+  path:nth-of-type(2) { fill: $status-yellow; }
+}
+
+.leap-shape-indicator--cautious {
+  fill: $status-yellow;
+  path:first-of-type { fill: $status-yellow; }
+}
+
+.leap-shape-indicator--undefined { fill: $status-purple; }
+.leap-shape-indicator--stable { fill: $status-green; }
+.leap-shape-indicator--informative { fill: $status-blue; }
+
+.leap-shape-indicator--incomplete {
+  path:nth-of-type(2) { fill: $status-blue; }
+}
+
+.leap-shape-indicator--draft { fill: $status-gray; }

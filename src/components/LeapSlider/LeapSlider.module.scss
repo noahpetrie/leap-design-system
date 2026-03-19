@@ -1,0 +1,114 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+// Leap brand green palette
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+
+.leap-slider {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-03;
+  width: 100%;
+}
+
+.leap-slider__label {
+  @include type-style('label-01');
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $text-secondary;
+}
+
+.leap-slider__value {
+  @include type-style('label-01');
+
+  color: $text-primary;
+  font-weight: 600;
+}
+
+.leap-slider__input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    $leap-green-500 0%,
+    $leap-green-500 var(--slider-percentage, 0%),
+    $border-strong-01 var(--slider-percentage, 0%),
+    $border-strong-01 100%
+  );
+  outline: none;
+  cursor: pointer;
+  transition: background 150ms ease;
+
+  // Thumb — WebKit
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: $leap-green-500;
+    border: 2px solid $leap-green-500;
+    cursor: pointer;
+    transition: box-shadow 150ms ease, background-color 150ms ease;
+  }
+
+  &::-webkit-slider-thumb:hover {
+    background-color: $leap-green-700;
+    border-color: $leap-green-700;
+  }
+
+  // Thumb — Firefox
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: $leap-green-500;
+    border: 2px solid $leap-green-500;
+    cursor: pointer;
+    transition: box-shadow 150ms ease, background-color 150ms ease;
+  }
+
+  &::-moz-range-thumb:hover {
+    background-color: $leap-green-700;
+    border-color: $leap-green-700;
+  }
+
+  // Firefox track
+  &::-moz-range-track {
+    height: 4px;
+    border-radius: 2px;
+    background: $border-strong-01;
+  }
+
+  // Focus ring on thumb
+  &:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 2px $focus;
+  }
+
+  &:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 2px $focus;
+  }
+}
+
+.leap-slider__helper-text {
+  @include type-style('helper-text-01');
+
+  color: $text-helper;
+}
+
+// Disabled state
+.leap-slider--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+
+  .leap-slider__input {
+    cursor: not-allowed;
+  }
+}

@@ -4,6 +4,14 @@ import LeapStakeholderMap from './LeapStakeholderMap.jsx';
 export default {
   title: 'Components/LeapStakeholderMap',
   component: LeapStakeholderMap,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A four-quadrant influence/interest stakeholder map that plots stakeholders with sentiment-colored indicators and tooltip details.',
+      },
+    },
+  },
 };
 
 export const Default = {

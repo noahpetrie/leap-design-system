@@ -4,6 +4,14 @@ import LeapTimeline from './LeapTimeline.jsx';
 export default {
   title: 'Components/LeapTimeline',
   component: LeapTimeline,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A vertical timeline displaying chronological events with type-colored dots, timestamps, titles, and optional descriptions.',
+      },
+    },
+  },
 };
 
 export const Default = {

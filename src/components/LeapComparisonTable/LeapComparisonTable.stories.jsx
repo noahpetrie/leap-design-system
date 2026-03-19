@@ -4,6 +4,14 @@ import LeapComparisonTable from './LeapComparisonTable.jsx';
 export default {
   title: 'Components/LeapComparisonTable',
   component: LeapComparisonTable,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A side-by-side comparison table that evaluates multiple options against a set of criteria, with optional recommended-option highlighting.',
+      },
+    },
+  },
 };
 
 export const Default = {

@@ -1,0 +1,121 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+
+// Kind colors
+$kind-success: $leap-green-500;
+$kind-error: $support-error;
+$kind-warning: $support-warning;
+$kind-info: $support-info;
+
+.leap-inline-notification {
+  display: flex;
+  align-items: flex-start;
+  padding: $spacing-04 $spacing-05;
+  margin-bottom: $spacing-04;
+  background-color: $layer-01;
+  border-left: 3px solid transparent;
+  gap: $spacing-03;
+}
+
+// Kind variants
+.leap-inline-notification--success {
+  border-left-color: $kind-success;
+
+  .leap-inline-notification__icon {
+    fill: $kind-success;
+  }
+}
+
+.leap-inline-notification--error {
+  border-left-color: $kind-error;
+
+  .leap-inline-notification__icon {
+    fill: $kind-error;
+  }
+}
+
+.leap-inline-notification--warning {
+  border-left-color: $kind-warning;
+
+  .leap-inline-notification__icon {
+    fill: $kind-warning;
+  }
+}
+
+.leap-inline-notification--info {
+  border-left-color: $kind-info;
+
+  .leap-inline-notification__icon {
+    fill: $kind-info;
+  }
+}
+
+// Low-contrast variant — lighter tinted backgrounds
+.leap-inline-notification--low-contrast {
+  &.leap-inline-notification--success {
+    background-color: rgba($kind-success, 0.1);
+  }
+
+  &.leap-inline-notification--error {
+    background-color: rgba($kind-error, 0.1);
+  }
+
+  &.leap-inline-notification--warning {
+    background-color: rgba($kind-warning, 0.1);
+  }
+
+  &.leap-inline-notification--info {
+    background-color: rgba($kind-info, 0.1);
+  }
+}
+
+// Icon
+.leap-inline-notification__icon {
+  flex-shrink: 0;
+  margin-top: $spacing-01;
+}
+
+// Content
+.leap-inline-notification__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: $spacing-02;
+}
+
+.leap-inline-notification__title {
+  @include type-style('heading-compact-01');
+  color: $text-primary;
+}
+
+.leap-inline-notification__subtitle {
+  @include type-style('body-compact-01');
+  color: $text-secondary;
+}
+
+// Close button
+.leap-inline-notification__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: $spacing-06;
+  height: $spacing-06;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: $icon-primary;
+
+  &:hover {
+    background-color: $layer-hover-01;
+  }
+
+  &:focus {
+    outline: 2px solid $focus;
+    outline-offset: -2px;
+  }
+}

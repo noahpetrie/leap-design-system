@@ -1,0 +1,168 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+
+// ── Horizontal layout (default) ──────────────────────────────────────
+
+.progress-indicator {
+  display: flex;
+  align-items: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.step__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  gap: $spacing-03;
+}
+
+.step__button:focus-visible {
+  outline: 2px solid $focus;
+  outline-offset: 2px;
+  border-radius: $spacing-02;
+}
+
+// ── Circle ───────────────────────────────────────────────────────────
+
+.step__circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background: $border-subtle-01;
+  color: $text-secondary;
+  flex-shrink: 0;
+}
+
+.step--complete .step__circle {
+  background: $leap-green-500;
+  color: white;
+}
+
+.step--current .step__circle {
+  background: $leap-green-500;
+  color: white;
+  box-shadow: 0 0 0 4px rgba($leap-green-500, 0.2);
+}
+
+.step--incomplete .step__circle {
+  background: $border-subtle-01;
+  color: $text-secondary;
+}
+
+.step__number {
+  @include type-style('label-01');
+  font-weight: 600;
+}
+
+// ── Connector (horizontal) ───────────────────────────────────────────
+
+.step__connector {
+  position: absolute;
+  top: 16px;
+  left: calc(50% + 16px);
+  right: calc(-50% + 16px);
+  height: 2px;
+  background: $border-subtle-01;
+}
+
+.step--complete .step__connector {
+  background: $leap-green-500;
+}
+
+// ── Text ─────────────────────────────────────────────────────────────
+
+.step__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.step__label {
+  @include type-style('label-01');
+  color: $text-secondary;
+  white-space: nowrap;
+}
+
+.step--current .step__label {
+  color: $text-primary;
+  font-weight: 600;
+}
+
+.step__secondary-label {
+  @include type-style('helper-text-01');
+  color: $text-helper;
+}
+
+.step__description {
+  @include type-style('helper-text-01');
+  color: $text-secondary;
+  margin-top: $spacing-02;
+  white-space: normal;
+  max-width: 160px;
+}
+
+// ── Vertical variant ─────────────────────────────────────────────────
+
+.progress-indicator--vertical {
+  flex-direction: column;
+  align-items: flex-start;
+
+  .step {
+    flex-direction: row;
+    align-items: flex-start;
+    flex: none;
+  }
+
+  .step__button {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: $spacing-04;
+  }
+
+  .step__text {
+    align-items: flex-start;
+    text-align: left;
+    padding-top: $spacing-02;
+  }
+
+  .step__description {
+    max-width: none;
+  }
+
+  .step__connector {
+    position: absolute;
+    top: 32px;
+    left: 15px;
+    right: auto;
+    width: 2px;
+    height: calc(100% - 16px);
+    min-height: $spacing-05;
+  }
+
+  .step {
+    padding-bottom: $spacing-05;
+  }
+}

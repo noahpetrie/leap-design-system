@@ -11,6 +11,11 @@ const themeMap = {
 
 /** @type {import('storybook').Preview} */
 const preview = {
+  parameters: {
+    docs: {
+      story: { inline: true },
+    },
+  },
   globalTypes: {
     theme: {
       name: 'Carbon Theme',
@@ -30,6 +35,7 @@ const preview = {
   },
   decorators: [
     (Story, context) => {
+      const isDocsView = context.viewMode === 'docs';
       const theme = themeMap[context.globals.theme] || 'white';
       return React.createElement(
         Theme,
@@ -38,9 +44,9 @@ const preview = {
           'div',
           {
             style: {
-              padding: '2rem',
+              padding: isDocsView ? '1rem' : '2rem',
               background: 'var(--cds-background)',
-              minHeight: '100vh',
+              minHeight: isDocsView ? undefined : '100vh',
             },
           },
           React.createElement(Story)

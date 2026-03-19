@@ -4,6 +4,14 @@ import LeapTrainingChecklist from './LeapTrainingChecklist';
 export default {
   title: 'Change Management/LeapTrainingChecklist',
   component: LeapTrainingChecklist,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A training progress checklist with toggleable items, assignee avatars, due date tracking, overdue highlighting, and a progress bar.',
+      },
+    },
+  },
   argTypes: {
     onToggle: { action: 'toggled' },
   },

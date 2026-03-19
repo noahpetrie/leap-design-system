@@ -4,6 +4,7 @@ import LeapActionItem from './LeapActionItem.jsx';
 export default {
   title: 'Components/LeapActionItem',
   component: LeapActionItem,
+  tags: ['autodocs'],
   argTypes: {
     priority: {
       control: 'select',
@@ -14,6 +15,13 @@ export default {
       options: ['todo', 'in-progress', 'done'],
     },
     onStatusChange: { action: 'statusChanged' },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Displays a single action item with title, assignee, due date, priority badge, and a status dropdown. Supports urgent, high, medium, and low priority levels.',
+      },
+    },
   },
 };
 

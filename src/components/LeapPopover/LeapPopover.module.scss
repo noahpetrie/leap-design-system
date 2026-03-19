@@ -1,0 +1,101 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$caret-size: 6px;
+
+.leap-popover {
+  display: inline-block;
+  position: relative;
+}
+
+.leap-popover__trigger {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.leap-popover__content {
+  position: fixed;
+  z-index: 9999;
+  min-width: 12rem;
+  max-width: 20rem;
+  background: $layer-01;
+  border: 1px solid $border-subtle-01;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  @include type-style('body-compact-01');
+
+  &:focus-visible {
+    outline: 2px solid $leap-green-500;
+    outline-offset: -2px;
+  }
+
+  // Alignment transforms — popover is placed at the anchor point,
+  // then shifted so the caret centres on the trigger.
+
+  &--bottom {
+    transform: translateX(-50%);
+  }
+
+  &--top {
+    transform: translate(-50%, -100%);
+  }
+
+  &--left {
+    transform: translate(-100%, -50%);
+  }
+
+  &--right {
+    transform: translateY(-50%);
+  }
+}
+
+// Caret / arrow
+
+.leap-popover__caret {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  .leap-popover__content--bottom & {
+    top: -$caret-size;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 $caret-size $caret-size $caret-size;
+    border-color: transparent transparent $layer-01 transparent;
+    filter: drop-shadow(0 -1px 0 $border-subtle-01);
+  }
+
+  .leap-popover__content--top & {
+    bottom: -$caret-size;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: $caret-size $caret-size 0 $caret-size;
+    border-color: $layer-01 transparent transparent transparent;
+    filter: drop-shadow(0 1px 0 $border-subtle-01);
+  }
+
+  .leap-popover__content--left & {
+    right: -$caret-size;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: $caret-size 0 $caret-size $caret-size;
+    border-color: transparent transparent transparent $layer-01;
+    filter: drop-shadow(1px 0 0 $border-subtle-01);
+  }
+
+  .leap-popover__content--right & {
+    left: -$caret-size;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: $caret-size $caret-size $caret-size 0;
+    border-color: transparent $layer-01 transparent transparent;
+    filter: drop-shadow(-1px 0 0 $border-subtle-01);
+  }
+}
+
+.leap-popover__body {
+  padding: 0.75rem 1rem;
+  color: $text-primary;
+}

@@ -4,6 +4,14 @@ import LeapCommunicationPlan from './LeapCommunicationPlan';
 export default {
   title: 'Change Management/LeapCommunicationPlan',
   component: LeapCommunicationPlan,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'Renders a timeline of planned communications for a change initiative, showing date, audience, channel (email, Slack, meeting, town hall), message preview, and delivery status.',
+      },
+    },
+  },
 };
 
 export const Default = {

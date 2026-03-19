@@ -1,0 +1,40 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-100: #e6f4ee;
+
+@keyframes leap-ai-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@mixin ai-shimmer {
+  background: linear-gradient(
+    90deg,
+    $leap-green-100 0%,
+    rgba(12, 140, 94, 0.12) 40%,
+    $leap-green-100 60%,
+    rgba(12, 140, 94, 0.12) 100%
+  );
+  background-size: 200% 100%;
+  animation: leap-ai-shimmer 2s ease-in-out infinite;
+}
+
+.leap-ai-skeleton-text {
+  @include ai-shimmer;
+}
+
+.leap-ai-skeleton-icon {
+  @include ai-shimmer;
+  border-radius: 50%;
+}
+
+.leap-ai-skeleton-placeholder {
+  @include ai-shimmer;
+  border-radius: 8px;
+}

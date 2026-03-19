@@ -4,6 +4,14 @@ import LeapMilestoneTracker from './LeapMilestoneTracker.jsx';
 export default {
   title: 'Components/LeapMilestoneTracker',
   component: LeapMilestoneTracker,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A vertical timeline that tracks project milestones with completed, current, upcoming, and overdue status indicators.',
+      },
+    },
+  },
 };
 
 export const Default = {

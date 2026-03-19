@@ -1,7 +1,18 @@
 import React from 'react';
 import LeapLoading from './LeapLoading.jsx';
 
-export default { title: 'Components/LeapLoading', component: LeapLoading };
+export default {
+  title: 'Components/LeapLoading',
+  component: LeapLoading,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A loading indicator that supports full-page spinners, overlay mode, and inline status indicators for active, finished, and error states.',
+      },
+    },
+  },
+};
 
 export const Default = { args: { active: true, description: 'Loading change initiatives...' } };
 

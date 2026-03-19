@@ -4,9 +4,17 @@ import LeapAvatar from './LeapAvatar.jsx';
 export default {
   title: 'Components/LeapAvatar',
   component: LeapAvatar,
+  tags: ['autodocs'],
   argTypes: {
     size: { control: 'select', options: ['sm', 'md', 'lg', 'xl'] },
     status: { control: 'select', options: [undefined, 'online', 'away', 'busy', 'offline'] },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Displays a user avatar with initials or an image, available in four sizes (sm, md, lg, xl) with optional online/away/busy/offline status indicators.',
+      },
+    },
   },
 };
 

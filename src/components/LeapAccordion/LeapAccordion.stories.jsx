@@ -1,7 +1,18 @@
 import React from 'react';
 import LeapAccordion from './LeapAccordion.jsx';
 
-export default { title: 'Components/LeapAccordion', component: LeapAccordion };
+export default {
+  title: 'Components/LeapAccordion',
+  component: LeapAccordion,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A collapsible accordion built on Carbon\'s Accordion, used to organize and reveal content sections such as FAQs or change management details.',
+      },
+    },
+  },
+};
 
 export const Default = {
   args: {

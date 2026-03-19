@@ -5,9 +5,17 @@ import LeapAILabel from '../LeapAILabel/LeapAILabel.jsx';
 export default {
   title: 'Components/LeapCard',
   component: LeapCard,
+  tags: ['autodocs'],
   argTypes: {
     variant: { control: 'select', options: ['default', 'raised', 'ai', 'danger', 'metric'] },
     onClick: { action: 'clicked' },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A versatile card container available in default, raised, AI, danger, and metric variants. Supports optional click behavior, titles, subtitles, and AI labels.',
+      },
+    },
   },
 };
 

@@ -4,6 +4,14 @@ import LeapEmployeeCard from './LeapEmployeeCard.jsx';
 export default {
   title: 'Components/LeapEmployeeCard',
   component: LeapEmployeeCard,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'Displays an employee profile card with avatar (image or initials), name, role, department, and an optional leave balance indicator.',
+      },
+    },
+  },
 };
 
 export const Default = {

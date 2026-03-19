@@ -4,6 +4,14 @@ import LeapInitiativeCard from './LeapInitiativeCard.jsx';
 export default {
   title: 'Components/LeapInitiativeCard',
   component: LeapInitiativeCard,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A card displaying a change initiative with its status, owner, timeline, readiness progress bar, and stakeholder count.',
+      },
+    },
+  },
   argTypes: {
     status: { control: 'select', options: ['draft', 'active', 'completed', 'paused'] },
     readiness: { control: { type: 'range', min: 0, max: 100 } },

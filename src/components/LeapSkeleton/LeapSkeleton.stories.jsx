@@ -4,6 +4,14 @@ import LeapSkeleton from './LeapSkeleton.jsx';
 export default {
   title: 'Components/LeapSkeleton',
   component: LeapSkeleton,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A placeholder skeleton loader supporting text, heading, card, avatar, and button variants for use during content loading.',
+      },
+    },
+  },
   argTypes: {
     variant: { control: 'select', options: ['text', 'heading', 'card', 'avatar', 'button'] },
   },

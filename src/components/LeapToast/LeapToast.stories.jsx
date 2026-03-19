@@ -4,6 +4,14 @@ import LeapToast from './LeapToast.jsx';
 export default {
   title: 'Components/LeapToast',
   component: LeapToast,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A dismissible toast notification with success, error, warning, and info variants, supporting auto-dismiss via a configurable duration.',
+      },
+    },
+  },
   argTypes: {
     kind: { control: 'select', options: ['success', 'error', 'warning', 'info'] },
     onClose: { action: 'closed' },

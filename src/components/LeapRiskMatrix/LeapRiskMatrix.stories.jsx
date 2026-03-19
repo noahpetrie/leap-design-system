@@ -4,6 +4,14 @@ import LeapRiskMatrix from './LeapRiskMatrix.jsx';
 export default {
   title: 'Components/LeapRiskMatrix',
   component: LeapRiskMatrix,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A 5x5 risk assessment matrix that plots risks by likelihood and impact, with color-coded cells indicating severity levels.',
+      },
+    },
+  },
   argTypes: {
     onRiskClick: { action: 'riskClicked' },
   },

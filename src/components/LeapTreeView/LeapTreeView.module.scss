@@ -1,0 +1,110 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-100: #e6f4ee;
+
+.leap-tree-view {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__group {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__node {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: $text-primary;
+    cursor: pointer;
+    text-align: left;
+    transition: background 100ms ease;
+
+    &:hover:not(&--disabled):not(&--selected) {
+      background: $layer-hover-01;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $leap-green-500;
+      outline-offset: -2px;
+    }
+
+    &--sm {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      padding-right: 0.5rem;
+      @include type-style('label-01');
+    }
+
+    &--md {
+      padding-top: 0.375rem;
+      padding-bottom: 0.375rem;
+      padding-right: 0.75rem;
+      @include type-style('body-compact-01');
+    }
+
+    &--selected {
+      background: $leap-green-100;
+      color: $leap-green-500;
+      font-weight: 600;
+
+      .leap-tree-view__icon svg {
+        fill: $leap-green-500;
+      }
+    }
+
+    &--disabled {
+      color: $text-disabled;
+      cursor: not-allowed;
+
+      .leap-tree-view__icon svg {
+        fill: $text-disabled;
+      }
+    }
+  }
+
+  &__chevron {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    transition: transform 150ms ease;
+
+    svg {
+      fill: $icon-secondary;
+    }
+
+    &--expanded {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__chevron-spacer {
+    display: inline-block;
+    width: 1rem;
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    svg {
+      fill: $icon-secondary;
+    }
+  }
+
+  &__label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

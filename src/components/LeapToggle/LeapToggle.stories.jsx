@@ -4,6 +4,14 @@ import LeapToggle from './LeapToggle.jsx';
 export default {
   title: 'Components/LeapToggle',
   component: LeapToggle,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A toggle switch built on the Carbon Toggle, with configurable on/off labels, size, and controlled or uncontrolled state.',
+      },
+    },
+  },
   argTypes: {
     size: {
       control: 'select',

@@ -4,6 +4,14 @@ import LeapChangeHeatmap from './LeapChangeHeatmap.jsx';
 export default {
   title: 'Components/LeapChangeHeatmap',
   component: LeapChangeHeatmap,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A color-coded heatmap table that visualizes change management metrics (e.g., readiness, impact, training, adoption) across departments or teams.',
+      },
+    },
+  },
 };
 
 export const Default = {

@@ -5,6 +5,14 @@ import LeapStatCard from './LeapStatCard.jsx';
 export default {
   title: 'Components/LeapStatCard',
   component: LeapStatCard,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A compact statistics card displaying a label, value, optional icon, and optional trend indicator with directional styling.',
+      },
+    },
+  },
 };
 
 export const PendingRequests = {

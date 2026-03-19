@@ -5,10 +5,18 @@ import LeapButton from './LeapButton.jsx';
 export default {
   title: 'Components/LeapButton',
   component: LeapButton,
+  tags: ['autodocs'],
   argTypes: {
     kind: { control: 'select', options: ['primary', 'secondary', 'tertiary', 'ghost', 'danger'] },
     size: { control: 'select', options: ['sm', 'md', 'lg', 'xl', '2xl'] },
     onClick: { action: 'clicked' },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A themed button wrapper around Carbon\'s Button component, supporting primary, secondary, tertiary, ghost, and danger variants with optional icons.',
+      },
+    },
   },
 };
 

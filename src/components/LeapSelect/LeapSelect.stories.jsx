@@ -1,7 +1,19 @@
 import React from 'react';
 import LeapSelect from './LeapSelect.jsx';
 
-export default { title: 'Components/LeapSelect', component: LeapSelect, argTypes: { onChange: { action: 'changed' }, size: { control: 'select', options: ['sm', 'md', 'lg'] } } };
+export default {
+  title: 'Components/LeapSelect',
+  component: LeapSelect,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A dropdown select component that wraps Carbon\'s Dropdown, accepting string or object items for option selection.',
+      },
+    },
+  },
+  argTypes: { onChange: { action: 'changed' }, size: { control: 'select', options: ['sm', 'md', 'lg'] } },
+};
 
 export const Default = {
   args: { id: 'dept', titleText: 'Department', items: ['Engineering', 'Product', 'Design', 'Marketing', 'Sales'] },

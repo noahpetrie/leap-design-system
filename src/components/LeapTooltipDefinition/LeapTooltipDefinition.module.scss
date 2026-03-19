@@ -1,0 +1,81 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+
+.leap-tooltip-definition {
+  display: inline;
+  padding: 0;
+  border: none;
+  border-bottom: 1px dotted $text-primary;
+  background: none;
+  color: $text-primary;
+  @include type-style('body-compact-01');
+  cursor: help;
+  line-height: 1.5;
+
+  &:hover {
+    border-bottom-color: $leap-green-500;
+    color: $leap-green-500;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $leap-green-500;
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  &__tooltip {
+    position: fixed;
+    z-index: 9999;
+    max-width: 16rem;
+    padding: 0.5rem 0.75rem;
+    background: $background-inverse;
+    color: $text-inverse;
+    @include type-style('body-compact-01');
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    line-height: 1.4;
+
+    &--top .leap-tooltip-definition__caret {
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      background: $background-inverse;
+    }
+
+    &--bottom .leap-tooltip-definition__caret {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      background: $background-inverse;
+    }
+
+    &--left .leap-tooltip-definition__caret {
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      background: $background-inverse;
+    }
+
+    &--right .leap-tooltip-definition__caret {
+      position: absolute;
+      left: -4px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      background: $background-inverse;
+    }
+  }
+}

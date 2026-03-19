@@ -1,0 +1,120 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+$leap-green-100: #e6f4ee;
+
+.file-uploader {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-05;
+}
+
+.drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-03;
+  padding: $spacing-07;
+  border: 2px dashed $border-subtle-01;
+  border-radius: 4px;
+  background: $layer-01;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+
+  &:hover {
+    border-color: $leap-green-500;
+  }
+
+  &:focus {
+    outline: 2px solid $leap-green-500;
+    outline-offset: 2px;
+  }
+}
+
+.drop-zone--drag-over {
+  border-color: $leap-green-500;
+  background: $leap-green-100;
+}
+
+.drop-zone--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+
+  &:hover {
+    border-color: $border-subtle-01;
+  }
+}
+
+.drop-zone-icon {
+  color: $leap-green-500;
+}
+
+.drop-zone-label {
+  @include type-style('body-compact-01');
+  color: $text-primary;
+  margin: 0;
+}
+
+.drop-zone-description {
+  @include type-style('helper-text-01');
+  color: $text-secondary;
+  margin: 0;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-03;
+}
+
+.file-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-03 $spacing-04;
+  background: $layer-01;
+  border: 1px solid $border-subtle-01;
+  border-radius: 4px;
+}
+
+.file-list-name {
+  @include type-style('body-compact-01');
+  color: $text-primary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-list-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: $spacing-02;
+  cursor: pointer;
+  color: $text-secondary;
+  border-radius: 4px;
+  flex-shrink: 0;
+
+  &:hover {
+    color: $text-primary;
+    background: $layer-hover-01;
+  }
+
+  &:focus {
+    outline: 2px solid $leap-green-500;
+    outline-offset: 1px;
+  }
+}

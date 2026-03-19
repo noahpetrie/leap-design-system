@@ -1,0 +1,11 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/components/fluid-multiselect';
+@use '@carbon/styles/scss/components/fluid-list-box';
+
+$leap-green-500: #0c8c5e;
+
+.leap-fluid-multiselect {
+  --cds-focus: #{$leap-green-500};
+  --cds-interactive: #{$leap-green-500};
+  --cds-border-interactive: #{$leap-green-500};
+}

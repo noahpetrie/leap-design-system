@@ -1,0 +1,17 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/components/chat-button';
+
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+$leap-green-900: #054a32;
+
+.leap-chat-btn-wrapper {
+  --cds-button-primary: #{$leap-green-500};
+  --cds-button-primary-hover: #{$leap-green-700};
+  --cds-button-primary-active: #{$leap-green-900};
+  --cds-focus: #{$leap-green-500};
+  --cds-chat-button: #{$leap-green-500};
+  --cds-chat-button-selected: #{$leap-green-500};
+  --cds-chat-button-text-selected: #fff;
+  display: inline-block;
+}

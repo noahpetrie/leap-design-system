@@ -6,7 +6,15 @@ import LeapOnboarding from './LeapOnboarding.jsx';
 export default {
   title: 'Components/LeapOnboarding',
   component: LeapOnboarding,
-  parameters: { layout: 'fullscreen' },
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component: 'A multi-step onboarding overlay that guides new users through a series of welcome and setup screens with illustrations and interactive content.',
+      },
+    },
+  },
 };
 
 const WelcomeIllustration = () => (

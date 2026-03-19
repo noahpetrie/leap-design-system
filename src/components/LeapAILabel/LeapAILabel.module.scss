@@ -3,108 +3,124 @@
 @use '@carbon/styles/scss/type' as *;
 
 $leap-green-500: #0c8c5e;
-$leap-green-50: #f0faf5;
-$leap-green-100: #c6e8d9;
+$leap-green-100: #e6f4ee;
+$leap-green-700: #096b48;
 
-.ai-label-wrapper {
-  position: relative;
-  display: inline-flex;
-}
-
-.ai-label {
+.leap-ai-label {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  border: 1px solid $leap-green-100;
-  border-radius: 999px;
-  background: $leap-green-50;
-  color: $leap-green-500;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.15s;
+}
 
-  &:hover {
-    background: $leap-green-100;
+.leap-ai-label--revert {
+  button {
+    color: $leap-green-500;
   }
 }
 
-.ai-label--sm {
-  padding: 1px 8px;
-  font-size: 10px;
-
-  .ai-label-icon { width: 10px; height: 10px; }
-}
-
-.ai-label--md {
-  padding: 2px 10px;
-  font-size: 12px;
-
-  .ai-label-icon { width: 12px; height: 12px; }
-}
-
-.ai-label--lg {
-  padding: 4px 14px;
-  font-size: 14px;
-
-  .ai-label-icon { width: 14px; height: 14px; }
-}
-
-.ai-label--inline {
-  border-radius: 4px;
-  vertical-align: middle;
-}
-
-.ai-label-text {
-  line-height: 1;
-}
-
-.ai-label-popover {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  z-index: 9000;
-  width: 280px;
-  background: $layer-01;
-  border: 1px solid $border-subtle-01;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-.ai-label-popover-header {
-  @include type-style('heading-compact-01');
-  display: flex;
-  justify-content: space-between;
+.leap-ai-label__button {
+  display: inline-flex;
   align-items: center;
-  padding: $spacing-04;
-  background: $leap-green-50;
-  border-bottom: 1px solid $border-subtle-01;
-  color: $text-primary;
-  border-radius: 4px 4px 0 0;
-}
-
-.ai-label-popover-close {
-  background: none;
+  gap: $spacing-02;
   border: none;
-  font-size: 18px;
-  color: $text-secondary;
   cursor: pointer;
-  line-height: 1;
-
-  &:hover { color: $text-primary; }
-}
-
-.ai-label-popover-body {
-  padding: $spacing-04;
-}
-
-.ai-label-popover-text {
-  @include type-style('body-compact-01');
-  color: $text-primary;
-  margin: 0 0 $spacing-03;
-}
-
-.ai-label-popover-meta {
+  background: linear-gradient(135deg, $leap-green-500, $leap-green-700);
+  border-radius: 12px;
+  color: $white;
   @include type-style('label-01');
-  color: $text-secondary;
-  margin-top: $spacing-02;
+  font-weight: 600;
+  transition: box-shadow 0.15s ease, transform 0.1s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(12, 140, 94, 0.35);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.leap-ai-label__button--mini {
+  padding: 0 $spacing-02;
+  border-radius: 6px;
+  font-size: 0.625rem;
+  line-height: 1rem;
+}
+
+.leap-ai-label__button--2xs {
+  padding: $spacing-01 $spacing-02;
+  border-radius: 8px;
+  font-size: 0.6875rem;
+  line-height: 1rem;
+}
+
+.leap-ai-label__button--xs {
+  padding: $spacing-01 $spacing-03;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+.leap-ai-label__button--sm {
+  padding: $spacing-02 $spacing-03;
+  border-radius: 12px;
+}
+
+.leap-ai-label__button--md {
+  padding: $spacing-02 $spacing-04;
+  border-radius: 14px;
+  @include type-style('body-compact-01');
+  font-weight: 600;
+}
+
+.leap-ai-label__button--lg {
+  padding: $spacing-03 $spacing-05;
+  border-radius: 16px;
+  @include type-style('body-compact-01');
+  font-weight: 600;
+}
+
+.leap-ai-label__button--xl {
+  padding: $spacing-03 $spacing-05;
+  border-radius: 18px;
+  @include type-style('heading-compact-01');
+}
+
+.leap-ai-label__button--inline {
+  background: none;
+  color: $leap-green-500;
+  font-weight: 600;
+  padding: 0;
+  border-radius: 0;
+  border-bottom: 1px dashed $leap-green-500;
+
+  &:hover {
+    box-shadow: none;
+    color: $leap-green-700;
+    border-bottom-color: $leap-green-700;
+  }
+}
+
+.leap-ai-label__button--inline-with-content {
+  gap: $spacing-02;
+}
+
+.leap-ai-label__text {
+  letter-spacing: 0.02em;
+}
+
+.leap-ai-label__additional-text {
+  opacity: 0.85;
+  @include type-style('label-01');
+}
+
+.leap-ai-label-content {
+  padding: $spacing-05;
+  @include type-style('body-01');
+  max-width: 320px;
+}
+
+.leap-ai-label-actions {
+  display: flex;
+  gap: $spacing-03;
+  padding: $spacing-03 $spacing-05;
+  border-top: 1px solid $border-subtle-01;
 }

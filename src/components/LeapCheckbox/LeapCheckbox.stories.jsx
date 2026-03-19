@@ -1,7 +1,19 @@
 import React from 'react';
 import LeapCheckbox from './LeapCheckbox.jsx';
 
-export default { title: 'Components/LeapCheckbox', component: LeapCheckbox, argTypes: { onChange: { action: 'changed' } } };
+export default {
+  title: 'Components/LeapCheckbox',
+  component: LeapCheckbox,
+  tags: ['autodocs'],
+  argTypes: { onChange: { action: 'changed' } },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A checkbox input component wrapping Carbon\'s Checkbox with support for controlled and uncontrolled states, labels, and disabled mode.',
+      },
+    },
+  },
+};
 
 export const Default = { args: { id: 'cb-1', labelText: 'Include weekends' } };
 export const Checked = { args: { id: 'cb-2', labelText: 'Notify manager', defaultChecked: true } };

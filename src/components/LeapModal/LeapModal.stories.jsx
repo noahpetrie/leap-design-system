@@ -4,6 +4,14 @@ import LeapModal from './LeapModal.jsx';
 export default {
   title: 'Components/LeapModal',
   component: LeapModal,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A confirmation modal dialog built on Carbon Modal with support for standard and danger variants.',
+      },
+    },
+  },
   argTypes: {
     onRequestClose: { action: 'closed' },
     onRequestSubmit: { action: 'submitted' },

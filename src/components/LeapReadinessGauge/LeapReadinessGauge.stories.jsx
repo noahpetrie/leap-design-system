@@ -4,6 +4,14 @@ import LeapReadinessGauge from './LeapReadinessGauge.jsx';
 export default {
   title: 'Components/LeapReadinessGauge',
   component: LeapReadinessGauge,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A readiness gauge that displays an overall readiness percentage with a progress bar and optional category-level breakdowns.',
+      },
+    },
+  },
   argTypes: {
     overall: { control: { type: 'range', min: 0, max: 100 } },
   },

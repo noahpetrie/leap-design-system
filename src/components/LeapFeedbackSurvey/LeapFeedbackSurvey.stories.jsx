@@ -4,6 +4,14 @@ import LeapFeedbackSurvey from './LeapFeedbackSurvey.jsx';
 export default {
   title: 'Components/LeapFeedbackSurvey',
   component: LeapFeedbackSurvey,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A survey component that collects user feedback through star ratings, free-text responses, and single-select questions.',
+      },
+    },
+  },
   argTypes: {
     onSubmit: { action: 'submitted' },
   },

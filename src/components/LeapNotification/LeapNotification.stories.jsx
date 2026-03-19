@@ -4,6 +4,14 @@ import LeapNotification from './LeapNotification.jsx';
 export default {
   title: 'Components/LeapNotification',
   component: LeapNotification,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'An inline notification component that displays success, error, warning, or info messages with an optional timestamp.',
+      },
+    },
+  },
   argTypes: {
     kind: { control: 'select', options: ['success', 'error', 'warning', 'info'] },
     onClose: { action: 'closed' },

@@ -4,6 +4,14 @@ import LeapStatusBadge from './LeapStatusBadge.jsx';
 export default {
   title: 'Components/LeapStatusBadge',
   component: LeapStatusBadge,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A color-coded status badge with an icon, supporting approved, denied, pending, cancelled, and active states.',
+      },
+    },
+  },
   argTypes: {
     status: { control: 'select', options: ['approved', 'denied', 'pending', 'cancelled', 'active'] },
     size: { control: 'select', options: ['sm', 'md'] },

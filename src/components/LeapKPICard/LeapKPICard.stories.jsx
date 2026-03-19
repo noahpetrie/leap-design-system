@@ -4,6 +4,14 @@ import LeapKPICard from './LeapKPICard';
 export default {
   title: 'Change Management/LeapKPICard',
   component: LeapKPICard,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A KPI card that displays a metric value, target, status indicator, and an optional sparkline trend chart.',
+      },
+    },
+  },
 };
 
 export const OnTrack = {

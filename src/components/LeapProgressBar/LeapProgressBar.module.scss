@@ -1,0 +1,81 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+
+.leap-progress-bar {
+  width: 100%;
+}
+
+.leap-progress-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: $spacing-02;
+}
+
+.leap-progress-bar__label {
+  @include type-style('body-compact-01');
+  color: $text-primary;
+}
+
+.leap-progress-bar__value {
+  @include type-style('body-compact-01');
+  color: $text-secondary;
+}
+
+.leap-progress-bar__track {
+  width: 100%;
+  background-color: $layer-accent-01;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.leap-progress-bar__track--sm {
+  height: 4px;
+}
+
+.leap-progress-bar__track--md {
+  height: 8px;
+}
+
+.leap-progress-bar__fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.leap-progress-bar__fill--active {
+  background-color: $leap-green-500;
+}
+
+.leap-progress-bar__fill--success {
+  background-color: $support-success;
+}
+
+.leap-progress-bar__fill--error {
+  background-color: $support-error;
+}
+
+.leap-progress-bar__fill--indeterminate {
+  width: 30% !important;
+  animation: leap-progress-slide 1.5s ease-in-out infinite;
+}
+
+@keyframes leap-progress-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(333%);
+  }
+}
+
+.leap-progress-bar__helper-text {
+  @include type-style('helper-text-01');
+  color: $text-helper;
+  margin-top: $spacing-02;
+  display: block;
+}

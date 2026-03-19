@@ -1,7 +1,18 @@
 import React from 'react';
 import LeapTabs from './LeapTabs.jsx';
 
-export default { title: 'Components/LeapTabs', component: LeapTabs };
+export default {
+  title: 'Components/LeapTabs',
+  component: LeapTabs,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'A tabbed content container built on Carbon Tabs, accepting an array of label/content pairs for organized panel navigation.',
+      },
+    },
+  },
+};
 
 export const Default = {
   args: {

@@ -1,0 +1,112 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+
+$leap-green-500: #0c8c5e;
+$leap-green-700: #096b48;
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  width: 100%;
+  padding: 0 $spacing-05;
+  background-color: $background-inverse;
+  color: $text-inverse;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: $spacing-03;
+  flex-shrink: 0;
+}
+
+.header-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: $text-inverse;
+  cursor: pointer;
+  border-radius: 0;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:focus {
+    outline: 2px solid $focus;
+    outline-offset: -2px;
+  }
+}
+
+.header-logo {
+  height: 1.25rem;
+  width: auto;
+}
+
+.header-app-name {
+  @include type-style('heading-compact-01');
+  color: $text-inverse;
+  white-space: nowrap;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: $spacing-05;
+  gap: 0;
+  overflow-x: auto;
+}
+
+.header-nav-item {
+  @include type-style('body-compact-01');
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 $spacing-05;
+  color: $text-inverse;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $text-inverse;
+  }
+
+  &:focus {
+    outline: 2px solid $focus;
+    outline-offset: -2px;
+  }
+
+  &--active {
+    border-bottom-color: $leap-green-500;
+    color: $text-inverse;
+
+    &:hover {
+      border-bottom-color: $leap-green-700;
+    }
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-03;
+  margin-left: auto;
+  flex-shrink: 0;
+}

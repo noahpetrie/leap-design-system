@@ -5,8 +5,16 @@ import LeapSidebar from './LeapSidebar.jsx';
 export default {
   title: 'Components/LeapSidebar',
   component: LeapSidebar,
+  tags: ['autodocs'],
   argTypes: { onItemClick: { action: 'item clicked' } },
-  parameters: { layout: 'fullscreen' },
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component: 'A collapsible vertical navigation sidebar with icon and label items, active state tracking, and an optional logo.',
+      },
+    },
+  },
 };
 
 const navItems = [

@@ -1,0 +1,29 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/type' as *;
+@use '@carbon/styles/scss/spacing' as *;
+
+$leap-green-500: #0c8c5e;
+
+.leap-badge-indicator {
+  @include type-style('helper-text-01');
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 $spacing-02 $spacing-01;
+  border-radius: 100px;
+  background: $support-error;
+  color: $text-on-color;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  margin-block-start: $spacing-03;
+  margin-inline-end: $spacing-03;
+  max-block-size: $spacing-05;
+  min-block-size: $spacing-03;
+  min-inline-size: $spacing-03;
+}
+
+.leap-badge-indicator--count {
+  margin-block-start: $spacing-02;
+  margin-inline-end: $spacing-02;
+}
