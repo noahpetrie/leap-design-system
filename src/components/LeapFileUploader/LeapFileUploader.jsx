@@ -80,11 +80,11 @@ const LeapFileUploader = ({
     <div className="flex flex-col gap-4" {...rest}>
       <div
         className={cn(
-          'flex flex-col items-center justify-center gap-2 rounded border-2 border-dashed border-border bg-card p-8 cursor-pointer transition-colors duration-150',
-          'hover:border-primary',
-          'focus:outline-2 focus:outline-primary focus:outline-offset-2',
-          dragOver && 'border-primary bg-primary/10',
-          disabled && 'opacity-50 cursor-not-allowed hover:border-border'
+          'flex flex-col items-center justify-center gap-2 rounded border-2 border-dashed border-[#e0e0e0] bg-[#f4f4f4] p-8 cursor-pointer transition-colors duration-150',
+          'hover:border-[#0c8c5e]',
+          'focus:outline-2 focus:outline-[#0c8c5e] focus:outline-offset-2',
+          dragOver && 'border-[#0c8c5e] bg-[#e6f4ee]',
+          disabled && 'opacity-50 cursor-not-allowed hover:border-[#e0e0e0]'
         )}
         role="button"
         tabIndex={disabled ? -1 : 0}
@@ -96,9 +96,9 @@ const LeapFileUploader = ({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
       >
-        <Upload size={24} className="text-primary" />
-        <p className="m-0 text-sm text-foreground">{label}</p>
-        {description && <p className="m-0 text-xs text-muted-foreground">{description}</p>}
+        <Upload size={24} className="text-[#0c8c5e]" />
+        <p className="m-0 text-[14px] tracking-[0.16px] text-[#161616]">{label}</p>
+        {description && <p className="m-0 text-[12px] tracking-[0.32px] text-[#525252]">{description}</p>}
         <input
           ref={inputRef}
           type="file"
@@ -114,11 +114,11 @@ const LeapFileUploader = ({
       {files.length > 0 && (
         <ul className="m-0 flex list-none flex-col gap-2 p-0">
           {files.map((file, index) => (
-            <li key={`${file.name}-${index}`} className="flex items-center justify-between rounded border border-border bg-card px-3 py-2">
-              <span className="truncate text-sm text-foreground">{file.name}</span>
+            <li key={`${file.name}-${index}`} className="flex items-center justify-between rounded border border-[#e0e0e0] bg-[#f4f4f4] px-3 py-2">
+              <span className="truncate text-[14px] tracking-[0.16px] text-[#161616]">{file.name}</span>
               <button
                 type="button"
-                className="flex flex-shrink-0 items-center justify-center rounded border-none bg-transparent p-1 text-muted-foreground cursor-pointer hover:bg-accent hover:text-foreground focus:outline-2 focus:outline-primary focus:outline-offset-1"
+                className="flex flex-shrink-0 items-center justify-center rounded border-none bg-transparent p-1 text-[#525252] cursor-pointer hover:bg-[#e8e8e8] hover:text-[#161616] focus:outline-2 focus:outline-[#0c8c5e] focus:outline-offset-1"
                 onClick={() => handleRemove(index)}
                 aria-label={`Remove ${file.name}`}
               >

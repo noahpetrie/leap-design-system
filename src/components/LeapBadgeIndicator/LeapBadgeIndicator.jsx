@@ -15,8 +15,8 @@ const LeapBadgeIndicator = React.forwardRef(function LeapBadgeIndicator(
   return (
     <div
       className={cn(
-        'absolute flex items-center justify-center px-1 pb-0.5 rounded-full bg-destructive text-primary-foreground text-xs top-0 right-0 mt-2 mr-2 max-h-4 min-h-2 min-w-2',
-        count && 'mt-1 mr-1',
+        'absolute flex items-center justify-center px-[0.25rem] pb-[0.125rem] rounded-full bg-[#da1e28] text-white text-[0.75rem] leading-[1rem] tracking-[0.32px] top-0 right-0 mt-[0.5rem] mr-[0.5rem] max-h-[1rem] min-h-[0.5rem] min-w-[0.5rem]',
+        count && 'mt-[0.25rem] mr-[0.25rem]',
         className,
       )}
       ref={ref}

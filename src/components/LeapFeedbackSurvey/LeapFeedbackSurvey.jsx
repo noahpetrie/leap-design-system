@@ -13,8 +13,8 @@ const RatingInput = ({ questionId, value, onChange }) => {
           type="button"
           className={cn(
             'border-none bg-transparent p-0.5 cursor-pointer transition-all duration-150',
-            n <= (hovered || value) ? 'text-primary' : 'text-border',
-            'hover:scale-[1.15] hover:text-primary'
+            n <= (hovered || value) ? 'text-[#0c8c5e]' : 'text-[#e0e0e0]',
+            'hover:scale-[1.15] hover:text-[#0c8c5e]'
           )}
           onMouseEnter={() => setHovered(n)}
           onMouseLeave={() => setHovered(0)}
@@ -27,7 +27,7 @@ const RatingInput = ({ questionId, value, onChange }) => {
         </button>
       ))}
       {value > 0 && (
-        <span className="ml-2 text-xs font-medium text-muted-foreground">
+        <span className="ml-2 text-[12px] tracking-[0.32px] text-[#525252]">
           {value}/5
         </span>
       )}
@@ -37,7 +37,7 @@ const RatingInput = ({ questionId, value, onChange }) => {
 
 const TextInput = ({ questionId, value, onChange }) => (
   <textarea
-    className="w-full resize-y rounded border border-border px-3 py-2 text-sm text-foreground transition-colors duration-150 placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+    className="w-full resize-y rounded border border-[#e0e0e0] px-3 py-2 text-[14px] tracking-[0.16px] text-[#1a1a18] font-[inherit] transition-colors duration-150 placeholder:text-[#a8a8a8] focus:border-[#0c8c5e] focus:outline-none focus:shadow-[0_0_0_1px_#0c8c5e]"
     value={value || ''}
     onChange={(e) => onChange(questionId, e.target.value)}
     rows={4}
@@ -48,7 +48,7 @@ const TextInput = ({ questionId, value, onChange }) => (
 const SelectInput = ({ questionId, options, value, onChange }) => (
   <div className="flex flex-col gap-2">
     {options.map((opt) => (
-      <label key={opt} className="flex cursor-pointer items-center gap-2 py-1 text-sm text-foreground">
+      <label key={opt} className="flex cursor-pointer items-center gap-2 py-1 text-[14px] tracking-[0.16px] text-[#1a1a18]">
         <input
           type="radio"
           name={questionId}
@@ -57,7 +57,7 @@ const SelectInput = ({ questionId, options, value, onChange }) => (
           onChange={() => onChange(questionId, opt)}
           className="sr-only peer"
         />
-        <span className="relative flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full border-2 border-border transition-colors duration-150 peer-checked:border-primary peer-focus:ring-2 peer-focus:ring-primary/30 after:absolute after:h-2 after:w-2 after:rounded-full after:bg-transparent after:transition-transform after:scale-0 peer-checked:after:scale-100 peer-checked:after:bg-primary" />
+        <span className="relative flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full border-2 border-[#e0e0e0] transition-colors duration-150 peer-checked:border-[#0c8c5e] peer-focus:shadow-[0_0_0_2px_rgba(12,140,94,0.3)] after:absolute after:h-2 after:w-2 after:rounded-full after:bg-transparent after:transition-transform after:scale-0 peer-checked:after:scale-100 peer-checked:after:bg-[#0c8c5e]" />
         {opt}
       </label>
     ))}
@@ -82,7 +82,8 @@ const LeapFeedbackSurvey = ({ questions, onSubmit }) => {
 
   return (
     <form
-      className="max-w-[640px] rounded-lg border border-border bg-background p-6"
+      className="max-w-[640px] rounded-lg border border-[var(--cds-border-subtle,#e0e0e0)] p-6"
+      style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}
       onSubmit={handleSubmit}
     >
       {questions.map((q, idx) => (
@@ -93,8 +94,8 @@ const LeapFeedbackSurvey = ({ questions, onSubmit }) => {
             idx === questions.length - 1 && 'mb-8'
           )}
         >
-          <legend className="mb-3 block text-sm font-semibold text-foreground">
-            <span className="mr-1 font-bold text-primary">
+          <legend className="mb-3 block text-[14px] font-semibold tracking-[0.16px] text-[#1a1a18]">
+            <span className="mr-1 font-bold text-[#0c8c5e]">
               {idx + 1}.
             </span>
             {q.text}
@@ -129,7 +130,7 @@ const LeapFeedbackSurvey = ({ questions, onSubmit }) => {
 
       <button
         type="submit"
-        className="inline-flex items-center justify-center rounded bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground transition-colors duration-150 hover:bg-primary/80 active:bg-primary/70 focus:outline-2 focus:outline-primary focus:outline-offset-2"
+        className="inline-flex items-center justify-center rounded bg-[#0c8c5e] px-6 py-2 text-[14px] font-semibold tracking-[0.16px] text-[#ffffff] transition-colors duration-150 hover:bg-[#096b48] active:bg-[#054a32] focus:outline-2 focus:outline-[#0c8c5e] focus:outline-offset-2"
       >
         Submit Feedback
       </button>

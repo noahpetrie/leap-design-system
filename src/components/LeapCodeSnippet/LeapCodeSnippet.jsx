@@ -63,7 +63,7 @@ const LeapCodeSnippet = ({
       {...rest}
     >
       {language && (
-        <div className="pt-2 px-4 text-xs text-[#a8a8a8] tracking-wide">{language}</div>
+        <div className="pt-2 px-4 text-xs text-[#a8a8a8] tracking-[0.02em]">{language}</div>
       )}
       <div
         className={cn(
@@ -88,8 +88,8 @@ const LeapCodeSnippet = ({
           className={cn(
             'absolute top-2 right-2 flex items-center justify-center w-8 h-8 p-0 border-none rounded bg-transparent text-[#a8a8a8] cursor-pointer transition-[color,background-color] duration-150',
             'hover:bg-[#393939] hover:text-[#f4f4f4]',
-            'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]',
-            copied && 'text-primary hover:text-primary'
+            'focus:outline-2 focus:outline-[#0c8c5e] focus:outline-offset-[-2px]',
+            copied && 'text-[#0c8c5e] hover:text-[#0c8c5e]'
           )}
           type="button"
           aria-label={copied ? 'Copied!' : 'Copy code'}

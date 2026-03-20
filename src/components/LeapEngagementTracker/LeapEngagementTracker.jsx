@@ -22,9 +22,9 @@ const getDaysSince = (dateString) => {
 };
 
 const trendColorMap = {
-  up: 'text-primary',
-  down: 'text-destructive',
-  stable: 'text-muted-foreground',
+  up: 'text-[#0c8c5e]',
+  down: 'text-[#da1e28]',
+  stable: 'text-[#525252]',
 };
 
 const LeapEngagementTracker = ({ stakeholders }) => {
@@ -39,8 +39,8 @@ const LeapEngagementTracker = ({ stakeholders }) => {
 
   if (!stakeholders || stakeholders.length === 0) {
     return (
-      <div className="rounded border border-border bg-background p-4">
-        <p className="text-center text-sm text-muted-foreground py-6">
+      <div className="rounded border border-[var(--cds-border-subtle,#e0e0e0)] p-4 font-['IBM_Plex_Sans',sans-serif]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
+        <p className="text-center text-[14px] tracking-[0.16px] text-[#525252] py-6">
           No stakeholder data available.
         </p>
       </div>
@@ -48,11 +48,11 @@ const LeapEngagementTracker = ({ stakeholders }) => {
   }
 
   return (
-    <div className="rounded border border-border bg-background p-4 text-foreground">
-      <h3 className="mb-4 text-base font-semibold text-foreground">
+    <div className="rounded border border-[var(--cds-border-subtle,#e0e0e0)] p-4 font-['IBM_Plex_Sans',sans-serif] text-[var(--cds-text-primary,#1a1a18)]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
+      <h3 className="mb-4 text-[16px] font-semibold text-[#1a1a18]">
         Stakeholder Engagement Tracker
       </h3>
-      <div className="grid grid-cols-[2fr_1fr_1fr_0.5fr] gap-2 border-b-2 border-primary px-3 py-2 text-xs font-semibold text-foreground">
+      <div className="grid grid-cols-[2fr_1fr_1fr_0.5fr] gap-2 border-b-2 border-[#0c8c5e] px-3 py-2 text-[12px] font-semibold tracking-[0.32px] text-[#1a1a18]">
         <span>Name</span>
         <span>Days Since</span>
         <span>Engagements</span>
@@ -66,20 +66,20 @@ const LeapEngagementTracker = ({ stakeholders }) => {
             <li
               key={stakeholder.name + index}
               className={cn(
-                'grid grid-cols-[2fr_1fr_1fr_0.5fr] items-center gap-2 border-b border-border px-3 py-2 transition-colors hover:bg-accent',
-                isStale && 'border-l-[3px] border-l-destructive bg-destructive/[0.08] hover:bg-destructive/[0.14]'
+                'grid grid-cols-[2fr_1fr_1fr_0.5fr] items-center gap-2 border-b border-[#e0e0e0] px-3 py-2 transition-colors hover:bg-[#e8e8e8]',
+                isStale && 'border-l-[3px] border-l-[#da1e28] bg-[rgba(218,30,40,0.08)] hover:bg-[rgba(218,30,40,0.14)]'
               )}
             >
-              <span className="text-sm font-medium text-foreground">
+              <span className="text-[14px] font-medium tracking-[0.16px] text-[#1a1a18]">
                 {stakeholder.name}
               </span>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-[14px] tracking-[0.16px] text-[#525252]">
                 {daysSince} {daysSince === 1 ? 'day' : 'days'}
               </span>
-              <span className="inline-flex h-6 w-fit min-w-[28px] items-center justify-center rounded-full bg-primary px-1.5 text-xs font-semibold text-primary-foreground">
+              <span className="inline-flex h-5 w-fit min-w-[24px] items-center justify-center rounded-full bg-[#0c8c5e]/15 px-1.5 text-[12px] font-semibold tracking-[0.32px] text-[#0c8c5e]">
                 {stakeholder.engagementCount}
               </span>
-              <span className={cn('text-center text-xs', trendColorMap[stakeholder.trend] || 'text-muted-foreground')}>
+              <span className={cn('text-center text-[12px]', trendColorMap[stakeholder.trend] || 'text-[#525252]')}>
                 {getTrendIcon(stakeholder.trend)}
               </span>
             </li>

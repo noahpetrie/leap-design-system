@@ -138,10 +138,10 @@ const LeapPopover = ({
 
   // Caret styles per alignment
   const caretStyles = {
-    bottom: 'top-[-6px] left-1/2 -translate-x-1/2 border-l-[6px] border-r-[6px] border-b-[6px] border-l-transparent border-r-transparent border-b-card border-t-0 drop-shadow-[0_-1px_0_var(--border)]',
-    top: 'bottom-[-6px] left-1/2 -translate-x-1/2 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-card border-b-0 drop-shadow-[0_1px_0_var(--border)]',
-    left: 'right-[-6px] top-1/2 -translate-y-1/2 border-t-[6px] border-b-[6px] border-l-[6px] border-t-transparent border-b-transparent border-l-card border-r-0 drop-shadow-[1px_0_0_var(--border)]',
-    right: 'left-[-6px] top-1/2 -translate-y-1/2 border-t-[6px] border-b-[6px] border-r-[6px] border-t-transparent border-b-transparent border-r-card border-l-0 drop-shadow-[-1px_0_0_var(--border)]',
+    bottom: 'top-[-6px] left-1/2 -translate-x-1/2 border-l-[6px] border-r-[6px] border-b-[6px] border-l-transparent border-r-transparent border-b-[#ffffff] border-t-0 drop-shadow-[0_-1px_0_#e0e0e0]',
+    top: 'bottom-[-6px] left-1/2 -translate-x-1/2 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-[#ffffff] border-b-0 drop-shadow-[0_1px_0_#e0e0e0]',
+    left: 'right-[-6px] top-1/2 -translate-y-1/2 border-t-[6px] border-b-[6px] border-l-[6px] border-t-transparent border-b-transparent border-l-[#ffffff] border-r-0 drop-shadow-[1px_0_0_#e0e0e0]',
+    right: 'left-[-6px] top-1/2 -translate-y-1/2 border-t-[6px] border-b-[6px] border-r-[6px] border-t-transparent border-b-transparent border-r-[#ffffff] border-l-0 drop-shadow-[-1px_0_0_#e0e0e0]',
   };
 
   return (
@@ -157,16 +157,16 @@ const LeapPopover = ({
         <div
           ref={popoverRef}
           className={cn(
-            'fixed z-[9999] min-w-[12rem] max-w-[20rem] bg-card border border-border rounded shadow-[0_2px_8px_rgba(0,0,0,0.15)] text-sm',
-            'focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-[-2px]',
+            'fixed z-[9999] min-w-[12rem] max-w-[20rem] border border-[var(--cds-border-subtle,#e0e0e0)] rounded shadow-[0_2px_8px_rgba(0,0,0,0.15)] text-[14px] tracking-[0.16px]',
+            'focus-visible:outline-2 focus-visible:outline-[#0c8c5e] focus-visible:outline-offset-[-2px]',
             alignTransform[align]
           )}
-          style={{ top: position.top, left: position.left }}
+          style={{ top: position.top, left: position.left, backgroundColor: 'var(--cds-layer, #ffffff)' }}
           role="dialog"
           {...popoverHoverProps}
         >
           <div className={cn('absolute w-0 h-0 border-solid', caretStyles[align])} />
-          <div className="px-4 py-3 text-foreground">{content}</div>
+          <div className="px-4 py-3 text-[#161616]">{content}</div>
         </div>
       )}
     </div>

@@ -16,10 +16,10 @@ const SENTIMENT_COLORS = {
 };
 
 const quadrantBg = {
-  'high-low': 'bg-[#f1c21b]/[0.08]',
-  'high-high': 'bg-[#0c8c5e]/[0.08]',
-  'low-low': 'bg-[#8d8d8d]/[0.06]',
-  'low-high': 'bg-[#0043ce]/[0.06]',
+  'high-low': 'bg-[rgba(241,194,27,0.08)]',
+  'high-high': 'bg-[rgba(12,140,94,0.08)]',
+  'low-low': 'bg-[rgba(141,141,141,0.06)]',
+  'low-high': 'bg-[rgba(0,67,206,0.06)]',
 };
 
 const dotColors = {
@@ -44,12 +44,12 @@ const LeapStakeholderMap = ({ stakeholders = [] }) => {
       <div className="grid grid-cols-[auto_1fr] grid-rows-[1fr_auto_auto]">
         {/* Y-axis */}
         <div className="row-start-1 col-start-1 flex flex-col justify-between items-center pr-2 relative">
-          <span className="text-xs font-medium text-muted-foreground">High</span>
-          <span className="text-xs font-medium text-muted-foreground">Low</span>
+          <span className="text-[12px] tracking-[0.32px] text-[#525252]">High</span>
+          <span className="text-[12px] tracking-[0.32px] text-[#525252]">Low</span>
         </div>
 
         {/* Grid */}
-        <div className="row-start-1 col-start-2 grid grid-cols-2 grid-rows-2 gap-[2px] border border-border rounded overflow-hidden min-h-[20rem]">
+        <div className="row-start-1 col-start-2 grid grid-cols-2 grid-rows-2 gap-[2px] border border-[#e0e0e0] rounded overflow-hidden min-h-[20rem]">
           {[
             { influence: 'high', interest: 'low' },
             { influence: 'high', interest: 'high' },
@@ -68,7 +68,7 @@ const LeapStakeholderMap = ({ stakeholders = [] }) => {
                   quadrantBg[key]
                 )}
               >
-                <span className="text-sm font-semibold text-foreground mb-2">
+                <span className="text-[14px] font-semibold tracking-[0.16px] text-[#161616] mb-2">
                   {quadrant.label}
                 </span>
                 <div className="flex flex-wrap gap-2 items-start">
@@ -83,7 +83,7 @@ const LeapStakeholderMap = ({ stakeholders = [] }) => {
                     >
                       <div
                         className={cn(
-                          'w-4 h-4 rounded-full border-2 border-white cursor-default transition-transform shadow-sm hover:scale-125 focus:scale-125 focus:outline-none',
+                          'w-4 h-4 rounded-full border-2 border-white cursor-default transition-transform shadow-[0_1px_3px_rgba(0,0,0,0.12)] hover:scale-125 focus:scale-125 focus:outline-none',
                           dotColors[stakeholder.sentiment || 'neutral']
                         )}
                         role="img"
@@ -91,7 +91,7 @@ const LeapStakeholderMap = ({ stakeholders = [] }) => {
                         tabIndex={0}
                       />
                       {activeTooltip === stakeholder.name && (
-                        <div className="absolute bottom-[calc(100%+6px)] left-1/2 -translate-x-1/2 bg-[#1a1a18] text-white text-xs px-2 py-1 rounded whitespace-nowrap z-10 pointer-events-none after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#1a1a18]">
+                        <div className="absolute bottom-[calc(100%+6px)] left-1/2 -translate-x-1/2 bg-[#1a1a18] text-white text-[12px] tracking-[0.32px] px-2 py-1 rounded whitespace-nowrap z-10 pointer-events-none after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#1a1a18]">
                           {stakeholder.name}
                         </div>
                       )}
@@ -105,13 +105,13 @@ const LeapStakeholderMap = ({ stakeholders = [] }) => {
 
         {/* X-axis */}
         <div className="row-start-2 col-start-2 flex justify-between pt-1">
-          <span className="text-xs font-medium text-muted-foreground">Low</span>
-          <span className="text-xs font-medium text-muted-foreground">High</span>
+          <span className="text-[12px] tracking-[0.32px] text-[#525252]">Low</span>
+          <span className="text-[12px] tracking-[0.32px] text-[#525252]">High</span>
         </div>
 
         {/* X-label */}
         <div className="row-start-3 col-start-2 text-center pt-1">
-          <span className="text-sm font-semibold text-foreground">Interest</span>
+          <span className="text-[14px] font-semibold tracking-[0.16px] text-[#1a1a18]">Interest</span>
         </div>
       </div>
 
@@ -119,15 +119,15 @@ const LeapStakeholderMap = ({ stakeholders = [] }) => {
       <div className="flex gap-4 justify-center">
         <div className="flex items-center gap-1">
           <span className={cn('w-2.5 h-2.5 rounded-full inline-block', dotColors.positive)} />
-          <span className="text-xs font-medium text-muted-foreground">Positive</span>
+          <span className="text-[12px] tracking-[0.32px] text-[#525252]">Positive</span>
         </div>
         <div className="flex items-center gap-1">
           <span className={cn('w-2.5 h-2.5 rounded-full inline-block', dotColors.neutral)} />
-          <span className="text-xs font-medium text-muted-foreground">Neutral</span>
+          <span className="text-[12px] tracking-[0.32px] text-[#525252]">Neutral</span>
         </div>
         <div className="flex items-center gap-1">
           <span className={cn('w-2.5 h-2.5 rounded-full inline-block', dotColors.negative)} />
-          <span className="text-xs font-medium text-muted-foreground">Negative</span>
+          <span className="text-[12px] tracking-[0.32px] text-[#525252]">Negative</span>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Close } from '@carbon/icons-react';
+import { cn } from '../../lib/utils';
 
 const LeapSidePanel = ({ open = false, title, children, onClose, ...rest }) => {
   if (!open) return null;
@@ -12,13 +13,13 @@ const LeapSidePanel = ({ open = false, title, children, onClose, ...rest }) => {
         onClick={onClose}
       />
       <div
-        className="fixed top-0 right-0 w-[400px] max-w-[90vw] h-screen bg-card border-l border-border z-[9000] flex flex-col shadow-[-4px_0_12px_rgba(0,0,0,0.1)]"
+        className="fixed top-0 right-0 w-[400px] max-w-[90vw] h-screen bg-[#f4f4f4] border-l border-[#e0e0e0] z-[9000] flex flex-col shadow-[-4px_0_12px_rgba(0,0,0,0.1)]"
         {...rest}
       >
-        <div className="flex justify-between items-center p-4 border-b border-border">
-          <span className="text-base font-semibold text-foreground">{title}</span>
+        <div className="flex justify-between items-center p-4 border-b border-[#e0e0e0]">
+          <span className="text-base font-semibold text-[#161616]">{title}</span>
           <button
-            className="bg-transparent border-none text-muted-foreground cursor-pointer p-1 flex items-center hover:text-foreground transition-colors"
+            className="bg-transparent border-none text-[#525252] cursor-pointer p-1 flex items-center hover:text-[#161616] transition-colors"
             onClick={onClose}
             aria-label="Close panel"
           >

@@ -11,10 +11,10 @@ const iconMap = {
 };
 
 const kindStyles = {
-  success: { border: 'border-l-primary', icon: 'text-primary' },
-  error: { border: 'border-l-destructive', icon: 'text-destructive' },
-  warning: { border: 'border-l-yellow-400', icon: 'text-yellow-500' },
-  info: { border: 'border-l-blue-500', icon: 'text-blue-500' },
+  success: { border: 'border-l-[#0c8c5e]', icon: 'text-[#0c8c5e]' },
+  error: { border: 'border-l-[#da1e28]', icon: 'text-[#da1e28]' },
+  warning: { border: 'border-l-[#f1c21b]', icon: 'text-[#f1c21b]' },
+  info: { border: 'border-l-[#4589ff]', icon: 'text-[#4589ff]' },
 };
 
 const LeapToast = ({ title, message, kind = 'info', duration = 5000, onClose, ...rest }) => {
@@ -37,19 +37,20 @@ const LeapToast = ({ title, message, kind = 'info', duration = 5000, onClose, ..
   return (
     <div
       className={cn(
-        'flex items-start gap-2 rounded border-l-4 bg-card p-3 shadow-lg max-w-[400px]',
+        'flex items-start gap-2 rounded-[4px] border-l-4 px-4 py-3 shadow-[0_4px_12px_rgba(0,0,0,0.12)] max-w-[400px]',
         styles.border
       )}
+      style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}
       role="alert"
       {...rest}
     >
       <Icon size={20} className={cn('mt-px shrink-0', styles.icon)} />
       <div className="flex flex-1 flex-col gap-0.5">
-        <span className="text-sm font-semibold text-foreground">{title}</span>
-        {message && <span className="text-sm text-muted-foreground">{message}</span>}
+        <span className="text-[14px] font-semibold leading-[18px] tracking-[0.16px] text-[var(--cds-text-primary,#161616)]">{title}</span>
+        {message && <span className="text-[14px] leading-[18px] tracking-[0.16px] text-[#525252]">{message}</span>}
       </div>
       <button
-        className="shrink-0 border-none bg-transparent p-0.5 text-muted-foreground hover:text-foreground cursor-pointer"
+        className="shrink-0 border-none bg-transparent p-0.5 text-[#525252] hover:text-[var(--cds-text-primary,#161616)] cursor-pointer"
         onClick={() => { setVisible(false); onClose && onClose(); }}
         aria-label="Dismiss"
       >

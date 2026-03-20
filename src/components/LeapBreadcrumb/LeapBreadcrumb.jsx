@@ -1,35 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cn } from '../../lib/utils';
+import { Breadcrumb, BreadcrumbItem } from '@carbon/react';
 
 const LeapBreadcrumb = ({ items = [], ...rest }) => {
   return (
-    <nav aria-label="Breadcrumb" {...rest}>
-      <ol className="flex items-center gap-1 text-sm">
-        {items.map((item, i) => {
-          const isLast = i === items.length - 1;
-          return (
-            <li key={i} className="flex items-center gap-1">
-              {i > 0 && (
-                <span className="text-muted-foreground">/</span>
-              )}
-              {isLast ? (
-                <span className="text-muted-foreground" aria-current="page">
-                  {item.label}
-                </span>
-              ) : (
-                <a
-                  href={item.href}
-                  className="text-primary hover:text-primary/80 hover:underline"
-                >
-                  {item.label}
-                </a>
-              )}
-            </li>
-          );
-        })}
-      </ol>
-    </nav>
+    <div
+      className="leap-breadcrumb"
+      style={{
+        '--cds-link-primary': '#0c8c5e',
+        '--cds-link-primary-hover': '#0c8c5e',
+      }}
+      {...rest}
+    >
+      <Breadcrumb>
+        {items.map((item, i) => (
+          <BreadcrumbItem
+            key={i}
+            href={item.href}
+            isCurrentPage={i === items.length - 1}
+          >
+            {item.label}
+          </BreadcrumbItem>
+        ))}
+      </Breadcrumb>
+    </div>
   );
 };
 

@@ -93,9 +93,9 @@ const LeapOverflowMenu = ({ items = [], icon: Icon = OverflowMenuVertical, size 
       <button
         ref={triggerRef}
         className={cn(
-          'inline-flex items-center justify-center border-none rounded bg-transparent text-foreground cursor-pointer transition-colors',
-          'hover:bg-accent',
-          'focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-[-2px]',
+          'inline-flex items-center justify-center border-none rounded bg-transparent text-[#161616] cursor-pointer transition-colors',
+          'hover:bg-[#e8e8e8]',
+          'focus-visible:outline-2 focus-visible:outline-[#0c8c5e] focus-visible:outline-offset-[-2px]',
           triggerSizeStyles[size]
         )}
         onClick={() => setOpen((prev) => !prev)}
@@ -109,23 +109,23 @@ const LeapOverflowMenu = ({ items = [], icon: Icon = OverflowMenuVertical, size 
       {open && (
         <div
           ref={menuRef}
-          className="fixed z-[9999] min-w-[10rem] max-w-[18rem] py-1 bg-card border border-border shadow-[0_2px_6px_rgba(0,0,0,0.2)]"
+          className="fixed z-[9999] min-w-[10rem] max-w-[18rem] py-1 bg-[#f4f4f4] border border-[#e0e0e0] shadow-[0_2px_6px_rgba(0,0,0,0.2)]"
           style={{ top: menuPos.top, left: flipped ? 'auto' : menuPos.left, right: flipped ? `calc(100vw - ${menuPos.left}px)` : 'auto' }}
           role="menu"
         >
           {items.map((item) => {
             if (item.type === 'divider') {
-              return <div key={item.id} className="h-px my-1 bg-border" role="separator" />;
+              return <div key={item.id} className="h-px my-1 bg-[#e0e0e0]" role="separator" />;
             }
             return (
               <button
                 key={item.id}
                 className={cn(
-                  'flex items-center gap-2 w-full px-4 py-2 border-none bg-transparent text-foreground text-sm cursor-pointer text-left whitespace-nowrap',
-                  'hover:bg-accent',
-                  'focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-[-2px]',
-                  item.danger && 'text-destructive hover:bg-destructive hover:text-primary-foreground',
-                  item.disabled && 'text-muted-foreground opacity-50 cursor-not-allowed hover:bg-transparent'
+                  'flex items-center gap-2 w-full px-4 py-2 border-none bg-transparent text-[#161616] text-[14px] tracking-[0.16px] cursor-pointer text-left whitespace-nowrap',
+                  'hover:bg-[#e8e8e8]',
+                  'focus-visible:outline-2 focus-visible:outline-[#0c8c5e] focus-visible:outline-offset-[-2px]',
+                  item.danger && 'text-[#da1e28] hover:bg-[#da1e28] hover:text-white',
+                  item.disabled && 'text-[#8d8d8d] cursor-not-allowed hover:bg-transparent'
                 )}
                 role="menuitem"
                 disabled={item.disabled}

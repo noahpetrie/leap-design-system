@@ -10,24 +10,24 @@ const STATUS_CONFIG = {
 };
 
 const dotStyles = {
-  completed: 'bg-primary border-primary',
-  current: 'bg-white border-primary shadow-[0_0_0_3px_rgba(12,140,94,0.25)]',
+  completed: 'bg-[#0c8c5e] border-[#0c8c5e]',
+  current: 'bg-white border-[#0c8c5e] shadow-[0_0_0_3px_rgba(12,140,94,0.25)]',
   upcoming: 'bg-white border-[#a8a8a0]',
-  overdue: 'bg-destructive border-destructive',
+  overdue: 'bg-[#da1e28] border-[#da1e28]',
 };
 
 const badgeStyles = {
-  completed: 'bg-primary/10 text-primary',
-  current: 'bg-primary/10 text-primary',
-  upcoming: 'bg-card text-muted-foreground',
-  overdue: 'bg-destructive/10 text-destructive',
+  completed: 'bg-[rgba(12,140,94,0.12)] text-[#0c8c5e]',
+  current: 'bg-[rgba(12,140,94,0.12)] text-[#0c8c5e]',
+  upcoming: 'bg-[#f4f4f4] text-[#525252]',
+  overdue: 'bg-[rgba(218,30,40,0.12)] text-[#da1e28]',
 };
 
 const LeapMilestoneTracker = ({ milestones }) => {
   if (!milestones || milestones.length === 0) return null;
 
   return (
-    <div className="bg-white border border-border rounded-lg p-4 max-w-[600px]">
+    <div className="border border-[var(--cds-border-subtle,#e0e0e0)] rounded-lg p-4 max-w-[600px]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
       <ol className="list-none m-0 p-0">
         {milestones.map((ms, idx) => {
           const config = STATUS_CONFIG[ms.status] || STATUS_CONFIG.upcoming;
@@ -37,13 +37,13 @@ const LeapMilestoneTracker = ({ milestones }) => {
             <li
               key={ms.title + idx}
               className={cn(
-                'relative flex gap-3',
+                'relative flex gap-4',
                 !isLast && 'pb-6'
               )}
             >
               {/* Connector line (not on last item) */}
               {!isLast && (
-                <span className="absolute left-[9px] top-[22px] w-0.5 bottom-0 bg-border" />
+                <span className="absolute left-[9px] top-[22px] w-0.5 bottom-0 bg-[var(--cds-border-subtle,#e0e0e0)]" />
               )}
 
               {/* Dot */}
@@ -58,15 +58,15 @@ const LeapMilestoneTracker = ({ milestones }) => {
               {/* Content */}
               <div className={cn(
                 'flex-1 min-w-0',
-                config.modifier === 'overdue' && 'border-l-[3px] border-l-destructive pl-2 rounded-sm'
+                config.modifier === 'overdue' && 'border-l-[3px] border-l-[#da1e28] pl-2 rounded-sm'
               )}>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h4 className="text-sm font-semibold text-foreground m-0">
+                  <h4 className="text-[14px] font-semibold tracking-[0.16px] text-[#1a1a18] m-0">
                     {ms.title}
                   </h4>
                   <span
                     className={cn(
-                      'text-xs font-semibold inline-block px-2 py-px rounded-xl',
+                      'text-[12px] tracking-[0.32px] font-semibold inline-block px-2 py-px rounded-xl',
                       badgeStyles[config.modifier]
                     )}
                   >
@@ -74,12 +74,12 @@ const LeapMilestoneTracker = ({ milestones }) => {
                   </span>
                 </div>
                 {ms.date && (
-                  <time className="text-xs font-medium block text-muted-foreground mt-1">
+                  <time className="text-[12px] tracking-[0.32px] block text-[#525252] mt-1">
                     {ms.date}
                   </time>
                 )}
                 {ms.description && (
-                  <p className="text-sm text-muted-foreground mt-1 mb-0">
+                  <p className="text-[14px] tracking-[0.16px] text-[#525252] mt-1 mb-0">
                     {ms.description}
                   </p>
                 )}

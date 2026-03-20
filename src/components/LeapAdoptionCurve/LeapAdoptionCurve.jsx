@@ -50,12 +50,12 @@ const LeapAdoptionCurve = ({
     stages[0];
 
   return (
-    <div className="bg-background border border-border rounded-lg p-4 max-w-[720px]">
-      <div className="flex items-baseline gap-2 mb-4">
-        <span className="text-2xl font-bold text-primary tabular-nums">
+    <div className="border border-[var(--cds-border-subtle,#e0e0e0)] rounded-[8px] p-[1rem] max-w-[720px]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
+      <div className="flex items-baseline gap-[0.5rem] mb-[1rem]">
+        <span className="text-[1.75rem] leading-[2.25rem] font-bold text-[#0c8c5e] tabular-nums">
           {clampedPct}%
         </span>
-        <span className="text-sm text-muted-foreground uppercase tracking-[0.08em]">
+        <span className="text-[0.875rem] leading-[1.125rem] tracking-[0.08em] text-[#525252] uppercase">
           {currentStage.label}
         </span>
       </div>
@@ -76,14 +76,14 @@ const LeapAdoptionCurve = ({
                 y1={y}
                 x2={PAD.left + W}
                 y2={y}
-                stroke="hsl(var(--border))"
+                stroke="#e0e0e0"
                 strokeWidth={1}
               />
               <text
                 x={PAD.left - 8}
                 y={y + 4}
-                className="text-xs font-medium"
-                fill="hsl(var(--muted-foreground))"
+                className="text-[0.75rem] leading-[1rem] tracking-[0.32px]"
+                fill="#525252"
                 textAnchor="end"
                 dominantBaseline="middle"
               >
@@ -103,7 +103,7 @@ const LeapAdoptionCurve = ({
         <path
           d={buildCurvePath()}
           fill="none"
-          stroke="hsl(var(--primary))"
+          stroke="#0c8c5e"
           strokeWidth={2.5}
           strokeLinejoin="round"
         />
@@ -124,7 +124,7 @@ const LeapAdoptionCurve = ({
           cx={markerX}
           cy={markerY}
           r={6}
-          fill="hsl(var(--primary))"
+          fill="#0c8c5e"
           stroke="white"
           strokeWidth={2}
         />
@@ -139,13 +139,13 @@ const LeapAdoptionCurve = ({
                 y1={PAD.top + H}
                 x2={x}
                 y2={PAD.top + H + 8}
-                stroke="hsl(var(--muted-foreground))"
+                stroke="#525252"
                 strokeWidth={1}
               />
               <text
                 x={x}
                 y={PAD.top + H + 24}
-                className="text-xs font-semibold"
+                className="text-[0.75rem] leading-[1rem] tracking-[0.32px] font-semibold"
                 fill="#1a1a18"
                 textAnchor="middle"
               >
@@ -154,8 +154,8 @@ const LeapAdoptionCurve = ({
               <text
                 x={x}
                 y={PAD.top + H + 40}
-                className="text-xs font-medium"
-                fill="hsl(var(--muted-foreground))"
+                className="text-[0.75rem] leading-[1rem] tracking-[0.32px]"
+                fill="#525252"
                 textAnchor="middle"
               >
                 {stage.threshold}%

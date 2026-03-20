@@ -38,7 +38,7 @@ const LeapProgressIndicator = ({
               type="button"
               className={cn(
                 'flex bg-transparent border-none cursor-pointer p-0',
-                'focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 focus-visible:rounded',
+                'focus-visible:outline-2 focus-visible:outline-[#0c8c5e] focus-visible:outline-offset-2 focus-visible:rounded',
                 vertical ? 'flex-row items-start gap-3' : 'flex-col items-center gap-2'
               )}
               onClick={() => onChange?.(i)}
@@ -48,9 +48,9 @@ const LeapProgressIndicator = ({
               <span
                 className={cn(
                   'w-8 h-8 rounded-full flex items-center justify-center z-[1] flex-shrink-0',
-                  isComplete && 'bg-primary text-primary-foreground',
-                  isCurrent && 'bg-primary text-primary-foreground shadow-[0_0_0_4px_rgba(12,140,94,0.2)]',
-                  !isComplete && !isCurrent && 'bg-border text-muted-foreground'
+                  isComplete && 'bg-[#0c8c5e] text-white',
+                  isCurrent && 'bg-[#0c8c5e] text-white shadow-[0_0_0_4px_rgba(12,140,94,0.2)]',
+                  !isComplete && !isCurrent && 'bg-[#e0e0e0] text-[#525252]'
                 )}
               >
                 {isComplete ? (
@@ -69,21 +69,21 @@ const LeapProgressIndicator = ({
               >
                 <span
                   className={cn(
-                    'text-xs font-medium whitespace-nowrap',
-                    isCurrent ? 'text-foreground font-semibold' : 'text-muted-foreground'
+                    'text-[12px] tracking-[0.32px] whitespace-nowrap',
+                    isCurrent ? 'text-[#161616] font-semibold' : 'text-[#525252]'
                   )}
                 >
                   {step.label}
                 </span>
                 {step.secondaryLabel && (
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-[12px] tracking-[0.32px] text-[#6f6f6f]">
                     {step.secondaryLabel}
                   </span>
                 )}
                 {step.description && (
                   <span
                     className={cn(
-                      'text-xs text-muted-foreground mt-1 whitespace-normal',
+                      'text-[12px] tracking-[0.32px] text-[#525252] mt-1 whitespace-normal',
                       !vertical && 'max-w-[160px]'
                     )}
                   >
@@ -100,7 +100,7 @@ const LeapProgressIndicator = ({
                   vertical
                     ? 'absolute top-8 left-[15px] w-0.5 h-[calc(100%-16px)] min-h-4'
                     : 'absolute top-4 left-[calc(50%+16px)] right-[calc(-50%+16px)] h-0.5',
-                  isComplete ? 'bg-primary' : 'bg-border'
+                  isComplete ? 'bg-[#0c8c5e]' : 'bg-[#e0e0e0]'
                 )}
               />
             )}

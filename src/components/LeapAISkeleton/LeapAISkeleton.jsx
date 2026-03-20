@@ -1,47 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cn } from '../../lib/utils';
+import {
+  SkeletonText,
+  SkeletonIcon,
+  SkeletonPlaceholder,
+} from '@carbon/react';
 
-const shimmerClasses =
-  'animate-leap-ai-shimmer bg-[length:200%_100%] bg-[linear-gradient(90deg,#e6f4ee_0%,rgba(12,140,94,0.12)_40%,#e6f4ee_60%,rgba(12,140,94,0.12)_100%)]';
+/* AI shimmer style — matches the original SCSS @mixin ai-shimmer */
+const aiShimmerStyle = {
+  background: 'linear-gradient(90deg, #e6f4ee 0%, rgba(12,140,94,0.12) 40%, #e6f4ee 60%, rgba(12,140,94,0.12) 100%)',
+  backgroundSize: '200% 100%',
+  animation: 'leap-ai-shimmer 2s ease-in-out infinite',
+};
 
 /**
- * LeapAISkeletonText — A skeleton text loader with an AI shimmer effect,
- * indicating that AI-generated content is being loaded.
+ * LeapAISkeletonText — A skeleton text loader with an AI shimmer effect.
  */
-export const LeapAISkeletonText = ({
-  className,
-  heading,
-  lineCount = 3,
-  paragraph,
-  width = '100%',
-  ...rest
-}) => {
-  if (paragraph) {
-    return (
-      <div className={cn('space-y-2', className)} {...rest}>
-        {Array.from({ length: lineCount }).map((_, i) => (
-          <div
-            key={i}
-            className={cn(
-              shimmerClasses,
-              heading ? 'h-6 rounded' : 'h-4 rounded',
-            )}
-            style={{ width: i === lineCount - 1 ? '80%' : width }}
-          />
-        ))}
-      </div>
-    );
-  }
-
+export const LeapAISkeletonText = ({ className, style, ...rest }) => {
   return (
-    <div
-      className={cn(
-        shimmerClasses,
-        heading ? 'h-6 rounded' : 'h-4 rounded',
-        className,
-      )}
-      style={{ width }}
+    <SkeletonText
+      className={className}
+      style={{ ...aiShimmerStyle, ...style }}
       {...rest}
     />
   );
@@ -49,13 +28,10 @@ export const LeapAISkeletonText = ({
 
 LeapAISkeletonText.propTypes = {
   className: PropTypes.string,
-  /** Larger heading-sized skeleton text */
   heading: PropTypes.bool,
-  /** Number of lines when paragraph is true */
   lineCount: PropTypes.number,
-  /** Generate multiple lines */
   paragraph: PropTypes.bool,
-  /** Width of the text line(s) */
+  style: PropTypes.object,
   width: PropTypes.string,
 };
 
@@ -64,9 +40,9 @@ LeapAISkeletonText.propTypes = {
  */
 export const LeapAISkeletonIcon = ({ className, style, ...rest }) => {
   return (
-    <div
-      className={cn(shimmerClasses, 'w-4 h-4 rounded-full', className)}
-      style={style}
+    <SkeletonIcon
+      className={className}
+      style={{ ...aiShimmerStyle, borderRadius: '50%', ...style }}
       {...rest}
     />
   );
@@ -78,13 +54,13 @@ LeapAISkeletonIcon.propTypes = {
 };
 
 /**
- * LeapAISkeletonPlaceholder — A skeleton placeholder block with AI shimmer,
- * for larger content areas like cards or images.
+ * LeapAISkeletonPlaceholder — A skeleton placeholder block with AI shimmer.
  */
-export const LeapAISkeletonPlaceholder = ({ className, ...rest }) => {
+export const LeapAISkeletonPlaceholder = ({ className, style, ...rest }) => {
   return (
-    <div
-      className={cn(shimmerClasses, 'w-full h-24 rounded-lg', className)}
+    <SkeletonPlaceholder
+      className={className}
+      style={{ ...aiShimmerStyle, borderRadius: '8px', ...style }}
       {...rest}
     />
   );
@@ -92,11 +68,9 @@ export const LeapAISkeletonPlaceholder = ({ className, ...rest }) => {
 
 LeapAISkeletonPlaceholder.propTypes = {
   className: PropTypes.string,
+  style: PropTypes.object,
 };
 
-/**
- * Default export for convenience.
- */
 const LeapAISkeleton = {
   Text: LeapAISkeletonText,
   Icon: LeapAISkeletonIcon,

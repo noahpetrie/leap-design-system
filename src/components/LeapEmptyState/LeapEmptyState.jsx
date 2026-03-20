@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from '@carbon/react';
 import { Calendar, Document, Search as SearchIcon } from '@carbon/icons-react';
 
 const iconMap = {
@@ -12,22 +13,23 @@ const LeapEmptyState = ({ title, description, icon = 'document', actionLabel, on
   const Icon = iconMap[icon] || Document;
 
   return (
-    <div className="flex flex-col items-center justify-center p-12 text-center" {...rest}>
-      <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-primary">
+    <div
+      className="empty-state"
+      style={{
+        '--cds-button-primary': '#0c8c5e',
+        '--cds-button-primary-hover': '#096b48',
+      }}
+      {...rest}
+    >
+      <div className="empty-state-icon">
         <Icon size={48} />
       </div>
-      <h3 className="mb-2 text-base font-semibold text-foreground">{title}</h3>
-      {description && (
-        <p className="mb-4 max-w-[400px] text-sm text-muted-foreground">{description}</p>
-      )}
+      <h3 className="empty-state-title">{title}</h3>
+      {description && <p className="empty-state-description">{description}</p>}
       {actionLabel && onAction && (
-        <button
-          type="button"
-          onClick={onAction}
-          className="mt-2 inline-flex items-center rounded bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-        >
+        <Button kind="primary" size="sm" onClick={onAction} className="empty-state-action">
           {actionLabel}
-        </button>
+        </Button>
       )}
     </div>
   );

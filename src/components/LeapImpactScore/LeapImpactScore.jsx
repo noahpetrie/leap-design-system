@@ -21,9 +21,9 @@ const getScoreColor = (score) => {
 };
 
 const AI_BADGE_SIZE = {
-  sm: { badge: 'w-4 h-4', svg: 'w-2 h-2' },
-  md: { badge: 'w-5 h-5', svg: 'w-2.5 h-2.5' },
-  lg: { badge: 'w-6 h-6', svg: 'w-3 h-3' },
+  sm: { badge: 'w-[1rem] h-[1rem]', svg: 'w-[8px] h-[8px]' },
+  md: { badge: 'w-[1.25rem] h-[1.25rem]', svg: 'w-[10px] h-[10px]' },
+  lg: { badge: 'w-[1.5rem] h-[1.5rem]', svg: 'w-[12px] h-[12px]' },
 };
 
 const LeapImpactScore = ({ score = 0, label, size = 'md', showAI = false }) => {
@@ -36,7 +36,7 @@ const LeapImpactScore = ({ score = 0, label, size = 'md', showAI = false }) => {
   const badgeSize = AI_BADGE_SIZE[size] || AI_BADGE_SIZE.md;
 
   return (
-    <div className="inline-flex flex-col items-center gap-2">
+    <div className="inline-flex flex-col items-center gap-[0.5rem]">
       <div className="relative inline-flex items-center justify-center">
         <svg
           width={dimension}
@@ -46,7 +46,7 @@ const LeapImpactScore = ({ score = 0, label, size = 'md', showAI = false }) => {
           role="img"
         >
           <circle
-            className="stroke-border"
+            className="stroke-[#e0e0e0]"
             cx={dimension / 2}
             cy={dimension / 2}
             r={radius}
@@ -67,7 +67,7 @@ const LeapImpactScore = ({ score = 0, label, size = 'md', showAI = false }) => {
           />
         </svg>
         <div
-          className="absolute inset-0 flex items-center justify-center font-semibold text-foreground tabular-nums"
+          className="absolute inset-0 flex items-center justify-center font-semibold text-[#1a1a18] tabular-nums"
           style={{ fontSize }}
         >
           {clampedScore}
@@ -75,7 +75,7 @@ const LeapImpactScore = ({ score = 0, label, size = 'md', showAI = false }) => {
         {showAI && (
           <div
             className={cn(
-              'absolute top-0 right-0 rounded-full bg-primary text-white flex items-center justify-center shadow-sm',
+              'absolute top-0 right-0 rounded-full bg-[#0c8c5e] text-white flex items-center justify-center shadow-[0_1px_3px_rgba(0,0,0,0.15)]',
               badgeSize.badge,
             )}
             title="AI-generated score"
@@ -94,7 +94,7 @@ const LeapImpactScore = ({ score = 0, label, size = 'md', showAI = false }) => {
           </div>
         )}
       </div>
-      {label && <span className="text-xs font-medium text-muted-foreground text-center">{label}</span>}
+      {label && <span className="text-[12px] tracking-[0.32px] text-[#525252] text-center">{label}</span>}
     </div>
   );
 };

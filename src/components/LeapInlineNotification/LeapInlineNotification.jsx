@@ -17,15 +17,15 @@ const iconMap = {
 };
 
 const KIND_BORDER_COLORS = {
-  success: 'border-l-primary',
-  error: 'border-l-destructive',
+  success: 'border-l-[#0c8c5e]',
+  error: 'border-l-[#da1e28]',
   warning: 'border-l-[#f1c21b]',
   info: 'border-l-[#4589ff]',
 };
 
 const KIND_ICON_COLORS = {
-  success: 'fill-primary',
-  error: 'fill-destructive',
+  success: 'fill-[#0c8c5e]',
+  error: 'fill-[#da1e28]',
   warning: 'fill-[#f1c21b]',
   info: 'fill-[#4589ff]',
 };
@@ -66,23 +66,24 @@ const LeapInlineNotification = ({
   return (
     <div
       className={cn(
-        'flex items-start py-3 px-4 mb-3 border-l-[3px] gap-2',
-        lowContrast ? KIND_LOW_CONTRAST_BG[kind] : 'bg-card',
+        'flex items-start py-[0.75rem] px-[1rem] mb-[0.75rem] border-l-[3px] gap-[0.5rem]',
+        lowContrast && KIND_LOW_CONTRAST_BG[kind],
         KIND_BORDER_COLORS[kind],
         className,
       )}
+      style={lowContrast ? undefined : { backgroundColor: 'var(--cds-layer, #ffffff)' }}
       role="alert"
       {...rest}
     >
-      <Icon className={cn('shrink-0 mt-0.5', KIND_ICON_COLORS[kind])} size={20} />
-      <div className="flex flex-col flex-1 gap-1">
+      <Icon className={cn('shrink-0 mt-[0.125rem]', KIND_ICON_COLORS[kind])} size={20} />
+      <div className="flex flex-col flex-1 gap-[0.25rem]">
         {title && (
-          <span className="text-sm font-semibold text-foreground">
+          <span className="text-[14px] font-semibold tracking-[0.16px] text-[#161616]">
             {title}
           </span>
         )}
         {subtitle && (
-          <span className="text-sm text-muted-foreground">
+          <span className="text-[14px] tracking-[0.16px] text-[#525252]">
             {subtitle}
           </span>
         )}
@@ -90,7 +91,7 @@ const LeapInlineNotification = ({
       {closable && (
         <button
           type="button"
-          className="flex items-center justify-center shrink-0 w-6 h-6 p-0 border-none bg-transparent cursor-pointer text-foreground hover:bg-accent focus:outline-2 focus:outline-ring focus:-outline-offset-2"
+          className="flex items-center justify-center shrink-0 w-[1.5rem] h-[1.5rem] p-0 border-none rounded-none bg-transparent cursor-pointer text-[#161616] hover:bg-[#e8e8e8] focus:outline-2 focus:outline-[#0c8c5e] focus:-outline-offset-2"
           aria-label="Close notification"
           onClick={handleClose}
         >

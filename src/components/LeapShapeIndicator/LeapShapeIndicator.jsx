@@ -75,8 +75,8 @@ const LeapShapeIndicator = React.forwardRef(function LeapShapeIndicator(
   return (
     <div
       className={cn(
-        'flex items-center text-muted-foreground',
-        textSize === 14 ? 'text-sm' : 'text-xs',
+        'flex items-center text-[#525252]',
+        textSize === 14 ? 'text-[14px] tracking-[0.16px]' : 'text-[12px] tracking-[0.32px]',
         className
       )}
       ref={ref}

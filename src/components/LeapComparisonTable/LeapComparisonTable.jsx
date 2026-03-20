@@ -8,25 +8,25 @@ const LeapComparisonTable = ({ options, criteria }) => {
   }
 
   return (
-    <div className="bg-white border border-border rounded-lg p-4 max-w-[900px]">
+    <div className="border border-[var(--cds-border-subtle,#e0e0e0)] rounded-lg p-4 max-w-[900px]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th className="text-xs font-semibold text-left p-3 px-4 text-muted-foreground border-b-2 border-border whitespace-nowrap">
+              <th className="text-xs leading-4 tracking-[0.32px] font-semibold text-left p-3 px-4 text-[#525252] border-b-2 border-[var(--cds-border-subtle,#e0e0e0)] whitespace-nowrap">
                 Criteria
               </th>
               {options.map((opt) => (
                 <th
                   key={opt.name}
                   className={cn(
-                    'text-sm font-semibold text-center p-3 px-4 text-foreground border-b-2 border-border align-bottom min-w-[140px]',
-                    opt.recommended && 'bg-primary/5 border-b-primary'
+                    'text-sm leading-[1.125rem] tracking-[0.16px] font-semibold text-center p-3 px-4 text-[var(--cds-text-primary,#161616)] border-b-2 border-[var(--cds-border-subtle,#e0e0e0)] align-bottom min-w-[140px]',
+                    opt.recommended && 'bg-[#0c8c5e]/[0.06] border-b-[#0c8c5e]'
                   )}
                 >
                   <span className="block">{opt.name}</span>
                   {opt.recommended && (
-                    <span className="inline-block mt-1 px-2 py-px rounded-full bg-primary text-white text-xs font-semibold">
+                    <span className="inline-block mt-1 px-2 py-px rounded-full bg-[#0c8c5e] text-white text-xs leading-4 tracking-[0.32px] font-semibold">
                       Recommended
                     </span>
                   )}
@@ -38,17 +38,17 @@ const LeapComparisonTable = ({ options, criteria }) => {
             {criteria.map((criterion, rowIdx) => (
               <tr
                 key={criterion}
-                className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-card'}
+                style={rowIdx % 2 === 0 ? { backgroundColor: 'var(--cds-layer, #ffffff)' } : { backgroundColor: 'var(--cds-layer-02, #f4f4f4)' }}
               >
-                <td className="text-sm p-3 px-4 text-foreground font-semibold whitespace-nowrap border-r border-border">
+                <td className="text-sm leading-[1.125rem] tracking-[0.16px] p-3 px-4 text-[var(--cds-text-primary,#161616)] font-semibold whitespace-nowrap border-r border-[var(--cds-border-subtle,#e0e0e0)]">
                   {criterion}
                 </td>
                 {options.map((opt) => (
                   <td
                     key={`${opt.name}-${criterion}`}
                     className={cn(
-                      'text-sm p-3 px-4 text-center text-muted-foreground',
-                      opt.recommended && 'bg-primary/[0.04]'
+                      'text-sm leading-[1.125rem] tracking-[0.16px] p-3 px-4 text-center text-[#525252]',
+                      opt.recommended && 'bg-[#0c8c5e]/[0.04]'
                     )}
                   >
                     {opt.values[criterion] !== undefined

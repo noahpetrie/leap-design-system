@@ -19,14 +19,14 @@ const LeapReadinessGauge = ({ overall = 0, categories = [] }) => {
   const overallColor = getBarColor(clampedOverall);
 
   return (
-    <div className="flex flex-col gap-3 w-full max-w-[32rem]">
+    <div className="flex flex-col gap-4 w-full max-w-[32rem]">
       <div className="flex justify-between items-baseline">
-        <span className="text-sm font-semibold text-foreground">Overall Readiness</span>
-        <span className={cn('text-base font-semibold tabular-nums', colorMap[overallColor].text)}>
+        <span className="text-[14px] tracking-[0.16px] font-semibold text-[#1a1a18]">Overall Readiness</span>
+        <span className={cn('text-[16px] font-semibold tabular-nums', colorMap[overallColor].text)}>
           {clampedOverall}%
         </span>
       </div>
-      <div className="w-full h-4 bg-border rounded-lg overflow-hidden">
+      <div className="w-full h-4 bg-[#e0e0e0] rounded-lg overflow-hidden">
         <div
           className={cn('h-full rounded-lg transition-all duration-500 ease-out', colorMap[overallColor].bg)}
           style={{ width: `${clampedOverall}%` }}
@@ -39,7 +39,7 @@ const LeapReadinessGauge = ({ overall = 0, categories = [] }) => {
       </div>
 
       {categories.length > 0 && (
-        <div className="flex flex-col gap-3 pt-2 border-t border-border">
+        <div className="flex flex-col gap-4 pt-2 border-t border-[#e0e0e0]">
           {categories.map((cat) => {
             const value = Math.max(0, Math.min(100, cat.value));
             const color = getBarColor(value);
@@ -47,16 +47,16 @@ const LeapReadinessGauge = ({ overall = 0, categories = [] }) => {
             return (
               <div key={cat.label} className="flex flex-col gap-1">
                 <div className="flex justify-between items-baseline">
-                  <span className="text-sm text-foreground">
+                  <span className="text-[14px] tracking-[0.16px] text-[#161616]">
                     {cat.label}
                   </span>
                   <span
-                    className={cn('text-xs font-semibold tabular-nums', colorMap[color].text)}
+                    className={cn('text-[12px] tracking-[0.32px] font-semibold tabular-nums', colorMap[color].text)}
                   >
                     {value}%
                   </span>
                 </div>
-                <div className="w-full h-2 bg-border rounded overflow-hidden">
+                <div className="w-full h-2 bg-[#e0e0e0] rounded overflow-hidden">
                   <div
                     className={cn('h-full rounded transition-all duration-500 ease-out', colorMap[color].bg)}
                     style={{ width: `${value}%` }}

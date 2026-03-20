@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { List, Grid, TreeView, ChartBar, TableSplit } from '@carbon/icons-react';
 import LeapContentSwitcher from './LeapContentSwitcher.jsx';
 
 export default {
@@ -14,7 +13,7 @@ export default {
     docs: {
       description: {
         component:
-          `A segmented toggle for switching between related content views. Supports icons, keyboard navigation (arrow keys, Home, End), and multiple sizes.
+          `A segmented toggle for switching between related content views. Wraps Carbon's ContentSwitcher with Leap theming.
 
 ### Import
 \`\`\`jsx
@@ -36,16 +35,6 @@ export const Default = {
   },
 };
 
-export const WithIcons = {
-  args: {
-    items: [
-      { id: 'list', label: 'List', icon: <List /> },
-      { id: 'grid', label: 'Grid', icon: <Grid /> },
-      { id: 'tree', label: 'Tree', icon: <TreeView /> },
-    ],
-  },
-};
-
 export const Small = {
   args: {
     items: [
@@ -61,8 +50,8 @@ export const Small = {
 export const Large = {
   args: {
     items: [
-      { id: 'chart', label: 'Chart', icon: <ChartBar /> },
-      { id: 'table', label: 'Table', icon: <TableSplit /> },
+      { id: 'chart', label: 'Chart' },
+      { id: 'table', label: 'Table' },
     ],
     size: 'lg',
   },
@@ -88,7 +77,6 @@ export const WithContent = {
             marginTop: '1rem',
             padding: '1rem',
             border: '1px solid #e0e0e0',
-            borderRadius: '4px',
             fontSize: '0.875rem',
             color: '#525252',
           }}

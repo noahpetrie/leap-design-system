@@ -16,9 +16,9 @@ const LeapProgressTracker = ({ steps = [], currentStep = 0, ...rest }) => {
             <div
               className={cn(
                 'w-8 h-8 rounded-full flex items-center justify-center z-[1]',
-                isComplete && 'bg-primary text-primary-foreground',
-                isCurrent && 'bg-white border-2 border-primary text-primary',
-                !isComplete && !isCurrent && 'bg-border text-muted-foreground'
+                isComplete && 'bg-[#0c8c5e] text-white',
+                isCurrent && 'bg-[#e6f4ee] border-2 border-[#0c8c5e] text-[#0c8c5e]',
+                !isComplete && !isCurrent && 'bg-[#e0e0e0] text-[#525252]'
               )}
             >
               {isComplete ? (
@@ -33,7 +33,7 @@ const LeapProgressTracker = ({ steps = [], currentStep = 0, ...rest }) => {
               <div
                 className={cn(
                   'absolute top-4 left-[calc(50%+16px)] right-[calc(-50%+16px)] h-0.5',
-                  isComplete ? 'bg-primary' : 'bg-border'
+                  isComplete ? 'bg-[#0c8c5e]' : 'bg-[#e0e0e0]'
                 )}
               />
             )}
@@ -41,8 +41,8 @@ const LeapProgressTracker = ({ steps = [], currentStep = 0, ...rest }) => {
             {/* Label */}
             <div
               className={cn(
-                'text-xs font-medium mt-2 text-center whitespace-nowrap',
-                isCurrent ? 'text-foreground font-semibold' : 'text-muted-foreground'
+                'text-[12px] tracking-[0.32px] mt-2 text-center whitespace-nowrap',
+                isCurrent ? 'text-[#161616] font-semibold' : 'text-[#525252]'
               )}
             >
               {step}

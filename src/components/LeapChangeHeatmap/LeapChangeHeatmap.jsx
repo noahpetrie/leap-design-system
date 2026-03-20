@@ -22,14 +22,14 @@ const LeapChangeHeatmap = ({ rows, columns, data }) => {
   if (!rows || !columns || !data) return null;
 
   return (
-    <div className="bg-white border border-border rounded-lg p-4 max-w-[800px]">
+    <div className="border border-[var(--cds-border-subtle,#e0e0e0)] rounded-lg p-4 max-w-[800px]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
       <div className="overflow-x-auto">
         <table className="w-full" style={{ borderCollapse: 'separate', borderSpacing: '3px' }}>
           <thead>
             <tr>
               <th className="bg-transparent" />
               {columns.map((col) => (
-                <th key={col} className="text-xs font-semibold text-foreground text-center px-3 py-2 whitespace-nowrap">
+                <th key={col} className="text-xs leading-4 tracking-[0.32px] font-semibold text-[var(--cds-text-primary,#161616)] text-center px-3 py-2 whitespace-nowrap">
                   {col}
                 </th>
               ))}
@@ -38,7 +38,7 @@ const LeapChangeHeatmap = ({ rows, columns, data }) => {
           <tbody>
             {rows.map((row, rowIdx) => (
               <tr key={row}>
-                <th className="text-xs font-semibold text-foreground text-left px-3 py-2 whitespace-nowrap">
+                <th className="text-xs leading-4 tracking-[0.32px] font-semibold text-[var(--cds-text-primary,#161616)] text-left px-3 py-2 whitespace-nowrap">
                   {row}
                 </th>
                 {columns.map((col, colIdx) => {
@@ -48,7 +48,7 @@ const LeapChangeHeatmap = ({ rows, columns, data }) => {
                     <td
                       key={`${row}-${col}`}
                       className={cn(
-                        'text-sm text-center p-2 rounded font-semibold min-w-[48px] tabular-nums',
+                        'text-sm leading-[1.125rem] tracking-[0.16px] text-center p-2 rounded font-semibold min-w-[48px] tabular-nums',
                         colorConfig[colorKey].cell
                       )}
                       title={`${row} / ${col}: ${value}`}
@@ -71,7 +71,7 @@ const LeapChangeHeatmap = ({ rows, columns, data }) => {
           { key: 'light-green', label: '60-79' },
           { key: 'dark-green', label: '80-100' },
         ].map(({ key, label }) => (
-          <span key={key} className="text-xs font-medium flex items-center gap-1 text-muted-foreground">
+          <span key={key} className="text-xs leading-4 tracking-[0.32px] flex items-center gap-1 text-[#525252]">
             <span className={cn('inline-block w-3.5 h-3.5 rounded-sm', colorConfig[key].swatch)} />
             {label}
           </span>

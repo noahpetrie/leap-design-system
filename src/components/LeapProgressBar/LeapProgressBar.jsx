@@ -8,9 +8,9 @@ const trackSizeStyles = {
 };
 
 const fillStatusStyles = {
-  active: 'bg-primary',
-  success: 'bg-green-600',
-  error: 'bg-destructive',
+  active: 'bg-[#0c8c5e]',
+  success: 'bg-[#24a148]',
+  error: 'bg-[#da1e28]',
 };
 
 const LeapProgressBar = ({
@@ -29,15 +29,15 @@ const LeapProgressBar = ({
     <div className="w-full" {...rest}>
       {(label || (showValue && !indeterminate)) && (
         <div className="flex justify-between items-baseline mb-1">
-          {label && <span className="text-sm text-foreground">{label}</span>}
+          {label && <span className="text-[14px] tracking-[0.16px] text-[#161616]">{label}</span>}
           {showValue && !indeterminate && (
-            <span className="text-sm text-muted-foreground">{clampedValue}%</span>
+            <span className="text-[14px] tracking-[0.16px] text-[#525252]">{clampedValue}%</span>
           )}
         </div>
       )}
       <div
         className={cn(
-          'w-full bg-muted rounded-sm overflow-hidden',
+          'w-full bg-[#e0e0e0] rounded-sm overflow-hidden',
           trackSizeStyles[size]
         )}
         role="progressbar"
@@ -56,7 +56,7 @@ const LeapProgressBar = ({
         />
       </div>
       {helperText && (
-        <span className="text-xs text-muted-foreground mt-1 block">{helperText}</span>
+        <span className="text-[12px] tracking-[0.32px] text-[#6f6f6f] mt-1 block">{helperText}</span>
       )}
 
       {/* Indeterminate animation keyframes */}

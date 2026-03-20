@@ -4,7 +4,7 @@ import { View, ViewOff } from '@carbon/icons-react';
 import { cn } from '../../lib/utils';
 
 const inputSizeStyles = {
-  sm: 'h-8 px-3 pr-8',
+  sm: 'h-8 px-4 pr-8',
   md: 'h-10 px-4 pr-10',
   lg: 'h-12 px-4 pr-10',
 };
@@ -34,8 +34,8 @@ const LeapPasswordInput = ({
       {label && (
         <label
           className={cn(
-            'text-xs font-medium mb-1',
-            disabled ? 'text-muted-foreground opacity-50' : 'text-muted-foreground'
+            'text-[12px] tracking-[0.32px] mb-1',
+            disabled ? 'text-[#8d8d8d]' : 'text-[#525252]'
           )}
         >
           {label}
@@ -45,12 +45,12 @@ const LeapPasswordInput = ({
         <input
           type={visible ? 'text' : 'password'}
           className={cn(
-            'w-full border-0 border-b bg-muted text-foreground text-sm outline-none transition-colors',
-            'placeholder:text-muted-foreground/60',
-            'focus:border-b-2 focus:border-b-primary',
-            invalid && 'border-b-2 border-b-destructive focus:border-b-destructive',
-            disabled && 'bg-muted text-muted-foreground opacity-50 border-b-transparent cursor-not-allowed',
-            !invalid && !disabled && 'border-b-border',
+            'w-full border-0 border-b text-[14px] tracking-[0.16px] bg-[#f4f4f4] text-[#161616] outline-none transition-colors',
+            'placeholder:text-[#a8a8a8]',
+            'focus:border-b-2 focus:border-b-[#0c8c5e]',
+            invalid && 'border-b-2 border-b-[#da1e28] focus:border-b-[#da1e28]',
+            disabled && 'bg-[#f4f4f4] text-[#8d8d8d] border-b-transparent cursor-not-allowed',
+            !invalid && !disabled && 'border-b-[#8d8d8d]',
             inputSizeStyles[size]
           )}
           value={value}
@@ -62,10 +62,10 @@ const LeapPasswordInput = ({
         <button
           type="button"
           className={cn(
-            'absolute right-0 flex items-center justify-center w-10 h-full p-0 border-none bg-transparent cursor-pointer text-foreground',
-            'hover:text-primary/80',
-            'focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-[-2px]',
-            disabled && 'text-muted-foreground opacity-50 cursor-not-allowed'
+            'absolute right-0 flex items-center justify-center w-10 h-full p-0 border-none bg-transparent cursor-pointer text-[#161616]',
+            'hover:text-[#096b48]',
+            'focus:outline-2 focus:outline-[#0c8c5e] focus:outline-offset-[-2px]',
+            disabled && 'text-[#8d8d8d] cursor-not-allowed'
           )}
           onClick={toggleVisibility}
           disabled={disabled}
@@ -75,10 +75,10 @@ const LeapPasswordInput = ({
         </button>
       </div>
       {invalid && invalidText && (
-        <div className="text-xs font-medium text-destructive mt-1">{invalidText}</div>
+        <div className="text-[12px] tracking-[0.32px] text-[#da1e28] mt-1">{invalidText}</div>
       )}
       {!invalid && helperText && (
-        <div className="text-xs text-muted-foreground mt-1">{helperText}</div>
+        <div className="text-[12px] tracking-[0.32px] text-[#6f6f6f] mt-1">{helperText}</div>
       )}
     </div>
   );

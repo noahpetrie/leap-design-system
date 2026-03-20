@@ -1,45 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cn } from '../../lib/utils';
+import {
+  DataTable,
+  Table,
+  TableHead,
+  TableRow,
+  TableHeader,
+  TableBody,
+  TableCell,
+} from '@carbon/react';
 
 const LeapDataTable = ({ rows, headers, onRowClick, ...rest }) => {
   return (
-    <div className="w-full" {...rest}>
-      <table className="w-full border-collapse text-sm">
-        <thead>
-          <tr>
-            {headers.map((header) => (
-              <th
-                key={header.key}
-                className="bg-card px-4 py-3 text-left text-xs font-semibold text-foreground"
-              >
-                {header.header}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr
-              key={row.id}
-              onClick={() => onRowClick && onRowClick(row)}
-              className={cn(
-                'border-b border-border',
-                onRowClick && 'cursor-pointer hover:bg-accent'
-              )}
-            >
-              {headers.map((header) => (
-                <td
-                  key={`${row.id}-${header.key}`}
-                  className="px-4 py-3 text-foreground"
+    <div style={{ '--cds-interactive': '#0c8c5e' }} {...rest}>
+      <DataTable rows={rows} headers={headers}>
+        {({ rows: tableRows, headers: tableHeaders, getTableProps, getHeaderProps, getRowProps }) => (
+          <Table {...getTableProps()}>
+            <TableHead>
+              <TableRow>
+                {tableHeaders.map((header) => (
+                  <TableHeader key={header.key} {...getHeaderProps({ header })}>
+                    {header.header}
+                  </TableHeader>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {tableRows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  {...getRowProps({ row })}
+                  onClick={() => onRowClick && onRowClick(row)}
+                  style={onRowClick ? { cursor: 'pointer' } : undefined}
                 >
-                  {row[header.key]}
-                </td>
+                  {row.cells.map((cell) => (
+                    <TableCell key={cell.id}>{cell.value}</TableCell>
+                  ))}
+                </TableRow>
               ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            </TableBody>
+          </Table>
+        )}
+      </DataTable>
     </div>
   );
 };

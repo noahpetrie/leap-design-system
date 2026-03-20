@@ -1,63 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cn } from '../../lib/utils';
-
-const sizeClasses = {
-  sm: 'h-8 px-3 text-xs',
-  md: 'h-9 px-4 text-sm',
-  lg: 'h-11 px-5 text-sm',
-};
-
-const kindClasses = {
-  primary: 'bg-primary text-primary-foreground hover:bg-primary/80',
-  secondary: 'bg-muted text-foreground hover:bg-accent',
-  danger: 'bg-destructive text-primary-foreground hover:bg-destructive/80',
-  ghost: 'bg-transparent text-foreground hover:bg-accent',
-  tertiary: 'border border-primary text-primary bg-transparent hover:bg-primary/10',
-};
+import { unstable__ChatButton as CarbonChatButton } from '@carbon/react';
 
 /**
  * LeapChatButton — A chat-optimized button with quick-action support,
- * themed with Leap brand colors.
+ * themed with Leap brand colors on top of Carbon's ChatButton.
  */
 const LeapChatButton = React.forwardRef(function LeapChatButton(
-  {
-    className,
-    children,
-    kind = 'primary',
-    size = 'md',
-    disabled = false,
-    isQuickAction = false,
-    isSelected = false,
-    renderIcon: Icon,
-    onClick,
-    ...rest
-  },
+  { className, children, ...rest },
   ref
 ) {
+  const classNames = ['leap-chat-btn-wrapper', className].filter(Boolean).join(' ');
+
   return (
-    <button
-      ref={ref}
-      type="button"
-      disabled={disabled}
-      onClick={onClick}
-      className={cn(
-        'inline-flex items-center justify-center gap-1.5 rounded font-medium transition-colors duration-150',
-        'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2',
-        'disabled:opacity-50 disabled:cursor-not-allowed',
-        isQuickAction
-          ? cn(
-              'bg-transparent text-foreground border border-border hover:bg-accent rounded-full px-3 py-1 text-xs',
-              isSelected && 'bg-primary text-primary-foreground border-primary hover:bg-primary/80'
-            )
-          : cn(sizeClasses[size], kindClasses[kind]),
-        className
-      )}
-      {...rest}
+    <span
+      className={classNames}
+      style={{
+        '--cds-button-primary': '#0c8c5e',
+        '--cds-button-primary-hover': '#096b48',
+        '--cds-button-primary-active': '#054a32',
+        '--cds-focus': '#0c8c5e',
+        '--cds-chat-button': '#0c8c5e',
+        '--cds-chat-button-selected': '#0c8c5e',
+        '--cds-chat-button-text-selected': '#fff',
+        display: 'inline-block',
+      }}
     >
-      {Icon && <Icon size={size === 'sm' ? 14 : 16} />}
-      {children}
-    </button>
+      <CarbonChatButton ref={ref} {...rest}>
+        {children}
+      </CarbonChatButton>
+    </span>
   );
 });
 
@@ -78,8 +50,6 @@ LeapChatButton.propTypes = {
   renderIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   /** Button size */
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
-  /** Click handler */
-  onClick: PropTypes.func,
 };
 
 export default LeapChatButton;

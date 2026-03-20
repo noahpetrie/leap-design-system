@@ -4,13 +4,13 @@ import { Copy, Checkmark } from '@carbon/icons-react';
 import { cn } from '../../lib/utils';
 
 const kindClasses = {
-  ghost: 'py-1.5 px-3 bg-transparent text-muted-foreground hover:bg-accent hover:text-foreground',
-  primary: 'py-1.5 px-3 bg-primary text-white hover:bg-primary/80',
-  'icon-only': 'p-1.5 bg-transparent text-muted-foreground hover:bg-accent hover:text-foreground',
+  ghost: 'py-1.5 px-3 bg-transparent text-[#525252] hover:bg-[#e8e8e8] hover:text-[#161616]',
+  primary: 'py-1.5 px-3 bg-[#0c8c5e] text-white hover:bg-[#096b48]',
+  'icon-only': 'p-1.5 bg-transparent text-[#525252] hover:bg-[#e8e8e8] hover:text-[#161616]',
 };
 
 const sizeOverrides = {
-  sm: 'pt-1 pb-1 text-xs font-medium',
+  sm: 'pt-1 pb-1 text-xs leading-4 tracking-[0.32px] font-medium',
   md: '',
   lg: 'pt-2 pb-2',
 };
@@ -43,11 +43,11 @@ const LeapCopyButton = ({ text, label = 'Copy', feedbackText = 'Copied!', feedba
   return (
     <button
       className={cn(
-        'inline-flex items-center gap-1.5 border-none rounded cursor-pointer transition-[background,color] duration-150 text-sm',
-        'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2',
+        'inline-flex items-center gap-1.5 border-none rounded cursor-pointer transition-[background,color] duration-150 text-sm leading-[1.125rem] tracking-[0.16px]',
+        'focus-visible:outline-2 focus-visible:outline-[#0c8c5e] focus-visible:outline-offset-2',
         kindClasses[kind],
         sizeOverrides[size],
-        copied && 'text-primary',
+        copied && 'text-[#0c8c5e]',
         copied && kind === 'primary' && 'text-white'
       )}
       onClick={handleClick}

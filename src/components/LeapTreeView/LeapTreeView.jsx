@@ -33,12 +33,14 @@ const TreeNode = ({ node, level = 0, selectedId, onSelect, expandedIds, onToggle
     <li role="treeitem" aria-expanded={hasChildren ? isExpanded : undefined} aria-selected={isSelected}>
       <button
         className={cn(
-          'flex w-full items-center gap-1 border-none bg-transparent text-left text-foreground cursor-pointer transition-colors duration-100',
-          isSm ? 'py-1 pr-2 text-xs font-medium' : 'py-1.5 pr-3 text-sm',
-          !isSelected && !node.disabled && 'hover:bg-accent',
-          isSelected && 'bg-primary/10 text-primary font-semibold',
-          node.disabled && 'text-muted-foreground opacity-50 cursor-not-allowed',
-          'focus-visible:outline-2 focus-visible:outline-primary focus-visible:-outline-offset-2'
+          'flex w-full items-center gap-1 border-none bg-transparent text-left text-[#161616] cursor-pointer transition-colors duration-100',
+          isSm
+            ? 'py-1 pr-2 text-[12px] leading-[16px] tracking-[0.32px]'
+            : 'py-1.5 pr-3 text-[14px] leading-[18px] tracking-[0.16px]',
+          !isSelected && !node.disabled && 'hover:bg-[#e8e8e8]',
+          isSelected && 'bg-[#e6f4ee] text-[#0c8c5e] font-semibold',
+          node.disabled && 'text-[#c6c6c6] cursor-not-allowed',
+          'focus-visible:outline-2 focus-visible:outline-[#0c8c5e] focus-visible:-outline-offset-2'
         )}
         style={{ paddingLeft: `${level * 1.25 + 0.5}rem` }}
         onClick={handleClick}
@@ -49,14 +51,17 @@ const TreeNode = ({ node, level = 0, selectedId, onSelect, expandedIds, onToggle
       >
         {hasChildren && (
           <span className={cn(
-            'flex shrink-0 items-center text-muted-foreground transition-transform duration-150',
+            'flex shrink-0 items-center text-[#525252] transition-transform duration-150',
             isExpanded && 'rotate-90'
           )}>
             <ChevronRight size={16} />
           </span>
         )}
         {!hasChildren && <span className="inline-block w-4 shrink-0" />}
-        <span className={cn('flex shrink-0 items-center', isSelected ? 'text-primary' : 'text-muted-foreground')}>
+        <span className={cn(
+          'flex shrink-0 items-center',
+          isSelected ? 'text-[#0c8c5e]' : node.disabled ? 'text-[#c6c6c6]' : 'text-[#525252]'
+        )}>
           <NodeIcon size={16} />
         </span>
         <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">{node.label}</span>

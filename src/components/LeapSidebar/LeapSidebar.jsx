@@ -28,9 +28,9 @@ const LeapSidebar = ({ items = [], activeItem, onItemClick, collapsed: controlle
             <button
               key={item.id}
               className={cn(
-                'flex items-center gap-2 w-full px-4 py-2 bg-transparent border-none border-l-[3px] border-l-transparent text-white/70 cursor-pointer text-left whitespace-nowrap text-sm transition-colors',
+                'flex items-center gap-2 w-full px-4 py-2 bg-transparent border-none border-l-[3px] border-l-transparent text-white/70 cursor-pointer text-left whitespace-nowrap text-[14px] tracking-[0.16px] transition-colors',
                 'hover:bg-white/[0.06] hover:text-white',
-                isActive && 'bg-[#0c8c5e]/[0.18] border-l-primary text-white hover:bg-[#0c8c5e]/[0.18]'
+                isActive && 'bg-[rgba(12,140,94,0.18)] border-l-[#0c8c5e] text-white hover:bg-[rgba(12,140,94,0.18)]'
               )}
               onClick={() => onItemClick && onItemClick(item.id)}
               title={collapsed ? item.label : undefined}

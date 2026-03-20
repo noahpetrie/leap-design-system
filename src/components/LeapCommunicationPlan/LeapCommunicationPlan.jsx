@@ -19,14 +19,8 @@ const STATUS_MAP = {
 const statusBadgeClasses = {
   draft: 'bg-[#e0e0e0] text-[#525252]',
   scheduled: 'bg-[#d0e2ff] text-[#0043ce]',
-  sent: 'bg-primary/15 text-primary',
+  sent: 'bg-[#0c8c5e]/15 text-[#0c8c5e]',
   cancelled: 'bg-[#fff1f1] text-[#da1e28]',
-};
-
-const truncateMessage = (message, maxLength = 80) => {
-  if (!message) return '';
-  if (message.length <= maxLength) return message;
-  return message.substring(0, maxLength).trimEnd() + '\u2026';
 };
 
 const formatDate = (dateString) => {
@@ -41,9 +35,9 @@ const formatDate = (dateString) => {
 const LeapCommunicationPlan = ({ communications }) => {
   if (!communications || communications.length === 0) {
     return (
-      <div className="bg-background border border-border rounded p-4 text-foreground">
-        <h3 className="text-sm font-semibold mb-4 text-foreground">Communication Plan</h3>
-        <p className="text-sm text-muted-foreground text-center py-6">
+      <div className="border border-[var(--cds-border-subtle,#e0e0e0)] rounded p-4 text-[var(--cds-text-primary,#1a1a18)] font-['IBM_Plex_Sans',sans-serif]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
+        <h3 className="text-[16px] font-semibold mb-4 text-[#1a1a18]">Communication Plan</h3>
+        <p className="text-sm leading-[1.125rem] tracking-[0.16px] text-[#525252] text-center py-6">
           No communications planned yet.
         </p>
       </div>
@@ -51,9 +45,9 @@ const LeapCommunicationPlan = ({ communications }) => {
   }
 
   return (
-    <div className="bg-background border border-border rounded p-4 text-foreground">
-      <h3 className="text-sm font-semibold mb-4 text-foreground">Communication Plan</h3>
-      <div className="grid grid-cols-[120px_1fr_100px_2fr_100px] gap-2 px-3 py-2 border-b-2 border-primary text-xs font-semibold text-foreground">
+    <div className="border border-[var(--cds-border-subtle,#e0e0e0)] rounded p-4 text-[var(--cds-text-primary,#1a1a18)] font-['IBM_Plex_Sans',sans-serif]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
+      <h3 className="text-[16px] font-semibold mb-4 text-[#1a1a18]">Communication Plan</h3>
+      <div className="grid grid-cols-[100px_auto_80px_1fr_90px] gap-3 px-3 py-2 border-b-2 border-[#0c8c5e] text-xs leading-4 tracking-[0.32px] font-semibold text-[#1a1a18]">
         <span>Date</span>
         <span>Audience</span>
         <span>Channel</span>
@@ -64,26 +58,26 @@ const LeapCommunicationPlan = ({ communications }) => {
         {communications.map((comm) => (
           <li
             key={comm.id}
-            className="grid grid-cols-[120px_1fr_100px_2fr_100px] gap-2 items-center px-3 py-2 border-b border-border transition-colors duration-150 hover:bg-accent"
+            className="grid grid-cols-[100px_auto_80px_1fr_90px] gap-3 items-center px-3 py-3 border-b border-[#e0e0e0] transition-colors duration-150 hover:bg-[#e8e8e8]"
           >
-            <span className="text-sm text-muted-foreground whitespace-nowrap">
+            <span className="text-sm leading-[1.125rem] tracking-[0.16px] text-[#525252] whitespace-nowrap">
               {formatDate(comm.date)}
             </span>
             <span>
-              <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
+              <span className="inline-block px-2 py-0.5 rounded-full bg-[#0c8c5e]/[0.12] text-[#0c8c5e] text-xs leading-4 tracking-[0.32px] font-medium whitespace-nowrap">
                 {comm.audience}
               </span>
             </span>
-            <span className="text-sm text-foreground font-medium">
+            <span className="text-sm leading-[1.125rem] tracking-[0.16px] text-[#1a1a18] font-medium">
               {CHANNEL_LABELS[comm.channel] || comm.channel}
             </span>
-            <span className="text-sm text-muted-foreground overflow-hidden text-ellipsis whitespace-nowrap">
-              {truncateMessage(comm.message)}
+            <span className="text-sm leading-[1.125rem] tracking-[0.16px] text-[#525252] overflow-hidden text-ellipsis whitespace-nowrap">
+              {comm.message}
             </span>
             <span>
               <span
                 className={cn(
-                  'inline-block px-2 py-0.5 rounded-full text-xs font-semibold text-center',
+                  'inline-block px-2 py-0.5 rounded-full text-xs leading-4 tracking-[0.32px] font-semibold text-center whitespace-nowrap',
                   statusBadgeClasses[comm.status]
                 )}
               >

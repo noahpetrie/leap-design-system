@@ -69,7 +69,7 @@ const LeapTooltipDefinition = ({ children, definition, align = 'bottom', openOnH
     <>
       <button
         ref={triggerRef}
-        className="inline border-none bg-transparent p-0 text-sm text-foreground border-b border-dotted border-b-foreground cursor-help leading-relaxed hover:border-b-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 focus-visible:rounded-sm"
+        className="inline p-0 bg-transparent border-0 border-b border-dotted border-b-[#161616] text-[#161616] text-[14px] leading-[1.5] tracking-[0.16px] cursor-help hover:border-b-[#0c8c5e] hover:text-[#0c8c5e] focus-visible:outline-2 focus-visible:outline-[#0c8c5e] focus-visible:outline-offset-2 focus-visible:rounded-[1px]"
         type="button"
         aria-describedby={open ? 'leap-tooltip-definition-popup' : undefined}
         onFocus={handleOpen}
@@ -83,13 +83,13 @@ const LeapTooltipDefinition = ({ children, definition, align = 'bottom', openOnH
         <div
           ref={tooltipRef}
           id="leap-tooltip-definition-popup"
-          className="fixed z-[9999] max-w-[16rem] rounded-sm bg-foreground px-3 py-2 text-sm leading-snug text-primary-foreground shadow-md pointer-events-none"
+          className="fixed z-[9999] max-w-[16rem] rounded-[2px] bg-[#393939] px-3 py-2 text-[14px] leading-[1.4] tracking-[0.16px] text-[#ffffff] shadow-[0_2px_6px_rgba(0,0,0,0.2)] pointer-events-none"
           style={{ top: position.top, left: position.left }}
           role="tooltip"
         >
           <span
             className={cn(
-              'absolute h-2 w-2 bg-foreground',
+              'absolute h-2 w-2 bg-[#393939]',
               caretPositionMap[align] || caretPositionMap.bottom
             )}
           />

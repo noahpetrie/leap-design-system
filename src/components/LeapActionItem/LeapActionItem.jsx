@@ -57,9 +57,10 @@ const LeapActionItem = ({
   return (
     <div
       className={cn(
-        'flex bg-background border border-border rounded-lg overflow-hidden max-w-[560px] transition-shadow duration-150 ease-out hover:shadow-[0_2px_8px_rgba(0,0,0,0.08)]',
+        'flex border border-[var(--cds-border-subtle,#e0e0e0)] rounded-[8px] overflow-hidden max-w-[560px] transition-shadow duration-150 ease-out hover:shadow-[0_2px_8px_rgba(0,0,0,0.08)]',
         status === 'done' && 'opacity-70',
       )}
+      style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}
     >
       {/* Priority bar */}
       <span
@@ -67,20 +68,20 @@ const LeapActionItem = ({
         title={`Priority: ${prioConfig.label}`}
       />
 
-      <div className="flex-1 px-4 py-3 min-w-0">
+      <div className="flex-1 px-[1rem] py-[0.75rem] min-w-0">
         {/* Top row: title + priority tag */}
-        <div className="flex items-start justify-between gap-2 mb-2">
+        <div className="flex items-start justify-between gap-[0.5rem] mb-[0.5rem]">
           <h4
             className={cn(
-              'text-sm font-semibold text-foreground m-0 flex-1 min-w-0 overflow-hidden text-ellipsis whitespace-nowrap',
-              status === 'done' && 'line-through text-muted-foreground',
+              'text-[0.875rem] leading-[1.125rem] tracking-[0.16px] font-semibold text-[var(--cds-text-primary,#161616)] m-0 flex-1 min-w-0 overflow-hidden text-ellipsis whitespace-nowrap',
+              status === 'done' && 'line-through text-[#525252]',
             )}
           >
             {title}
           </h4>
           <span
             className={cn(
-              'text-xs font-medium inline-block px-2 py-px rounded-xl font-semibold whitespace-nowrap shrink-0',
+              'text-[0.75rem] leading-[1rem] tracking-[0.32px] inline-block px-[0.5rem] py-px rounded-[12px] font-semibold whitespace-nowrap shrink-0',
               priorityTagStyles[prioConfig.modifier],
             )}
           >
@@ -89,26 +90,27 @@ const LeapActionItem = ({
         </div>
 
         {/* Bottom row: assignee, due date, status */}
-        <div className="flex items-center gap-4 flex-wrap">
+        <div className="flex items-center gap-[0.75rem] flex-wrap">
           {assignee && (
-            <span className="flex items-center gap-1" title={assignee}>
-              <span className="text-xs font-medium flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground font-bold shrink-0">
+            <span className="flex items-center gap-[0.25rem]" title={assignee}>
+              <span className="text-[0.75rem] leading-[1rem] tracking-[0.32px] flex items-center justify-center w-[28px] h-[28px] rounded-full bg-[#0c8c5e] text-white font-bold shrink-0">
                 {getInitials(assignee)}
               </span>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-[0.875rem] leading-[1.125rem] tracking-[0.16px] text-[#525252]">
                 {assignee}
               </span>
             </span>
           )}
 
           {dueDate && (
-            <time className="text-xs font-medium text-muted-foreground whitespace-nowrap">
+            <time className="text-[0.75rem] leading-[1rem] tracking-[0.32px] text-[#525252] whitespace-nowrap">
               {dueDate}
             </time>
           )}
 
           <select
-            className="text-xs font-medium ml-auto py-1 pl-2 pr-3 border border-border rounded bg-background text-foreground cursor-pointer font-[inherit] focus:outline-2 focus:outline-primary focus:-outline-offset-1"
+            className="text-[0.75rem] leading-[1rem] tracking-[0.32px] ml-auto py-[0.25rem] pl-[0.5rem] pr-[0.75rem] border border-[var(--cds-border-subtle,#e0e0e0)] rounded text-[var(--cds-text-primary,#161616)] cursor-pointer font-[inherit] focus:outline-2 focus:outline-[#0c8c5e] focus:-outline-offset-1"
+            style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}
             value={status}
             onChange={handleStatusChange}
             aria-label="Change status"

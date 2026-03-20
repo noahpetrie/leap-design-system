@@ -20,7 +20,7 @@ const LeapSkeleton = ({ variant = 'text', width, height, count = 1, circle = fal
           key={i}
           className={cn(
             'animate-shimmer bg-[length:200%_100%]',
-            'bg-gradient-to-r from-border via-white/40 to-border',
+            'bg-gradient-to-r from-[#e0e0e0] via-white/40 to-[#e0e0e0]',
             variantClasses[variant],
             circle && 'rounded-full',
             i === count - 1 && variant === 'text' && !width && '!w-[60%]'

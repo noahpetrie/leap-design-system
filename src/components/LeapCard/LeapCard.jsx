@@ -7,7 +7,7 @@ const variantClasses = {
   raised: 'shadow-[0_2px_6px_rgba(0,0,0,0.08)]',
   ai: 'border-[#c6e8d9]',
   danger: 'border-[#da1e28]',
-  metric: 'bg-border border-none',
+  metric: 'bg-[#e0e0e0] border-none',
 };
 
 const LeapCard = ({
@@ -25,24 +25,25 @@ const LeapCard = ({
   return (
     <Tag
       className={cn(
-        'border border-border rounded-lg bg-card p-4 text-left w-full',
+        'border border-[var(--cds-border-subtle,#e0e0e0)] rounded-[8px] p-[1rem] text-left w-full',
         variantClasses[variant],
-        isClickable && 'cursor-pointer transition-[box-shadow,border-color] duration-150 hover:shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:border-primary focus:outline-2 focus:outline-primary focus:outline-offset-2'
+        isClickable && 'cursor-pointer transition-[box-shadow,border-color] duration-150 hover:shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:border-[#0c8c5e] focus:outline-2 focus:outline-[#0c8c5e] focus:outline-offset-2'
       )}
+      style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}
       onClick={onClick}
       type={isClickable ? 'button' : undefined}
       {...rest}
     >
       {(title || aiLabel) && (
-        <div className="flex justify-between items-start mb-3">
-          <div className="flex flex-col gap-0.5">
-            {title && <span className="text-sm font-semibold text-foreground">{title}</span>}
-            {subtitle && <span className="text-xs font-medium text-muted-foreground">{subtitle}</span>}
+        <div className="flex justify-between items-start mb-[0.75rem]">
+          <div className="flex flex-col gap-[0.125rem]">
+            {title && <span className="text-[0.875rem] leading-[1.125rem] tracking-[0.16px] font-semibold text-[var(--cds-text-primary,#161616)]">{title}</span>}
+            {subtitle && <span className="text-[0.75rem] leading-[1rem] tracking-[0.32px] text-[#525252]">{subtitle}</span>}
           </div>
           {aiLabel && <div>{aiLabel}</div>}
         </div>
       )}
-      <div className="text-sm text-muted-foreground">{children}</div>
+      <div className="text-[0.875rem] leading-[1.125rem] tracking-[0.16px] text-[#525252]">{children}</div>
     </Tag>
   );
 };

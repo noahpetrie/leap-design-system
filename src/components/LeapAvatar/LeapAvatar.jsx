@@ -49,7 +49,7 @@ const LeapAvatar = ({
 
   return (
     <div
-      className="relative rounded-full bg-[#f0faf5] text-primary inline-flex items-center justify-center shrink-0 overflow-visible"
+      className="relative rounded-full bg-[#f0faf5] text-[#0c8c5e] inline-flex items-center justify-center shrink-0 overflow-visible"
       style={{ width: px, height: px }}
       title={name}
       {...rest}
@@ -64,7 +64,7 @@ const LeapAvatar = ({
       {status && (
         <span
           className={cn(
-            'absolute bottom-0 right-0 rounded-full border-2 border-background',
+            'absolute bottom-0 right-0 rounded-full border-2 border-[#f4f4f4]',
             statusDotSize[size],
             statusColors[status],
           )}

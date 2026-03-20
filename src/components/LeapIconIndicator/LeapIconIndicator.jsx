@@ -75,15 +75,15 @@ const LeapIconIndicator = React.forwardRef(function LeapIconIndicator(
   return (
     <div
       className={cn(
-        'flex items-center text-muted-foreground',
-        size === 20 ? 'text-base' : 'text-sm',
+        'flex items-center text-[#525252]',
+        size === 20 ? 'text-[16px] tracking-[0.16px]' : 'text-[14px] tracking-[0.16px]',
         className
       )}
       ref={ref}
     >
       <IconForKind
         size={size}
-        className={cn('self-center mr-2', kindColorMap[kind])}
+        className={cn('self-center mr-[0.5rem]', kindColorMap[kind])}
       />
       {label}
     </div>

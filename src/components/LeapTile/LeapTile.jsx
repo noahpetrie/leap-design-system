@@ -33,14 +33,15 @@ const LeapTile = ({
   return (
     <Tag
       className={cn(
-        'w-full rounded-lg border border-border bg-card p-4 text-left text-sm text-foreground',
-        light && 'bg-muted',
+        'w-full rounded-lg border border-[var(--cds-border-subtle,#e0e0e0)] p-4 text-left text-[14px] tracking-[0.16px] text-[#161616]',
+        light && 'bg-transparent',
         disabled && 'pointer-events-none opacity-50',
-        isClickable && 'cursor-pointer transition-[box-shadow,border-color] duration-150 hover:shadow-md hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        isSelectable && 'cursor-pointer transition-[border-color,background-color] duration-150 hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        isExpandable && 'cursor-pointer transition-[border-color] duration-150 hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        selected && isSelectable && 'border-primary bg-primary/10'
+        isClickable && 'cursor-pointer transition-[box-shadow,border-color] duration-150 hover:shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:border-[#0c8c5e] focus:outline-[2px] focus:outline-[#0c8c5e] focus:outline-offset-2',
+        isSelectable && 'cursor-pointer transition-[border-color,background-color] duration-150 hover:border-[#0c8c5e] focus:outline-[2px] focus:outline-[#0c8c5e] focus:outline-offset-2',
+        isExpandable && 'cursor-pointer transition-[border-color] duration-150 hover:border-[#0c8c5e] focus:outline-[2px] focus:outline-[#0c8c5e] focus:outline-offset-2',
+        selected && isSelectable && 'border-[#0c8c5e] bg-[#e6f4ee]'
       )}
+      style={{ backgroundColor: light ? 'var(--cds-layer, #ffffff)' : '#f4f4f4' }}
       onClick={isInteractive ? handleClick : undefined}
       type={isInteractive ? 'button' : undefined}
       disabled={isInteractive ? disabled : undefined}
@@ -53,8 +54,8 @@ const LeapTile = ({
         {isSelectable && (
           <span
             className={cn(
-              'flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-border transition-[border-color,background-color,color] duration-150',
-              selected && 'border-primary bg-primary text-white'
+              'flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[var(--cds-border-subtle,#e0e0e0)] transition-[border-color,background-color,color] duration-150',
+              selected && 'border-[#0c8c5e] bg-[#0c8c5e] text-white'
             )}
           >
             <Checkmark size={16} className={cn(!selected && 'text-transparent')} />
@@ -63,7 +64,7 @@ const LeapTile = ({
         {isExpandable && (
           <span
             className={cn(
-              'flex shrink-0 items-center justify-center text-muted-foreground transition-transform duration-200',
+              'flex shrink-0 items-center justify-center text-[#525252] transition-transform duration-200',
               expanded && 'rotate-180'
             )}
           >
@@ -72,7 +73,7 @@ const LeapTile = ({
         )}
       </div>
       {isExpandable && expanded && expandedContent && (
-        <div className="mt-3 border-t border-border pt-3 text-sm text-muted-foreground">
+        <div className="mt-3 border-t border-[var(--cds-border-subtle,#e0e0e0)] pt-3 text-[14px] tracking-[0.16px] text-[#525252]">
           {expandedContent}
         </div>
       )}

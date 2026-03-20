@@ -10,21 +10,21 @@ const LeapTeamOverview = ({ members = [], title = "Team today", ...rest }) => {
   const available = members.filter((m) => !m.onLeave);
 
   return (
-    <div className="rounded border border-border bg-card p-4" {...rest}>
+    <div className="rounded border border-[#e0e0e0] bg-[#f4f4f4] p-4" {...rest}>
       <div className="flex items-baseline justify-between mb-4">
-        <span className="text-sm font-semibold text-foreground">{title}</span>
-        <span className="text-xs font-medium text-muted-foreground">
+        <span className="text-base font-semibold text-[#161616]">{title}</span>
+        <span className="text-[12px] tracking-[0.32px] text-[#525252]">
           {available.length}/{members.length} available
         </span>
       </div>
       {onLeave.length > 0 && (
         <div className="mb-3">
-          <span className="block text-xs font-medium text-muted-foreground mb-2">On leave</span>
+          <span className="block text-[12px] tracking-[0.32px] text-[#525252] mb-2">On leave</span>
           <div className="flex flex-wrap gap-2">
             {onLeave.map((m, i) => (
               <div
                 key={i}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-red-50 text-xs font-semibold text-red-600 opacity-80 cursor-default"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-[#fff1f1] text-[12px] font-semibold text-[#da1e28] opacity-80 cursor-default"
                 title={`${m.name} — ${m.leaveType || 'Leave'}`}
               >
                 {getInitials(m.name)}
@@ -34,12 +34,12 @@ const LeapTeamOverview = ({ members = [], title = "Team today", ...rest }) => {
         </div>
       )}
       <div>
-        <span className="block text-xs font-medium text-muted-foreground mb-2">Available</span>
+        <span className="block text-[12px] tracking-[0.32px] text-[#525252] mb-2">Available</span>
         <div className="flex flex-wrap gap-2">
           {available.map((m, i) => (
             <div
               key={i}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary cursor-default"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f0faf5] text-[12px] font-semibold text-[#0c8c5e] cursor-default"
               title={m.name}
             >
               {getInitials(m.name)}

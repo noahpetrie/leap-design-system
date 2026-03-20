@@ -54,41 +54,41 @@ const LeapCalendar = ({
         key={day}
         className={cn(
           'aspect-square flex flex-col items-center justify-center rounded cursor-default relative',
-          isWeekend && 'bg-border',
+          isWeekend && 'bg-[#e0e0e0]',
           statusKey && statusBgMap[statusKey],
           isHoliday && 'bg-[#fff1f1]'
         )}
         title={leave ? `${leave.type}: ${leave.status || ''}` : isHoliday ? 'Holiday' : ''}
       >
-        <span className="text-sm text-foreground">{day}</span>
-        {leave && <span className="text-[9px] font-medium text-muted-foreground">{leave.type?.[0]}</span>}
-        {isHoliday && !leave && <span className="text-[9px] font-medium text-muted-foreground">H</span>}
+        <span className="text-[0.875rem] leading-[1.125rem] tracking-[0.16px] text-[var(--cds-text-primary,#161616)]">{day}</span>
+        {leave && <span className="text-[9px] tracking-[0.32px] text-[#525252]">{leave.type?.[0]}</span>}
+        {isHoliday && !leave && <span className="text-[9px] tracking-[0.32px] text-[#525252]">H</span>}
       </div>
     );
   }
 
   return (
-    <div className="border border-border rounded bg-card p-4 max-w-[420px]" {...rest}>
-      <div className="text-sm font-semibold text-foreground text-center mb-3">
+    <div className="border border-[var(--cds-border-subtle,#e0e0e0)] rounded p-[1rem] max-w-[420px]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }} {...rest}>
+      <div className="text-[1rem] leading-[1.375rem] tracking-[0.16px] font-semibold text-[var(--cds-text-primary,#161616)] text-center mb-[0.75rem]">
         {MONTH_NAMES[month]} {year}
       </div>
       <div className="grid grid-cols-7 gap-0.5">
         {DAYS_OF_WEEK.map((d) => (
-          <div key={d} className="text-xs font-medium text-muted-foreground text-center p-1">{d}</div>
+          <div key={d} className="text-[0.75rem] leading-[1rem] tracking-[0.32px] text-[#525252] text-center p-[0.25rem]">{d}</div>
         ))}
         {cells}
       </div>
-      <div className="flex gap-4 mt-3 flex-wrap">
-        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
-          <span className="w-2 h-2 rounded-full inline-block bg-primary" /> Vacation
+      <div className="flex gap-[1rem] mt-[0.75rem] flex-wrap">
+        <span className="text-[0.75rem] leading-[1rem] tracking-[0.32px] text-[#525252] flex items-center gap-[0.25rem]">
+          <span className="w-2 h-2 rounded-full inline-block bg-[#0c8c5e]" /> Vacation
         </span>
-        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+        <span className="text-[0.75rem] leading-[1rem] tracking-[0.32px] text-[#525252] flex items-center gap-[0.25rem]">
           <span className="w-2 h-2 rounded-full inline-block bg-[#4589ff]" /> Sick
         </span>
-        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+        <span className="text-[0.75rem] leading-[1rem] tracking-[0.32px] text-[#525252] flex items-center gap-[0.25rem]">
           <span className="w-2 h-2 rounded-full inline-block bg-[#8a3ffc]" /> Personal
         </span>
-        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+        <span className="text-[0.75rem] leading-[1rem] tracking-[0.32px] text-[#525252] flex items-center gap-[0.25rem]">
           <span className="w-2 h-2 rounded-full inline-block bg-[#da1e28]" /> Holiday
         </span>
       </div>

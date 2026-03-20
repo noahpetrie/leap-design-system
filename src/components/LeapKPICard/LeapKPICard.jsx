@@ -9,13 +9,13 @@ const STATUS_LABELS = {
 };
 
 const STATUS_DOT_COLORS = {
-  'on-track': 'bg-primary',
+  'on-track': 'bg-[#0c8c5e]',
   'at-risk': 'bg-[#f1c21b]',
   'off-track': 'bg-[#da1e28]',
 };
 
 const STATUS_BADGE_STYLES = {
-  'on-track': 'bg-[rgba(12,140,94,0.15)] text-primary',
+  'on-track': 'bg-[rgba(12,140,94,0.15)] text-[#0c8c5e]',
   'at-risk': 'bg-[rgba(241,194,27,0.2)] text-[#8e6a00]',
   'off-track': 'bg-[#fff1f1] text-[#da1e28]',
 };
@@ -26,7 +26,7 @@ const STATUS_STROKE_COLORS = {
   'off-track': '#da1e28',
 };
 
-const buildSparklinePath = (trend, width = 120, height = 32) => {
+const buildSparklinePath = (trend, width = 120, height = 40) => {
   if (!trend || trend.length < 2) return '';
 
   const min = Math.min(...trend);
@@ -56,32 +56,36 @@ const LeapKPICard = ({ label, value, unit, target, trend, status }) => {
   const statusColor = STATUS_STROKE_COLORS[status] || '#525252';
 
   return (
-    <div className="bg-background border border-border rounded p-4 min-w-[200px] max-w-[280px] text-foreground">
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{label}</span>
+    <div className="border border-[var(--cds-border-subtle,#e0e0e0)] rounded-[4px] p-[1.25rem] font-['IBM_Plex_Sans',sans-serif] text-[var(--cds-text-primary,#1a1a18)] min-w-[220px] max-w-[320px]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
+      <div className="flex items-center justify-between mb-[0.75rem]">
+        <span className="text-[12px] tracking-[0.32px] text-[#525252] uppercase font-medium">{label}</span>
         <span
-          className={cn('w-2.5 h-2.5 rounded-full shrink-0', STATUS_DOT_COLORS[status])}
-          title={STATUS_LABELS[status]}
-          aria-label={STATUS_LABELS[status]}
-        />
+          className={cn(
+            'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] tracking-[0.32px] font-semibold',
+            STATUS_BADGE_STYLES[status],
+          )}
+        >
+          <span className={cn('w-[6px] h-[6px] rounded-full shrink-0', STATUS_DOT_COLORS[status])} />
+          {STATUS_LABELS[status]}
+        </span>
       </div>
-      <div className="flex items-baseline gap-1 mb-1">
-        <span className="text-3xl font-semibold leading-tight text-foreground">{value}</span>
-        {unit && <span className="text-sm text-muted-foreground">{unit}</span>}
+      <div className="flex items-baseline gap-[0.25rem] mb-[0.125rem]">
+        <span className="text-[2rem] font-semibold leading-[1.1] text-[#1a1a18]">{value}</span>
+        {unit && <span className="text-[14px] tracking-[0.16px] text-[#525252]">{unit}</span>}
       </div>
       {target !== undefined && target !== null && (
-        <div className="text-xs text-muted-foreground mb-3">
+        <div className="text-[12px] tracking-[0.32px] text-[#525252] mb-[0.75rem]">
           Target: {target}
           {unit ? ` ${unit}` : ''}
         </div>
       )}
       {sparklinePoints && (
-        <div className="mb-3 py-1">
+        <div className="py-[0.25rem]">
           <svg
             width="120"
-            height="32"
-            viewBox="0 0 120 32"
-            className="block w-full h-8"
+            height="40"
+            viewBox="0 0 120 40"
+            className="block w-full h-[40px]"
             aria-hidden="true"
           >
             <polyline
@@ -95,16 +99,6 @@ const LeapKPICard = ({ label, value, unit, target, trend, status }) => {
           </svg>
         </div>
       )}
-      <div className="flex">
-        <span
-          className={cn(
-            'inline-block px-2 py-0.5 rounded-xl text-xs font-semibold',
-            STATUS_BADGE_STYLES[status],
-          )}
-        >
-          {STATUS_LABELS[status]}
-        </span>
-      </div>
     </div>
   );
 };

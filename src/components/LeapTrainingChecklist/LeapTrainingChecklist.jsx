@@ -36,9 +36,9 @@ const LeapTrainingChecklist = ({ items, onToggle }) => {
 
   if (!items || items.length === 0) {
     return (
-      <div className="rounded border border-border bg-background p-4">
-        <h3 className="text-sm font-semibold text-foreground mb-4">Training Checklist</h3>
-        <p className="text-sm text-muted-foreground text-center py-6">
+      <div className="rounded-[4px] border border-[var(--cds-border-subtle,#e0e0e0)] p-4 font-['IBM_Plex_Sans',sans-serif] text-[var(--cds-text-primary,#1a1a18)]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
+        <h3 className="text-[16px] font-semibold leading-[22px] tracking-[0.16px] text-[#1a1a18] mb-4">Training Checklist</h3>
+        <p className="text-[14px] leading-[18px] tracking-[0.16px] text-[#525252] text-center py-6">
           No training items assigned.
         </p>
       </div>
@@ -46,15 +46,15 @@ const LeapTrainingChecklist = ({ items, onToggle }) => {
   }
 
   return (
-    <div className="rounded border border-border bg-background p-4">
-      <h3 className="text-sm font-semibold text-foreground mb-4">Training Checklist</h3>
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-sm text-muted-foreground whitespace-nowrap min-w-[140px]">
+    <div className="rounded-[4px] border border-[var(--cds-border-subtle,#e0e0e0)] p-4 font-['IBM_Plex_Sans',sans-serif] text-[var(--cds-text-primary,#1a1a18)]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
+      <h3 className="text-[16px] font-semibold leading-[22px] tracking-[0.16px] text-[#1a1a18] mb-4">Training Checklist</h3>
+      <div className="flex items-center gap-4 mb-4">
+        <span className="text-[14px] leading-[18px] tracking-[0.16px] text-[#525252] whitespace-nowrap min-w-[140px]">
           {completedCount} of {totalCount} completed
         </span>
-        <div className="flex-1 h-1.5 rounded-full bg-border overflow-hidden">
+        <div className="flex-1 h-1.5 rounded-[3px] bg-[#e0e0e0] overflow-hidden">
           <div
-            className="h-full rounded-full bg-primary transition-[width] duration-300 ease-in-out"
+            className="h-full rounded-[3px] bg-[#0c8c5e] transition-[width] duration-300 ease-in-out"
             style={{ width: `${progressPercent}%` }}
             role="progressbar"
             aria-valuenow={completedCount}
@@ -70,7 +70,7 @@ const LeapTrainingChecklist = ({ items, onToggle }) => {
             <li
               key={item.id}
               className={cn(
-                'flex items-start gap-3 p-3 border-b border-border transition-colors duration-150 last:border-b-0 hover:bg-accent',
+                'flex items-start gap-4 p-4 border-b border-[#e0e0e0] transition-colors duration-150 last:border-b-0 hover:bg-[#e8e8e8]',
                 item.completed && 'opacity-70'
               )}
             >
@@ -86,9 +86,9 @@ const LeapTrainingChecklist = ({ items, onToggle }) => {
                 />
                 <span
                   className={cn(
-                    'relative block h-[18px] w-[18px] rounded-sm border-2 border-border transition-all duration-150',
-                    'peer-focus-visible:outline-2 peer-focus-visible:outline-primary peer-focus-visible:outline-offset-2',
-                    'peer-checked:border-primary peer-checked:bg-primary',
+                    'relative block h-[18px] w-[18px] rounded-[3px] border-2 border-[#8d8d8d] transition-all duration-150',
+                    'peer-focus-visible:outline-2 peer-focus-visible:outline-[#0c8c5e] peer-focus-visible:outline-offset-2',
+                    'peer-checked:border-[#0c8c5e] peer-checked:bg-[#0c8c5e]',
                     'after:absolute after:left-[5px] after:top-[1px] after:hidden after:h-[9px] after:w-[4px] after:rotate-45 after:border-b-2 after:border-r-2 after:border-white',
                     'peer-checked:after:block'
                   )}
@@ -97,29 +97,29 @@ const LeapTrainingChecklist = ({ items, onToggle }) => {
               <div className="flex flex-1 flex-col gap-0.5 min-w-0">
                 <span
                   className={cn(
-                    'text-sm font-medium text-foreground',
-                    item.completed && 'line-through text-muted-foreground'
+                    'text-[14px] leading-[18px] tracking-[0.16px] font-medium text-[#1a1a18]',
+                    item.completed && 'line-through text-[#525252]'
                   )}
                 >
                   {item.title}
                 </span>
                 {item.description && (
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-[12px] leading-[16px] tracking-[0.32px] text-[#525252]">
                     {item.description}
                   </span>
                 )}
               </div>
               <div className="flex shrink-0 items-center gap-2">
                 <span
-                  className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-foreground text-xs font-semibold text-primary-foreground"
+                  className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0c8c5e] text-[12px] leading-[16px] tracking-[0.32px] font-semibold text-[#ffffff]"
                   title={item.assignee}
                 >
                   {getInitials(item.assignee)}
                 </span>
                 <span
                   className={cn(
-                    'text-xs font-medium text-muted-foreground whitespace-nowrap',
-                    overdue && 'text-destructive font-semibold'
+                    'text-[12px] leading-[16px] tracking-[0.32px] text-[#525252] whitespace-nowrap',
+                    overdue && 'text-[#da1e28] font-semibold'
                   )}
                 >
                   {overdue && '\u26A0 '}

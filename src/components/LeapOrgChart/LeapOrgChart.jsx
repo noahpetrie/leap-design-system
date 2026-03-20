@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const NodeCard = ({ name, role }) => (
-  <div className="flex flex-col items-center bg-white border-2 border-primary rounded-lg px-4 py-2 min-w-[140px] text-center shadow-sm transition-shadow hover:shadow-md">
-    <span className="text-sm font-semibold text-foreground">{name}</span>
-    <span className="text-xs font-medium text-muted-foreground mt-0.5">{role}</span>
+  <div className="flex flex-col items-center border-2 border-[#0c8c5e] rounded-lg px-4 py-2 min-w-[140px] text-center shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition-shadow hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)]" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
+    <span className="text-[14px] font-semibold tracking-[0.16px] text-[var(--cds-text-primary,#161616)]">{name}</span>
+    <span className="text-[12px] tracking-[0.32px] text-[#525252] mt-0.5">{role}</span>
   </div>
 );
 
@@ -43,7 +43,7 @@ const LeapOrgChart = ({ data }) => {
   if (!data) return null;
 
   return (
-    <div className="bg-white border border-border rounded-lg p-6 overflow-x-auto">
+    <div className="border border-[var(--cds-border-subtle,#e0e0e0)] rounded-lg p-6 overflow-x-auto" style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}>
       <OrgNode node={data} depth={0} />
     </div>
   );

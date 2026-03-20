@@ -1,35 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cn } from '../../lib/utils';
+import { TextArea } from '@carbon/react';
 
-const LeapTextArea = ({ id, labelText, placeholder, value, onChange, rows = 4, maxCount, disabled, ...rest }) => {
-  const currentLength = value ? value.length : 0;
-
+const LeapTextArea = ({ id, labelText, placeholder, value, onChange, rows, maxCount, disabled, ...rest }) => {
   return (
-    <div className="flex flex-col gap-1" {...rest}>
-      <label htmlFor={id} className="text-xs font-medium text-foreground">
-        {labelText}
-      </label>
-      <textarea
+    <div style={{ '--cds-interactive': '#0c8c5e', '--cds-focus': '#0c8c5e' }} {...rest}>
+      <TextArea
         id={id}
-        className={cn(
-          'w-full rounded border border-border bg-muted px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground',
-          'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1',
-          'resize-y',
-          disabled && 'cursor-not-allowed opacity-50'
-        )}
+        labelText={labelText}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         rows={rows}
-        maxLength={maxCount}
+        maxCount={maxCount}
         disabled={disabled}
+        enableCounter={!!maxCount}
       />
-      {maxCount && (
-        <span className="self-end text-xs text-muted-foreground">
-          {currentLength}/{maxCount}
-        </span>
-      )}
     </div>
   );
 };

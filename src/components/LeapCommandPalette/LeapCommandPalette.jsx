@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Search as SearchIcon } from '@carbon/icons-react';
-import { cn } from '../../lib/utils';
+import { Search } from '@carbon/react';
 
 const LeapCommandPalette = ({ open = false, onOpen, onClose, onSelect, commands = [], placeholder = 'Type a command\u2026' }) => {
   const [query, setQuery] = useState('');
@@ -45,7 +44,7 @@ const LeapCommandPalette = ({ open = false, onOpen, onClose, onSelect, commands 
     if (open) {
       setQuery('');
       setActiveIndex(0);
-      setTimeout(() => inputRef.current?.focus(), 0);
+      setTimeout(() => inputRef.current?.querySelector('input')?.focus(), 0);
     }
   }, [open]);
 
@@ -89,37 +88,43 @@ const LeapCommandPalette = ({ open = false, onOpen, onClose, onSelect, commands 
   let selectableIndex = -1;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex justify-center pt-[15vh] bg-black/50" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-[9999] flex justify-center pt-[15vh]"
+      style={{ background: 'rgba(0, 0, 0, 0.5)' }}
+      onMouseDown={onClose}
+    >
       <div
-        className="flex flex-col w-full max-w-[36rem] max-h-96 bg-card border border-border rounded shadow-[0_8px_24px_rgba(0,0,0,0.25)] overflow-hidden self-start"
-        onClick={(e) => e.stopPropagation()}
+        className="flex flex-col w-full max-w-[36rem] max-h-[24rem] bg-[#f4f4f4] border border-[var(--cds-border-subtle,#e0e0e0)] rounded-[4px] overflow-hidden self-start"
+        style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.25)' }}
+        onMouseDown={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}
         role="dialog"
         aria-label="Command palette"
       >
-        <div className="shrink-0 border-b border-border relative">
-          <div className="flex items-center px-4">
-            <SearchIcon size={16} className="text-muted-foreground shrink-0" />
-            <input
-              ref={inputRef}
-              type="text"
-              className="flex-1 h-12 px-3 border-none bg-transparent text-foreground text-sm outline-none placeholder:text-muted-foreground"
-              placeholder={placeholder}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              autoComplete="off"
-              aria-label="Command search"
-            />
-          </div>
+        <div className="shrink-0 border-b border-[var(--cds-border-subtle,#e0e0e0)]" ref={inputRef}>
+          <Search
+            labelText="Command search"
+            placeholder={placeholder}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            autoComplete="off"
+            size="lg"
+          />
         </div>
-        <div className="flex-1 overflow-y-auto py-1" ref={listRef} role="listbox">
+        <div className="flex flex-col flex-1 overflow-y-auto py-[0.25rem]" ref={listRef} role="listbox">
           {filtered.length === 0 && (
-            <div className="py-6 px-4 text-muted-foreground text-sm text-center">No results found</div>
+            <div className="py-[1.5rem] px-[1rem] text-[#525252] text-[0.875rem] leading-[1.125rem] tracking-[0.16px] text-center">
+              No results found
+            </div>
           )}
           {filtered.map((item) => {
             if (item.type === 'group') {
               return (
-                <div key={item.id} className="py-2 px-4 pb-1 text-muted-foreground text-xs font-medium uppercase tracking-wide">
+                <div
+                  key={item.id}
+                  className="px-[1rem] pt-[0.5rem] pb-[0.25rem] text-[#525252] text-[0.75rem] leading-[1rem] uppercase"
+                  style={{ letterSpacing: '0.04em' }}
+                >
                   {item.label}
                 </div>
               );
@@ -127,27 +132,36 @@ const LeapCommandPalette = ({ open = false, onOpen, onClose, onSelect, commands 
 
             if (!item.disabled) selectableIndex++;
             const currentIndex = selectableIndex;
+            const isActive = !item.disabled && currentIndex === activeIndex;
 
             return (
               <button
                 key={item.id}
-                className={cn(
-                  'flex items-center gap-3 w-full py-2 px-4 border-none bg-transparent text-foreground text-sm cursor-pointer text-left',
-                  'hover:bg-accent',
-                  'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]',
-                  !item.disabled && currentIndex === activeIndex && 'bg-accent outline-none',
-                  item.disabled && 'text-muted-foreground opacity-50 cursor-not-allowed hover:bg-transparent'
-                )}
+                className={[
+                  'flex items-center gap-[0.75rem] w-full shrink-0 py-[0.5rem] px-[1rem] border-none text-left text-[0.875rem] leading-[1.125rem] tracking-[0.16px] cursor-pointer',
+                  isActive ? 'bg-[#e8e8e8] outline-none' : 'bg-transparent',
+                  item.disabled
+                    ? 'text-[#c6c6c6] cursor-not-allowed'
+                    : 'text-[#161616] hover:bg-[#e8e8e8]',
+                  'focus-visible:outline-2 focus-visible:outline-[#0c8c5e] focus-visible:-outline-offset-2',
+                ].join(' ')}
                 role="option"
-                aria-selected={!item.disabled && currentIndex === activeIndex}
+                aria-selected={isActive}
                 data-index={!item.disabled ? currentIndex : undefined}
                 onClick={() => handleSelect(item)}
                 disabled={item.disabled}
               >
-                {item.icon && <span className="flex items-center shrink-0 [&_svg]:w-4 [&_svg]:h-4 [&_svg]:fill-current">{item.icon}</span>}
+                {item.icon && (
+                  <span className="flex items-center shrink-0 [&_svg]:w-4 [&_svg]:h-4 [&_svg]:fill-current">
+                    {item.icon}
+                  </span>
+                )}
                 <span className="flex-1">{item.label}</span>
                 {item.shortcut && (
-                  <span className="ml-auto px-1.5 py-0.5 rounded-sm bg-muted border border-border text-muted-foreground text-xs font-mono">
+                  <span
+                    className="ml-auto py-[0.125rem] px-[0.375rem] rounded-[3px] border border-[var(--cds-border-subtle,#e0e0e0)] text-[#525252] text-[0.75rem] leading-[1rem] tracking-[0.32px] font-mono"
+                    style={{ backgroundColor: 'var(--cds-layer, #ffffff)' }}
+                  >
                     {item.shortcut}
                   </span>
                 )}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { TextArea, Button } from '@carbon/react';
 import { Send } from '@carbon/icons-react';
-import { cn } from '../../lib/utils';
 
 const LeapCommentBox = ({ comments = [], onSubmit, ...rest }) => {
   const [text, setText] = useState('');
@@ -14,48 +14,58 @@ const LeapCommentBox = ({ comments = [], onSubmit, ...rest }) => {
   };
 
   return (
-    <div className="border border-border rounded bg-card p-4" {...rest}>
+    <div
+      className="border border-[#e0e0e0] rounded-[4px] bg-[#f4f4f4] p-[1rem]"
+      style={{
+        '--cds-button-primary': '#0c8c5e',
+        '--cds-button-primary-hover': '#096b48',
+        '--cds-focus': '#0c8c5e',
+      }}
+      {...rest}
+    >
       {comments.length > 0 && (
-        <div className="mb-4">
+        <div className="mb-[1rem]">
           {comments.map((c, i) => (
-            <div key={i} className="pb-3 mb-3 border-b border-border last:border-b-0 last:mb-0">
-              <div className="flex justify-between mb-1">
-                <span className="text-sm font-semibold text-foreground">{c.author}</span>
-                <span className="text-xs font-medium text-muted-foreground">{c.timestamp}</span>
+            <div
+              key={i}
+              className={[
+                'pb-[0.75rem] mb-[0.75rem]',
+                i !== comments.length - 1 ? 'border-b border-[#e0e0e0]' : '',
+              ].join(' ')}
+            >
+              <div className="flex justify-between mb-[0.25rem]">
+                <span className="text-[0.875rem] leading-[1.125rem] tracking-[0.16px] font-semibold text-[#161616]">
+                  {c.author}
+                </span>
+                <span className="text-[0.75rem] leading-[1rem] tracking-[0.32px] text-[#525252]">
+                  {c.timestamp}
+                </span>
               </div>
-              <p className="text-sm text-muted-foreground m-0">{c.text}</p>
+              <p className="text-[0.875rem] leading-[1.125rem] tracking-[0.16px] text-[#525252] m-0">
+                {c.text}
+              </p>
             </div>
           ))}
         </div>
       )}
-      <div className="flex gap-2 items-end">
-        <textarea
+      <div className="flex gap-[0.5rem] items-end">
+        <TextArea
           id="comment-input"
+          labelText=""
           placeholder="Add a comment..."
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={2}
-          className={cn(
-            'flex-1 resize-none rounded border border-border bg-muted p-2 text-sm text-foreground',
-            'placeholder:text-muted-foreground',
-            'focus:outline-2 focus:outline-primary focus:outline-offset-[-2px]'
-          )}
         />
-        <button
-          type="button"
-          aria-label="Send"
-          title="Send"
+        <Button
+          kind="primary"
+          size="sm"
+          renderIcon={Send}
+          hasIconOnly
+          iconDescription="Send"
           onClick={handleSubmit}
           disabled={!text.trim()}
-          className={cn(
-            'inline-flex items-center justify-center w-8 h-8 rounded bg-primary text-primary-foreground',
-            'hover:bg-primary/80 transition-colors duration-150',
-            'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2',
-            'disabled:opacity-50 disabled:cursor-not-allowed'
-          )}
-        >
-          <Send size={16} />
-        </button>
+        />
       </div>
     </div>
   );

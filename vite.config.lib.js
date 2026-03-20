@@ -17,7 +17,7 @@ export default defineConfig({
         'react-dom',
         'react/jsx-runtime',
         'prop-types',
-        /^@carbon\/react\/icons/,
+        /^@carbon\/react/,
         /^@carbon\/icons-react/,
       ],
       output: {

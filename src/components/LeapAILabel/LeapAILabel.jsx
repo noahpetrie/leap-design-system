@@ -1,16 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  Toggletip,
+  ToggletipButton,
+  ToggletipContent,
+  ToggletipActions,
+  IconButton,
+} from '@carbon/react';
 import { Undo } from '@carbon/icons-react';
-import { cn } from '../../lib/utils';
+
+/* Size styles matching the original SCSS (Carbon spacing tokens) */
+const sizeStyles = {
+  mini:  { padding: '0 0.25rem', borderRadius: '6px', fontSize: '0.625rem', lineHeight: '1rem' },
+  '2xs': { padding: '0.125rem 0.25rem', borderRadius: '8px', fontSize: '0.6875rem', lineHeight: '1rem' },
+  xs:    { padding: '0.125rem 0.5rem', borderRadius: '10px', fontSize: '0.75rem' },
+  sm:    { padding: '0.25rem 0.5rem', borderRadius: '12px' },
+  md:    { padding: '0.25rem 1rem', borderRadius: '14px', fontSize: '0.875rem' },
+  lg:    { padding: '0.5rem 1rem', borderRadius: '16px', fontSize: '0.875rem' },
+  xl:    { padding: '0.5rem 1rem', borderRadius: '18px', fontSize: '0.875rem', fontWeight: 600 },
+};
+
+const baseButtonStyle = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '0.25rem',
+  border: 'none',
+  cursor: 'pointer',
+  background: 'linear-gradient(135deg, #0c8c5e, #096b48)',
+  color: '#ffffff',
+  fontWeight: 600,
+  letterSpacing: '0.02em',
+  transition: 'box-shadow 0.15s ease, transform 0.1s ease',
+};
+
+const inlineButtonStyle = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '0.25rem',
+  background: 'none',
+  border: 'none',
+  borderBottom: '1px dashed #0c8c5e',
+  borderRadius: 0,
+  color: '#0c8c5e',
+  fontWeight: 600,
+  padding: 0,
+  cursor: 'pointer',
+  letterSpacing: '0.02em',
+};
 
 /**
  * LeapAILabelContent — Renders the popover body content for LeapAILabel.
  */
 export const LeapAILabelContent = ({ className, children }) => {
   return (
-    <div className={cn('p-4 text-sm max-w-[320px]', className)}>
+    <ToggletipContent
+      className={className}
+      style={{ padding: '1rem', fontSize: '0.875rem', maxWidth: '320px' }}>
       {children}
-    </div>
+    </ToggletipContent>
   );
 };
 
@@ -24,9 +71,11 @@ LeapAILabelContent.propTypes = {
  */
 export const LeapAILabelActions = ({ className, children }) => {
   return (
-    <div className={cn('flex gap-2 px-4 py-2 border-t border-border', className)}>
+    <ToggletipActions
+      className={className}
+      style={{ display: 'flex', gap: '0.5rem', padding: '0.5rem 1rem', borderTop: '1px solid #e0e0e0' }}>
       {children}
-    </div>
+    </ToggletipActions>
   );
 };
 
@@ -35,18 +84,8 @@ LeapAILabelActions.propTypes = {
   className: PropTypes.string,
 };
 
-const sizeClasses = {
-  mini: 'px-1 rounded-md text-[0.625rem] leading-4',
-  '2xs': 'px-1 py-0.5 rounded-lg text-[0.6875rem] leading-4',
-  xs: 'px-2 py-0.5 rounded-[10px] text-xs',
-  sm: 'px-2 py-1 rounded-xl',
-  md: 'px-3 py-1 rounded-[14px] text-sm font-semibold',
-  lg: 'px-4 py-2 rounded-2xl text-sm font-semibold',
-  xl: 'px-4 py-2 rounded-[18px] text-sm font-semibold',
-};
-
 /**
- * LeapAILabel — An AI indicator badge with a popover,
+ * LeapAILabel — An AI indicator badge with a toggletip popover,
  * used to mark AI-generated or AI-assisted content in the Leap platform.
  */
 const LeapAILabel = React.forwardRef(function LeapAILabel(
@@ -66,15 +105,9 @@ const LeapAILabel = React.forwardRef(function LeapAILabel(
   },
   ref
 ) {
-  const isInline = kind === 'inline';
-
-  const buttonClasses = cn(
-    'inline-flex items-center gap-1 border-none cursor-pointer text-xs font-semibold transition-shadow duration-150 ease-out',
-    !isInline && 'bg-gradient-to-br from-primary to-primary/80 text-primary-foreground tracking-[0.02em] hover:shadow-[0_2px_8px_rgba(12,140,94,0.35)] active:scale-[0.96]',
-    !isInline && sizeClasses[size],
-    isInline && 'bg-transparent text-primary font-semibold p-0 rounded-none border-b border-dashed border-primary hover:text-primary/80 hover:border-primary/80 hover:shadow-none',
-    isInline && textLabel && 'gap-1',
-  );
+  const buttonStyle = kind === 'inline'
+    ? inlineButtonStyle
+    : { ...baseButtonStyle, ...sizeStyles[size] };
 
   const ariaLabelText = !textLabel
     ? `${aiText} Show information`
@@ -82,64 +115,50 @@ const LeapAILabel = React.forwardRef(function LeapAILabel(
 
   return (
     <div
-      className={cn('inline-flex items-center', revertActive && '[&_button]:text-primary', className)}
+      className={className}
       ref={ref}
+      style={{ display: 'inline-flex', alignItems: 'center', ...(revertActive ? { color: '#0c8c5e' } : {}) }}
     >
       {revertActive ? (
-        <button
+        <IconButton
           onClick={onRevertClick}
-          className="inline-flex items-center justify-center rounded-md p-2 text-primary hover:bg-accent"
-          title={revertLabel}
-          aria-label={revertLabel}
-          {...rest}
-        >
+          kind="ghost"
+          size="sm"
+          label={revertLabel}
+          {...rest}>
           <Undo />
-        </button>
+        </IconButton>
       ) : (
-        <div className="relative inline-flex" {...rest}>
-          <button
-            className={buttonClasses}
-            aria-label={isInline ? undefined : ariaLabelText}
-          >
-            <span className="tracking-[0.02em]">{aiText}</span>
-            {isInline && textLabel && (
-              <span className="opacity-85 text-xs font-medium">{textLabel}</span>
+        <Toggletip align={align} autoAlign={autoAlign} {...rest}>
+          <ToggletipButton style={buttonStyle} label={kind === 'inline' ? '' : ariaLabelText}>
+            <span>{aiText}</span>
+            {kind === 'inline' && textLabel && (
+              <span style={{ opacity: 0.85, fontSize: '0.75rem' }}>{textLabel}</span>
             )}
-          </button>
+          </ToggletipButton>
           {children}
-        </div>
+        </Toggletip>
       )}
     </div>
   );
 });
 
 LeapAILabel.propTypes = {
-  /** Text shown on the AI badge */
   aiText: PropTypes.string,
-  /** Popover alignment relative to the trigger */
   align: PropTypes.oneOf([
     'top', 'top-start', 'top-end',
     'bottom', 'bottom-start', 'bottom-end',
     'left', 'left-start', 'left-end',
     'right', 'right-start', 'right-end',
   ]),
-  /** Auto-align popover if not visible */
   autoAlign: PropTypes.bool,
-  /** Popover body content (use LeapAILabelContent and LeapAILabelActions) */
   children: PropTypes.node,
-  /** Additional CSS class */
   className: PropTypes.string,
-  /** Label style: default badge or inline text */
   kind: PropTypes.oneOf(['default', 'inline']),
-  /** Callback when the revert button is clicked */
   onRevertClick: PropTypes.func,
-  /** Show the revert/undo button instead of the AI badge */
   revertActive: PropTypes.bool,
-  /** Tooltip text for the revert button */
   revertLabel: PropTypes.string,
-  /** Badge size */
   size: PropTypes.oneOf(['mini', '2xs', 'xs', 'sm', 'md', 'lg', 'xl']),
-  /** Additional inline text next to the AI label */
   textLabel: PropTypes.string,
 };
 

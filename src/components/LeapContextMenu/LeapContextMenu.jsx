@@ -59,23 +59,23 @@ const LeapContextMenu = ({ children, items = [], onSelect }) => {
       {visible && (
         <div
           ref={menuRef}
-          className="fixed z-[9999] min-w-[10rem] max-w-[18rem] py-1 bg-card border border-border shadow-[0_2px_6px_rgba(0,0,0,0.2)] list-none"
-          style={{ top: position.y, left: position.x }}
+          className="fixed z-[9999] min-w-[10rem] max-w-[18rem] py-1 border border-[var(--cds-border-subtle,#e0e0e0)] shadow-[0_2px_6px_rgba(0,0,0,0.2)] list-none"
+          style={{ top: position.y, left: position.x, backgroundColor: 'var(--cds-layer, #ffffff)' }}
           role="menu"
         >
           {items.map((item) => {
             if (item.type === 'divider') {
-              return <div key={item.id} className="h-px my-1 bg-border" role="separator" />;
+              return <div key={item.id} className="h-px my-1 bg-[#e0e0e0]" role="separator" />;
             }
             return (
               <button
                 key={item.id}
                 className={cn(
-                  'flex items-center gap-2 w-full py-1.5 px-4 border-none bg-transparent text-foreground text-sm cursor-pointer text-left whitespace-nowrap',
-                  'hover:bg-accent',
-                  'focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-2px]',
-                  item.disabled && 'text-muted-foreground opacity-50 cursor-not-allowed hover:bg-transparent',
-                  item.danger && 'text-destructive hover:bg-destructive hover:text-primary-foreground'
+                  'flex items-center gap-2 w-full py-1.5 px-4 border-none bg-transparent text-[#161616] text-sm leading-[1.125rem] tracking-[0.16px] cursor-pointer text-left whitespace-nowrap',
+                  'hover:bg-[#e8e8e8]',
+                  'focus-visible:outline-2 focus-visible:outline-[#0c8c5e] focus-visible:outline-offset-[-2px]',
+                  item.disabled && 'text-[#8d8d8d] cursor-not-allowed hover:bg-transparent',
+                  item.danger && 'text-[#da1e28] hover:bg-[#da1e28] hover:text-white'
                 )}
                 role="menuitem"
                 disabled={item.disabled}
@@ -84,7 +84,7 @@ const LeapContextMenu = ({ children, items = [], onSelect }) => {
                 {item.icon && <span className="flex items-center shrink-0 [&_svg]:w-4 [&_svg]:h-4 [&_svg]:fill-current">{item.icon}</span>}
                 <span className="flex-1">{item.label}</span>
                 {item.shortcut && (
-                  <span className="ml-auto pl-8 text-muted-foreground text-xs font-medium">{item.shortcut}</span>
+                  <span className="ml-auto pl-8 text-[#525252] text-xs leading-4 tracking-[0.32px]">{item.shortcut}</span>
                 )}
               </button>
             );

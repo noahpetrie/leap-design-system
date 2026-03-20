@@ -56,3 +56,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* AI shimmer animation for LeapAISkeleton components */
+@keyframes leap-ai-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
