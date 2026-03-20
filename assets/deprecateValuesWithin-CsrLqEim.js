@@ -1,0 +1,1 @@
+const r={},f=(u,i,l)=>(s,e,t,...n)=>{if(typeof s[e]>"u")return null;if(!r[t]||!r[t][e]){r[t]={...r[t],[e]:!0};const d=s[e],$=l?l(d):null;i&&!i.includes(d)&&(l?`${d}${e}${t}${$}${d}`:`${d}${e}${t}${i.join(", ")}${d}`)}return u(s,e,t,...n)};export{f as d};

@@ -1,0 +1,21 @@
+import{R as r,r as T}from"./index-C5e9SFkp.js";import{P as e}from"./index-Cv3U8xn7.js";import{u as v,c as C,_ as F}from"./usePrefix-DKvSngT5.js";import{S as q}from"./Search-CETVxbZ-.js";import{F as L}from"./FormContext-BXuWO8ke.js";import"./useId-BCI3fkL9.js";import"./useIsomorphicEffect-cSlXweb7.js";import"./events-CA4jvATf.js";import"./index-C07QrHh6.js";import"./deprecateValuesWithin-CsrLqEim.js";import"./index-Cws_IRuu.js";import"./index-Dy23IbDT.js";import"./deprecate-wUyRZ4Kw.js";import"./noopFn-g4z370MD.js";import"./Tooltip-DiHq-Mla.js";import"./useNoInteractiveChildren-De6vW09K.js";import"./bucket-3-iB7GZNH-.js";import"./Icon-IPhGtQ88.js";import"./bucket-16-DByjHX--.js";const E=T.forwardRef,x=E(({className:d,...i},n)=>{const o=v(),l=C(`${o}--search--fluid`,d);return r.createElement(L.Provider,{value:{isFluid:!0}},r.createElement(q,F({ref:n,className:l},i)))});x.propTypes={autoComplete:e.string,className:e.string,closeButtonLabelText:e.string,defaultValue:e.oneOfType([e.string,e.number]),disabled:e.bool,id:e.string,labelText:e.node.isRequired,onChange:e.func,onClear:e.func,onKeyDown:e.func,placeholder:e.string,role:e.string,type:e.string,value:e.oneOfType([e.string,e.number])};const c=r.forwardRef(function({className:i,...n},o){const l=["leap-fluid-search",i].filter(Boolean).join(" ");return r.createElement("div",{className:l,style:{"--cds-focus":"#0c8c5e","--cds-interactive":"#0c8c5e","--cds-border-interactive":"#0c8c5e"}},r.createElement(x,{ref:o,...n}))});c.propTypes={className:e.string,disabled:e.bool,id:e.string.isRequired,labelText:e.node.isRequired,onChange:e.func,onClear:e.func,placeholder:e.string,value:e.string};c.__docgenInfo={description:"LeapFluidSearch — A fluid-style search input with Leap brand theming.",methods:[],displayName:"LeapFluidSearch",props:{className:{description:"Additional CSS class",type:{name:"string"},required:!1},disabled:{description:"Whether the search is disabled",type:{name:"bool"},required:!1},id:{description:"Search ID",type:{name:"string"},required:!0},labelText:{description:"Label text",type:{name:"node"},required:!0},onChange:{description:"Change handler",type:{name:"func"},required:!1},onClear:{description:"Clear handler",type:{name:"func"},required:!1},placeholder:{description:"Placeholder text",type:{name:"string"},required:!1},value:{description:"Current value",type:{name:"string"},required:!1}}};const H={title:"Components/LeapFluidSearch",component:c,tags:["autodocs"],argTypes:{disabled:{control:"boolean"}},parameters:{docs:{description:{component:"A fluid-style search input with a built-in search icon and clear button. Fills its container width with an underline treatment. Use for search fields in fluid form layouts or as a standalone search bar in dense UIs.\n\n### Import\n```jsx\nimport { LeapFluidSearch } from '@noahpetrie/leap-design-system';\nimport '@noahpetrie/leap-design-system/styles';\n```"}}}},a={args:{id:"fluid-search-1",labelText:"Search",placeholder:"Search for people, teams, or initiatives..."}},t={args:{id:"fluid-search-disabled",labelText:"Search",placeholder:"Search...",disabled:!0}},s={args:{id:"fluid-search-value",labelText:"Search",placeholder:"Search...",defaultValue:"Engineering team"}};var p,u,m;a.parameters={...a.parameters,docs:{...(p=a.parameters)==null?void 0:p.docs,source:{originalSource:`{
+  args: {
+    id: 'fluid-search-1',
+    labelText: 'Search',
+    placeholder: 'Search for people, teams, or initiatives...'
+  }
+}`,...(m=(u=a.parameters)==null?void 0:u.docs)==null?void 0:m.source}}};var h,f,g;t.parameters={...t.parameters,docs:{...(h=t.parameters)==null?void 0:h.docs,source:{originalSource:`{
+  args: {
+    id: 'fluid-search-disabled',
+    labelText: 'Search',
+    placeholder: 'Search...',
+    disabled: true
+  }
+}`,...(g=(f=t.parameters)==null?void 0:f.docs)==null?void 0:g.source}}};var b,S,y;s.parameters={...s.parameters,docs:{...(b=s.parameters)==null?void 0:b.docs,source:{originalSource:`{
+  args: {
+    id: 'fluid-search-value',
+    labelText: 'Search',
+    placeholder: 'Search...',
+    defaultValue: 'Engineering team'
+  }
+}`,...(y=(S=s.parameters)==null?void 0:S.docs)==null?void 0:y.source}}};const J=["Default","Disabled","WithValue"];export{a as Default,t as Disabled,s as WithValue,J as __namedExportsOrder,H as default};
